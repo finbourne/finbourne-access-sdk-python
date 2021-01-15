@@ -17,12 +17,12 @@ class ApiClientFactory:
     """
     def __init__(self, **kwargs):
         """
-        Iniitalise an ApiClientFactory by passing the token, api_url and app_name, or by
+        Iniitalise an ApiClientFactory by passing the token, access_url and app_name, or by
         passing in the api_secrets_filename
 
         :param str token: Bearer token used to initialise the API
         :param str api_secrets_filename: Name of secrets file (including full path)
-        :param str api_url: LUSID API url
+        :param str access_url: LUSID API url
         :param str app_name: Application name (optional)
         :param str certificate_filename: Name of the certificate file (.pem, .cer or .crt)
         :param str proxy_url: The url of the proxy to use including the port e.g. http://myproxy.com:8888
@@ -35,7 +35,7 @@ class ApiClientFactory:
         if "token" in kwargs and str(kwargs["token"]) != "None":
             # If there is a token use it along with the specified proxy details if specified
             config = ApiConfiguration(
-                api_url=kwargs.get("api_url", None),
+                access_url=kwargs.get("access_url", None),
                 certificate_filename=kwargs.get("certificate_filename", None),
                 proxy_config=ProxyConfig(
                     address=kwargs.get("proxy_url", None),

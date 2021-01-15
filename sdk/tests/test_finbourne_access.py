@@ -1,17 +1,17 @@
 import unittest
 from finbourne_access import api as sa
-
-from finbourne_access import ApiClientBuilder
+from finbourne_access.utilities import ApiClientFactory
 
 
 class FinbourneAccessTests(unittest.TestCase):
 
+    @classmethod
+    def setUpClass(cls):
+        api_client = ApiClientFactory()
+        cls.policies_api = api_client.build(sa.PoliciesApi)
+
     def test_roles(self):
-        api_client = ApiClientBuilder().build("secrets.json")
-        policies_api = sa.PoliciesApi(api_client)
-
-        policies = policies_api.get_own_policies()
-
+        policies = self.policies_api.list_policies()
         self.assertGreater(len(policies), 0)
 
 
