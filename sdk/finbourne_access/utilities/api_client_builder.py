@@ -115,14 +115,14 @@ class ApiClientBuilder:
 
         # Use the access token provided if it exists
         if token is not None:
-            # Check that there is an api_url available
-            cls.__check_required_fields(configuration, ["api_url"])
+            # Check that there is an access_url available
+            cls.__check_required_fields(configuration, ["access_url"])
             api_token = token
         # Otherwise generate an access token from Okta and use a RefreshingToken going forward
         else:
             # Check that all the required fields for generating a token exist
             cls.__check_required_fields(configuration, [
-                "api_url",
+                "access_url",
                 "password",
                 "username",
                 "client_id",
@@ -138,7 +138,7 @@ class ApiClientBuilder:
         # Initialise the API client using the token so that it can be included in all future requests
         config = Configuration()
         config.access_token = api_token
-        config.host = configuration.api_url
+        config.host = configuration.access_url
 
         # Set the certificate from the configuration
         config.ssl_ca_cert = configuration.certificate_filename
