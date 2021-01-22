@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **identity_restriction** | **dict(str, str)** |  | [optional] 
 **restriction_selectors** | [**list[SelectorDefinition]**](SelectorDefinition.md) |  | [optional] 
-**actions** | [**list[ActionId]**](ActionId.md) |  | [optional] 
+**actions** | [**list[ActionId]**](ActionId.md) |  | 
 **name** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 
 
