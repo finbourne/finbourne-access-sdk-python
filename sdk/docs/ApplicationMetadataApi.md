@@ -1,6 +1,6 @@
 # finbourne_access.ApplicationMetadataApi
 
-All URIs are relative to *https://www.lusid.com/access*
+All URIs are relative to *https://fbn-ci.lusid.com/access*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -27,8 +27,8 @@ configuration = finbourne_access.Configuration()
 # Configure OAuth2 access token for authorization: oauth2
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://www.lusid.com/access
-configuration.host = "https://www.lusid.com/access"
+# Defining host is optional and default to https://fbn-ci.lusid.com/access
+configuration.host = "https://fbn-ci.lusid.com/access"
 # Create an instance of the API class
 api_instance = finbourne_access.ApplicationMetadataApi(finbourne_access.ApiClient(configuration))
 

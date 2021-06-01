@@ -1,6 +1,6 @@
 # finbourne_access.LicencesApi
 
-All URIs are relative to *https://www.lusid.com/access*
+All URIs are relative to *https://fbn-ci.lusid.com/access*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -34,8 +34,8 @@ configuration = finbourne_access.Configuration()
 # Configure OAuth2 access token for authorization: oauth2
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://www.lusid.com/access
-configuration.host = "https://www.lusid.com/access"
+# Defining host is optional and default to https://fbn-ci.lusid.com/access
+configuration.host = "https://fbn-ci.lusid.com/access"
 # Create an instance of the API class
 api_instance = finbourne_access.LicencesApi(finbourne_access.ApiClient(configuration))
 licence_creation_request = {"code":"dataset-licence-1","description":"Access to licensed dataset","applications":["LUSID"],"selectors":[{"code":"dataset-licence-1","actionIds":[{"scope":"default","activity":"Read","entity":"Portfolio"}]}],"when":{"activate":"2016-08-31T18:00:00.0000000+00:00","deactivate":"2020-08-31T18:00:00.0000000+00:00"}} # LicenceCreationRequest | The Licence definition
@@ -96,8 +96,8 @@ configuration = finbourne_access.Configuration()
 # Configure OAuth2 access token for authorization: oauth2
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://www.lusid.com/access
-configuration.host = "https://www.lusid.com/access"
+# Defining host is optional and default to https://fbn-ci.lusid.com/access
+configuration.host = "https://fbn-ci.lusid.com/access"
 # Create an instance of the API class
 api_instance = finbourne_access.LicencesApi(finbourne_access.ApiClient(configuration))
 code = 'code_example' # str | Code of the Licence
@@ -160,8 +160,8 @@ configuration = finbourne_access.Configuration()
 # Configure OAuth2 access token for authorization: oauth2
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://www.lusid.com/access
-configuration.host = "https://www.lusid.com/access"
+# Defining host is optional and default to https://fbn-ci.lusid.com/access
+configuration.host = "https://fbn-ci.lusid.com/access"
 # Create an instance of the API class
 api_instance = finbourne_access.LicencesApi(finbourne_access.ApiClient(configuration))
 code = 'code_example' # str | The code of the Licence
@@ -223,8 +223,8 @@ configuration = finbourne_access.Configuration()
 # Configure OAuth2 access token for authorization: oauth2
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://www.lusid.com/access
-configuration.host = "https://www.lusid.com/access"
+# Defining host is optional and default to https://fbn-ci.lusid.com/access
+configuration.host = "https://fbn-ci.lusid.com/access"
 # Create an instance of the API class
 api_instance = finbourne_access.LicencesApi(finbourne_access.ApiClient(configuration))
 code = 'code_example' # str | Code of the Licence
@@ -286,8 +286,8 @@ configuration = finbourne_access.Configuration()
 # Configure OAuth2 access token for authorization: oauth2
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://www.lusid.com/access
-configuration.host = "https://www.lusid.com/access"
+# Defining host is optional and default to https://fbn-ci.lusid.com/access
+configuration.host = "https://fbn-ci.lusid.com/access"
 # Create an instance of the API class
 api_instance = finbourne_access.LicencesApi(finbourne_access.ApiClient(configuration))
 code = 'code_example' # str | The code of the Licence
@@ -352,8 +352,8 @@ configuration = finbourne_access.Configuration()
 # Configure OAuth2 access token for authorization: oauth2
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://www.lusid.com/access
-configuration.host = "https://www.lusid.com/access"
+# Defining host is optional and default to https://fbn-ci.lusid.com/access
+configuration.host = "https://fbn-ci.lusid.com/access"
 # Create an instance of the API class
 api_instance = finbourne_access.LicencesApi(finbourne_access.ApiClient(configuration))
 code = 'code_example' # str | Code of the Licence
@@ -414,8 +414,8 @@ configuration = finbourne_access.Configuration()
 # Configure OAuth2 access token for authorization: oauth2
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://www.lusid.com/access
-configuration.host = "https://www.lusid.com/access"
+# Defining host is optional and default to https://fbn-ci.lusid.com/access
+configuration.host = "https://fbn-ci.lusid.com/access"
 # Create an instance of the API class
 api_instance = finbourne_access.LicencesApi(finbourne_access.ApiClient(configuration))
 assigned_to = 'assigned_to_example' # str | Optional. If specified, applies a filter for only Licences that are assigned to the specified tenant (optional)
@@ -476,8 +476,8 @@ configuration = finbourne_access.Configuration()
 # Configure OAuth2 access token for authorization: oauth2
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://www.lusid.com/access
-configuration.host = "https://www.lusid.com/access"
+# Defining host is optional and default to https://fbn-ci.lusid.com/access
+configuration.host = "https://fbn-ci.lusid.com/access"
 # Create an instance of the API class
 api_instance = finbourne_access.LicencesApi(finbourne_access.ApiClient(configuration))
 code = 'code_example' # str | The code of the Licence

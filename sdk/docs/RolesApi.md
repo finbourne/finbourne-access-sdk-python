@@ -1,15 +1,83 @@
 # finbourne_access.RolesApi
 
-All URIs are relative to *https://www.lusid.com/access*
+All URIs are relative to *https://fbn-ci.lusid.com/access*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**add_policy_collection_to_role**](RolesApi.md#add_policy_collection_to_role) | **POST** /api/roles/{scope}/{code}/policycollections | [EXPERIMENTAL] Add policy collections to a role
 [**create_role**](RolesApi.md#create_role) | **POST** /api/roles | [EARLY ACCESS] Create Role
 [**delete_role**](RolesApi.md#delete_role) | **DELETE** /api/roles/{code} | [EARLY ACCESS] Delete Role
 [**get_role**](RolesApi.md#get_role) | **GET** /api/roles/{code} | [EARLY ACCESS] Get Role
 [**list_roles**](RolesApi.md#list_roles) | **GET** /api/roles | [EARLY ACCESS] List Roles
+[**remove_policy_collection_from_role**](RolesApi.md#remove_policy_collection_from_role) | **DELETE** /api/roles/{scope}/{code}/policycollections/{policycollectionscope}/{policycollectioncode} | [EXPERIMENTAL] Remove policy collection from role
 [**update_role**](RolesApi.md#update_role) | **PUT** /api/roles/{code} | [EARLY ACCESS] Update Role
 
+
+# **add_policy_collection_to_role**
+> RoleResponse add_policy_collection_to_role(scope, code, add_policy_collection_to_role_request)
+
+[EXPERIMENTAL] Add policy collections to a role
+
+Assigns policy collections to a role
+
+### Example
+
+* OAuth Authentication (oauth2):
+```python
+from __future__ import print_function
+import time
+import finbourne_access
+from finbourne_access.rest import ApiException
+from pprint import pprint
+configuration = finbourne_access.Configuration()
+# Configure OAuth2 access token for authorization: oauth2
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Defining host is optional and default to https://fbn-ci.lusid.com/access
+configuration.host = "https://fbn-ci.lusid.com/access"
+# Create an instance of the API class
+api_instance = finbourne_access.RolesApi(finbourne_access.ApiClient(configuration))
+scope = 'scope_example' # str | The scope of the Role
+code = 'code_example' # str | The code of the Role
+add_policy_collection_to_role_request = {"policyCollections":[{"scope":"ScopeValue","code":"SomePolCollectionCode"},{"scope":"ScopeValue2","code":"AnotherPolicyCollection"}]} # AddPolicyCollectionToRoleRequest | The policy collections to add
+
+try:
+    # [EXPERIMENTAL] Add policy collections to a role
+    api_response = api_instance.add_policy_collection_to_role(scope, code, add_policy_collection_to_role_request)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling RolesApi->add_policy_collection_to_role: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **scope** | **str**| The scope of the Role | 
+ **code** | **str**| The code of the Role | 
+ **add_policy_collection_to_role_request** | [**AddPolicyCollectionToRoleRequest**](AddPolicyCollectionToRoleRequest.md)| The policy collections to add | 
+
+### Return type
+
+[**RoleResponse**](RoleResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | AddPolicyCollectionToRole |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_role**
 > RoleResponse create_role(role_creation_request)
@@ -31,8 +99,8 @@ configuration = finbourne_access.Configuration()
 # Configure OAuth2 access token for authorization: oauth2
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://www.lusid.com/access
-configuration.host = "https://www.lusid.com/access"
+# Defining host is optional and default to https://fbn-ci.lusid.com/access
+configuration.host = "https://fbn-ci.lusid.com/access"
 # Create an instance of the API class
 api_instance = finbourne_access.RolesApi(finbourne_access.ApiClient(configuration))
 role_creation_request = {"code":"example-organisation-role-id","description":"This is an example role to demonstrate their creation","resource":{"policyIdRoleResource":{"policies":[{"scope":"default","code":"official-portfolios-read-only"},{"scope":"default","code":"desk-portfolios"}],"policyCollections":[{"scope":"default","code":"CompanyEmployeeAccess"}]}},"when":{"activate":"2016-08-31T18:00:00.0000000+00:00","deactivate":"2020-08-31T18:00:00.0000000+00:00"}} # RoleCreationRequest | The definition of the Role
@@ -93,8 +161,8 @@ configuration = finbourne_access.Configuration()
 # Configure OAuth2 access token for authorization: oauth2
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://www.lusid.com/access
-configuration.host = "https://www.lusid.com/access"
+# Defining host is optional and default to https://fbn-ci.lusid.com/access
+configuration.host = "https://fbn-ci.lusid.com/access"
 # Create an instance of the API class
 api_instance = finbourne_access.RolesApi(finbourne_access.ApiClient(configuration))
 code = 'code_example' # str | The code of the Role
@@ -156,8 +224,8 @@ configuration = finbourne_access.Configuration()
 # Configure OAuth2 access token for authorization: oauth2
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://www.lusid.com/access
-configuration.host = "https://www.lusid.com/access"
+# Defining host is optional and default to https://fbn-ci.lusid.com/access
+configuration.host = "https://fbn-ci.lusid.com/access"
 # Create an instance of the API class
 api_instance = finbourne_access.RolesApi(finbourne_access.ApiClient(configuration))
 code = 'code_example' # str | The code of the Role
@@ -222,8 +290,8 @@ configuration = finbourne_access.Configuration()
 # Configure OAuth2 access token for authorization: oauth2
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://www.lusid.com/access
-configuration.host = "https://www.lusid.com/access"
+# Defining host is optional and default to https://fbn-ci.lusid.com/access
+configuration.host = "https://fbn-ci.lusid.com/access"
 # Create an instance of the API class
 api_instance = finbourne_access.RolesApi(finbourne_access.ApiClient(configuration))
 scope = 'scope_example' # str | Optional. Will use all scopes if not supplied. The requested scope (optional)
@@ -274,6 +342,74 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **remove_policy_collection_from_role**
+> RoleResponse remove_policy_collection_from_role(scope, code, policycollectionscope, policycollectioncode)
+
+[EXPERIMENTAL] Remove policy collection from role
+
+Removes a policy collection from a role
+
+### Example
+
+* OAuth Authentication (oauth2):
+```python
+from __future__ import print_function
+import time
+import finbourne_access
+from finbourne_access.rest import ApiException
+from pprint import pprint
+configuration = finbourne_access.Configuration()
+# Configure OAuth2 access token for authorization: oauth2
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Defining host is optional and default to https://fbn-ci.lusid.com/access
+configuration.host = "https://fbn-ci.lusid.com/access"
+# Create an instance of the API class
+api_instance = finbourne_access.RolesApi(finbourne_access.ApiClient(configuration))
+scope = 'scope_example' # str | The scope of the Role
+code = 'code_example' # str | The code of the Role
+policycollectionscope = 'policycollectionscope_example' # str | The scope of policy collection to remove from the Role
+policycollectioncode = 'policycollectioncode_example' # str | The code of the policy collection to remove from the Role
+
+try:
+    # [EXPERIMENTAL] Remove policy collection from role
+    api_response = api_instance.remove_policy_collection_from_role(scope, code, policycollectionscope, policycollectioncode)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling RolesApi->remove_policy_collection_from_role: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **scope** | **str**| The scope of the Role | 
+ **code** | **str**| The code of the Role | 
+ **policycollectionscope** | **str**| The scope of policy collection to remove from the Role | 
+ **policycollectioncode** | **str**| The code of the policy collection to remove from the Role | 
+
+### Return type
+
+[**RoleResponse**](RoleResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | RemovePolicyCollectionFromRole |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **update_role**
 > RoleResponse update_role(code, role_update_request, scope=scope, before_scope=before_scope, before_code=before_code, after_scope=after_scope, after_code=after_code)
 
@@ -294,8 +430,8 @@ configuration = finbourne_access.Configuration()
 # Configure OAuth2 access token for authorization: oauth2
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://www.lusid.com/access
-configuration.host = "https://www.lusid.com/access"
+# Defining host is optional and default to https://fbn-ci.lusid.com/access
+configuration.host = "https://fbn-ci.lusid.com/access"
 # Create an instance of the API class
 api_instance = finbourne_access.RolesApi(finbourne_access.ApiClient(configuration))
 code = 'code_example' # str | The code of the Role

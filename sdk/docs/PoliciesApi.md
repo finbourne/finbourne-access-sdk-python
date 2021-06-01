@@ -1,6 +1,6 @@
 # finbourne_access.PoliciesApi
 
-All URIs are relative to *https://www.lusid.com/access*
+All URIs are relative to *https://fbn-ci.lusid.com/access*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -38,8 +38,8 @@ configuration = finbourne_access.Configuration()
 # Configure OAuth2 access token for authorization: oauth2
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://www.lusid.com/access
-configuration.host = "https://www.lusid.com/access"
+# Defining host is optional and default to https://fbn-ci.lusid.com/access
+configuration.host = "https://fbn-ci.lusid.com/access"
 # Create an instance of the API class
 api_instance = finbourne_access.PoliciesApi(finbourne_access.ApiClient(configuration))
 policy_creation_request = {"code":"example-policy","description":"Example policy demonstrating their creation","applications":["LUSID"],"grant":"Allow","selectors":[{"idSelectorDefinition":{"identifier":{"scope":"official"},"actions":[{"scope":"default","activity":"Read","entity":"Portfolio"},{"scope":"default","activity":"Aggregate","entity":"Portfolio"}],"name":"access-official-scope","description":"Allow readonly access to the 'official' scope"}}],"for":[{"effectiveRange":{"from":"2015-12-25T00:00:00.0000000+00:00","to":"2020-12-25T00:00:00.0000000+00:00"}},{"asAtRangeForSpec":{"from":{"dateTimeOffset":"2018-01-01T00:00:00.0000000+00:00"},"to":{"value":"AsAt=Latest"}}}],"if":[{"ifRequestHeaderExpression":{"headerName":"organisation.specific.group.header","operator":"EqualsCaseInsensitive","value":"special-group"}}],"when":{"activate":"2016-08-31T18:00:00.0000000+00:00","deactivate":"2020-08-31T18:00:00.0000000+00:00"}} # PolicyCreationRequest | The definition of the Policy
@@ -100,8 +100,8 @@ configuration = finbourne_access.Configuration()
 # Configure OAuth2 access token for authorization: oauth2
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://www.lusid.com/access
-configuration.host = "https://www.lusid.com/access"
+# Defining host is optional and default to https://fbn-ci.lusid.com/access
+configuration.host = "https://fbn-ci.lusid.com/access"
 # Create an instance of the API class
 api_instance = finbourne_access.PoliciesApi(finbourne_access.ApiClient(configuration))
 policy_collection_creation_request = {"code":"example-policy-collection","policies":[{"scope":"default","code":"official-portfolios-read-only"},{"scope":"default","code":"desk-portfolios"}],"metadata":{},"policyCollections":[{"scope":"default","code":"CompanyEmployeeAccess"}],"description":"Example policy collection"} # PolicyCollectionCreationRequest | The definition of the PolicyCollection
@@ -162,8 +162,8 @@ configuration = finbourne_access.Configuration()
 # Configure OAuth2 access token for authorization: oauth2
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://www.lusid.com/access
-configuration.host = "https://www.lusid.com/access"
+# Defining host is optional and default to https://fbn-ci.lusid.com/access
+configuration.host = "https://fbn-ci.lusid.com/access"
 # Create an instance of the API class
 api_instance = finbourne_access.PoliciesApi(finbourne_access.ApiClient(configuration))
 code = 'code_example' # str | The code of the Policy
@@ -225,8 +225,8 @@ configuration = finbourne_access.Configuration()
 # Configure OAuth2 access token for authorization: oauth2
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://www.lusid.com/access
-configuration.host = "https://www.lusid.com/access"
+# Defining host is optional and default to https://fbn-ci.lusid.com/access
+configuration.host = "https://fbn-ci.lusid.com/access"
 # Create an instance of the API class
 api_instance = finbourne_access.PoliciesApi(finbourne_access.ApiClient(configuration))
 code = 'code_example' # str | The code of the PolicyCollection
@@ -288,11 +288,11 @@ configuration = finbourne_access.Configuration()
 # Configure OAuth2 access token for authorization: oauth2
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://www.lusid.com/access
-configuration.host = "https://www.lusid.com/access"
+# Defining host is optional and default to https://fbn-ci.lusid.com/access
+configuration.host = "https://fbn-ci.lusid.com/access"
 # Create an instance of the API class
 api_instance = finbourne_access.PoliciesApi(finbourne_access.ApiClient(configuration))
-request_body = {"request":{"action":{"entityCode":"WebSitePage","scope":"FINBOURNE","activity":"SeeAdminControls"},"toEffectiveDate":"2018-12-08T13:30:00.0000000+00:00","toAsAt":"2018-12-31T11:00:00.0000000+00:00"},"resource":{"id":{"scope":"FINBOURNE","code":"DataAccessPage"},"metadata":{"requiredLicence":[{"provider":"WebsiteAccess","value":"FINBOURNE"}]}}} # dict(str, EvaluationRequest) | A dictionary of evaluations, keyed using any arbitrary correlation id (it will be returned with the response for that evaluation).
+request_body = {"data-access-page-evalation":{"request":{"action":{"entityCode":"WebSitePage","scope":"FINBOURNE","activity":"SeeAdminControls"},"toEffectiveDate":"2018-12-08T13:30:00.0000000+00:00","toAsAt":"2018-12-31T11:00:00.0000000+00:00"},"resource":{"id":{"scope":"FINBOURNE","code":"DataAccessPage"},"metadata":{"requiredLicence":[{"provider":"WebsiteAccess","value":"FINBOURNE"}]}}}} # dict(str, EvaluationRequest) | A dictionary of evaluations, keyed using any arbitrary correlation id (it will be returned with the response for that evaluation).
 applications = ['applications_example'] # list[str] | Optional. The application type of the roles and policies to use when evaluating. (optional)
 as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The requested AsAt date of the entitlements (optional)
 
@@ -354,8 +354,8 @@ configuration = finbourne_access.Configuration()
 # Configure OAuth2 access token for authorization: oauth2
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://www.lusid.com/access
-configuration.host = "https://www.lusid.com/access"
+# Defining host is optional and default to https://fbn-ci.lusid.com/access
+configuration.host = "https://fbn-ci.lusid.com/access"
 # Create an instance of the API class
 api_instance = finbourne_access.PoliciesApi(finbourne_access.ApiClient(configuration))
 applications = ['applications_example'] # list[str] | Optional. Filter on the applications that the policies apply to (optional)
@@ -426,8 +426,8 @@ configuration = finbourne_access.Configuration()
 # Configure OAuth2 access token for authorization: oauth2
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://www.lusid.com/access
-configuration.host = "https://www.lusid.com/access"
+# Defining host is optional and default to https://fbn-ci.lusid.com/access
+configuration.host = "https://fbn-ci.lusid.com/access"
 # Create an instance of the API class
 api_instance = finbourne_access.PoliciesApi(finbourne_access.ApiClient(configuration))
 code = 'code_example' # str | The code of the Policy
@@ -492,8 +492,8 @@ configuration = finbourne_access.Configuration()
 # Configure OAuth2 access token for authorization: oauth2
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://www.lusid.com/access
-configuration.host = "https://www.lusid.com/access"
+# Defining host is optional and default to https://fbn-ci.lusid.com/access
+configuration.host = "https://fbn-ci.lusid.com/access"
 # Create an instance of the API class
 api_instance = finbourne_access.PoliciesApi(finbourne_access.ApiClient(configuration))
 code = 'code_example' # str | The code of the PolicyCollection
@@ -558,8 +558,8 @@ configuration = finbourne_access.Configuration()
 # Configure OAuth2 access token for authorization: oauth2
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://www.lusid.com/access
-configuration.host = "https://www.lusid.com/access"
+# Defining host is optional and default to https://fbn-ci.lusid.com/access
+configuration.host = "https://fbn-ci.lusid.com/access"
 # Create an instance of the API class
 api_instance = finbourne_access.PoliciesApi(finbourne_access.ApiClient(configuration))
 scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The requested scope (optional)
@@ -630,8 +630,8 @@ configuration = finbourne_access.Configuration()
 # Configure OAuth2 access token for authorization: oauth2
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://www.lusid.com/access
-configuration.host = "https://www.lusid.com/access"
+# Defining host is optional and default to https://fbn-ci.lusid.com/access
+configuration.host = "https://fbn-ci.lusid.com/access"
 # Create an instance of the API class
 api_instance = finbourne_access.PoliciesApi(finbourne_access.ApiClient(configuration))
 scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The requested scope (optional)
@@ -702,8 +702,8 @@ configuration = finbourne_access.Configuration()
 # Configure OAuth2 access token for authorization: oauth2
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://www.lusid.com/access
-configuration.host = "https://www.lusid.com/access"
+# Defining host is optional and default to https://fbn-ci.lusid.com/access
+configuration.host = "https://fbn-ci.lusid.com/access"
 # Create an instance of the API class
 api_instance = finbourne_access.PoliciesApi(finbourne_access.ApiClient(configuration))
 code = 'code_example' # str | The code of the Policy
@@ -768,8 +768,8 @@ configuration = finbourne_access.Configuration()
 # Configure OAuth2 access token for authorization: oauth2
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://www.lusid.com/access
-configuration.host = "https://www.lusid.com/access"
+# Defining host is optional and default to https://fbn-ci.lusid.com/access
+configuration.host = "https://fbn-ci.lusid.com/access"
 # Create an instance of the API class
 api_instance = finbourne_access.PoliciesApi(finbourne_access.ApiClient(configuration))
 code = 'code_example' # str | The code of the PolicyCollection
