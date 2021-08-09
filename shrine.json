@@ -9,7 +9,7 @@
       "url": "https://www.finbourne.com",
       "email": "info@finbourne.com"
     },
-    "version": "0.0.1300",
+    "version": "0.0.1306",
     "x-logo": {
       "url": "https://content.finbourne.com/LUSID-header.png",
       "backgroundColor": "#415464"
@@ -2918,6 +2918,368 @@
         "x-fbn-apistatus": "EarlyAccess"
       }
     },
+    "/api/policies/page": {
+      "get": {
+        "tags": [
+          "Policies"
+        ],
+        "summary": "[EXPERIMENTAL] Page Policies",
+        "description": "Gets all PolicyCollections in a scope in pages. Under development.",
+        "operationId": "PagePolicies",
+        "parameters": [
+          {
+            "name": "scope",
+            "in": "query",
+            "description": "Optional. Will use the default scope if not provided. The requested scope",
+            "schema": {
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[a-zA-Z0-9\\-_]+$",
+              "type": "string",
+              "description": "Optional. Will use the default scope if not provided. The requested scope",
+              "nullable": true
+            }
+          },
+          {
+            "name": "asAt",
+            "in": "query",
+            "description": "Optional. Not currently used. The AsAt date time of the data",
+            "schema": {
+              "type": "string",
+              "description": "Optional. Not currently used. The AsAt date time of the data",
+              "format": "date-time",
+              "nullable": true
+            },
+            "x-nullable": true
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "Optional. Not currently used. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Optional. Not currently used. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName",
+              "nullable": true
+            },
+            "x-nullable": true
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Optional. 2000 if not provided. When paginating, limit the number of returned results to this many",
+            "schema": {
+              "maximum": 5000,
+              "minimum": 1,
+              "type": "integer",
+              "description": "Optional. 2000 if not provided. When paginating, limit the number of returned results to this many",
+              "format": "int32",
+              "nullable": true
+            },
+            "x-nullable": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "description": "Optional. Not currently used. Expression to filter the result set",
+            "schema": {
+              "maxLength": 2147483647,
+              "minLength": 0,
+              "pattern": "^[\\s\\S]*$",
+              "type": "string",
+              "description": "Optional. Not currently used. Expression to filter the result set",
+              "nullable": true
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Optional. Paging token returned from a previous result",
+            "schema": {
+              "maxLength": 500,
+              "minLength": 1,
+              "pattern": "^[a-zA-Z0-9\\+/]*={0,3}$",
+              "type": "string",
+              "description": "Optional. Paging token returned from a previous result",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Requested list of Policies",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceListOfPolicyResponse"
+                },
+                "example": {
+                  "values": [
+                    {
+                      "id": {
+                        "scope": "default",
+                        "code": "official-portfolios-read-only"
+                      },
+                      "description": "Example policy demonstrating the granting of access to some resources",
+                      "applications": [
+                        "LUSID"
+                      ],
+                      "grant": "Allow",
+                      "selectors": [
+                        {
+                          "idSelectorDefinition": {
+                            "identifier": {
+                              "scope": "official"
+                            },
+                            "actions": [
+                              {
+                                "scope": "default",
+                                "activity": "Read",
+                                "entity": "Portfolio"
+                              },
+                              {
+                                "scope": "default",
+                                "activity": "Aggregate",
+                                "entity": "Portfolio"
+                              }
+                            ],
+                            "name": "access-official-scope",
+                            "description": "Allow readonly access to the 'official' scope"
+                          }
+                        }
+                      ],
+                      "for": [
+                        {
+                          "effectiveRange": {
+                            "from": "2015-12-25T00:00:00.0000000+00:00",
+                            "to": "2020-12-25T00:00:00.0000000+00:00"
+                          }
+                        },
+                        {
+                          "asAtRangeForSpec": {
+                            "from": {
+                              "dateTimeOffset": "2018-01-01T00:00:00.0000000+00:00"
+                            },
+                            "to": {
+                              "value": "AsAt=Latest"
+                            }
+                          }
+                        }
+                      ],
+                      "if": [
+                        {
+                          "ifRequestHeaderExpression": {
+                            "headerName": "organisation.specific.group.header",
+                            "operator": "EqualsCaseInsensitive",
+                            "value": "special-group"
+                          }
+                        }
+                      ],
+                      "when": {
+                        "activate": "2016-08-31T18:00:00.0000000+00:00",
+                        "deactivate": "2020-08-31T18:00:00.0000000+00:00"
+                      }
+                    }
+                  ],
+                  "href": "https://example.lusid.com/access/api/policies/page?scope=default",
+                  "links": []
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceListOfPolicyResponse"
+                },
+                "example": {
+                  "values": [
+                    {
+                      "id": {
+                        "scope": "default",
+                        "code": "official-portfolios-read-only"
+                      },
+                      "description": "Example policy demonstrating the granting of access to some resources",
+                      "applications": [
+                        "LUSID"
+                      ],
+                      "grant": "Allow",
+                      "selectors": [
+                        {
+                          "idSelectorDefinition": {
+                            "identifier": {
+                              "scope": "official"
+                            },
+                            "actions": [
+                              {
+                                "scope": "default",
+                                "activity": "Read",
+                                "entity": "Portfolio"
+                              },
+                              {
+                                "scope": "default",
+                                "activity": "Aggregate",
+                                "entity": "Portfolio"
+                              }
+                            ],
+                            "name": "access-official-scope",
+                            "description": "Allow readonly access to the 'official' scope"
+                          }
+                        }
+                      ],
+                      "for": [
+                        {
+                          "effectiveRange": {
+                            "from": "2015-12-25T00:00:00.0000000+00:00",
+                            "to": "2020-12-25T00:00:00.0000000+00:00"
+                          }
+                        },
+                        {
+                          "asAtRangeForSpec": {
+                            "from": {
+                              "dateTimeOffset": "2018-01-01T00:00:00.0000000+00:00"
+                            },
+                            "to": {
+                              "value": "AsAt=Latest"
+                            }
+                          }
+                        }
+                      ],
+                      "if": [
+                        {
+                          "ifRequestHeaderExpression": {
+                            "headerName": "organisation.specific.group.header",
+                            "operator": "EqualsCaseInsensitive",
+                            "value": "special-group"
+                          }
+                        }
+                      ],
+                      "when": {
+                        "activate": "2016-08-31T18:00:00.0000000+00:00",
+                        "deactivate": "2020-08-31T18:00:00.0000000+00:00"
+                      }
+                    }
+                  ],
+                  "href": "https://example.lusid.com/access/api/policies/page?scope=default",
+                  "links": []
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceListOfPolicyResponse"
+                },
+                "example": {
+                  "values": [
+                    {
+                      "id": {
+                        "scope": "default",
+                        "code": "official-portfolios-read-only"
+                      },
+                      "description": "Example policy demonstrating the granting of access to some resources",
+                      "applications": [
+                        "LUSID"
+                      ],
+                      "grant": "Allow",
+                      "selectors": [
+                        {
+                          "idSelectorDefinition": {
+                            "identifier": {
+                              "scope": "official"
+                            },
+                            "actions": [
+                              {
+                                "scope": "default",
+                                "activity": "Read",
+                                "entity": "Portfolio"
+                              },
+                              {
+                                "scope": "default",
+                                "activity": "Aggregate",
+                                "entity": "Portfolio"
+                              }
+                            ],
+                            "name": "access-official-scope",
+                            "description": "Allow readonly access to the 'official' scope"
+                          }
+                        }
+                      ],
+                      "for": [
+                        {
+                          "effectiveRange": {
+                            "from": "2015-12-25T00:00:00.0000000+00:00",
+                            "to": "2020-12-25T00:00:00.0000000+00:00"
+                          }
+                        },
+                        {
+                          "asAtRangeForSpec": {
+                            "from": {
+                              "dateTimeOffset": "2018-01-01T00:00:00.0000000+00:00"
+                            },
+                            "to": {
+                              "value": "AsAt=Latest"
+                            }
+                          }
+                        }
+                      ],
+                      "if": [
+                        {
+                          "ifRequestHeaderExpression": {
+                            "headerName": "organisation.specific.group.header",
+                            "operator": "EqualsCaseInsensitive",
+                            "value": "special-group"
+                          }
+                        }
+                      ],
+                      "when": {
+                        "activate": "2016-08-31T18:00:00.0000000+00:00",
+                        "deactivate": "2020-08-31T18:00:00.0000000+00:00"
+                      }
+                    }
+                  ],
+                  "href": "https://example.lusid.com/access/api/policies/page?scope=default",
+                  "links": []
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The details of the input related failure",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2": []
+          }
+        ],
+        "x-fbn-apistatus": "Experimental"
+      }
+    },
     "/api/policies/{code}": {
       "get": {
         "tags": [
@@ -3899,10 +4261,10 @@
           {
             "name": "limit",
             "in": "query",
-            "description": "Optional. When paginating, limit the number of returned results to this many.",
+            "description": "Optional. 2000 if not provided. When paginating, limit the number of returned results to this many.",
             "schema": {
               "type": "integer",
-              "description": "Optional. When paginating, limit the number of returned results to this many.",
+              "description": "Optional. 2000 if not provided. When paginating, limit the number of returned results to this many.",
               "format": "int32",
               "nullable": true
             },
@@ -4306,6 +4668,242 @@
           }
         ],
         "x-fbn-apistatus": "EarlyAccess"
+      }
+    },
+    "/api/policycollections/page": {
+      "get": {
+        "tags": [
+          "Policies"
+        ],
+        "summary": "[EXPERIMENTAL] Page PolicyCollections",
+        "description": "Gets all PolicyCollections in a scope in pages. Under development.",
+        "operationId": "PagePolicyCollections",
+        "parameters": [
+          {
+            "name": "scope",
+            "in": "query",
+            "description": "Optional. Will use the default scope if not provided. The requested scope",
+            "schema": {
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[a-zA-Z0-9\\-_]+$",
+              "type": "string",
+              "description": "Optional. Will use the default scope if not provided. The requested scope",
+              "nullable": true
+            }
+          },
+          {
+            "name": "asAt",
+            "in": "query",
+            "description": "Optional. Not currently used. The AsAt date time of the data",
+            "schema": {
+              "type": "string",
+              "description": "Optional. Not currently used. The AsAt date time of the data",
+              "format": "date-time",
+              "nullable": true
+            },
+            "x-nullable": true
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "Optional. Not currently used. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Optional. Not currently used. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName",
+              "nullable": true
+            },
+            "x-nullable": true
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Optional. 2000 if not provided. When paginating, limit the number of returned results to this many",
+            "schema": {
+              "maximum": 5000,
+              "minimum": 1,
+              "type": "integer",
+              "description": "Optional. 2000 if not provided. When paginating, limit the number of returned results to this many",
+              "format": "int32",
+              "nullable": true
+            },
+            "x-nullable": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "description": "Optional. Not currently used. Expression to filter the result set",
+            "schema": {
+              "maxLength": 2147483647,
+              "minLength": 0,
+              "pattern": "^[\\s\\S]*$",
+              "type": "string",
+              "description": "Optional. Not currently used. Expression to filter the result set",
+              "nullable": true
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Optional. Paging token returned from a previous result",
+            "schema": {
+              "maxLength": 500,
+              "minLength": 1,
+              "pattern": "^[a-zA-Z0-9\\+/]*={0,3}$",
+              "type": "string",
+              "description": "Optional. Paging token returned from a previous result",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Requested list of PolicyCollections",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceListOfPolicyCollectionResponse"
+                },
+                "example": {
+                  "values": [
+                    {
+                      "id": {
+                        "scope": "default",
+                        "code": "organisation-wide-policies"
+                      },
+                      "policies": [
+                        {
+                          "scope": "default",
+                          "code": "official-portfolios-read-only"
+                        },
+                        {
+                          "scope": "default",
+                          "code": "desk-portfolios"
+                        }
+                      ],
+                      "policyCollections": [
+                        {
+                          "scope": "default",
+                          "code": "CompanyEmployeeAccess"
+                        }
+                      ],
+                      "description": "Collection of organisation wide policies"
+                    }
+                  ],
+                  "href": "https://example.lusid.com/access/api/policycollections/page",
+                  "links": []
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceListOfPolicyCollectionResponse"
+                },
+                "example": {
+                  "values": [
+                    {
+                      "id": {
+                        "scope": "default",
+                        "code": "organisation-wide-policies"
+                      },
+                      "policies": [
+                        {
+                          "scope": "default",
+                          "code": "official-portfolios-read-only"
+                        },
+                        {
+                          "scope": "default",
+                          "code": "desk-portfolios"
+                        }
+                      ],
+                      "policyCollections": [
+                        {
+                          "scope": "default",
+                          "code": "CompanyEmployeeAccess"
+                        }
+                      ],
+                      "description": "Collection of organisation wide policies"
+                    }
+                  ],
+                  "href": "https://example.lusid.com/access/api/policycollections/page",
+                  "links": []
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResourceListOfPolicyCollectionResponse"
+                },
+                "example": {
+                  "values": [
+                    {
+                      "id": {
+                        "scope": "default",
+                        "code": "organisation-wide-policies"
+                      },
+                      "policies": [
+                        {
+                          "scope": "default",
+                          "code": "official-portfolios-read-only"
+                        },
+                        {
+                          "scope": "default",
+                          "code": "desk-portfolios"
+                        }
+                      ],
+                      "policyCollections": [
+                        {
+                          "scope": "default",
+                          "code": "CompanyEmployeeAccess"
+                        }
+                      ],
+                      "description": "Collection of organisation wide policies"
+                    }
+                  ],
+                  "href": "https://example.lusid.com/access/api/policycollections/page",
+                  "links": []
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The details of the input related failure",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2": []
+          }
+        ],
+        "x-fbn-apistatus": "Experimental"
       }
     },
     "/api/policycollections/{code}": {
@@ -8025,6 +8623,76 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/AccessControlledResource"
+            }
+          },
+          "href": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true
+          },
+          "links": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Link"
+            },
+            "nullable": true
+          },
+          "nextPage": {
+            "type": "string",
+            "nullable": true
+          },
+          "previousPage": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ResourceListOfPolicyCollectionResponse": {
+        "required": [
+          "values"
+        ],
+        "type": "object",
+        "properties": {
+          "values": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PolicyCollectionResponse"
+            }
+          },
+          "href": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true
+          },
+          "links": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Link"
+            },
+            "nullable": true
+          },
+          "nextPage": {
+            "type": "string",
+            "nullable": true
+          },
+          "previousPage": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ResourceListOfPolicyResponse": {
+        "required": [
+          "values"
+        ],
+        "type": "object",
+        "properties": {
+          "values": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PolicyResponse"
             }
           },
           "href": {
