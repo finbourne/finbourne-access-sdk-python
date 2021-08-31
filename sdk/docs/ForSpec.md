@@ -1,5 +1,6 @@
 # ForSpec
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

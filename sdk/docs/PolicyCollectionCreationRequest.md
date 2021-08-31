@@ -1,5 +1,7 @@
 # PolicyCollectionCreationRequest
 
+Create a PolicyCollection, a logical group of Policies or other PolicyCollections
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

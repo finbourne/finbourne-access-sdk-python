@@ -1,5 +1,6 @@
 # EffectiveDateHasQuality
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

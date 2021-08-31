@@ -1,5 +1,7 @@
 # AddPolicyCollectionToRoleRequest
 
+Request body used to add Policy Collections to a Role
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

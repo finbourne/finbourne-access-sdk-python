@@ -1,5 +1,7 @@
 # PolicyCollectionResponse
 
+A PolicyCollection encapsulating one or more Policies and PolicyCollections
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

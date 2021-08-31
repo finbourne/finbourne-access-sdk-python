@@ -1,5 +1,6 @@
 # EffectiveDateRelative
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

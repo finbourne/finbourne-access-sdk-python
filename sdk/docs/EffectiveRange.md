@@ -1,5 +1,6 @@
 # EffectiveRange
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

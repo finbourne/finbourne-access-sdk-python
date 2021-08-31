@@ -1,5 +1,6 @@
 # PolicyType
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

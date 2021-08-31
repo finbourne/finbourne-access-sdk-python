@@ -1,5 +1,7 @@
 # PolicyUpdateRequest
 
+Update policy request
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

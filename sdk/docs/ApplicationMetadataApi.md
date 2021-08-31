@@ -23,21 +23,34 @@ import time
 import finbourne_access
 from finbourne_access.rest import ApiException
 from pprint import pprint
-configuration = finbourne_access.Configuration()
+# Defining the host is optional and defaults to https://fbn-ci.lusid.com/access
+# See configuration.py for a list of all supported configuration parameters.
+configuration = finbourne_access.Configuration(
+    host = "https://fbn-ci.lusid.com/access"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: oauth2
+configuration = finbourne_access.Configuration(
+    host = "https://fbn-ci.lusid.com/access"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://fbn-ci.lusid.com/access
-configuration.host = "https://fbn-ci.lusid.com/access"
-# Create an instance of the API class
-api_instance = finbourne_access.ApplicationMetadataApi(finbourne_access.ApiClient(configuration))
-
-try:
-    # [EARLY ACCESS] Get resources available for access control
-    api_response = api_instance.list_access_controlled_resources()
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ApplicationMetadataApi->list_access_controlled_resources: %s\n" % e)
+# Enter a context with an instance of the API client
+with finbourne_access.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = finbourne_access.ApplicationMetadataApi(api_client)
+    
+    try:
+        # [EARLY ACCESS] Get resources available for access control
+        api_response = api_instance.list_access_controlled_resources()
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ApplicationMetadataApi->list_access_controlled_resources: %s\n" % e)
 ```
 
 ### Parameters

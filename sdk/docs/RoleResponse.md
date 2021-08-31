@@ -1,5 +1,6 @@
 # RoleResponse
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

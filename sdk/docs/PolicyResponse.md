@@ -1,5 +1,7 @@
 # PolicyResponse
 
+Response object from the policy API
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

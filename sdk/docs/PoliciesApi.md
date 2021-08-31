@@ -36,22 +36,35 @@ import time
 import finbourne_access
 from finbourne_access.rest import ApiException
 from pprint import pprint
-configuration = finbourne_access.Configuration()
+# Defining the host is optional and defaults to https://fbn-ci.lusid.com/access
+# See configuration.py for a list of all supported configuration parameters.
+configuration = finbourne_access.Configuration(
+    host = "https://fbn-ci.lusid.com/access"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: oauth2
+configuration = finbourne_access.Configuration(
+    host = "https://fbn-ci.lusid.com/access"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://fbn-ci.lusid.com/access
-configuration.host = "https://fbn-ci.lusid.com/access"
-# Create an instance of the API class
-api_instance = finbourne_access.PoliciesApi(finbourne_access.ApiClient(configuration))
-policy_creation_request = {"code":"example-policy","description":"Example policy demonstrating their creation","applications":["LUSID"],"grant":"Allow","selectors":[{"idSelectorDefinition":{"identifier":{"scope":"official"},"actions":[{"scope":"default","activity":"Read","entity":"Portfolio"},{"scope":"default","activity":"Aggregate","entity":"Portfolio"}],"name":"access-official-scope","description":"Allow readonly access to the 'official' scope"}}],"for":[{"effectiveRange":{"from":"2015-12-25T00:00:00.0000000+00:00","to":"2020-12-25T00:00:00.0000000+00:00"}},{"asAtRangeForSpec":{"from":{"dateTimeOffset":"2018-01-01T00:00:00.0000000+00:00"},"to":{"value":"AsAt=Latest"}}}],"if":[{"ifRequestHeaderExpression":{"headerName":"organisation.specific.group.header","operator":"EqualsCaseInsensitive","value":"special-group"}}],"when":{"activate":"2016-08-31T18:00:00.0000000+00:00","deactivate":"2020-08-31T18:00:00.0000000+00:00"}} # PolicyCreationRequest | The definition of the Policy
+# Enter a context with an instance of the API client
+with finbourne_access.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = finbourne_access.PoliciesApi(api_client)
+    policy_creation_request = {"code":"example-policy","description":"Example policy demonstrating their creation","applications":["LUSID"],"grant":"Allow","selectors":[{"idSelectorDefinition":{"identifier":{"scope":"official"},"actions":[{"scope":"default","activity":"Read","entity":"Portfolio"},{"scope":"default","activity":"Aggregate","entity":"Portfolio"}],"name":"access-official-scope","description":"Allow readonly access to the 'official' scope"}}],"for":[{"effectiveRange":{"from":"2015-12-25T00:00:00.0000000+00:00","to":"2020-12-25T00:00:00.0000000+00:00"}},{"asAtRangeForSpec":{"from":{"dateTimeOffset":"2018-01-01T00:00:00.0000000+00:00"},"to":{"value":"AsAt=Latest"}}}],"if":[{"ifRequestHeaderExpression":{"headerName":"organisation.specific.group.header","operator":"EqualsCaseInsensitive","value":"special-group"}}],"when":{"activate":"2016-08-31T18:00:00.0000000+00:00","deactivate":"2020-08-31T18:00:00.0000000+00:00"}} # PolicyCreationRequest | The definition of the Policy
 
-try:
-    # [EARLY ACCESS] Create Policy
-    api_response = api_instance.create_policy(policy_creation_request)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling PoliciesApi->create_policy: %s\n" % e)
+    try:
+        # [EARLY ACCESS] Create Policy
+        api_response = api_instance.create_policy(policy_creation_request)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling PoliciesApi->create_policy: %s\n" % e)
 ```
 
 ### Parameters
@@ -98,22 +111,35 @@ import time
 import finbourne_access
 from finbourne_access.rest import ApiException
 from pprint import pprint
-configuration = finbourne_access.Configuration()
+# Defining the host is optional and defaults to https://fbn-ci.lusid.com/access
+# See configuration.py for a list of all supported configuration parameters.
+configuration = finbourne_access.Configuration(
+    host = "https://fbn-ci.lusid.com/access"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: oauth2
+configuration = finbourne_access.Configuration(
+    host = "https://fbn-ci.lusid.com/access"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://fbn-ci.lusid.com/access
-configuration.host = "https://fbn-ci.lusid.com/access"
-# Create an instance of the API class
-api_instance = finbourne_access.PoliciesApi(finbourne_access.ApiClient(configuration))
-policy_collection_creation_request = {"code":"example-policy-collection","policies":[{"scope":"default","code":"official-portfolios-read-only"},{"scope":"default","code":"desk-portfolios"}],"metadata":{},"policyCollections":[{"scope":"default","code":"CompanyEmployeeAccess"}],"description":"Example policy collection"} # PolicyCollectionCreationRequest | The definition of the PolicyCollection
+# Enter a context with an instance of the API client
+with finbourne_access.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = finbourne_access.PoliciesApi(api_client)
+    policy_collection_creation_request = {"code":"example-policy-collection","policies":[{"scope":"default","code":"official-portfolios-read-only"},{"scope":"default","code":"desk-portfolios"}],"metadata":{},"policyCollections":[{"scope":"default","code":"CompanyEmployeeAccess"}],"description":"Example policy collection"} # PolicyCollectionCreationRequest | The definition of the PolicyCollection
 
-try:
-    # [EARLY ACCESS] Create PolicyCollection
-    api_response = api_instance.create_policy_collection(policy_collection_creation_request)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling PoliciesApi->create_policy_collection: %s\n" % e)
+    try:
+        # [EARLY ACCESS] Create PolicyCollection
+        api_response = api_instance.create_policy_collection(policy_collection_creation_request)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling PoliciesApi->create_policy_collection: %s\n" % e)
 ```
 
 ### Parameters
@@ -160,22 +186,35 @@ import time
 import finbourne_access
 from finbourne_access.rest import ApiException
 from pprint import pprint
-configuration = finbourne_access.Configuration()
+# Defining the host is optional and defaults to https://fbn-ci.lusid.com/access
+# See configuration.py for a list of all supported configuration parameters.
+configuration = finbourne_access.Configuration(
+    host = "https://fbn-ci.lusid.com/access"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: oauth2
+configuration = finbourne_access.Configuration(
+    host = "https://fbn-ci.lusid.com/access"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://fbn-ci.lusid.com/access
-configuration.host = "https://fbn-ci.lusid.com/access"
-# Create an instance of the API class
-api_instance = finbourne_access.PoliciesApi(finbourne_access.ApiClient(configuration))
-code = 'code_example' # str | The code of the Policy
+# Enter a context with an instance of the API client
+with finbourne_access.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = finbourne_access.PoliciesApi(api_client)
+    code = 'code_example' # str | The code of the Policy
 scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the Policy (optional)
 
-try:
-    # [EARLY ACCESS] Delete Policy
-    api_instance.delete_policy(code, scope=scope)
-except ApiException as e:
-    print("Exception when calling PoliciesApi->delete_policy: %s\n" % e)
+    try:
+        # [EARLY ACCESS] Delete Policy
+        api_instance.delete_policy(code, scope=scope)
+    except ApiException as e:
+        print("Exception when calling PoliciesApi->delete_policy: %s\n" % e)
 ```
 
 ### Parameters
@@ -223,22 +262,35 @@ import time
 import finbourne_access
 from finbourne_access.rest import ApiException
 from pprint import pprint
-configuration = finbourne_access.Configuration()
+# Defining the host is optional and defaults to https://fbn-ci.lusid.com/access
+# See configuration.py for a list of all supported configuration parameters.
+configuration = finbourne_access.Configuration(
+    host = "https://fbn-ci.lusid.com/access"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: oauth2
+configuration = finbourne_access.Configuration(
+    host = "https://fbn-ci.lusid.com/access"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://fbn-ci.lusid.com/access
-configuration.host = "https://fbn-ci.lusid.com/access"
-# Create an instance of the API class
-api_instance = finbourne_access.PoliciesApi(finbourne_access.ApiClient(configuration))
-code = 'code_example' # str | The code of the PolicyCollection
+# Enter a context with an instance of the API client
+with finbourne_access.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = finbourne_access.PoliciesApi(api_client)
+    code = 'code_example' # str | The code of the PolicyCollection
 scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the PolicyCollection (optional)
 
-try:
-    # [EARLY ACCESS] Delete PolicyCollection
-    api_instance.delete_policy_collection(code, scope=scope)
-except ApiException as e:
-    print("Exception when calling PoliciesApi->delete_policy_collection: %s\n" % e)
+    try:
+        # [EARLY ACCESS] Delete PolicyCollection
+        api_instance.delete_policy_collection(code, scope=scope)
+    except ApiException as e:
+        print("Exception when calling PoliciesApi->delete_policy_collection: %s\n" % e)
 ```
 
 ### Parameters
@@ -286,24 +338,37 @@ import time
 import finbourne_access
 from finbourne_access.rest import ApiException
 from pprint import pprint
-configuration = finbourne_access.Configuration()
+# Defining the host is optional and defaults to https://fbn-ci.lusid.com/access
+# See configuration.py for a list of all supported configuration parameters.
+configuration = finbourne_access.Configuration(
+    host = "https://fbn-ci.lusid.com/access"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: oauth2
+configuration = finbourne_access.Configuration(
+    host = "https://fbn-ci.lusid.com/access"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://fbn-ci.lusid.com/access
-configuration.host = "https://fbn-ci.lusid.com/access"
-# Create an instance of the API class
-api_instance = finbourne_access.PoliciesApi(finbourne_access.ApiClient(configuration))
-request_body = {"data-access-page-evalation":{"request":{"action":{"entityCode":"WebSitePage","scope":"FINBOURNE","activity":"SeeAdminControls"},"toEffectiveDate":"2018-12-08T13:30:00.0000000+00:00","toAsAt":"2018-12-31T11:00:00.0000000+00:00"},"resource":{"id":{"scope":"FINBOURNE","code":"DataAccessPage"},"metadata":{"requiredLicence":[{"provider":"WebsiteAccess","value":"FINBOURNE"}]}}}} # dict(str, EvaluationRequest) | A dictionary of evaluations, keyed using any arbitrary correlation id (it will be returned with the response for that evaluation).
+# Enter a context with an instance of the API client
+with finbourne_access.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = finbourne_access.PoliciesApi(api_client)
+    request_body = {"data-access-page-evalation":{"request":{"action":{"entityCode":"WebSitePage","scope":"FINBOURNE","activity":"SeeAdminControls"},"toEffectiveDate":"2018-12-08T13:30:00.0000000+00:00","toAsAt":"2018-12-31T11:00:00.0000000+00:00"},"resource":{"id":{"scope":"FINBOURNE","code":"DataAccessPage"},"metadata":{"requiredLicence":[{"provider":"WebsiteAccess","value":"FINBOURNE"}]}}}} # dict(str, EvaluationRequest) | A dictionary of evaluations, keyed using any arbitrary correlation id (it will be returned with the response for that evaluation).
 applications = ['applications_example'] # list[str] | Optional. The application type of the roles and policies to use when evaluating. (optional)
 as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The requested AsAt date of the entitlements (optional)
 
-try:
-    # [EARLY ACCESS] Run one or more evaluations
-    api_response = api_instance.evaluate(request_body, applications=applications, as_at=as_at)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling PoliciesApi->evaluate: %s\n" % e)
+    try:
+        # [EARLY ACCESS] Run one or more evaluations
+        api_response = api_instance.evaluate(request_body, applications=applications, as_at=as_at)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling PoliciesApi->evaluate: %s\n" % e)
 ```
 
 ### Parameters
@@ -352,27 +417,40 @@ import time
 import finbourne_access
 from finbourne_access.rest import ApiException
 from pprint import pprint
-configuration = finbourne_access.Configuration()
+# Defining the host is optional and defaults to https://fbn-ci.lusid.com/access
+# See configuration.py for a list of all supported configuration parameters.
+configuration = finbourne_access.Configuration(
+    host = "https://fbn-ci.lusid.com/access"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: oauth2
+configuration = finbourne_access.Configuration(
+    host = "https://fbn-ci.lusid.com/access"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://fbn-ci.lusid.com/access
-configuration.host = "https://fbn-ci.lusid.com/access"
-# Create an instance of the API class
-api_instance = finbourne_access.PoliciesApi(finbourne_access.ApiClient(configuration))
-applications = ['applications_example'] # list[str] | Optional. Filter on the applications that the policies apply to (optional)
+# Enter a context with an instance of the API client
+with finbourne_access.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = finbourne_access.PoliciesApi(api_client)
+    applications = ['applications_example'] # list[str] | Optional. Filter on the applications that the policies apply to (optional)
 as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The AsAt date time of the data (optional)
 sort_by = ['sort_by_example'] # list[str] | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName (optional)
 start = 56 # int | Optional. When paginating, skip this number of results (optional)
 limit = 56 # int | Optional. When paginating, limit the number of returned results to this many. (optional)
 filter = 'filter_example' # str | Optional. Expression to filter the result set (optional)
 
-try:
-    # Get policies of requesting user
-    api_response = api_instance.get_own_policies(applications=applications, as_at=as_at, sort_by=sort_by, start=start, limit=limit, filter=filter)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling PoliciesApi->get_own_policies: %s\n" % e)
+    try:
+        # Get policies of requesting user
+        api_response = api_instance.get_own_policies(applications=applications, as_at=as_at, sort_by=sort_by, start=start, limit=limit, filter=filter)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling PoliciesApi->get_own_policies: %s\n" % e)
 ```
 
 ### Parameters
@@ -424,24 +502,37 @@ import time
 import finbourne_access
 from finbourne_access.rest import ApiException
 from pprint import pprint
-configuration = finbourne_access.Configuration()
+# Defining the host is optional and defaults to https://fbn-ci.lusid.com/access
+# See configuration.py for a list of all supported configuration parameters.
+configuration = finbourne_access.Configuration(
+    host = "https://fbn-ci.lusid.com/access"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: oauth2
+configuration = finbourne_access.Configuration(
+    host = "https://fbn-ci.lusid.com/access"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://fbn-ci.lusid.com/access
-configuration.host = "https://fbn-ci.lusid.com/access"
-# Create an instance of the API class
-api_instance = finbourne_access.PoliciesApi(finbourne_access.ApiClient(configuration))
-code = 'code_example' # str | The code of the Policy
+# Enter a context with an instance of the API client
+with finbourne_access.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = finbourne_access.PoliciesApi(api_client)
+    code = 'code_example' # str | The code of the Policy
 as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The AsAt date time of the data (optional)
 scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the Policy (optional)
 
-try:
-    # [EARLY ACCESS] Get Policy
-    api_response = api_instance.get_policy(code, as_at=as_at, scope=scope)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling PoliciesApi->get_policy: %s\n" % e)
+    try:
+        # [EARLY ACCESS] Get Policy
+        api_response = api_instance.get_policy(code, as_at=as_at, scope=scope)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling PoliciesApi->get_policy: %s\n" % e)
 ```
 
 ### Parameters
@@ -490,24 +581,37 @@ import time
 import finbourne_access
 from finbourne_access.rest import ApiException
 from pprint import pprint
-configuration = finbourne_access.Configuration()
+# Defining the host is optional and defaults to https://fbn-ci.lusid.com/access
+# See configuration.py for a list of all supported configuration parameters.
+configuration = finbourne_access.Configuration(
+    host = "https://fbn-ci.lusid.com/access"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: oauth2
+configuration = finbourne_access.Configuration(
+    host = "https://fbn-ci.lusid.com/access"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://fbn-ci.lusid.com/access
-configuration.host = "https://fbn-ci.lusid.com/access"
-# Create an instance of the API class
-api_instance = finbourne_access.PoliciesApi(finbourne_access.ApiClient(configuration))
-code = 'code_example' # str | The code of the PolicyCollection
+# Enter a context with an instance of the API client
+with finbourne_access.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = finbourne_access.PoliciesApi(api_client)
+    code = 'code_example' # str | The code of the PolicyCollection
 as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The AsAt date time of the data (optional)
 scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the PolicyCollection (optional)
 
-try:
-    # [EARLY ACCESS] Get PolicyCollection
-    api_response = api_instance.get_policy_collection(code, as_at=as_at, scope=scope)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling PoliciesApi->get_policy_collection: %s\n" % e)
+    try:
+        # [EARLY ACCESS] Get PolicyCollection
+        api_response = api_instance.get_policy_collection(code, as_at=as_at, scope=scope)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling PoliciesApi->get_policy_collection: %s\n" % e)
 ```
 
 ### Parameters
@@ -556,27 +660,40 @@ import time
 import finbourne_access
 from finbourne_access.rest import ApiException
 from pprint import pprint
-configuration = finbourne_access.Configuration()
+# Defining the host is optional and defaults to https://fbn-ci.lusid.com/access
+# See configuration.py for a list of all supported configuration parameters.
+configuration = finbourne_access.Configuration(
+    host = "https://fbn-ci.lusid.com/access"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: oauth2
+configuration = finbourne_access.Configuration(
+    host = "https://fbn-ci.lusid.com/access"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://fbn-ci.lusid.com/access
-configuration.host = "https://fbn-ci.lusid.com/access"
-# Create an instance of the API class
-api_instance = finbourne_access.PoliciesApi(finbourne_access.ApiClient(configuration))
-scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The requested scope (optional)
+# Enter a context with an instance of the API client
+with finbourne_access.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = finbourne_access.PoliciesApi(api_client)
+    scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The requested scope (optional)
 as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The AsAt date time of the data (optional)
 sort_by = ['sort_by_example'] # list[str] | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName (optional)
 start = 56 # int | Optional. When paginating, skip this number of results (optional)
 limit = 56 # int | Optional. When paginating, limit the number of returned results to this many. (optional)
 filter = 'filter_example' # str | Optional. Expression to filter the result set (optional)
 
-try:
-    # [EARLY ACCESS] List Policies
-    api_response = api_instance.list_policies(scope=scope, as_at=as_at, sort_by=sort_by, start=start, limit=limit, filter=filter)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling PoliciesApi->list_policies: %s\n" % e)
+    try:
+        # [EARLY ACCESS] List Policies
+        api_response = api_instance.list_policies(scope=scope, as_at=as_at, sort_by=sort_by, start=start, limit=limit, filter=filter)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling PoliciesApi->list_policies: %s\n" % e)
 ```
 
 ### Parameters
@@ -628,27 +745,40 @@ import time
 import finbourne_access
 from finbourne_access.rest import ApiException
 from pprint import pprint
-configuration = finbourne_access.Configuration()
+# Defining the host is optional and defaults to https://fbn-ci.lusid.com/access
+# See configuration.py for a list of all supported configuration parameters.
+configuration = finbourne_access.Configuration(
+    host = "https://fbn-ci.lusid.com/access"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: oauth2
+configuration = finbourne_access.Configuration(
+    host = "https://fbn-ci.lusid.com/access"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://fbn-ci.lusid.com/access
-configuration.host = "https://fbn-ci.lusid.com/access"
-# Create an instance of the API class
-api_instance = finbourne_access.PoliciesApi(finbourne_access.ApiClient(configuration))
-scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The requested scope (optional)
+# Enter a context with an instance of the API client
+with finbourne_access.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = finbourne_access.PoliciesApi(api_client)
+    scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The requested scope (optional)
 as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The AsAt date time of the data (optional)
 sort_by = ['sort_by_example'] # list[str] | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName (optional)
 start = 56 # int | Optional. When paginating, skip this number of results (optional)
 limit = 56 # int | Optional. 2000 if not provided. When paginating, limit the number of returned results to this many. (optional)
 filter = 'filter_example' # str | Optional. Expression to filter the result set (optional)
 
-try:
-    # [EARLY ACCESS] List PolicyCollections
-    api_response = api_instance.list_policy_collections(scope=scope, as_at=as_at, sort_by=sort_by, start=start, limit=limit, filter=filter)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling PoliciesApi->list_policy_collections: %s\n" % e)
+    try:
+        # [EARLY ACCESS] List PolicyCollections
+        api_response = api_instance.list_policy_collections(scope=scope, as_at=as_at, sort_by=sort_by, start=start, limit=limit, filter=filter)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling PoliciesApi->list_policy_collections: %s\n" % e)
 ```
 
 ### Parameters
@@ -700,27 +830,40 @@ import time
 import finbourne_access
 from finbourne_access.rest import ApiException
 from pprint import pprint
-configuration = finbourne_access.Configuration()
+# Defining the host is optional and defaults to https://fbn-ci.lusid.com/access
+# See configuration.py for a list of all supported configuration parameters.
+configuration = finbourne_access.Configuration(
+    host = "https://fbn-ci.lusid.com/access"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: oauth2
+configuration = finbourne_access.Configuration(
+    host = "https://fbn-ci.lusid.com/access"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://fbn-ci.lusid.com/access
-configuration.host = "https://fbn-ci.lusid.com/access"
-# Create an instance of the API class
-api_instance = finbourne_access.PoliciesApi(finbourne_access.ApiClient(configuration))
-scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The requested scope (optional)
+# Enter a context with an instance of the API client
+with finbourne_access.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = finbourne_access.PoliciesApi(api_client)
+    scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The requested scope (optional)
 as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. Not currently used. The AsAt date time of the data (optional)
 sort_by = ['sort_by_example'] # list[str] | Optional. Not currently used. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName (optional)
 limit = 56 # int | Optional. 2000 if not provided. When paginating, limit the number of returned results to this many (optional)
 filter = 'filter_example' # str | Optional. Not currently used. Expression to filter the result set (optional)
 page = 'page_example' # str | Optional. Paging token returned from a previous result (optional)
 
-try:
-    # [EXPERIMENTAL] Page Policies
-    api_response = api_instance.page_policies(scope=scope, as_at=as_at, sort_by=sort_by, limit=limit, filter=filter, page=page)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling PoliciesApi->page_policies: %s\n" % e)
+    try:
+        # [EXPERIMENTAL] Page Policies
+        api_response = api_instance.page_policies(scope=scope, as_at=as_at, sort_by=sort_by, limit=limit, filter=filter, page=page)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling PoliciesApi->page_policies: %s\n" % e)
 ```
 
 ### Parameters
@@ -772,27 +915,40 @@ import time
 import finbourne_access
 from finbourne_access.rest import ApiException
 from pprint import pprint
-configuration = finbourne_access.Configuration()
+# Defining the host is optional and defaults to https://fbn-ci.lusid.com/access
+# See configuration.py for a list of all supported configuration parameters.
+configuration = finbourne_access.Configuration(
+    host = "https://fbn-ci.lusid.com/access"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: oauth2
+configuration = finbourne_access.Configuration(
+    host = "https://fbn-ci.lusid.com/access"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://fbn-ci.lusid.com/access
-configuration.host = "https://fbn-ci.lusid.com/access"
-# Create an instance of the API class
-api_instance = finbourne_access.PoliciesApi(finbourne_access.ApiClient(configuration))
-scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The requested scope (optional)
+# Enter a context with an instance of the API client
+with finbourne_access.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = finbourne_access.PoliciesApi(api_client)
+    scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The requested scope (optional)
 as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. Not currently used. The AsAt date time of the data (optional)
 sort_by = ['sort_by_example'] # list[str] | Optional. Not currently used. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName (optional)
 limit = 56 # int | Optional. 2000 if not provided. When paginating, limit the number of returned results to this many (optional)
 filter = 'filter_example' # str | Optional. Not currently used. Expression to filter the result set (optional)
 page = 'page_example' # str | Optional. Paging token returned from a previous result (optional)
 
-try:
-    # [EXPERIMENTAL] Page PolicyCollections
-    api_response = api_instance.page_policy_collections(scope=scope, as_at=as_at, sort_by=sort_by, limit=limit, filter=filter, page=page)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling PoliciesApi->page_policy_collections: %s\n" % e)
+    try:
+        # [EXPERIMENTAL] Page PolicyCollections
+        api_response = api_instance.page_policy_collections(scope=scope, as_at=as_at, sort_by=sort_by, limit=limit, filter=filter, page=page)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling PoliciesApi->page_policy_collections: %s\n" % e)
 ```
 
 ### Parameters
@@ -844,24 +1000,37 @@ import time
 import finbourne_access
 from finbourne_access.rest import ApiException
 from pprint import pprint
-configuration = finbourne_access.Configuration()
+# Defining the host is optional and defaults to https://fbn-ci.lusid.com/access
+# See configuration.py for a list of all supported configuration parameters.
+configuration = finbourne_access.Configuration(
+    host = "https://fbn-ci.lusid.com/access"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: oauth2
+configuration = finbourne_access.Configuration(
+    host = "https://fbn-ci.lusid.com/access"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://fbn-ci.lusid.com/access
-configuration.host = "https://fbn-ci.lusid.com/access"
-# Create an instance of the API class
-api_instance = finbourne_access.PoliciesApi(finbourne_access.ApiClient(configuration))
-code = 'code_example' # str | The code of the Policy
+# Enter a context with an instance of the API client
+with finbourne_access.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = finbourne_access.PoliciesApi(api_client)
+    code = 'code_example' # str | The code of the Policy
 policy_update_request = {"description":"Example policy demonstrating their update","applications":["LUSID"],"grant":"Allow","selectors":[{"idSelectorDefinition":{"identifier":{"scope":"official"},"actions":[{"scope":"default","activity":"Read","entity":"Portfolio"},{"scope":"default","activity":"Aggregate","entity":"Portfolio"}],"name":"access-official-scope","description":"Allow readonly access to the 'official' scope"}}],"for":[{"effectiveRange":{"from":"2015-12-25T00:00:00.0000000+00:00","to":"2020-12-25T00:00:00.0000000+00:00"}},{"asAtRangeForSpec":{"from":{"dateTimeOffset":"2018-01-01T00:00:00.0000000+00:00"},"to":{"value":"AsAt=Latest"}}}],"if":[{"ifRequestHeaderExpression":{"headerName":"organisation.specific.group.header","operator":"EqualsCaseInsensitive","value":"special-group"}}],"when":{"activate":"2016-08-31T18:00:00.0000000+00:00","deactivate":"2020-08-31T18:00:00.0000000+00:00"}} # PolicyUpdateRequest | The updated definition of the Policy
 scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the Policy (optional)
 
-try:
-    # [EARLY ACCESS] Update Policy
-    api_response = api_instance.update_policy(code, policy_update_request, scope=scope)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling PoliciesApi->update_policy: %s\n" % e)
+    try:
+        # [EARLY ACCESS] Update Policy
+        api_response = api_instance.update_policy(code, policy_update_request, scope=scope)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling PoliciesApi->update_policy: %s\n" % e)
 ```
 
 ### Parameters
@@ -910,24 +1079,37 @@ import time
 import finbourne_access
 from finbourne_access.rest import ApiException
 from pprint import pprint
-configuration = finbourne_access.Configuration()
+# Defining the host is optional and defaults to https://fbn-ci.lusid.com/access
+# See configuration.py for a list of all supported configuration parameters.
+configuration = finbourne_access.Configuration(
+    host = "https://fbn-ci.lusid.com/access"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: oauth2
+configuration = finbourne_access.Configuration(
+    host = "https://fbn-ci.lusid.com/access"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://fbn-ci.lusid.com/access
-configuration.host = "https://fbn-ci.lusid.com/access"
-# Create an instance of the API class
-api_instance = finbourne_access.PoliciesApi(finbourne_access.ApiClient(configuration))
-code = 'code_example' # str | The code of the PolicyCollection
+# Enter a context with an instance of the API client
+with finbourne_access.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = finbourne_access.PoliciesApi(api_client)
+    code = 'code_example' # str | The code of the PolicyCollection
 policy_collection_update_request = {"policies":[{"scope":"default","code":"official-portfolios-read-only"},{"scope":"default","code":"desk-portfolios"}],"metadata":{},"policyCollections":[{"scope":"default","code":"CompanyEmployeeAccess"}],"description":"Example policy collection"} # PolicyCollectionUpdateRequest | The updated definition of the PolicyCollection
 scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the PolicyCollection (optional)
 
-try:
-    # [EARLY ACCESS] Update PolicyCollection
-    api_response = api_instance.update_policy_collection(code, policy_collection_update_request, scope=scope)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling PoliciesApi->update_policy_collection: %s\n" % e)
+    try:
+        # [EARLY ACCESS] Update PolicyCollection
+        api_response = api_instance.update_policy_collection(code, policy_collection_update_request, scope=scope)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling PoliciesApi->update_policy_collection: %s\n" % e)
 ```
 
 ### Parameters

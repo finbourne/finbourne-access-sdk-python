@@ -1,5 +1,7 @@
 # PolicyCollectionUpdateRequest
 
+Update an existing PolicyCollection
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

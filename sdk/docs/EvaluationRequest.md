@@ -1,5 +1,7 @@
 # EvaluationRequest
 
+Specification for a server side evaluation of entitlement.
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

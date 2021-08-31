@@ -1,5 +1,6 @@
 # MatchAllSelectorDefinition
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

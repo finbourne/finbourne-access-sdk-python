@@ -1,5 +1,7 @@
 # LicenceSelectorDefinition
 
+Resource selector for identifying which resources a licence applies to
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

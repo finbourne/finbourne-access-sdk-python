@@ -1,5 +1,7 @@
 # LicenceUpdateRequest
 
+Request to update a licence policy
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

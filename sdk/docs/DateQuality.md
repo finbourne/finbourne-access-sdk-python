@@ -1,5 +1,6 @@
 # DateQuality
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

@@ -1,5 +1,7 @@
 # LicenceCreationRequest
 
+Request to create a licence policy
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

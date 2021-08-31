@@ -1,5 +1,7 @@
 # RequestedActionKey
 
+A fully qualified action identifier
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

@@ -1,5 +1,6 @@
 # EntitlementMetadata
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

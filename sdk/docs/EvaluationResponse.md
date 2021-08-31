@@ -1,5 +1,7 @@
 # EvaluationResponse
 
+The result of an evaluation request
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

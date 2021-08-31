@@ -1,5 +1,6 @@
 # TextOperator
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

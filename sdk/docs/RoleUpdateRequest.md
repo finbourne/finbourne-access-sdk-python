@@ -1,5 +1,7 @@
 # RoleUpdateRequest
 
+Role update does not allow the changing of the id
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

@@ -1,5 +1,7 @@
 # RequestDetails
 
+The details of the requested evaluation
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

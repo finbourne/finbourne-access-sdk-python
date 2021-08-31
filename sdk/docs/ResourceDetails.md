@@ -1,5 +1,7 @@
 # ResourceDetails
 
+Details about the resource being requested that may be pertinent to the entitlement evaluation
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
