@@ -9,7 +9,7 @@
       "url": "https://www.finbourne.com",
       "email": "info@finbourne.com"
     },
-    "version": "0.0.1354",
+    "version": "0.0.1356",
     "x-logo": {
       "url": "https://content.finbourne.com/LUSID-header.png",
       "backgroundColor": "#415464"
@@ -7437,7 +7437,8 @@
           "Granted",
           "DeniedAsLicenceRequired"
         ],
-        "type": "string"
+        "type": "string",
+        "description": "The possible results of an evaluation"
       },
       "ForSpec": {
         "type": "object",
@@ -7675,24 +7676,28 @@
             "maxLength": 100,
             "minLength": 3,
             "pattern": "^[a-zA-Z][a-zA-Z0-9-_ +]{2,100}$",
-            "type": "string"
+            "type": "string",
+            "description": "The code of the licence."
           },
           "description": {
             "maxLength": 1024,
             "minLength": 0,
-            "type": "string"
+            "type": "string",
+            "description": "A description of the licence's purpose."
           },
           "applications": {
             "type": "array",
             "items": {
               "type": "string"
-            }
+            },
+            "description": "The applications that the licence refers to."
           },
           "selectors": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/LicenceSelectorDefinition"
-            }
+            },
+            "description": "The selectors affected by the licence."
           },
           "when": {
             "$ref": "#/components/schemas/WhenSpec"
@@ -7702,6 +7707,7 @@
             "items": {
               "$ref": "#/components/schemas/ForSpec"
             },
+            "description": "The ForSpecs of the licence.",
             "nullable": true
           },
           "how": {
@@ -7712,6 +7718,7 @@
             "items": {
               "$ref": "#/components/schemas/IfExpression"
             },
+            "description": "The IfSpecs of the licence.",
             "nullable": true
           }
         },

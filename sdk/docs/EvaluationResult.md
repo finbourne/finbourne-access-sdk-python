@@ -1,5 +1,6 @@
 # EvaluationResult
 
+The possible results of an evaluation
 
 ## Properties
 Name | Type | Description | Notes
