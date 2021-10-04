@@ -9,7 +9,7 @@
       "url": "https://www.finbourne.com",
       "email": "info@finbourne.com"
     },
-    "version": "0.0.1426",
+    "version": "0.0.1428",
     "x-logo": {
       "url": "https://content.finbourne.com/LUSID-header.png",
       "backgroundColor": "#415464"
@@ -26,7 +26,7 @@
         "tags": [
           "Licences"
         ],
-        "summary": "[EXPERIMENTAL] List Licences",
+        "summary": "[EXPERIMENTAL] ListLicences: List Licences",
         "description": "Gets all Licences in a scope",
         "operationId": "ListLicences",
         "parameters": [
@@ -221,7 +221,7 @@
         "tags": [
           "Licences"
         ],
-        "summary": "[EXPERIMENTAL] Create a Licence",
+        "summary": "[EXPERIMENTAL] CreateLicence: Create a Licence",
         "description": "Creates an unassigned Licence policy",
         "operationId": "CreateLicence",
         "requestBody": {
@@ -509,7 +509,7 @@
         "tags": [
           "Licences"
         ],
-        "summary": "[EXPERIMENTAL] Get Licence",
+        "summary": "[EXPERIMENTAL] GetLicence: Get Licence",
         "description": "Gets an identified Licence",
         "operationId": "GetLicence",
         "parameters": [
@@ -711,7 +711,7 @@
         "tags": [
           "Licences"
         ],
-        "summary": "[EXPERIMENTAL] Delete Licence",
+        "summary": "[EXPERIMENTAL] DeleteLicence: Delete Licence",
         "description": "Deletes an identified Licence",
         "operationId": "DeleteLicence",
         "parameters": [
@@ -782,7 +782,7 @@
         "tags": [
           "Licences"
         ],
-        "summary": "[EXPERIMENTAL] Update Licence",
+        "summary": "[EXPERIMENTAL] UpdateLicence: Update Licence",
         "description": "Update an existing Licence policy",
         "operationId": "UpdateLicence",
         "parameters": [
@@ -1078,7 +1078,7 @@
         "tags": [
           "Licences"
         ],
-        "summary": "[EXPERIMENTAL] List Assignments",
+        "summary": "[EXPERIMENTAL] ListAssignments: List Assignments",
         "description": "List tenants the specified Licence is assigned to",
         "operationId": "ListAssignments",
         "parameters": [
@@ -1177,7 +1177,7 @@
         "tags": [
           "Licences"
         ],
-        "summary": "[EXPERIMENTAL] Assign Licence",
+        "summary": "[EXPERIMENTAL] CreateLicenceAssignment: Assign Licence",
         "description": "Create a licence assignment to another, authorised, tenant",
         "operationId": "CreateLicenceAssignment",
         "parameters": [
@@ -1367,7 +1367,7 @@
         "tags": [
           "Licences"
         ],
-        "summary": "[EXPERIMENTAL] Unassign Licence",
+        "summary": "[EXPERIMENTAL] DeleteLicenceAssignment: Unassign Licence",
         "description": "Remove a Licence assignment from a tenant",
         "operationId": "DeleteLicenceAssignment",
         "parameters": [
@@ -1440,7 +1440,7 @@
         "tags": [
           "Policies"
         ],
-        "summary": "Get policies of requesting user",
+        "summary": "GetOwnPolicies: Get policies of requesting user",
         "description": "Gets all Policies for the current user",
         "operationId": "GetOwnPolicies",
         "parameters": [
@@ -1810,7 +1810,7 @@
         "tags": [
           "Policies"
         ],
-        "summary": "[EARLY ACCESS] Run one or more evaluations",
+        "summary": "[EARLY ACCESS] Evaluate: Run one or more evaluations",
         "description": "Given a dictionary of evaluation requests (keyed by any arbitrary correlation identifier), each will be evaluated according to the current user's policies (deduced from the provided OAuth token).",
         "operationId": "Evaluate",
         "parameters": [
@@ -2083,7 +2083,7 @@
         "tags": [
           "Application Metadata"
         ],
-        "summary": "[EARLY ACCESS] Get resources available for access control",
+        "summary": "[EARLY ACCESS] ListAccessControlledResources: Get resources available for access control",
         "description": "Get the comprehensive set of resources that are available for access control",
         "operationId": "ListAccessControlledResources",
         "responses": {
@@ -2131,7 +2131,7 @@
         "tags": [
           "Policies"
         ],
-        "summary": "[EARLY ACCESS] List Policies",
+        "summary": "[EARLY ACCESS] ListPolicies: List Policies",
         "description": "Gets all Policies in a scope",
         "operationId": "ListPolicies",
         "parameters": [
@@ -2479,7 +2479,7 @@
         "tags": [
           "Policies"
         ],
-        "summary": "[EARLY ACCESS] Create Policy",
+        "summary": "[EARLY ACCESS] CreatePolicy: Create Policy",
         "description": "Creates a Policy",
         "operationId": "CreatePolicy",
         "requestBody": {
@@ -2923,7 +2923,7 @@
         "tags": [
           "Policies"
         ],
-        "summary": "[EXPERIMENTAL] Page Policies",
+        "summary": "[EXPERIMENTAL] PagePolicies: Page Policies",
         "description": "Gets all PolicyCollections in a scope in pages. Under development.",
         "operationId": "PagePolicies",
         "parameters": [
@@ -3285,7 +3285,7 @@
         "tags": [
           "Policies"
         ],
-        "summary": "[EARLY ACCESS] Get Policy",
+        "summary": "[EARLY ACCESS] GetPolicy: Get Policy",
         "description": "Gets an identified Policy",
         "operationId": "GetPolicy",
         "parameters": [
@@ -3580,7 +3580,7 @@
         "tags": [
           "Policies"
         ],
-        "summary": "[EARLY ACCESS] Delete Policy",
+        "summary": "[EARLY ACCESS] DeletePolicy: Delete Policy",
         "description": "Deletes an identified Policy",
         "operationId": "DeletePolicy",
         "parameters": [
@@ -3651,7 +3651,7 @@
         "tags": [
           "Policies"
         ],
-        "summary": "[EARLY ACCESS] Update Policy",
+        "summary": "[EARLY ACCESS] UpdatePolicy: Update Policy",
         "description": "Updates a Policy",
         "operationId": "UpdatePolicy",
         "parameters": [
@@ -4206,7 +4206,7 @@
         "tags": [
           "Policies"
         ],
-        "summary": "[EARLY ACCESS] List PolicyCollections",
+        "summary": "[EARLY ACCESS] ListPolicyCollections: List PolicyCollections",
         "description": "Gets all PolicyCollections in a scope",
         "operationId": "ListPolicyCollections",
         "parameters": [
@@ -4428,7 +4428,7 @@
         "tags": [
           "Policies"
         ],
-        "summary": "[EARLY ACCESS] Create PolicyCollection",
+        "summary": "[EARLY ACCESS] CreatePolicyCollection: Create PolicyCollection",
         "description": "Creates a PolicyCollection",
         "operationId": "CreatePolicyCollection",
         "requestBody": {
@@ -4675,7 +4675,7 @@
         "tags": [
           "Policies"
         ],
-        "summary": "[EXPERIMENTAL] Page PolicyCollections",
+        "summary": "[EXPERIMENTAL] PagePolicyCollections: Page PolicyCollections",
         "description": "Gets all PolicyCollections in a scope in pages. Under development.",
         "operationId": "PagePolicyCollections",
         "parameters": [
@@ -4911,7 +4911,7 @@
         "tags": [
           "Policies"
         ],
-        "summary": "[EARLY ACCESS] Get PolicyCollection",
+        "summary": "[EARLY ACCESS] GetPolicyCollection: Get PolicyCollection",
         "description": "Gets an identified PolicyCollection",
         "operationId": "GetPolicyCollection",
         "parameters": [
@@ -5080,7 +5080,7 @@
         "tags": [
           "Policies"
         ],
-        "summary": "[EARLY ACCESS] Delete PolicyCollection",
+        "summary": "[EARLY ACCESS] DeletePolicyCollection: Delete PolicyCollection",
         "description": "Deletes an identified PolicyCollection",
         "operationId": "DeletePolicyCollection",
         "parameters": [
@@ -5151,7 +5151,7 @@
         "tags": [
           "Policies"
         ],
-        "summary": "[EARLY ACCESS] Update PolicyCollection",
+        "summary": "[EARLY ACCESS] UpdatePolicyCollection: Update PolicyCollection",
         "description": "Updates a PolicyCollection",
         "operationId": "UpdatePolicyCollection",
         "parameters": [
@@ -5416,7 +5416,7 @@
         "tags": [
           "Roles"
         ],
-        "summary": "[EARLY ACCESS] List Roles",
+        "summary": "[EARLY ACCESS] ListRoles: List Roles",
         "description": "Gets all Roles in a scope",
         "operationId": "ListRoles",
         "parameters": [
@@ -5668,7 +5668,7 @@
         "tags": [
           "Roles"
         ],
-        "summary": "[EARLY ACCESS] Create Role",
+        "summary": "[EARLY ACCESS] CreateRole: Create Role",
         "description": "Creates a Role",
         "operationId": "CreateRole",
         "requestBody": {
@@ -5973,7 +5973,7 @@
         "tags": [
           "Roles"
         ],
-        "summary": "[EARLY ACCESS] Get Role",
+        "summary": "[EARLY ACCESS] GetRole: Get Role",
         "description": "Gets an identified Role",
         "operationId": "GetRole",
         "parameters": [
@@ -6172,7 +6172,7 @@
         "tags": [
           "Roles"
         ],
-        "summary": "[EARLY ACCESS] Delete Role",
+        "summary": "[EARLY ACCESS] DeleteRole: Delete Role",
         "description": "Deletes an identified Role",
         "operationId": "DeleteRole",
         "parameters": [
@@ -6243,7 +6243,7 @@
         "tags": [
           "Roles"
         ],
-        "summary": "[EARLY ACCESS] Update Role",
+        "summary": "[EARLY ACCESS] UpdateRole: Update Role",
         "description": "Updates a Role",
         "operationId": "UpdateRole",
         "parameters": [
@@ -6606,7 +6606,7 @@
         "tags": [
           "Roles"
         ],
-        "summary": "[EXPERIMENTAL] Add policy collections to a role",
+        "summary": "[EXPERIMENTAL] AddPolicyCollectionToRole: Add policy collections to a role",
         "description": "Assigns policy collections to a role",
         "operationId": "AddPolicyCollectionToRole",
         "parameters": [
@@ -6869,7 +6869,7 @@
         "tags": [
           "Roles"
         ],
-        "summary": "[EXPERIMENTAL] Remove policy collection from role",
+        "summary": "[EXPERIMENTAL] RemovePolicyCollectionFromRole: Remove policy collection from role",
         "description": "Removes a policy collection from a role",
         "operationId": "RemovePolicyCollectionFromRole",
         "parameters": [
