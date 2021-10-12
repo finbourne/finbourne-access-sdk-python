@@ -1,5 +1,6 @@
 # PolicyCreationRequest
 
+Request to create a policy
 
 ## Properties
 Name | Type | Description | Notes

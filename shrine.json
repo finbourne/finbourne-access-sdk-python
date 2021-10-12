@@ -9,7 +9,7 @@
       "url": "https://www.finbourne.com",
       "email": "info@finbourne.com"
     },
-    "version": "0.0.1436",
+    "version": "0.0.1444",
     "x-logo": {
       "url": "https://content.finbourne.com/LUSID-header.png",
       "backgroundColor": "#415464"
@@ -2928,19 +2928,6 @@
         "operationId": "PagePolicies",
         "parameters": [
           {
-            "name": "scope",
-            "in": "query",
-            "description": "Optional. Will use the default scope if not provided. The requested scope",
-            "schema": {
-              "maxLength": 64,
-              "minLength": 1,
-              "pattern": "^[a-zA-Z0-9\\-_]+$",
-              "type": "string",
-              "description": "Optional. Will use the default scope if not provided. The requested scope",
-              "nullable": true
-            }
-          },
-          {
             "name": "asAt",
             "in": "query",
             "description": "Optional. Not currently used. The AsAt date time of the data",
@@ -2957,14 +2944,13 @@
             "in": "query",
             "description": "Optional. Not currently used. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName",
             "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
+              "maxLength": 2147483647,
+              "minLength": 1,
+              "pattern": "^[\\s\\S]*$",
+              "type": "string",
               "description": "Optional. Not currently used. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName",
               "nullable": true
-            },
-            "x-nullable": true
+            }
           },
           {
             "name": "limit",
@@ -7740,7 +7726,8 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ActionId"
-            }
+            },
+            "description": "The action ids of the licence"
           },
           "name": {
             "type": "string",
@@ -7768,19 +7755,22 @@
           "description": {
             "maxLength": 1024,
             "minLength": 0,
-            "type": "string"
+            "type": "string",
+            "description": "A description of the licence's purpose."
           },
           "applications": {
             "type": "array",
             "items": {
               "type": "string"
-            }
+            },
+            "description": "The applications that the licence refers to."
           },
           "selectors": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/LicenceSelectorDefinition"
-            }
+            },
+            "description": "The selectors affected by the licence."
           },
           "when": {
             "$ref": "#/components/schemas/WhenSpec"
@@ -7790,6 +7780,7 @@
             "items": {
               "$ref": "#/components/schemas/ForSpec"
             },
+            "description": "The ForSpecs of the licence.",
             "nullable": true
           },
           "how": {
@@ -7800,6 +7791,7 @@
             "items": {
               "$ref": "#/components/schemas/IfExpression"
             },
+            "description": "The IfSpecs of the licence.",
             "nullable": true
           }
         },
@@ -8299,7 +8291,8 @@
             "$ref": "#/components/schemas/HowSpec"
           }
         },
-        "additionalProperties": false
+        "additionalProperties": false,
+        "description": "Request to create a policy"
       },
       "PolicyId": {
         "required": [
@@ -8735,12 +8728,14 @@
         "properties": {
           "code": {
             "pattern": "^[a-zA-Z][a-zA-Z0-9-_ +]{2,100}$",
-            "type": "string"
+            "type": "string",
+            "description": "The code of the role"
           },
           "description": {
             "maxLength": 1024,
             "minLength": 0,
             "type": "string",
+            "description": "The description of the role",
             "nullable": true
           },
           "resource": {
@@ -8750,7 +8745,8 @@
             "$ref": "#/components/schemas/WhenSpec"
           }
         },
-        "additionalProperties": false
+        "additionalProperties": false,
+        "description": "Request to create a role"
       },
       "RoleId": {
         "required": [
@@ -8800,10 +8796,12 @@
           },
           "roleHierarchyIndex": {
             "type": "integer",
+            "description": "The hierarchical index of the role",
             "format": "int32"
           },
           "description": {
             "type": "string",
+            "description": "The description of the role",
             "nullable": true
           },
           "resource": {
@@ -8813,13 +8811,15 @@
             "$ref": "#/components/schemas/WhenSpec"
           },
           "permission": {
-            "type": "string"
+            "type": "string",
+            "description": "The action key of the role"
           },
           "limit": {
             "type": "object",
             "additionalProperties": {
               "type": "string"
             },
+            "description": "The identifiers of the role with the maximum privileges that this role can have",
             "nullable": true
           },
           "links": {
@@ -8830,7 +8830,8 @@
             "nullable": true
           }
         },
-        "additionalProperties": false
+        "additionalProperties": false,
+        "description": "Response object from the role API"
       },
       "RoleUpdateRequest": {
         "required": [
@@ -8843,6 +8844,7 @@
             "maxLength": 1024,
             "minLength": 0,
             "type": "string",
+            "description": "The description of the role",
             "nullable": true
           },
           "resource": {
