@@ -898,7 +898,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **page_policy_collections**
-> ResourceListOfPolicyCollectionResponse page_policy_collections(scope=scope, as_at=as_at, sort_by=sort_by, limit=limit, filter=filter, page=page)
+> ResourceListOfPolicyCollectionResponse page_policy_collections(as_at=as_at, sort_by=sort_by, limit=limit, filter=filter, page=page)
 
 [EXPERIMENTAL] PagePolicyCollections: Page PolicyCollections
 
@@ -934,16 +934,15 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with finbourne_access.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = finbourne_access.PoliciesApi(api_client)
-    scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The requested scope (optional)
-as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. Not currently used. The AsAt date time of the data (optional)
-sort_by = ['sort_by_example'] # list[str] | Optional. Not currently used. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName (optional)
+    as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. Not currently used. The AsAt date time of the data (optional)
+sort_by = 'sort_by_example' # str | Optional. Not currently used. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName (optional)
 limit = 56 # int | Optional. 2000 if not provided. When paginating, limit the number of returned results to this many (optional)
 filter = 'filter_example' # str | Optional. Not currently used. Expression to filter the result set (optional)
 page = 'page_example' # str | Optional. Paging token returned from a previous result (optional)
 
     try:
         # [EXPERIMENTAL] PagePolicyCollections: Page PolicyCollections
-        api_response = api_instance.page_policy_collections(scope=scope, as_at=as_at, sort_by=sort_by, limit=limit, filter=filter, page=page)
+        api_response = api_instance.page_policy_collections(as_at=as_at, sort_by=sort_by, limit=limit, filter=filter, page=page)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling PoliciesApi->page_policy_collections: %s\n" % e)
@@ -953,9 +952,8 @@ page = 'page_example' # str | Optional. Paging token returned from a previous re
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **scope** | **str**| Optional. Will use the default scope if not provided. The requested scope | [optional] 
  **as_at** | **datetime**| Optional. Not currently used. The AsAt date time of the data | [optional] 
- **sort_by** | [**list[str]**](str.md)| Optional. Not currently used. Order the results by these fields. Use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional] 
+ **sort_by** | **str**| Optional. Not currently used. Order the results by these fields. Use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional] 
  **limit** | **int**| Optional. 2000 if not provided. When paginating, limit the number of returned results to this many | [optional] 
  **filter** | **str**| Optional. Not currently used. Expression to filter the result set | [optional] 
  **page** | **str**| Optional. Paging token returned from a previous result | [optional] 

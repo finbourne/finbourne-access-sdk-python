@@ -9,7 +9,7 @@
       "url": "https://www.finbourne.com",
       "email": "info@finbourne.com"
     },
-    "version": "0.0.1461",
+    "version": "0.0.1472",
     "x-logo": {
       "url": "https://content.finbourne.com/LUSID-header.png",
       "backgroundColor": "#415464"
@@ -4666,19 +4666,6 @@
         "operationId": "PagePolicyCollections",
         "parameters": [
           {
-            "name": "scope",
-            "in": "query",
-            "description": "Optional. Will use the default scope if not provided. The requested scope",
-            "schema": {
-              "maxLength": 64,
-              "minLength": 1,
-              "pattern": "^[a-zA-Z0-9\\-_]+$",
-              "type": "string",
-              "description": "Optional. Will use the default scope if not provided. The requested scope",
-              "nullable": true
-            }
-          },
-          {
             "name": "asAt",
             "in": "query",
             "description": "Optional. Not currently used. The AsAt date time of the data",
@@ -4695,14 +4682,13 @@
             "in": "query",
             "description": "Optional. Not currently used. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName",
             "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
+              "maxLength": 2147483647,
+              "minLength": 1,
+              "pattern": "^[\\s\\S]*$",
+              "type": "string",
               "description": "Optional. Not currently used. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName",
               "nullable": true
-            },
-            "x-nullable": true
+            }
           },
           {
             "name": "limit",
