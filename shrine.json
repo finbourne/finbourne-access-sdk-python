@@ -9,7 +9,7 @@
       "url": "https://www.finbourne.com",
       "email": "info@finbourne.com"
     },
-    "version": "0.0.1484",
+    "version": "0.0.1501",
     "x-logo": {
       "url": "https://content.finbourne.com/LUSID-header.png",
       "backgroundColor": "#415464"
@@ -2942,13 +2942,13 @@
           {
             "name": "sortBy",
             "in": "query",
-            "description": "Optional. Not currently used. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName",
+            "description": "Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName",
             "schema": {
               "maxLength": 2147483647,
               "minLength": 1,
               "pattern": "^[\\s\\S]*$",
               "type": "string",
-              "description": "Optional. Not currently used. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName",
+              "description": "Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName",
               "nullable": true
             }
           },
@@ -2969,13 +2969,13 @@
           {
             "name": "filter",
             "in": "query",
-            "description": "Optional. Not currently used. Expression to filter the result set",
+            "description": "Optional. Expression to filter the result set",
             "schema": {
               "maxLength": 2147483647,
               "minLength": 0,
               "pattern": "^[\\s\\S]*$",
               "type": "string",
-              "description": "Optional. Not currently used. Expression to filter the result set",
+              "description": "Optional. Expression to filter the result set",
               "nullable": true
             }
           },
@@ -3069,7 +3069,7 @@
                       }
                     }
                   ],
-                  "href": "https://example.lusid.com/access/api/policies/page?scope=default",
+                  "href": "https://example.lusid.com/access/api/policies/page?filter=&sortBy=&limit=&page=",
                   "links": []
                 }
               },
@@ -3145,7 +3145,7 @@
                       }
                     }
                   ],
-                  "href": "https://example.lusid.com/access/api/policies/page?scope=default",
+                  "href": "https://example.lusid.com/access/api/policies/page?filter=&sortBy=&limit=&page=",
                   "links": []
                 }
               },
@@ -3221,7 +3221,7 @@
                       }
                     }
                   ],
-                  "href": "https://example.lusid.com/access/api/policies/page?scope=default",
+                  "href": "https://example.lusid.com/access/api/policies/page?filter=&sortBy=&limit=&page=",
                   "links": []
                 }
               }
@@ -4680,13 +4680,13 @@
           {
             "name": "sortBy",
             "in": "query",
-            "description": "Optional. Not currently used. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName",
+            "description": "Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName",
             "schema": {
               "maxLength": 2147483647,
               "minLength": 1,
               "pattern": "^[\\s\\S]*$",
               "type": "string",
-              "description": "Optional. Not currently used. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName",
+              "description": "Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName",
               "nullable": true
             }
           },
@@ -4707,13 +4707,13 @@
           {
             "name": "filter",
             "in": "query",
-            "description": "Optional. Not currently used. Expression to filter the result set",
+            "description": "Optional. Expression to filter the result set",
             "schema": {
               "maxLength": 2147483647,
               "minLength": 0,
               "pattern": "^[\\s\\S]*$",
               "type": "string",
-              "description": "Optional. Not currently used. Expression to filter the result set",
+              "description": "Optional. Expression to filter the result set",
               "nullable": true
             }
           },
@@ -4765,7 +4765,7 @@
                       "description": "Collection of organisation wide policies"
                     }
                   ],
-                  "href": "https://example.lusid.com/access/api/policycollections/page",
+                  "href": "https://example.lusid.com/access/api/policycollections/page?filter=&sortBy=&limit=&page=",
                   "links": []
                 }
               },
@@ -4799,7 +4799,7 @@
                       "description": "Collection of organisation wide policies"
                     }
                   ],
-                  "href": "https://example.lusid.com/access/api/policycollections/page",
+                  "href": "https://example.lusid.com/access/api/policycollections/page?filter=&sortBy=&limit=&page=",
                   "links": []
                 }
               },
@@ -4833,7 +4833,7 @@
                       "description": "Collection of organisation wide policies"
                     }
                   ],
-                  "href": "https://example.lusid.com/access/api/policycollections/page",
+                  "href": "https://example.lusid.com/access/api/policycollections/page?filter=&sortBy=&limit=&page=",
                   "links": []
                 }
               }
