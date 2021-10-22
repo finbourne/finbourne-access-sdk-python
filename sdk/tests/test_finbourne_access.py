@@ -11,8 +11,8 @@ class FinbourneAccessTests(unittest.TestCase):
         cls.policies_api = api_client.build(sa.PoliciesApi)
 
     def test_roles(self):
-        policies = self.policies_api.list_policies()
-        self.assertGreater(len(policies), 0)
+        policies = self.policies_api.page_policies()
+        self.assertGreater(len(policies.values), 0)
 
 
 if __name__ == '__main__':
