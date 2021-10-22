@@ -9,7 +9,7 @@
       "url": "https://www.finbourne.com",
       "email": "info@finbourne.com"
     },
-    "version": "0.0.1503",
+    "version": "0.0.1507",
     "x-logo": {
       "url": "https://content.finbourne.com/LUSID-header.png",
       "backgroundColor": "#415464"
@@ -7647,7 +7647,7 @@
           "code": {
             "maxLength": 100,
             "minLength": 3,
-            "pattern": "^[a-zA-Z][a-zA-Z0-9-_ +]{2,100}$",
+            "pattern": "^(?![0-9]*$)[a-zA-Z0-9]+[a-zA-Z0-9-_ +]{2,100}$",
             "type": "string",
             "description": "The code of the licence."
           },
@@ -8072,7 +8072,7 @@
           "code": {
             "maxLength": 100,
             "minLength": 3,
-            "pattern": "^[a-zA-Z][a-zA-Z0-9-_ +]{2,100}$",
+            "pattern": "^(?![0-9]*$)[a-zA-Z0-9]+[a-zA-Z0-9-_ +]{2,100}$",
             "type": "string",
             "description": "The identifier for the PolicyCollection being created"
           },
@@ -8225,7 +8225,7 @@
           "code": {
             "maxLength": 100,
             "minLength": 3,
-            "pattern": "^[a-zA-Z][a-zA-Z0-9-_ +]{2,100}$",
+            "pattern": "^(?![0-9]*$)[a-zA-Z0-9]+[a-zA-Z0-9-_ +]{2,100}$",
             "type": "string",
             "description": "Code of the policy being created"
           },
@@ -8713,7 +8713,7 @@
         "type": "object",
         "properties": {
           "code": {
-            "pattern": "^[a-zA-Z][a-zA-Z0-9-_ +]{2,100}$",
+            "pattern": "^(?![0-9]*$)[a-zA-Z0-9]+[a-zA-Z0-9-_ +]{2,100}$",
             "type": "string",
             "description": "The code of the role"
           },
