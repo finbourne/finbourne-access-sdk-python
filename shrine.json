@@ -9,9 +9,9 @@
       "url": "https://www.finbourne.com",
       "email": "info@finbourne.com"
     },
-    "version": "0.0.1589",
+    "version": "0.0.1592",
     "x-logo": {
-      "url": "https://content.finbourne.com/LUSID-header.png",
+      "url": "https://www.lusid.com/app/assets/logo_white.png",
       "backgroundColor": "#415464"
     }
   },
@@ -1530,7 +1530,7 @@
             "in": "query",
             "description": "Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName",
             "schema": {
-              "maxLength": 2147483647,
+              "maxLength": 16384,
               "minLength": 1,
               "pattern": "^[\\s\\S]*$",
               "type": "string",
@@ -1557,7 +1557,7 @@
             "in": "query",
             "description": "Optional. Expression to filter the result set",
             "schema": {
-              "maxLength": 2147483647,
+              "maxLength": 16384,
               "minLength": 0,
               "pattern": "^[\\s\\S]*$",
               "type": "string",
@@ -3268,7 +3268,7 @@
             "in": "query",
             "description": "Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName",
             "schema": {
-              "maxLength": 2147483647,
+              "maxLength": 16384,
               "minLength": 1,
               "pattern": "^[\\s\\S]*$",
               "type": "string",
@@ -3295,7 +3295,7 @@
             "in": "query",
             "description": "Optional. Expression to filter the result set",
             "schema": {
-              "maxLength": 2147483647,
+              "maxLength": 16384,
               "minLength": 0,
               "pattern": "^[\\s\\S]*$",
               "type": "string",
