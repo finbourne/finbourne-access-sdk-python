@@ -9,9 +9,9 @@
       "url": "https://www.finbourne.com",
       "email": "info@finbourne.com"
     },
-    "version": "0.0.1636",
+    "version": "0.0.1640",
     "x-logo": {
-      "url": "https://content.finbourne.com/LUSID-header.png",
+      "url": "https://www.lusid.com/app/assets/logo_white.png",
       "backgroundColor": "#415464"
     }
   },
@@ -1530,7 +1530,7 @@
             "in": "query",
             "description": "Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName",
             "schema": {
-              "maxLength": 2147483647,
+              "maxLength": 16384,
               "minLength": 1,
               "pattern": "^[\\s\\S]*$",
               "type": "string",
@@ -1557,7 +1557,7 @@
             "in": "query",
             "description": "Optional. Expression to filter the result set",
             "schema": {
-              "maxLength": 2147483647,
+              "maxLength": 16384,
               "minLength": 0,
               "pattern": "^[\\s\\S]*$",
               "type": "string",
@@ -3268,7 +3268,7 @@
             "in": "query",
             "description": "Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName",
             "schema": {
-              "maxLength": 2147483647,
+              "maxLength": 16384,
               "minLength": 1,
               "pattern": "^[\\s\\S]*$",
               "type": "string",
@@ -3295,7 +3295,7 @@
             "in": "query",
             "description": "Optional. Expression to filter the result set",
             "schema": {
-              "maxLength": 2147483647,
+              "maxLength": 16384,
               "minLength": 0,
               "pattern": "^[\\s\\S]*$",
               "type": "string",
@@ -5642,8 +5642,7 @@
         "type": "object",
         "properties": {
           "description": {
-            "type": "string",
-            "description": "The description of the action"
+            "type": "string"
           },
           "action": {
             "$ref": "#/components/schemas/ActionId"
@@ -5653,7 +5652,6 @@
             "items": {
               "$ref": "#/components/schemas/IdSelectorDefinition"
             },
-            "description": "When populated, the provided values are the limited set of resources that are allowed to be specified for\r\naccess control for this action",
             "nullable": true
           },
           "links": {
@@ -5664,8 +5662,7 @@
             "nullable": true
           }
         },
-        "additionalProperties": false,
-        "description": "An action that can be access controlled"
+        "additionalProperties": false
       },
       "AccessControlledResource": {
         "required": [
@@ -5676,31 +5673,26 @@
         "properties": {
           "application": {
             "type": "string",
-            "description": "The application to which this resource belongs",
             "nullable": true
           },
           "name": {
             "type": "string",
-            "description": "The display name of the resource",
             "nullable": true
           },
           "description": {
-            "type": "string",
-            "description": "The description of the resource"
+            "type": "string"
           },
           "actions": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/AccessControlledAction"
-            },
-            "description": "The actions acceptable for this type of resource"
+            }
           },
           "identifierParts": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/IdentifierPartSchema"
             },
-            "description": "The constituent parts of a valid identifier for this resource",
             "nullable": true
           },
           "links": {
@@ -5711,8 +5703,7 @@
             "nullable": true
           }
         },
-        "additionalProperties": false,
-        "description": "A resource to which access can be controlled"
+        "additionalProperties": false
       },
       "ActionId": {
         "required": [
@@ -6056,24 +6047,19 @@
         "properties": {
           "index": {
             "type": "integer",
-            "description": "The typical index in the identifier in which this part appears",
             "format": "int32"
           },
           "name": {
-            "type": "string",
-            "description": "The name of the identifier part that can/should be provided for this resource type"
+            "type": "string"
           },
           "displayName": {
-            "type": "string",
-            "description": "The display name of the identifier part"
+            "type": "string"
           },
           "description": {
-            "type": "string",
-            "description": "A brief description of the point of this identifier part"
+            "type": "string"
           },
           "required": {
-            "type": "boolean",
-            "description": "Whether a value is required to be provided"
+            "type": "boolean"
           },
           "links": {
             "type": "array",
@@ -6083,8 +6069,7 @@
             "nullable": true
           }
         },
-        "additionalProperties": false,
-        "description": "The schema of an contributing part of a valid LUSID resource identifier"
+        "additionalProperties": false
       },
       "IdSelectorDefinition": {
         "required": [
