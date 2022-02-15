@@ -9,7 +9,7 @@
       "url": "https://www.finbourne.com",
       "email": "info@finbourne.com"
     },
-    "version": "0.0.1728",
+    "version": "0.0.1732",
     "x-logo": {
       "url": "https://www.lusid.com/app/assets/logo_white.png",
       "backgroundColor": "#415464"
@@ -3969,6 +3969,520 @@
         "x-fbn-apistatus": "EarlyAccess"
       }
     },
+    "/api/policycollections/{code}/add": {
+      "post": {
+        "tags": [
+          "Policies"
+        ],
+        "summary": "[EXPERIMENTAL] AddToPolicyCollection: Add To PolicyCollection",
+        "description": "Add Policies and/or PolicyCollections to a PolicyCollection",
+        "operationId": "AddToPolicyCollection",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "description": "The code of the PolicyCollection",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The code of the PolicyCollection"
+            }
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "description": "Optional. Will use the default scope if not provided. The scope of the PolicyCollection",
+            "schema": {
+              "type": "string",
+              "description": "Optional. Will use the default scope if not provided. The scope of the PolicyCollection",
+              "nullable": true
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Ids of the PolicyCollections and/or Policies to add to the PolicyCollection",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddToPolicyCollectionRequest"
+              },
+              "example": {
+                "policies": [
+                  {
+                    "scope": "default",
+                    "code": "official-portfolios-read-only"
+                  },
+                  {
+                    "scope": "default",
+                    "code": "desk-portfolios"
+                  }
+                ],
+                "policyCollections": [
+                  {
+                    "scope": "default",
+                    "code": "CompanyEmployeeAccess"
+                  }
+                ]
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddToPolicyCollectionRequest"
+              },
+              "example": {
+                "policies": [
+                  {
+                    "scope": "default",
+                    "code": "official-portfolios-read-only"
+                  },
+                  {
+                    "scope": "default",
+                    "code": "desk-portfolios"
+                  }
+                ],
+                "policyCollections": [
+                  {
+                    "scope": "default",
+                    "code": "CompanyEmployeeAccess"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddToPolicyCollectionRequest"
+              },
+              "example": {
+                "policies": [
+                  {
+                    "scope": "default",
+                    "code": "official-portfolios-read-only"
+                  },
+                  {
+                    "scope": "default",
+                    "code": "desk-portfolios"
+                  }
+                ],
+                "policyCollections": [
+                  {
+                    "scope": "default",
+                    "code": "CompanyEmployeeAccess"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddToPolicyCollectionRequest"
+              },
+              "example": {
+                "policies": [
+                  {
+                    "scope": "default",
+                    "code": "official-portfolios-read-only"
+                  },
+                  {
+                    "scope": "default",
+                    "code": "desk-portfolios"
+                  }
+                ],
+                "policyCollections": [
+                  {
+                    "scope": "default",
+                    "code": "CompanyEmployeeAccess"
+                  }
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Updated PolicyCollection",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PolicyCollectionResponse"
+                },
+                "example": {
+                  "id": {
+                    "scope": "default",
+                    "code": "organisation-wide-policies"
+                  },
+                  "policies": [
+                    {
+                      "scope": "default",
+                      "code": "official-portfolios-read-only"
+                    },
+                    {
+                      "scope": "default",
+                      "code": "desk-portfolios"
+                    }
+                  ],
+                  "policyCollections": [
+                    {
+                      "scope": "default",
+                      "code": "CompanyEmployeeAccess"
+                    }
+                  ],
+                  "description": "Collection of organisation wide policies"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PolicyCollectionResponse"
+                },
+                "example": {
+                  "id": {
+                    "scope": "default",
+                    "code": "organisation-wide-policies"
+                  },
+                  "policies": [
+                    {
+                      "scope": "default",
+                      "code": "official-portfolios-read-only"
+                    },
+                    {
+                      "scope": "default",
+                      "code": "desk-portfolios"
+                    }
+                  ],
+                  "policyCollections": [
+                    {
+                      "scope": "default",
+                      "code": "CompanyEmployeeAccess"
+                    }
+                  ],
+                  "description": "Collection of organisation wide policies"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PolicyCollectionResponse"
+                },
+                "example": {
+                  "id": {
+                    "scope": "default",
+                    "code": "organisation-wide-policies"
+                  },
+                  "policies": [
+                    {
+                      "scope": "default",
+                      "code": "official-portfolios-read-only"
+                    },
+                    {
+                      "scope": "default",
+                      "code": "desk-portfolios"
+                    }
+                  ],
+                  "policyCollections": [
+                    {
+                      "scope": "default",
+                      "code": "CompanyEmployeeAccess"
+                    }
+                  ],
+                  "description": "Collection of organisation wide policies"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The details of the input related failure",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2": []
+          }
+        ],
+        "x-fbn-apistatus": "Experimental"
+      }
+    },
+    "/api/policycollections/{code}/remove": {
+      "post": {
+        "tags": [
+          "Policies"
+        ],
+        "summary": "[EXPERIMENTAL] RemoveFromPolicyCollection: Remove From PolicyCollection",
+        "description": "Remove Policies and/or PolicyCollections from a PolicyCollection",
+        "operationId": "RemoveFromPolicyCollection",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "description": "The code of the PolicyCollection",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The code of the PolicyCollection"
+            }
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "description": "Optional. Will use the default scope if not provided. The scope of the PolicyCollection",
+            "schema": {
+              "type": "string",
+              "description": "Optional. Will use the default scope if not provided. The scope of the PolicyCollection",
+              "nullable": true
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Ids of the PolicyCollections and/or Policies to remove from the PolicyCollection",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RemoveFromPolicyCollectionRequest"
+              },
+              "example": {
+                "policies": [
+                  {
+                    "scope": "default",
+                    "code": "official-portfolios-read-only"
+                  },
+                  {
+                    "scope": "default",
+                    "code": "desk-portfolios"
+                  }
+                ],
+                "policyCollections": [
+                  {
+                    "scope": "default",
+                    "code": "CompanyEmployeeAccess"
+                  }
+                ]
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RemoveFromPolicyCollectionRequest"
+              },
+              "example": {
+                "policies": [
+                  {
+                    "scope": "default",
+                    "code": "official-portfolios-read-only"
+                  },
+                  {
+                    "scope": "default",
+                    "code": "desk-portfolios"
+                  }
+                ],
+                "policyCollections": [
+                  {
+                    "scope": "default",
+                    "code": "CompanyEmployeeAccess"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RemoveFromPolicyCollectionRequest"
+              },
+              "example": {
+                "policies": [
+                  {
+                    "scope": "default",
+                    "code": "official-portfolios-read-only"
+                  },
+                  {
+                    "scope": "default",
+                    "code": "desk-portfolios"
+                  }
+                ],
+                "policyCollections": [
+                  {
+                    "scope": "default",
+                    "code": "CompanyEmployeeAccess"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RemoveFromPolicyCollectionRequest"
+              },
+              "example": {
+                "policies": [
+                  {
+                    "scope": "default",
+                    "code": "official-portfolios-read-only"
+                  },
+                  {
+                    "scope": "default",
+                    "code": "desk-portfolios"
+                  }
+                ],
+                "policyCollections": [
+                  {
+                    "scope": "default",
+                    "code": "CompanyEmployeeAccess"
+                  }
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Updated PolicyCollection",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PolicyCollectionResponse"
+                },
+                "example": {
+                  "id": {
+                    "scope": "default",
+                    "code": "organisation-wide-policies"
+                  },
+                  "policies": [
+                    {
+                      "scope": "default",
+                      "code": "official-portfolios-read-only"
+                    },
+                    {
+                      "scope": "default",
+                      "code": "desk-portfolios"
+                    }
+                  ],
+                  "policyCollections": [
+                    {
+                      "scope": "default",
+                      "code": "CompanyEmployeeAccess"
+                    }
+                  ],
+                  "description": "Collection of organisation wide policies"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PolicyCollectionResponse"
+                },
+                "example": {
+                  "id": {
+                    "scope": "default",
+                    "code": "organisation-wide-policies"
+                  },
+                  "policies": [
+                    {
+                      "scope": "default",
+                      "code": "official-portfolios-read-only"
+                    },
+                    {
+                      "scope": "default",
+                      "code": "desk-portfolios"
+                    }
+                  ],
+                  "policyCollections": [
+                    {
+                      "scope": "default",
+                      "code": "CompanyEmployeeAccess"
+                    }
+                  ],
+                  "description": "Collection of organisation wide policies"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PolicyCollectionResponse"
+                },
+                "example": {
+                  "id": {
+                    "scope": "default",
+                    "code": "organisation-wide-policies"
+                  },
+                  "policies": [
+                    {
+                      "scope": "default",
+                      "code": "official-portfolios-read-only"
+                    },
+                    {
+                      "scope": "default",
+                      "code": "desk-portfolios"
+                    }
+                  ],
+                  "policyCollections": [
+                    {
+                      "scope": "default",
+                      "code": "CompanyEmployeeAccess"
+                    }
+                  ],
+                  "description": "Collection of organisation wide policies"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The details of the input related failure",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2": []
+          }
+        ],
+        "x-fbn-apistatus": "Experimental"
+      }
+    },
     "/api/roles": {
       "get": {
         "tags": [
@@ -5748,6 +6262,29 @@
         "additionalProperties": false,
         "description": "Request body used to add Policy Collections to a Role"
       },
+      "AddToPolicyCollectionRequest": {
+        "type": "object",
+        "properties": {
+          "policies": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PolicyId"
+            },
+            "description": "The identifiers of the Policies to be added to the collection.",
+            "nullable": true
+          },
+          "policyCollections": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PolicyCollectionId"
+            },
+            "description": "The identifiers of the PolicyCollections to be added to the collection.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Base properties to create or update a policy collection"
+      },
       "AsAtPredicateContract": {
         "type": "object",
         "properties": {
@@ -6924,6 +7461,29 @@
           "Exactly"
         ],
         "type": "string"
+      },
+      "RemoveFromPolicyCollectionRequest": {
+        "type": "object",
+        "properties": {
+          "policies": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PolicyId"
+            },
+            "description": "The identifiers of the Policies to be removed from the collection.",
+            "nullable": true
+          },
+          "policyCollections": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PolicyCollectionId"
+            },
+            "description": "The identifiers of the PolicyCollections to be removed from the collection.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Base properties to create or update a policy collection"
       },
       "RequestDetails": {
         "required": [
