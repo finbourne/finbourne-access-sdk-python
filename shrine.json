@@ -9,7 +9,7 @@
       "url": "https://www.finbourne.com",
       "email": "info@finbourne.com"
     },
-    "version": "0.0.1826",
+    "version": "0.0.1828",
     "x-logo": {
       "url": "https://www.lusid.com/app/assets/logo_white.png",
       "backgroundColor": "#415464"
@@ -7030,7 +7030,7 @@
           "code": {
             "maxLength": 100,
             "minLength": 3,
-            "pattern": "^[a-zA-Z][a-zA-Z0-9-_ +]{2,100}$",
+            "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
             "type": "string",
             "description": "The identifier for the PolicyCollection being created"
           },
@@ -7183,7 +7183,7 @@
           "code": {
             "maxLength": 100,
             "minLength": 3,
-            "pattern": "^[a-zA-Z][a-zA-Z0-9-_ +]{2,100}$",
+            "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
             "type": "string",
             "description": "Code of the policy being created"
           },
@@ -7694,7 +7694,7 @@
         "type": "object",
         "properties": {
           "code": {
-            "pattern": "^[a-zA-Z][a-zA-Z0-9-_ +]{2,100}$",
+            "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
             "type": "string",
             "description": "The code of the role"
           },
