@@ -16,36 +16,46 @@ class FinbourneAccessTests(unittest.TestCase):
         api_client = ApiClientFactory()
         cls.policies_api = api_client.build(sa.PoliciesApi)
 
-    def test_restrict_transactions_between_effective_dates(self):
+    def test_prevent_transactions_before_an_effective_date(self):
 
         """
-        This policy allows you to restrict the creation, deletion or updating of
-         transactions between two effective dates (in this case 1 May 2022 to 1 June 2022).
+        This policy allows you to prevent the creation, deletion or updating of
+         transactions for any effective date before 1 April 2022 for all portfolios in a given scope.
 
         We specify the effective date restriction in the 'for' attribute of the PolicyCreationRequest
         model.
         """
 
         scope = "ibor"
+        portfolio_code = "*"
 
-        policy_code = f"restrict-transactions-on-scope-{scope}-for-may-2022"
+        policy_code = f"restrict-transactions-on-scope-{scope}-for-effective-date-before-20220401"
 
-        deactivate = datetime(9999, 12, 31, tzinfo=pytz.utc)
+        # Configure the effective datetime for the portfolio or transaction updates
+        # This is the effective datetime of the data entity the policy is evaluating
 
         for_spec = access_models.ForSpec(
             effective_range=access_models.EffectiveRange(
-                _from=datetime(2022, 5, 1, tzinfo=pytz.utc).isoformat(),
-                to=datetime(2022, 6, 1, tzinfo=pytz.utc).isoformat(),
+                _from=datetime.min.replace(tzinfo=pytz.UTC),
+                to=datetime(2022, 4, 1, tzinfo=pytz.utc),
             )
         )
 
+        # Configure the effective datetime for the policy itself
+        # This is the datetime during which the policy is active
+
         when_spec = access_models.WhenSpec(
-            activate=datetime.now(tz=pytz.utc) - timedelta(days=1), deactivate=deactivate,
+            activate=datetime.min.replace(tzinfo=pytz.UTC),
+            deactivate=datetime.max.replace(tzinfo=pytz.UTC)
         )
+
+        # Here we define some selectors which control update, delete, and add access to the portfolios
+        # See the following article for more details on creating data policies:
+        # https://support.lusid.com/knowledgebase/article/KA-01660/en-us
 
         restrict_selector = access_models.SelectorDefinition(
             id_selector_definition=access_models.IdSelectorDefinition(
-                identifier={"scope": scope, "code": "1250"},
+                identifier={"scope": scope, "code": portfolio_code},
                 actions=[
                     access_models.ActionId(scope="default", activity="Update", entity="Portfolio"),
                     access_models.ActionId(scope="default", activity="Delete", entity="Portfolio"),
@@ -53,6 +63,8 @@ class FinbourneAccessTests(unittest.TestCase):
                 ]
             )
         )
+
+        # Here we build the policy creation request using the configuration options defined above
 
         restrict_transactions_policy_request = access_models.PolicyCreationRequest(
             code=policy_code,
@@ -70,7 +82,11 @@ class FinbourneAccessTests(unittest.TestCase):
 
             detail = json.loads(e.body)
 
-            if detail["code"] not in [612, 613, 615]:
+            print(detail)
+
+            # Do not fail if policy already exists
+
+            if detail["code"] not in [613]:
                 raise e
 
         get_policy = self.policies_api.get_policy(code=policy_code)
