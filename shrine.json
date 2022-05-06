@@ -9,7 +9,7 @@
       "url": "https://www.finbourne.com",
       "email": "info@finbourne.com"
     },
-    "version": "0.0.1954",
+    "version": "0.0.1956",
     "x-logo": {
       "url": "https://www.lusid.com/app/assets/logo_white.png",
       "backgroundColor": "#415464"
@@ -6148,13 +6148,13 @@
     "/api/userroles": {
       "post": {
         "tags": [
-          "User Roles"
+          "User-roles"
         ],
         "summary": "[EXPERIMENTAL] CreateUserRole: Create a user-role",
         "description": "Creates a new user-role.",
         "operationId": "CreateUserRole",
         "requestBody": {
-          "description": "Dto of the user-role to be created.",
+          "description": "Definition of the user-role to create.",
           "content": {
             "application/json-patch+json": {
               "schema": {
@@ -6374,7 +6374,7 @@
       },
       "get": {
         "tags": [
-          "User Roles"
+          "User-roles"
         ],
         "summary": "[EXPERIMENTAL] ListUserRoles: List user-roles",
         "description": "Lists all user-roles and pages.",
@@ -6555,7 +6555,7 @@
     "/api/userroles/{userid}": {
       "post": {
         "tags": [
-          "User Roles"
+          "User-roles"
         ],
         "summary": "[EXPERIMENTAL] UpdateUserRole: Update a user-role",
         "description": "Updates an identified user-role.",
@@ -6564,16 +6564,16 @@
           {
             "name": "userid",
             "in": "path",
-            "description": "Id of the user-role to get",
+            "description": "Id of the user-role to be updated.",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "Id of the user-role to get"
+              "description": "Id of the user-role to be updated."
             }
           }
         ],
         "requestBody": {
-          "description": "Dto of the user-role to be updated.",
+          "description": "Definition of the update to apply to the user-role.",
           "content": {
             "application/json-patch+json": {
               "schema": {
@@ -6789,20 +6789,20 @@
       },
       "get": {
         "tags": [
-          "User Roles"
+          "User-roles"
         ],
-        "summary": "[EXPERIMENTAL] GetUserRole: Gets a user-role",
-        "description": "Gets an identified user-role.",
+        "summary": "[EXPERIMENTAL] GetUserRole: Get a user-role",
+        "description": "Get an identified user-role.",
         "operationId": "GetUserRole",
         "parameters": [
           {
             "name": "userid",
             "in": "path",
-            "description": "Id of the user-role to get",
+            "description": "Id of the user-role to get.",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "Id of the user-role to get"
+              "description": "Id of the user-role to get."
             }
           }
         ],
@@ -6933,7 +6933,7 @@
       },
       "delete": {
         "tags": [
-          "User Roles"
+          "User-roles"
         ],
         "summary": "[EXPERIMENTAL] DeleteUserRole: Delete a user-role",
         "description": "Deletes an identified user-role.",
@@ -6942,11 +6942,11 @@
           {
             "name": "userid",
             "in": "path",
-            "description": "Id of the user, who's user-role will be deleted.",
+            "description": "Id of the user-role to delete.",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "Id of the user, who's user-role will be deleted."
+              "description": "Id of the user-role to delete."
             }
           }
         ],
@@ -8840,11 +8840,11 @@
     },
     {
       "name": "Roles",
-      "description": "Endpoints for administering with Roles"
+      "description": "Endpoints for administering Roles"
     },
     {
-      "name": "User Roles",
-      "description": "Endpoints for administering with user-roles"
+      "name": "User-roles",
+      "description": "Endpoints for administering user-roles"
     }
   ],
   "x-tagGroups": {
@@ -8853,7 +8853,7 @@
       "Application Metadata",
       "Policies",
       "Roles",
-      "User Roles"
+      "User-roles"
     ]
   }
 }

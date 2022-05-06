@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_user_role**](UserRolesApi.md#create_user_role) | **POST** /api/userroles | [EXPERIMENTAL] CreateUserRole: Create a user-role
 [**delete_user_role**](UserRolesApi.md#delete_user_role) | **DELETE** /api/userroles/{userid} | [EXPERIMENTAL] DeleteUserRole: Delete a user-role
-[**get_user_role**](UserRolesApi.md#get_user_role) | **GET** /api/userroles/{userid} | [EXPERIMENTAL] GetUserRole: Gets a user-role
+[**get_user_role**](UserRolesApi.md#get_user_role) | **GET** /api/userroles/{userid} | [EXPERIMENTAL] GetUserRole: Get a user-role
 [**list_user_roles**](UserRolesApi.md#list_user_roles) | **GET** /api/userroles | [EXPERIMENTAL] ListUserRoles: List user-roles
 [**update_user_role**](UserRolesApi.md#update_user_role) | **POST** /api/userroles/{userid} | [EXPERIMENTAL] UpdateUserRole: Update a user-role
 
@@ -48,7 +48,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with finbourne_access.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = finbourne_access.UserRolesApi(api_client)
-    user_role_creation_request = {"userId":"ExampleUserId","resource":{"policies":[{"scope":"ExamplePolicyId","code":"ExampleScope"}],"policyCollections":[{"scope":"ExamplePolicyCollectionId","code":"ExampleScope"}]}} # UserRoleCreationRequest | Dto of the user-role to be created.
+    user_role_creation_request = {"userId":"ExampleUserId","resource":{"policies":[{"scope":"ExamplePolicyId","code":"ExampleScope"}],"policyCollections":[{"scope":"ExamplePolicyCollectionId","code":"ExampleScope"}]}} # UserRoleCreationRequest | Definition of the user-role to create.
 
     try:
         # [EXPERIMENTAL] CreateUserRole: Create a user-role
@@ -62,7 +62,7 @@ with finbourne_access.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_role_creation_request** | [**UserRoleCreationRequest**](UserRoleCreationRequest.md)| Dto of the user-role to be created. | 
+ **user_role_creation_request** | [**UserRoleCreationRequest**](UserRoleCreationRequest.md)| Definition of the user-role to create. | 
 
 ### Return type
 
@@ -123,7 +123,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with finbourne_access.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = finbourne_access.UserRolesApi(api_client)
-    userid = 'userid_example' # str | Id of the user, who's user-role will be deleted.
+    userid = 'userid_example' # str | Id of the user-role to delete.
 
     try:
         # [EXPERIMENTAL] DeleteUserRole: Delete a user-role
@@ -136,7 +136,7 @@ with finbourne_access.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userid** | **str**| Id of the user, who&#39;s user-role will be deleted. | 
+ **userid** | **str**| Id of the user-role to delete. | 
 
 ### Return type
 
@@ -163,9 +163,9 @@ void (empty response body)
 # **get_user_role**
 > UserRoleResponse get_user_role(userid)
 
-[EXPERIMENTAL] GetUserRole: Gets a user-role
+[EXPERIMENTAL] GetUserRole: Get a user-role
 
-Gets an identified user-role.
+Get an identified user-role.
 
 ### Example
 
@@ -197,10 +197,10 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with finbourne_access.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = finbourne_access.UserRolesApi(api_client)
-    userid = 'userid_example' # str | Id of the user-role to get
+    userid = 'userid_example' # str | Id of the user-role to get.
 
     try:
-        # [EXPERIMENTAL] GetUserRole: Gets a user-role
+        # [EXPERIMENTAL] GetUserRole: Get a user-role
         api_response = api_instance.get_user_role(userid)
         pprint(api_response)
     except ApiException as e:
@@ -211,7 +211,7 @@ with finbourne_access.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userid** | **str**| Id of the user-role to get | 
+ **userid** | **str**| Id of the user-role to get. | 
 
 ### Return type
 
@@ -349,8 +349,8 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with finbourne_access.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = finbourne_access.UserRolesApi(api_client)
-    userid = 'userid_example' # str | Id of the user-role to get
-user_role_update_request = {"resource":{"policies":[{"scope":"ExamplePolicyId","code":"ExampleScope"}],"policyCollections":[{"scope":"ExamplePolicyCollectionId","code":"ExampleScope"}]}} # UserRoleUpdateRequest | Dto of the user-role to be updated.
+    userid = 'userid_example' # str | Id of the user-role to be updated.
+user_role_update_request = {"resource":{"policies":[{"scope":"ExamplePolicyId","code":"ExampleScope"}],"policyCollections":[{"scope":"ExamplePolicyCollectionId","code":"ExampleScope"}]}} # UserRoleUpdateRequest | Definition of the update to apply to the user-role.
 
     try:
         # [EXPERIMENTAL] UpdateUserRole: Update a user-role
@@ -364,8 +364,8 @@ user_role_update_request = {"resource":{"policies":[{"scope":"ExamplePolicyId","
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userid** | **str**| Id of the user-role to get | 
- **user_role_update_request** | [**UserRoleUpdateRequest**](UserRoleUpdateRequest.md)| Dto of the user-role to be updated. | 
+ **userid** | **str**| Id of the user-role to be updated. | 
+ **user_role_update_request** | [**UserRoleUpdateRequest**](UserRoleUpdateRequest.md)| Definition of the update to apply to the user-role. | 
 
 ### Return type
 
