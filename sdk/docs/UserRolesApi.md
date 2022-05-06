@@ -48,7 +48,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with finbourne_access.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = finbourne_access.UserRolesApi(api_client)
-    user_role_creation_request = {"userId":"ExampleUserId","resource":{"policies":[{"scope":"ExamplePolicyId","code":"ExampleScope"}],"policyCollections":[{"scope":"ExamplePolicyId","code":"ExampleScope"}]}} # UserRoleCreationRequest | Dto of the user-role to be created.
+    user_role_creation_request = {"userId":"ExampleUserId","resource":{"policies":[{"scope":"ExamplePolicyId","code":"ExampleScope"}],"policyCollections":[{"scope":"ExamplePolicyCollectionId","code":"ExampleScope"}]}} # UserRoleCreationRequest | Dto of the user-role to be created.
 
     try:
         # [EXPERIMENTAL] CreateUserRole: Create a user-role
@@ -350,7 +350,7 @@ with finbourne_access.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = finbourne_access.UserRolesApi(api_client)
     userid = 'userid_example' # str | Id of the user-role to get
-user_role_update_request = {"resource":{"policies":[{"scope":"ExamplePolicyId","code":"ExampleScope"}],"policyCollections":[{"scope":"ExamplePolicyId","code":"ExampleScope"}]}} # UserRoleUpdateRequest | Dto of the user-role to be updated.
+user_role_update_request = {"resource":{"policies":[{"scope":"ExamplePolicyId","code":"ExampleScope"}],"policyCollections":[{"scope":"ExamplePolicyCollectionId","code":"ExampleScope"}]}} # UserRoleUpdateRequest | Dto of the user-role to be updated.
 
     try:
         # [EXPERIMENTAL] UpdateUserRole: Update a user-role

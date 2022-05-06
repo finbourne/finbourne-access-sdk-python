@@ -9,7 +9,7 @@
       "url": "https://www.finbourne.com",
       "email": "info@finbourne.com"
     },
-    "version": "0.0.1946",
+    "version": "0.0.1950",
     "x-logo": {
       "url": "https://www.lusid.com/app/assets/logo_white.png",
       "backgroundColor": "#415464"
@@ -6171,7 +6171,7 @@
                   ],
                   "policyCollections": [
                     {
-                      "scope": "ExamplePolicyId",
+                      "scope": "ExamplePolicyCollectionId",
                       "code": "ExampleScope"
                     }
                   ]
@@ -6193,7 +6193,7 @@
                   ],
                   "policyCollections": [
                     {
-                      "scope": "ExamplePolicyId",
+                      "scope": "ExamplePolicyCollectionId",
                       "code": "ExampleScope"
                     }
                   ]
@@ -6215,7 +6215,7 @@
                   ],
                   "policyCollections": [
                     {
-                      "scope": "ExamplePolicyId",
+                      "scope": "ExamplePolicyCollectionId",
                       "code": "ExampleScope"
                     }
                   ]
@@ -6237,7 +6237,7 @@
                   ],
                   "policyCollections": [
                     {
-                      "scope": "ExamplePolicyId",
+                      "scope": "ExamplePolicyCollectionId",
                       "code": "ExampleScope"
                     }
                   ]
@@ -6266,7 +6266,7 @@
                       ],
                       "policyCollections": [
                         {
-                          "scope": "ExamplePolicyId",
+                          "scope": "ExamplePolicyCollectionId",
                           "code": "ExampleScope"
                         }
                       ]
@@ -6293,7 +6293,7 @@
                       ],
                       "policyCollections": [
                         {
-                          "scope": "ExamplePolicyId",
+                          "scope": "ExamplePolicyCollectionId",
                           "code": "ExampleScope"
                         }
                       ]
@@ -6320,7 +6320,7 @@
                       ],
                       "policyCollections": [
                         {
-                          "scope": "ExamplePolicyId",
+                          "scope": "ExamplePolicyCollectionId",
                           "code": "ExampleScope"
                         }
                       ]
@@ -6415,16 +6415,100 @@
               "text/plain": {
                 "schema": {
                   "$ref": "#/components/schemas/ResourceListOfUserRoleResponse"
+                },
+                "example": {
+                  "values": [
+                    {
+                      "resource": {
+                        "policyIdRoleResource": {
+                          "policies": [
+                            {
+                              "scope": "ExamplePolicyId",
+                              "code": "ExampleScope"
+                            }
+                          ],
+                          "policyCollections": [
+                            {
+                              "scope": "ExamplePolicyCollectionId",
+                              "code": "ExampleScope"
+                            }
+                          ]
+                        }
+                      },
+                      "id": {
+                        "scope": "default",
+                        "code": "ExampleUserId"
+                      }
+                    }
+                  ],
+                  "href": "https://example.lusid.com/access/api/userroles?limit=limit&page=page",
+                  "links": []
                 }
               },
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ResourceListOfUserRoleResponse"
+                },
+                "example": {
+                  "values": [
+                    {
+                      "resource": {
+                        "policyIdRoleResource": {
+                          "policies": [
+                            {
+                              "scope": "ExamplePolicyId",
+                              "code": "ExampleScope"
+                            }
+                          ],
+                          "policyCollections": [
+                            {
+                              "scope": "ExamplePolicyCollectionId",
+                              "code": "ExampleScope"
+                            }
+                          ]
+                        }
+                      },
+                      "id": {
+                        "scope": "default",
+                        "code": "ExampleUserId"
+                      }
+                    }
+                  ],
+                  "href": "https://example.lusid.com/access/api/userroles?limit=limit&page=page",
+                  "links": []
                 }
               },
               "text/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ResourceListOfUserRoleResponse"
+                },
+                "example": {
+                  "values": [
+                    {
+                      "resource": {
+                        "policyIdRoleResource": {
+                          "policies": [
+                            {
+                              "scope": "ExamplePolicyId",
+                              "code": "ExampleScope"
+                            }
+                          ],
+                          "policyCollections": [
+                            {
+                              "scope": "ExamplePolicyCollectionId",
+                              "code": "ExampleScope"
+                            }
+                          ]
+                        }
+                      },
+                      "id": {
+                        "scope": "default",
+                        "code": "ExampleUserId"
+                      }
+                    }
+                  ],
+                  "href": "https://example.lusid.com/access/api/userroles?limit=limit&page=page",
+                  "links": []
                 }
               }
             }
@@ -6505,7 +6589,7 @@
                   ],
                   "policyCollections": [
                     {
-                      "scope": "ExamplePolicyId",
+                      "scope": "ExamplePolicyCollectionId",
                       "code": "ExampleScope"
                     }
                   ]
@@ -6526,7 +6610,7 @@
                   ],
                   "policyCollections": [
                     {
-                      "scope": "ExamplePolicyId",
+                      "scope": "ExamplePolicyCollectionId",
                       "code": "ExampleScope"
                     }
                   ]
@@ -6547,7 +6631,7 @@
                   ],
                   "policyCollections": [
                     {
-                      "scope": "ExamplePolicyId",
+                      "scope": "ExamplePolicyCollectionId",
                       "code": "ExampleScope"
                     }
                   ]
@@ -6568,7 +6652,7 @@
                   ],
                   "policyCollections": [
                     {
-                      "scope": "ExamplePolicyId",
+                      "scope": "ExamplePolicyCollectionId",
                       "code": "ExampleScope"
                     }
                   ]
@@ -6597,7 +6681,7 @@
                       ],
                       "policyCollections": [
                         {
-                          "scope": "ExamplePolicyId",
+                          "scope": "ExamplePolicyCollectionId",
                           "code": "ExampleScope"
                         }
                       ]
@@ -6624,7 +6708,7 @@
                       ],
                       "policyCollections": [
                         {
-                          "scope": "ExamplePolicyId",
+                          "scope": "ExamplePolicyCollectionId",
                           "code": "ExampleScope"
                         }
                       ]
@@ -6651,7 +6735,7 @@
                       ],
                       "policyCollections": [
                         {
-                          "scope": "ExamplePolicyId",
+                          "scope": "ExamplePolicyCollectionId",
                           "code": "ExampleScope"
                         }
                       ]
@@ -6741,7 +6825,7 @@
                       ],
                       "policyCollections": [
                         {
-                          "scope": "ExamplePolicyId",
+                          "scope": "ExamplePolicyCollectionId",
                           "code": "ExampleScope"
                         }
                       ]
@@ -6768,7 +6852,7 @@
                       ],
                       "policyCollections": [
                         {
-                          "scope": "ExamplePolicyId",
+                          "scope": "ExamplePolicyCollectionId",
                           "code": "ExampleScope"
                         }
                       ]
@@ -6795,7 +6879,7 @@
                       ],
                       "policyCollections": [
                         {
-                          "scope": "ExamplePolicyId",
+                          "scope": "ExamplePolicyCollectionId",
                           "code": "ExampleScope"
                         }
                       ]
