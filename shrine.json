@@ -9,7 +9,7 @@
       "url": "https://www.finbourne.com",
       "email": "info@finbourne.com"
     },
-    "version": "0.0.2068",
+    "version": "0.0.2080",
     "x-logo": {
       "url": "https://www.lusid.com/app/assets/logo_white.png",
       "backgroundColor": "#415464"
@@ -6553,6 +6553,213 @@
       }
     },
     "/api/userroles/{userid}": {
+      "get": {
+        "tags": [
+          "User-roles"
+        ],
+        "summary": "[EXPERIMENTAL] GetUserRole: Get a user-role",
+        "description": "Get an identified user-role.",
+        "operationId": "GetUserRole",
+        "parameters": [
+          {
+            "name": "userid",
+            "in": "path",
+            "description": "Id of the user-role to get.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Id of the user-role to get."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The requested user role.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserRoleResponse"
+                },
+                "example": {
+                  "resource": {
+                    "policyIdRoleResource": {
+                      "policies": [
+                        {
+                          "scope": "ExamplePolicyId",
+                          "code": "ExampleScope"
+                        }
+                      ],
+                      "policyCollections": [
+                        {
+                          "scope": "ExamplePolicyCollectionId",
+                          "code": "ExampleScope"
+                        }
+                      ]
+                    }
+                  },
+                  "id": {
+                    "scope": "default",
+                    "code": "ExampleUserId"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserRoleResponse"
+                },
+                "example": {
+                  "resource": {
+                    "policyIdRoleResource": {
+                      "policies": [
+                        {
+                          "scope": "ExamplePolicyId",
+                          "code": "ExampleScope"
+                        }
+                      ],
+                      "policyCollections": [
+                        {
+                          "scope": "ExamplePolicyCollectionId",
+                          "code": "ExampleScope"
+                        }
+                      ]
+                    }
+                  },
+                  "id": {
+                    "scope": "default",
+                    "code": "ExampleUserId"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserRoleResponse"
+                },
+                "example": {
+                  "resource": {
+                    "policyIdRoleResource": {
+                      "policies": [
+                        {
+                          "scope": "ExamplePolicyId",
+                          "code": "ExampleScope"
+                        }
+                      ],
+                      "policyCollections": [
+                        {
+                          "scope": "ExamplePolicyCollectionId",
+                          "code": "ExampleScope"
+                        }
+                      ]
+                    }
+                  },
+                  "id": {
+                    "scope": "default",
+                    "code": "ExampleUserId"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The details of the input related failure",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2": []
+          }
+        ],
+        "x-fbn-apistatus": "Experimental"
+      },
+      "delete": {
+        "tags": [
+          "User-roles"
+        ],
+        "summary": "[EXPERIMENTAL] DeleteUserRole: Delete a user-role",
+        "description": "Deletes an identified user-role.",
+        "operationId": "DeleteUserRole",
+        "parameters": [
+          {
+            "name": "userid",
+            "in": "path",
+            "description": "Id of the user-role to delete.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Id of the user-role to delete."
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "The details of the input related failure",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2": []
+          }
+        ],
+        "x-fbn-apistatus": "Experimental"
+      }
+    },
+    "/api/userroles/{userid}/update": {
       "post": {
         "tags": [
           "User-roles"
@@ -6748,211 +6955,6 @@
                 }
               }
             }
-          },
-          "400": {
-            "description": "The details of the input related failure",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "Error response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/LusidProblemDetails"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "oauth2": []
-          }
-        ],
-        "x-fbn-apistatus": "Experimental"
-      },
-      "get": {
-        "tags": [
-          "User-roles"
-        ],
-        "summary": "[EXPERIMENTAL] GetUserRole: Get a user-role",
-        "description": "Get an identified user-role.",
-        "operationId": "GetUserRole",
-        "parameters": [
-          {
-            "name": "userid",
-            "in": "path",
-            "description": "Id of the user-role to get.",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "description": "Id of the user-role to get."
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "The requested user role.",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/UserRoleResponse"
-                },
-                "example": {
-                  "resource": {
-                    "policyIdRoleResource": {
-                      "policies": [
-                        {
-                          "scope": "ExamplePolicyId",
-                          "code": "ExampleScope"
-                        }
-                      ],
-                      "policyCollections": [
-                        {
-                          "scope": "ExamplePolicyCollectionId",
-                          "code": "ExampleScope"
-                        }
-                      ]
-                    }
-                  },
-                  "id": {
-                    "scope": "default",
-                    "code": "ExampleUserId"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UserRoleResponse"
-                },
-                "example": {
-                  "resource": {
-                    "policyIdRoleResource": {
-                      "policies": [
-                        {
-                          "scope": "ExamplePolicyId",
-                          "code": "ExampleScope"
-                        }
-                      ],
-                      "policyCollections": [
-                        {
-                          "scope": "ExamplePolicyCollectionId",
-                          "code": "ExampleScope"
-                        }
-                      ]
-                    }
-                  },
-                  "id": {
-                    "scope": "default",
-                    "code": "ExampleUserId"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UserRoleResponse"
-                },
-                "example": {
-                  "resource": {
-                    "policyIdRoleResource": {
-                      "policies": [
-                        {
-                          "scope": "ExamplePolicyId",
-                          "code": "ExampleScope"
-                        }
-                      ],
-                      "policyCollections": [
-                        {
-                          "scope": "ExamplePolicyCollectionId",
-                          "code": "ExampleScope"
-                        }
-                      ]
-                    }
-                  },
-                  "id": {
-                    "scope": "default",
-                    "code": "ExampleUserId"
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "The details of the input related failure",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "Error response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/LusidProblemDetails"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "oauth2": []
-          }
-        ],
-        "x-fbn-apistatus": "Experimental"
-      },
-      "delete": {
-        "tags": [
-          "User-roles"
-        ],
-        "summary": "[EXPERIMENTAL] DeleteUserRole: Delete a user-role",
-        "description": "Deletes an identified user-role.",
-        "operationId": "DeleteUserRole",
-        "parameters": [
-          {
-            "name": "userid",
-            "in": "path",
-            "description": "Id of the user-role to delete.",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "description": "Id of the user-role to delete."
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Success"
           },
           "400": {
             "description": "The details of the input related failure",

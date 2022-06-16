@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**delete_user_role**](UserRolesApi.md#delete_user_role) | **DELETE** /api/userroles/{userid} | [EXPERIMENTAL] DeleteUserRole: Delete a user-role
 [**get_user_role**](UserRolesApi.md#get_user_role) | **GET** /api/userroles/{userid} | [EXPERIMENTAL] GetUserRole: Get a user-role
 [**list_user_roles**](UserRolesApi.md#list_user_roles) | **GET** /api/userroles | [EXPERIMENTAL] ListUserRoles: List user-roles
-[**update_user_role**](UserRolesApi.md#update_user_role) | **POST** /api/userroles/{userid} | [EXPERIMENTAL] UpdateUserRole: Update a user-role
+[**update_user_role**](UserRolesApi.md#update_user_role) | **POST** /api/userroles/{userid}/update | [EXPERIMENTAL] UpdateUserRole: Update a user-role
 
 
 # **create_user_role**
