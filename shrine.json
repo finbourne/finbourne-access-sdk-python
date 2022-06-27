@@ -9,7 +9,7 @@
       "url": "https://www.finbourne.com",
       "email": "info@finbourne.com"
     },
-    "version": "0.0.2100",
+    "version": "0.0.2102",
     "x-logo": {
       "url": "https://www.lusid.com/app/assets/logo_white.png",
       "backgroundColor": "#415464"
@@ -1509,7 +1509,7 @@
         "tags": [
           "Policies"
         ],
-        "summary": "[EXPERIMENTAL] PagePolicies: Page Policies",
+        "summary": "[EARLY ACCESS] PagePolicies: Page Policies",
         "description": "Gets all PolicyCollections in a scope in pages. Under development.",
         "operationId": "PagePolicies",
         "parameters": [
@@ -1849,7 +1849,7 @@
             "oauth2": []
           }
         ],
-        "x-fbn-apistatus": "Experimental"
+        "x-fbn-apistatus": "EarlyAccess"
       }
     },
     "/api/policies/{code}": {
@@ -3247,7 +3247,7 @@
         "tags": [
           "Policies"
         ],
-        "summary": "[EXPERIMENTAL] PagePolicyCollections: Page PolicyCollections",
+        "summary": "[EARLY ACCESS] PagePolicyCollections: Page PolicyCollections",
         "description": "Gets all PolicyCollections in a scope in pages. Under development.",
         "operationId": "PagePolicyCollections",
         "parameters": [
@@ -3461,7 +3461,7 @@
             "oauth2": []
           }
         ],
-        "x-fbn-apistatus": "Experimental"
+        "x-fbn-apistatus": "EarlyAccess"
       }
     },
     "/api/policycollections/{code}": {
@@ -3974,7 +3974,7 @@
         "tags": [
           "Policies"
         ],
-        "summary": "[EXPERIMENTAL] AddToPolicyCollection: Add To PolicyCollection",
+        "summary": "[EARLY ACCESS] AddToPolicyCollection: Add To PolicyCollection",
         "description": "Add Policies and/or PolicyCollections to a PolicyCollection",
         "operationId": "AddToPolicyCollection",
         "parameters": [
@@ -4223,7 +4223,7 @@
             "oauth2": []
           }
         ],
-        "x-fbn-apistatus": "Experimental"
+        "x-fbn-apistatus": "EarlyAccess"
       }
     },
     "/api/policycollections/{code}/remove": {
@@ -4231,7 +4231,7 @@
         "tags": [
           "Policies"
         ],
-        "summary": "[EXPERIMENTAL] RemoveFromPolicyCollection: Remove From PolicyCollection",
+        "summary": "[EARLY ACCESS] RemoveFromPolicyCollection: Remove From PolicyCollection",
         "description": "Remove Policies and/or PolicyCollections from a PolicyCollection",
         "operationId": "RemoveFromPolicyCollection",
         "parameters": [
@@ -4480,7 +4480,7 @@
             "oauth2": []
           }
         ],
-        "x-fbn-apistatus": "Experimental"
+        "x-fbn-apistatus": "EarlyAccess"
       }
     },
     "/api/roles": {
@@ -5678,7 +5678,7 @@
         "tags": [
           "Roles"
         ],
-        "summary": "[EXPERIMENTAL] AddPolicyCollectionToRole: Add policy collections to a role",
+        "summary": "[EARLY ACCESS] AddPolicyCollectionToRole: Add policy collections to a role",
         "description": "Assigns policy collections to a role",
         "operationId": "AddPolicyCollectionToRole",
         "parameters": [
@@ -5933,7 +5933,7 @@
             "oauth2": []
           }
         ],
-        "x-fbn-apistatus": "Experimental"
+        "x-fbn-apistatus": "EarlyAccess"
       }
     },
     "/api/roles/{scope}/{code}/policycollections/{policycollectionscope}/{policycollectioncode}": {
@@ -5941,7 +5941,7 @@
         "tags": [
           "Roles"
         ],
-        "summary": "[EXPERIMENTAL] RemovePolicyCollectionFromRole: Remove policy collection from role",
+        "summary": "[EARLY ACCESS] RemovePolicyCollectionFromRole: Remove policy collection from role",
         "description": "Removes a policy collection from a role",
         "operationId": "RemovePolicyCollectionFromRole",
         "parameters": [
@@ -6142,7 +6142,7 @@
             "oauth2": []
           }
         ],
-        "x-fbn-apistatus": "Experimental"
+        "x-fbn-apistatus": "EarlyAccess"
       }
     },
     "/api/userroles": {

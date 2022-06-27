@@ -4,7 +4,7 @@ All URIs are relative to *https://fbn-ci.lusid.com/access*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**add_to_policy_collection**](PoliciesApi.md#add_to_policy_collection) | **POST** /api/policycollections/{code}/add | [EXPERIMENTAL] AddToPolicyCollection: Add To PolicyCollection
+[**add_to_policy_collection**](PoliciesApi.md#add_to_policy_collection) | **POST** /api/policycollections/{code}/add | [EARLY ACCESS] AddToPolicyCollection: Add To PolicyCollection
 [**create_policy**](PoliciesApi.md#create_policy) | **POST** /api/policies | [EARLY ACCESS] CreatePolicy: Create Policy
 [**create_policy_collection**](PoliciesApi.md#create_policy_collection) | **POST** /api/policycollections | [EARLY ACCESS] CreatePolicyCollection: Create PolicyCollection
 [**delete_policy**](PoliciesApi.md#delete_policy) | **DELETE** /api/policies/{code} | [EARLY ACCESS] DeletePolicy: Delete Policy
@@ -15,9 +15,9 @@ Method | HTTP request | Description
 [**get_policy_collection**](PoliciesApi.md#get_policy_collection) | **GET** /api/policycollections/{code} | [EARLY ACCESS] GetPolicyCollection: Get PolicyCollection
 [**list_policies**](PoliciesApi.md#list_policies) | **GET** /api/policies | [EARLY ACCESS] ListPolicies: List Policies
 [**list_policy_collections**](PoliciesApi.md#list_policy_collections) | **GET** /api/policycollections | [EARLY ACCESS] ListPolicyCollections: List PolicyCollections
-[**page_policies**](PoliciesApi.md#page_policies) | **GET** /api/policies/page | [EXPERIMENTAL] PagePolicies: Page Policies
-[**page_policy_collections**](PoliciesApi.md#page_policy_collections) | **GET** /api/policycollections/page | [EXPERIMENTAL] PagePolicyCollections: Page PolicyCollections
-[**remove_from_policy_collection**](PoliciesApi.md#remove_from_policy_collection) | **POST** /api/policycollections/{code}/remove | [EXPERIMENTAL] RemoveFromPolicyCollection: Remove From PolicyCollection
+[**page_policies**](PoliciesApi.md#page_policies) | **GET** /api/policies/page | [EARLY ACCESS] PagePolicies: Page Policies
+[**page_policy_collections**](PoliciesApi.md#page_policy_collections) | **GET** /api/policycollections/page | [EARLY ACCESS] PagePolicyCollections: Page PolicyCollections
+[**remove_from_policy_collection**](PoliciesApi.md#remove_from_policy_collection) | **POST** /api/policycollections/{code}/remove | [EARLY ACCESS] RemoveFromPolicyCollection: Remove From PolicyCollection
 [**update_policy**](PoliciesApi.md#update_policy) | **PUT** /api/policies/{code} | [EARLY ACCESS] UpdatePolicy: Update Policy
 [**update_policy_collection**](PoliciesApi.md#update_policy_collection) | **PUT** /api/policycollections/{code} | [EARLY ACCESS] UpdatePolicyCollection: Update PolicyCollection
 
@@ -25,7 +25,7 @@ Method | HTTP request | Description
 # **add_to_policy_collection**
 > PolicyCollectionResponse add_to_policy_collection(code, add_to_policy_collection_request, scope=scope)
 
-[EXPERIMENTAL] AddToPolicyCollection: Add To PolicyCollection
+[EARLY ACCESS] AddToPolicyCollection: Add To PolicyCollection
 
 Add Policies and/or PolicyCollections to a PolicyCollection
 
@@ -64,7 +64,7 @@ add_to_policy_collection_request = {"policies":[{"scope":"default","code":"offic
 scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the PolicyCollection (optional)
 
     try:
-        # [EXPERIMENTAL] AddToPolicyCollection: Add To PolicyCollection
+        # [EARLY ACCESS] AddToPolicyCollection: Add To PolicyCollection
         api_response = api_instance.add_to_policy_collection(code, add_to_policy_collection_request, scope=scope)
         pprint(api_response)
     except ApiException as e:
@@ -898,7 +898,7 @@ Name | Type | Description  | Notes
 # **page_policies**
 > ResourceListOfPolicyResponse page_policies(as_at=as_at, sort_by=sort_by, limit=limit, filter=filter, page=page)
 
-[EXPERIMENTAL] PagePolicies: Page Policies
+[EARLY ACCESS] PagePolicies: Page Policies
 
 Gets all PolicyCollections in a scope in pages. Under development.
 
@@ -939,7 +939,7 @@ filter = 'filter_example' # str | Optional. Expression to filter the result set 
 page = 'page_example' # str | Optional. Paging token returned from a previous result (optional)
 
     try:
-        # [EXPERIMENTAL] PagePolicies: Page Policies
+        # [EARLY ACCESS] PagePolicies: Page Policies
         api_response = api_instance.page_policies(as_at=as_at, sort_by=sort_by, limit=limit, filter=filter, page=page)
         pprint(api_response)
     except ApiException as e:
@@ -981,7 +981,7 @@ Name | Type | Description  | Notes
 # **page_policy_collections**
 > ResourceListOfPolicyCollectionResponse page_policy_collections(as_at=as_at, sort_by=sort_by, limit=limit, filter=filter, page=page)
 
-[EXPERIMENTAL] PagePolicyCollections: Page PolicyCollections
+[EARLY ACCESS] PagePolicyCollections: Page PolicyCollections
 
 Gets all PolicyCollections in a scope in pages. Under development.
 
@@ -1022,7 +1022,7 @@ filter = 'filter_example' # str | Optional. Expression to filter the result set 
 page = 'page_example' # str | Optional. Paging token returned from a previous result (optional)
 
     try:
-        # [EXPERIMENTAL] PagePolicyCollections: Page PolicyCollections
+        # [EARLY ACCESS] PagePolicyCollections: Page PolicyCollections
         api_response = api_instance.page_policy_collections(as_at=as_at, sort_by=sort_by, limit=limit, filter=filter, page=page)
         pprint(api_response)
     except ApiException as e:
@@ -1064,7 +1064,7 @@ Name | Type | Description  | Notes
 # **remove_from_policy_collection**
 > PolicyCollectionResponse remove_from_policy_collection(code, remove_from_policy_collection_request, scope=scope)
 
-[EXPERIMENTAL] RemoveFromPolicyCollection: Remove From PolicyCollection
+[EARLY ACCESS] RemoveFromPolicyCollection: Remove From PolicyCollection
 
 Remove Policies and/or PolicyCollections from a PolicyCollection
 
@@ -1103,7 +1103,7 @@ remove_from_policy_collection_request = {"policies":[{"scope":"default","code":"
 scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the PolicyCollection (optional)
 
     try:
-        # [EXPERIMENTAL] RemoveFromPolicyCollection: Remove From PolicyCollection
+        # [EARLY ACCESS] RemoveFromPolicyCollection: Remove From PolicyCollection
         api_response = api_instance.remove_from_policy_collection(code, remove_from_policy_collection_request, scope=scope)
         pprint(api_response)
     except ApiException as e:

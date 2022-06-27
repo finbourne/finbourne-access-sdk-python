@@ -4,19 +4,19 @@ All URIs are relative to *https://fbn-ci.lusid.com/access*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**add_policy_collection_to_role**](RolesApi.md#add_policy_collection_to_role) | **POST** /api/roles/{scope}/{code}/policycollections | [EXPERIMENTAL] AddPolicyCollectionToRole: Add policy collections to a role
+[**add_policy_collection_to_role**](RolesApi.md#add_policy_collection_to_role) | **POST** /api/roles/{scope}/{code}/policycollections | [EARLY ACCESS] AddPolicyCollectionToRole: Add policy collections to a role
 [**create_role**](RolesApi.md#create_role) | **POST** /api/roles | [EARLY ACCESS] CreateRole: Create Role
 [**delete_role**](RolesApi.md#delete_role) | **DELETE** /api/roles/{code} | [EARLY ACCESS] DeleteRole: Delete Role
 [**get_role**](RolesApi.md#get_role) | **GET** /api/roles/{code} | [EARLY ACCESS] GetRole: Get Role
 [**list_roles**](RolesApi.md#list_roles) | **GET** /api/roles | [EARLY ACCESS] ListRoles: List Roles
-[**remove_policy_collection_from_role**](RolesApi.md#remove_policy_collection_from_role) | **DELETE** /api/roles/{scope}/{code}/policycollections/{policycollectionscope}/{policycollectioncode} | [EXPERIMENTAL] RemovePolicyCollectionFromRole: Remove policy collection from role
+[**remove_policy_collection_from_role**](RolesApi.md#remove_policy_collection_from_role) | **DELETE** /api/roles/{scope}/{code}/policycollections/{policycollectionscope}/{policycollectioncode} | [EARLY ACCESS] RemovePolicyCollectionFromRole: Remove policy collection from role
 [**update_role**](RolesApi.md#update_role) | **PUT** /api/roles/{code} | [EARLY ACCESS] UpdateRole: Update Role
 
 
 # **add_policy_collection_to_role**
 > RoleResponse add_policy_collection_to_role(scope, code, add_policy_collection_to_role_request)
 
-[EXPERIMENTAL] AddPolicyCollectionToRole: Add policy collections to a role
+[EARLY ACCESS] AddPolicyCollectionToRole: Add policy collections to a role
 
 Assigns policy collections to a role
 
@@ -55,7 +55,7 @@ code = 'code_example' # str | The code of the Role
 add_policy_collection_to_role_request = {"policyCollections":[{"scope":"ScopeValue","code":"SomePolCollectionCode"},{"scope":"ScopeValue2","code":"AnotherPolicyCollection"}]} # AddPolicyCollectionToRoleRequest | The policy collections to add
 
     try:
-        # [EXPERIMENTAL] AddPolicyCollectionToRole: Add policy collections to a role
+        # [EARLY ACCESS] AddPolicyCollectionToRole: Add policy collections to a role
         api_response = api_instance.add_policy_collection_to_role(scope, code, add_policy_collection_to_role_request)
         pprint(api_response)
     except ApiException as e:
@@ -410,7 +410,7 @@ Name | Type | Description  | Notes
 # **remove_policy_collection_from_role**
 > RoleResponse remove_policy_collection_from_role(scope, code, policycollectionscope, policycollectioncode)
 
-[EXPERIMENTAL] RemovePolicyCollectionFromRole: Remove policy collection from role
+[EARLY ACCESS] RemovePolicyCollectionFromRole: Remove policy collection from role
 
 Removes a policy collection from a role
 
@@ -450,7 +450,7 @@ policycollectionscope = 'policycollectionscope_example' # str | The scope of pol
 policycollectioncode = 'policycollectioncode_example' # str | The code of the policy collection to remove from the Role
 
     try:
-        # [EXPERIMENTAL] RemovePolicyCollectionFromRole: Remove policy collection from role
+        # [EARLY ACCESS] RemovePolicyCollectionFromRole: Remove policy collection from role
         api_response = api_instance.remove_policy_collection_from_role(scope, code, policycollectionscope, policycollectioncode)
         pprint(api_response)
     except ApiException as e:
