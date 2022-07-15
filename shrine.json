@@ -9,7 +9,7 @@
       "url": "https://www.finbourne.com",
       "email": "info@finbourne.com"
     },
-    "version": "0.0.2182",
+    "version": "0.0.2184",
     "x-logo": {
       "url": "https://www.lusid.com/app/assets/logo_white.png",
       "backgroundColor": "#415464"
@@ -6759,6 +6759,580 @@
         "x-fbn-apistatus": "Experimental"
       }
     },
+    "/api/userroles/{userid}/policies": {
+      "post": {
+        "tags": [
+          "User-roles"
+        ],
+        "summary": "[EXPERIMENTAL] AddPolicyToUserRole: Add a policy to a user-role",
+        "description": "Adds a policy to a user-role.",
+        "operationId": "AddPolicyToUserRole",
+        "parameters": [
+          {
+            "name": "userid",
+            "in": "path",
+            "description": "Id of the User Role to get",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Id of the User Role to get"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Dto of the policy to be added.",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddPolicyToRoleRequest"
+              },
+              "example": {
+                "policies": [
+                  {
+                    "scope": "ExampleAddPolicyScope",
+                    "code": "ExampleAddPolicyCode"
+                  }
+                ]
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddPolicyToRoleRequest"
+              },
+              "example": {
+                "policies": [
+                  {
+                    "scope": "ExampleAddPolicyScope",
+                    "code": "ExampleAddPolicyCode"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddPolicyToRoleRequest"
+              },
+              "example": {
+                "policies": [
+                  {
+                    "scope": "ExampleAddPolicyScope",
+                    "code": "ExampleAddPolicyCode"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddPolicyToRoleRequest"
+              },
+              "example": {
+                "policies": [
+                  {
+                    "scope": "ExampleAddPolicyScope",
+                    "code": "ExampleAddPolicyCode"
+                  }
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "User role with added policy collection.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserRoleResponse"
+                },
+                "example": {
+                  "resource": {
+                    "policyIdRoleResource": {
+                      "policies": [
+                        {
+                          "scope": "ExamplePolicyId",
+                          "code": "ExampleScope"
+                        }
+                      ],
+                      "policyCollections": [
+                        {
+                          "scope": "ExamplePolicyCollectionId",
+                          "code": "ExampleScope"
+                        }
+                      ]
+                    }
+                  },
+                  "id": {
+                    "scope": "default",
+                    "code": "ExampleUserId"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserRoleResponse"
+                },
+                "example": {
+                  "resource": {
+                    "policyIdRoleResource": {
+                      "policies": [
+                        {
+                          "scope": "ExamplePolicyId",
+                          "code": "ExampleScope"
+                        }
+                      ],
+                      "policyCollections": [
+                        {
+                          "scope": "ExamplePolicyCollectionId",
+                          "code": "ExampleScope"
+                        }
+                      ]
+                    }
+                  },
+                  "id": {
+                    "scope": "default",
+                    "code": "ExampleUserId"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserRoleResponse"
+                },
+                "example": {
+                  "resource": {
+                    "policyIdRoleResource": {
+                      "policies": [
+                        {
+                          "scope": "ExamplePolicyId",
+                          "code": "ExampleScope"
+                        }
+                      ],
+                      "policyCollections": [
+                        {
+                          "scope": "ExamplePolicyCollectionId",
+                          "code": "ExampleScope"
+                        }
+                      ]
+                    }
+                  },
+                  "id": {
+                    "scope": "default",
+                    "code": "ExampleUserId"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The details of the input related failure",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2": []
+          }
+        ],
+        "x-fbn-apistatus": "Experimental"
+      }
+    },
+    "/api/userroles/{userid}/policies/{policyScope}/{policyCode}": {
+      "delete": {
+        "tags": [
+          "User-roles"
+        ],
+        "summary": "[EXPERIMENTAL] RemovePolicyFromUserRole: Remove a policy from a user-role",
+        "description": "Removes a policy from a user-role.",
+        "operationId": "RemovePolicyFromUserRole",
+        "parameters": [
+          {
+            "name": "userid",
+            "in": "path",
+            "description": "Id of the User Role to get",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Id of the User Role to get"
+            }
+          },
+          {
+            "name": "policyScope",
+            "in": "path",
+            "description": "The scope of the policy to remove from the User Role",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The scope of the policy to remove from the User Role"
+            }
+          },
+          {
+            "name": "policyCode",
+            "in": "path",
+            "description": "The code of the policy to remove from the User Role",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The code of the policy to remove from the User Role"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "The details of the input related failure",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2": []
+          }
+        ],
+        "x-fbn-apistatus": "Experimental"
+      }
+    },
+    "/api/userroles/{userid}/policycollections": {
+      "post": {
+        "tags": [
+          "User-roles"
+        ],
+        "summary": "[EXPERIMENTAL] AddPolicyCollectionToUserRole: Add a policy collection to a user-role",
+        "description": "Adds a policy collection to a user-role.",
+        "operationId": "AddPolicyCollectionToUserRole",
+        "parameters": [
+          {
+            "name": "userid",
+            "in": "path",
+            "description": "Id of the User Role to get",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Id of the User Role to get"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Dto of the policy collection to be added.",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddPolicyCollectionToRoleRequest"
+              },
+              "example": {
+                "policyCollections": [
+                  {
+                    "scope": "ExampleAddPolicyCollectionScope",
+                    "code": "ExampleAddPolicyCollectionCode"
+                  }
+                ]
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddPolicyCollectionToRoleRequest"
+              },
+              "example": {
+                "policyCollections": [
+                  {
+                    "scope": "ExampleAddPolicyCollectionScope",
+                    "code": "ExampleAddPolicyCollectionCode"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddPolicyCollectionToRoleRequest"
+              },
+              "example": {
+                "policyCollections": [
+                  {
+                    "scope": "ExampleAddPolicyCollectionScope",
+                    "code": "ExampleAddPolicyCollectionCode"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddPolicyCollectionToRoleRequest"
+              },
+              "example": {
+                "policyCollections": [
+                  {
+                    "scope": "ExampleAddPolicyCollectionScope",
+                    "code": "ExampleAddPolicyCollectionCode"
+                  }
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "User role with added policy collection.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserRoleResponse"
+                },
+                "example": {
+                  "resource": {
+                    "policyIdRoleResource": {
+                      "policies": [
+                        {
+                          "scope": "ExamplePolicyId",
+                          "code": "ExampleScope"
+                        }
+                      ],
+                      "policyCollections": [
+                        {
+                          "scope": "ExamplePolicyCollectionId",
+                          "code": "ExampleScope"
+                        }
+                      ]
+                    }
+                  },
+                  "id": {
+                    "scope": "default",
+                    "code": "ExampleUserId"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserRoleResponse"
+                },
+                "example": {
+                  "resource": {
+                    "policyIdRoleResource": {
+                      "policies": [
+                        {
+                          "scope": "ExamplePolicyId",
+                          "code": "ExampleScope"
+                        }
+                      ],
+                      "policyCollections": [
+                        {
+                          "scope": "ExamplePolicyCollectionId",
+                          "code": "ExampleScope"
+                        }
+                      ]
+                    }
+                  },
+                  "id": {
+                    "scope": "default",
+                    "code": "ExampleUserId"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserRoleResponse"
+                },
+                "example": {
+                  "resource": {
+                    "policyIdRoleResource": {
+                      "policies": [
+                        {
+                          "scope": "ExamplePolicyId",
+                          "code": "ExampleScope"
+                        }
+                      ],
+                      "policyCollections": [
+                        {
+                          "scope": "ExamplePolicyCollectionId",
+                          "code": "ExampleScope"
+                        }
+                      ]
+                    }
+                  },
+                  "id": {
+                    "scope": "default",
+                    "code": "ExampleUserId"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The details of the input related failure",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2": []
+          }
+        ],
+        "x-fbn-apistatus": "Experimental"
+      }
+    },
+    "/api/userroles/{userid}/policycollections/{policyCollectionScope}/{policyCollectionCode}": {
+      "delete": {
+        "tags": [
+          "User-roles"
+        ],
+        "summary": "[EXPERIMENTAL] RemovePolicyCollectionFromUserRole: Remove a policy collection from a user-role",
+        "description": "Removes a policy collection from a user-role.",
+        "operationId": "RemovePolicyCollectionFromUserRole",
+        "parameters": [
+          {
+            "name": "userid",
+            "in": "path",
+            "description": "Id of the User Role to get",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Id of the User Role to get"
+            }
+          },
+          {
+            "name": "policyCollectionScope",
+            "in": "path",
+            "description": "The scope of policy collection to remove from the User Role",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The scope of policy collection to remove from the User Role"
+            }
+          },
+          {
+            "name": "policyCollectionCode",
+            "in": "path",
+            "description": "The code of the policy collection to remove from the User Role",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The code of the policy collection to remove from the User Role"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "The details of the input related failure",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2": []
+          }
+        ],
+        "x-fbn-apistatus": "Experimental"
+      }
+    },
     "/api/userroles/{userid}/update": {
       "post": {
         "tags": [
@@ -7111,6 +7685,23 @@
         },
         "additionalProperties": false,
         "description": "Request body used to add Policy Collections to a Role"
+      },
+      "AddPolicyToRoleRequest": {
+        "required": [
+          "policies"
+        ],
+        "type": "object",
+        "properties": {
+          "policies": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PolicyId"
+            },
+            "description": "Identifiers of policies to add to a role"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Request body used to add Policies to a Role"
       },
       "AddToPolicyCollectionRequest": {
         "type": "object",
