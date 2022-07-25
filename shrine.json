@@ -9,7 +9,7 @@
       "url": "https://www.finbourne.com",
       "email": "info@finbourne.com"
     },
-    "version": "0.0.2190",
+    "version": "0.0.2192",
     "x-logo": {
       "url": "https://www.lusid.com/app/assets/logo_white.png",
       "backgroundColor": "#415464"
@@ -6381,6 +6381,32 @@
         "operationId": "ListUserRoles",
         "parameters": [
           {
+            "name": "filter",
+            "in": "query",
+            "description": "Optional. Expression to filter the result set",
+            "schema": {
+              "maxLength": 16384,
+              "minLength": 0,
+              "pattern": "^[\\s\\S]*$",
+              "type": "string",
+              "description": "Optional. Expression to filter the result set",
+              "nullable": true
+            }
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName",
+            "schema": {
+              "maxLength": 16384,
+              "minLength": 1,
+              "pattern": "^[\\s\\S]*$",
+              "type": "string",
+              "description": "Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName",
+              "nullable": true
+            }
+          },
+          {
             "name": "limit",
             "in": "query",
             "description": "Optional. When paginating, limit the number of returned results to this many.",
@@ -6441,7 +6467,7 @@
                       }
                     }
                   ],
-                  "href": "https://example.lusid.com/access/api/userroles?limit=limit&page=page",
+                  "href": "https://example.lusid.com/access/api/userroles?filter=filter&sortBy=sortBy&limit=limit&page=page",
                   "links": []
                 }
               },
@@ -6474,7 +6500,7 @@
                       }
                     }
                   ],
-                  "href": "https://example.lusid.com/access/api/userroles?limit=limit&page=page",
+                  "href": "https://example.lusid.com/access/api/userroles?filter=filter&sortBy=sortBy&limit=limit&page=page",
                   "links": []
                 }
               },
@@ -6507,7 +6533,7 @@
                       }
                     }
                   ],
-                  "href": "https://example.lusid.com/access/api/userroles?limit=limit&page=page",
+                  "href": "https://example.lusid.com/access/api/userroles?filter=filter&sortBy=sortBy&limit=limit&page=page",
                   "links": []
                 }
               }

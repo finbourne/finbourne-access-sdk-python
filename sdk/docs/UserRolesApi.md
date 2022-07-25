@@ -394,7 +394,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_user_roles**
-> ResourceListOfUserRoleResponse list_user_roles(limit=limit, page=page)
+> ResourceListOfUserRoleResponse list_user_roles(filter=filter, sort_by=sort_by, limit=limit, page=page)
 
 [EXPERIMENTAL] ListUserRoles: List user-roles
 
@@ -430,12 +430,14 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 with finbourne_access.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = finbourne_access.UserRolesApi(api_client)
-    limit = 56 # int | Optional. When paginating, limit the number of returned results to this many. (optional)
+    filter = 'filter_example' # str | Optional. Expression to filter the result set (optional)
+sort_by = 'sort_by_example' # str | Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName (optional)
+limit = 56 # int | Optional. When paginating, limit the number of returned results to this many. (optional)
 page = 'page_example' # str | Optional. Encoded page string returned from a previous search result that will retrieve              the next page of data. (optional)
 
     try:
         # [EXPERIMENTAL] ListUserRoles: List user-roles
-        api_response = api_instance.list_user_roles(limit=limit, page=page)
+        api_response = api_instance.list_user_roles(filter=filter, sort_by=sort_by, limit=limit, page=page)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling UserRolesApi->list_user_roles: %s\n" % e)
@@ -445,6 +447,8 @@ page = 'page_example' # str | Optional. Encoded page string returned from a prev
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **filter** | **str**| Optional. Expression to filter the result set | [optional] 
+ **sort_by** | **str**| Optional. Order the results by these fields. Use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional] 
  **limit** | **int**| Optional. When paginating, limit the number of returned results to this many. | [optional] 
  **page** | **str**| Optional. Encoded page string returned from a previous search result that will retrieve              the next page of data. | [optional] 
 
