@@ -1,3 +1,4 @@
+import os
 import unittest
 from finbourne_access import api as sa
 from finbourne_access.utilities import ApiClientFactory
@@ -7,7 +8,8 @@ class FinbourneAccessTests(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        api_client = ApiClientFactory()
+        token = os.getenv("FBN_ACCESS_TOKEN", None)
+        api_client = ApiClientFactory(token=token)
         cls.policies_api = api_client.build(sa.PoliciesApi)
 
     def test_roles(self):
