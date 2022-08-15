@@ -1,3 +1,4 @@
+import os
 import unittest
 import pytz
 import finbourne_access
@@ -13,7 +14,8 @@ class FinbourneAccessTests(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        api_client = ApiClientFactory()
+        token = os.getenv("FBN_ACCESS_TOKEN", None)
+        api_client = ApiClientFactory(token=token)
         cls.policies_api = api_client.build(sa.PoliciesApi)
 
     def test_prevent_transactions_before_an_effective_date(self):
