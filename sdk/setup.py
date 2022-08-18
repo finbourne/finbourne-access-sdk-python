@@ -35,7 +35,6 @@ REQUIRES = [
     "certifi >= 14.05.14",
     "python-dateutil >= 2.5.3",
     "requests >= 2.27.1",
-    "setuputils >= 21.0.0",
     "six >= 1.10",
     "urllib3 >= 1.26.9",
 
