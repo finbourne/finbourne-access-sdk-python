@@ -1,7 +1,7 @@
 class ApiConfiguration:
 
     def __init__(self, token_url=None, access_url=None, username=None, password=None, client_id=None, client_secret=None,
-                 app_name=None, certificate_filename=None, proxy_config=None):
+                 app_name=None, certificate_filename=None, proxy_config=None, access_token=None):
         """
         The configuration required to access LUSID, read more at https://support.finbourne.com/getting-started-with-apis-sdks
 
@@ -24,6 +24,7 @@ class ApiConfiguration:
         self.__app_name = app_name
         self.__certificate_filename = certificate_filename
         self.__proxy_config = proxy_config
+        self.__access_token = access_token
 
     @property
     def token_url(self):
@@ -96,3 +97,11 @@ class ApiConfiguration:
     @proxy_config.setter
     def proxy_config(self, value):
         self.__proxy_config = value
+
+    @property
+    def access_token(self):
+        return self.__access_token
+
+    @access_token.setter
+    def access_token(self, value):
+        self.__access_token = value
