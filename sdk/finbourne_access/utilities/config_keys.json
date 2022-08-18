@@ -5,7 +5,7 @@
   },
   "access_url": {
     "env": "FBN_LUSID_ACCESS_URL",
-    "config": "apiUrl"
+    "config": "accessUrl"
   },
   "username": {
     "env": "FBN_USERNAME",
