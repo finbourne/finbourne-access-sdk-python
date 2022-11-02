@@ -9,7 +9,7 @@
       "url": "https://www.finbourne.com",
       "email": "info@finbourne.com"
     },
-    "version": "0.0.2458",
+    "version": "0.0.2460",
     "x-logo": {
       "url": "https://www.lusid.com/app/assets/logo_white.png",
       "backgroundColor": "#415464"
@@ -99,9 +99,6 @@
             "in": "query",
             "description": "Optional. Expression to filter the result set",
             "schema": {
-              "maxLength": 16384,
-              "minLength": 0,
-              "pattern": "^[\\s\\S]*$",
               "type": "string",
               "description": "Optional. Expression to filter the result set",
               "nullable": true
@@ -729,7 +726,6 @@
             "in": "query",
             "description": "Optional. Will use the default scope if not provided. The requested scope",
             "schema": {
-              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string",
               "description": "Optional. Will use the default scope if not provided. The requested scope",
               "nullable": true
@@ -752,9 +748,6 @@
             "in": "query",
             "description": "Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName",
             "schema": {
-              "maxLength": 16384,
-              "minLength": 1,
-              "pattern": "^[\\s\\S]*$",
               "type": "array",
               "items": {
                 "type": "string"
@@ -793,9 +786,6 @@
             "in": "query",
             "description": "Optional. Expression to filter the result set",
             "schema": {
-              "maxLength": 16384,
-              "minLength": 0,
-              "pattern": "^[\\s\\S]*$",
               "type": "string",
               "description": "Optional. Expression to filter the result set",
               "nullable": true
@@ -1877,7 +1867,6 @@
             "description": "The code of the Policy",
             "required": true,
             "schema": {
-              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string",
               "description": "The code of the Policy"
             }
@@ -1899,7 +1888,6 @@
             "in": "query",
             "description": "Optional. Will use the default scope if not provided. The scope of the Policy",
             "schema": {
-              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string",
               "description": "Optional. Will use the default scope if not provided. The scope of the Policy",
               "nullable": true
@@ -2174,7 +2162,6 @@
             "description": "The code of the Policy",
             "required": true,
             "schema": {
-              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string",
               "description": "The code of the Policy"
             }
@@ -2184,7 +2171,6 @@
             "in": "query",
             "description": "Optional. Will use the default scope if not provided. The scope of the Policy",
             "schema": {
-              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string",
               "description": "Optional. Will use the default scope if not provided. The scope of the Policy",
               "nullable": true
@@ -2247,7 +2233,6 @@
             "description": "The code of the Policy",
             "required": true,
             "schema": {
-              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string",
               "description": "The code of the Policy"
             }
@@ -2257,7 +2242,6 @@
             "in": "query",
             "description": "Optional. Will use the default scope if not provided. The scope of the Policy",
             "schema": {
-              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string",
               "description": "Optional. Will use the default scope if not provided. The scope of the Policy",
               "nullable": true
@@ -2803,7 +2787,6 @@
             "in": "query",
             "description": "Optional. Will use the default scope if not provided. The requested scope",
             "schema": {
-              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string",
               "description": "Optional. Will use the default scope if not provided. The requested scope",
               "nullable": true
@@ -2864,9 +2847,6 @@
             "in": "query",
             "description": "Optional. Expression to filter the result set",
             "schema": {
-              "maxLength": 16384,
-              "minLength": 0,
-              "pattern": "^[\\s\\S]*$",
               "type": "string",
               "description": "Optional. Expression to filter the result set",
               "nullable": true
@@ -3499,7 +3479,6 @@
             "description": "The code of the PolicyCollection",
             "required": true,
             "schema": {
-              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string",
               "description": "The code of the PolicyCollection"
             }
@@ -3521,7 +3500,6 @@
             "in": "query",
             "description": "Optional. Will use the default scope if not provided. The scope of the PolicyCollection",
             "schema": {
-              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string",
               "description": "Optional. Will use the default scope if not provided. The scope of the PolicyCollection",
               "nullable": true
@@ -3670,7 +3648,6 @@
             "description": "The code of the PolicyCollection",
             "required": true,
             "schema": {
-              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string",
               "description": "The code of the PolicyCollection"
             }
@@ -3680,7 +3657,6 @@
             "in": "query",
             "description": "Optional. Will use the default scope if not provided. The scope of the PolicyCollection",
             "schema": {
-              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string",
               "description": "Optional. Will use the default scope if not provided. The scope of the PolicyCollection",
               "nullable": true
@@ -3743,7 +3719,6 @@
             "description": "The code of the PolicyCollection",
             "required": true,
             "schema": {
-              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string",
               "description": "The code of the PolicyCollection"
             }
@@ -3753,7 +3728,6 @@
             "in": "query",
             "description": "Optional. Will use the default scope if not provided. The scope of the PolicyCollection",
             "schema": {
-              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string",
               "description": "Optional. Will use the default scope if not provided. The scope of the PolicyCollection",
               "nullable": true
@@ -4010,7 +3984,6 @@
             "description": "The code of the PolicyCollection",
             "required": true,
             "schema": {
-              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string",
               "description": "The code of the PolicyCollection"
             }
@@ -4020,7 +3993,6 @@
             "in": "query",
             "description": "Optional. Will use the default scope if not provided. The scope of the PolicyCollection",
             "schema": {
-              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string",
               "description": "Optional. Will use the default scope if not provided. The scope of the PolicyCollection",
               "nullable": true
@@ -4269,7 +4241,6 @@
             "description": "The code of the PolicyCollection",
             "required": true,
             "schema": {
-              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string",
               "description": "The code of the PolicyCollection"
             }
@@ -4279,7 +4250,6 @@
             "in": "query",
             "description": "Optional. Will use the default scope if not provided. The scope of the PolicyCollection",
             "schema": {
-              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string",
               "description": "Optional. Will use the default scope if not provided. The scope of the PolicyCollection",
               "nullable": true
@@ -4527,7 +4497,6 @@
             "in": "query",
             "description": "Optional. Will use all scopes if not supplied. The requested scope",
             "schema": {
-              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string",
               "description": "Optional. Will use all scopes if not supplied. The requested scope",
               "nullable": true
@@ -4550,7 +4519,6 @@
             "in": "query",
             "description": "Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName",
             "schema": {
-              "pattern": "^[\\s\\S]*$",
               "type": "array",
               "items": {
                 "type": "string"
@@ -4589,9 +4557,6 @@
             "in": "query",
             "description": "Optional. Expression to filter the result set",
             "schema": {
-              "maxLength": 16384,
-              "minLength": 0,
-              "pattern": "^[\\s\\S]*$",
               "type": "string",
               "description": "Optional. Expression to filter the result set",
               "nullable": true
@@ -5090,7 +5055,6 @@
             "description": "The code of the Role",
             "required": true,
             "schema": {
-              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string",
               "description": "The code of the Role"
             }
@@ -5112,7 +5076,6 @@
             "in": "query",
             "description": "Optional. Will use default scope if not supplied. The scope of the Role",
             "schema": {
-              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string",
               "description": "Optional. Will use default scope if not supplied. The scope of the Role",
               "nullable": true
@@ -5291,7 +5254,6 @@
             "description": "The code of the Role",
             "required": true,
             "schema": {
-              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string",
               "description": "The code of the Role"
             }
@@ -5301,7 +5263,6 @@
             "in": "query",
             "description": ">Optional. Will use default scope if not supplied. The scope of the Role",
             "schema": {
-              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string",
               "description": ">Optional. Will use default scope if not supplied. The scope of the Role",
               "nullable": true
@@ -5364,7 +5325,6 @@
             "description": "The code of the Role",
             "required": true,
             "schema": {
-              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string",
               "description": "The code of the Role"
             }
@@ -5374,7 +5334,6 @@
             "in": "query",
             "description": ">Optional. Will use default scope if not supplied. The scope of the Role",
             "schema": {
-              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string",
               "description": ">Optional. Will use default scope if not supplied. The scope of the Role",
               "nullable": true
@@ -5385,7 +5344,6 @@
             "in": "query",
             "description": "Optional. The scope of the Role. Will use default scope if not supplied.",
             "schema": {
-              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string",
               "description": "Optional. The scope of the Role. Will use default scope if not supplied.",
               "nullable": true
@@ -5396,7 +5354,6 @@
             "in": "query",
             "description": "Optional. The code of the Role",
             "schema": {
-              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string",
               "description": "Optional. The code of the Role",
               "nullable": true
@@ -5407,7 +5364,6 @@
             "in": "query",
             "description": "Optional. The scope of the Role. Will use default scope if not supplied.",
             "schema": {
-              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string",
               "description": "Optional. The scope of the Role. Will use default scope if not supplied.",
               "nullable": true
@@ -5418,7 +5374,6 @@
             "in": "query",
             "description": "Optional. The code of the Role",
             "schema": {
-              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string",
               "description": "Optional. The code of the Role",
               "nullable": true
@@ -5733,7 +5688,6 @@
             "description": "The scope of the Role",
             "required": true,
             "schema": {
-              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string",
               "description": "The scope of the Role"
             }
@@ -5744,7 +5698,6 @@
             "description": "The code of the Role",
             "required": true,
             "schema": {
-              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string",
               "description": "The code of the Role"
             }
@@ -5998,7 +5951,6 @@
             "description": "The scope of the Role",
             "required": true,
             "schema": {
-              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string",
               "description": "The scope of the Role"
             }
@@ -6009,7 +5961,6 @@
             "description": "The code of the Role",
             "required": true,
             "schema": {
-              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string",
               "description": "The code of the Role"
             }
@@ -6020,7 +5971,6 @@
             "description": "The scope of policy collection to remove from the Role",
             "required": true,
             "schema": {
-              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string",
               "description": "The scope of policy collection to remove from the Role"
             }
@@ -6031,7 +5981,6 @@
             "description": "The code of the policy collection to remove from the Role",
             "required": true,
             "schema": {
-              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string",
               "description": "The code of the policy collection to remove from the Role"
             }
@@ -6644,7 +6593,6 @@
             "description": "Id of the user-role to get.",
             "required": true,
             "schema": {
-              "pattern": "^[a-zA-Z0-9]+$",
               "type": "string",
               "description": "Id of the user-role to get."
             }
@@ -6789,7 +6737,6 @@
             "description": "Id of the user-role to delete.",
             "required": true,
             "schema": {
-              "pattern": "^[a-zA-Z0-9]+$",
               "type": "string",
               "description": "Id of the user-role to delete."
             }
@@ -6853,7 +6800,6 @@
             "description": "Id of the User Role to get",
             "required": true,
             "schema": {
-              "pattern": "^[a-zA-Z0-9]+$",
               "type": "string",
               "description": "Id of the User Role to get"
             }
@@ -7058,7 +7004,6 @@
             "description": "Id of the User Role to get",
             "required": true,
             "schema": {
-              "pattern": "^[a-zA-Z0-9]+$",
               "type": "string",
               "description": "Id of the User Role to get"
             }
@@ -7069,7 +7014,6 @@
             "description": "The scope of the policy to remove from the User Role",
             "required": true,
             "schema": {
-              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string",
               "description": "The scope of the policy to remove from the User Role"
             }
@@ -7080,7 +7024,6 @@
             "description": "The code of the policy to remove from the User Role",
             "required": true,
             "schema": {
-              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string",
               "description": "The code of the policy to remove from the User Role"
             }
@@ -7144,7 +7087,6 @@
             "description": "Id of the User Role to get",
             "required": true,
             "schema": {
-              "pattern": "^[a-zA-Z0-9]+$",
               "type": "string",
               "description": "Id of the User Role to get"
             }
@@ -7349,7 +7291,6 @@
             "description": "Id of the User Role to get",
             "required": true,
             "schema": {
-              "pattern": "^[a-zA-Z0-9]+$",
               "type": "string",
               "description": "Id of the User Role to get"
             }
@@ -7360,7 +7301,6 @@
             "description": "The scope of policy collection to remove from the User Role",
             "required": true,
             "schema": {
-              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string",
               "description": "The scope of policy collection to remove from the User Role"
             }
@@ -7371,7 +7311,6 @@
             "description": "The code of the policy collection to remove from the User Role",
             "required": true,
             "schema": {
-              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string",
               "description": "The code of the policy collection to remove from the User Role"
             }
@@ -7435,7 +7374,6 @@
             "description": "Id of the user-role to be updated.",
             "required": true,
             "schema": {
-              "pattern": "^[a-zA-Z0-9]+$",
               "type": "string",
               "description": "Id of the user-role to be updated."
             }
@@ -9062,14 +9000,12 @@
           "entityCode": {
             "maxLength": 100,
             "minLength": 3,
-            "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
             "type": "string",
             "description": "The type of the resource on which the activity would be performed"
           },
           "scope": {
             "maxLength": 100,
             "minLength": 3,
-            "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
             "type": "string",
             "description": "The scope/provider/vendor of the activity"
           },
