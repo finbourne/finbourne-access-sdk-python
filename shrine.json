@@ -9,7 +9,7 @@
       "url": "https://www.finbourne.com",
       "email": "info@finbourne.com"
     },
-    "version": "0.0.2492",
+    "version": "0.0.2498",
     "x-logo": {
       "url": "https://www.lusid.com/app/assets/logo_white.png",
       "backgroundColor": "#415464"
@@ -752,9 +752,6 @@
             "in": "query",
             "description": "Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName",
             "schema": {
-              "maxLength": 16384,
-              "minLength": 1,
-              "pattern": "^[\\s\\S]*$",
               "type": "array",
               "items": {
                 "type": "string"
@@ -4550,7 +4547,6 @@
             "in": "query",
             "description": "Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName",
             "schema": {
-              "pattern": "^[\\s\\S]*$",
               "type": "array",
               "items": {
                 "type": "string"
