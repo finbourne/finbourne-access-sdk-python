@@ -9,7 +9,7 @@
       "url": "https://www.finbourne.com",
       "email": "info@finbourne.com"
     },
-    "version": "0.0.2524",
+    "version": "0.0.2532",
     "x-logo": {
       "url": "https://www.lusid.com/app/assets/logo_white.png",
       "backgroundColor": "#415464"
@@ -721,7 +721,7 @@
           "Policies"
         ],
         "summary": "[EARLY ACCESS] ListPolicies: List Policies",
-        "description": "Gets all Policies in a scope",
+        "description": "Gets all Policies in a scope. For pagination support, use PagePolicies.",
         "operationId": "ListPolicies",
         "parameters": [
           {
@@ -1517,7 +1517,7 @@
           "Policies"
         ],
         "summary": "[EARLY ACCESS] PagePolicies: Page Policies",
-        "description": "Gets all PolicyCollections in a scope in pages. Under development.",
+        "description": "Gets all Policies with pagination support.",
         "operationId": "PagePolicies",
         "parameters": [
           {
@@ -2792,7 +2792,7 @@
           "Policies"
         ],
         "summary": "[EARLY ACCESS] ListPolicyCollections: List PolicyCollections",
-        "description": "Gets all PolicyCollections in a scope",
+        "description": "Gets all PolicyCollections in a scope. For pagination support, use PagePolicyCollections",
         "operationId": "ListPolicyCollections",
         "parameters": [
           {
@@ -3265,7 +3265,7 @@
           "Policies"
         ],
         "summary": "[EARLY ACCESS] PagePolicyCollections: Page PolicyCollections",
-        "description": "Gets all PolicyCollections in a scope in pages. Under development.",
+        "description": "Gets all PolicyCollections with pagination support.",
         "operationId": "PagePolicyCollections",
         "parameters": [
           {

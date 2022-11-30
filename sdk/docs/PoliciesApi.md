@@ -730,7 +730,7 @@ Name | Type | Description  | Notes
 
 [EARLY ACCESS] ListPolicies: List Policies
 
-Gets all Policies in a scope
+Gets all Policies in a scope. For pagination support, use PagePolicies.
 
 ### Example
 
@@ -815,7 +815,7 @@ Name | Type | Description  | Notes
 
 [EARLY ACCESS] ListPolicyCollections: List PolicyCollections
 
-Gets all PolicyCollections in a scope
+Gets all PolicyCollections in a scope. For pagination support, use PagePolicyCollections
 
 ### Example
 
@@ -900,7 +900,7 @@ Name | Type | Description  | Notes
 
 [EARLY ACCESS] PagePolicies: Page Policies
 
-Gets all PolicyCollections in a scope in pages. Under development.
+Gets all Policies with pagination support.
 
 ### Example
 
@@ -983,7 +983,7 @@ Name | Type | Description  | Notes
 
 [EARLY ACCESS] PagePolicyCollections: Page PolicyCollections
 
-Gets all PolicyCollections in a scope in pages. Under development.
+Gets all PolicyCollections with pagination support.
 
 ### Example
 
