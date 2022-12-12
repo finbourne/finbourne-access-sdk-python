@@ -9,7 +9,7 @@
       "url": "https://www.finbourne.com",
       "email": "info@finbourne.com"
     },
-    "version": "0.0.2572",
+    "version": "0.0.2574",
     "x-logo": {
       "url": "https://www.lusid.com/app/assets/logo_white.png",
       "backgroundColor": "#415464"
@@ -8217,6 +8217,7 @@
         "properties": {
           "scopeName": {
             "minLength": 1,
+            "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
             "type": "string"
           }
         },
@@ -8599,12 +8600,14 @@
           "scope": {
             "maxLength": 100,
             "minLength": 3,
+            "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
             "type": "string",
             "nullable": true
           },
           "code": {
             "maxLength": 100,
             "minLength": 3,
+            "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
             "type": "string"
           }
         },
@@ -8765,12 +8768,14 @@
           "scope": {
             "maxLength": 100,
             "minLength": 3,
+            "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
             "type": "string",
             "nullable": true
           },
           "code": {
             "maxLength": 100,
             "minLength": 3,
+            "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
             "type": "string"
           }
         },
@@ -9279,12 +9284,14 @@
           "scope": {
             "maxLength": 100,
             "minLength": 3,
+            "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
             "type": "string",
             "nullable": true
           },
           "code": {
             "maxLength": 100,
             "minLength": 3,
+            "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
             "type": "string"
           }
         },
