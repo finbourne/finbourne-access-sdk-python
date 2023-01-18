@@ -14,5 +14,5 @@ class TestConfigKeys(TestCase):
 
         # Assert
         self.assertEqual(
-            actual_config_keys, expected_config_keys_subset | actual_config_keys
+            actual_config_keys, {**actual_config_keys, **expected_config_keys_subset}
         )
