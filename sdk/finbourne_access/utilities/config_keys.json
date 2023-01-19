@@ -3,7 +3,7 @@
     "env": "FBN_TOKEN_URL",
     "config": "tokenUrl"
   },
-  "access_url": {
+  "api_url": {
     "env": "FBN_LUSID_ACCESS_URL",
     "config": "accessUrl"
   },
