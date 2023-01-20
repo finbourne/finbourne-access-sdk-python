@@ -31,11 +31,6 @@ class ApiConfiguration:
             self.__access_url = access_url
         elif api_url:
             self.__access_url = api_url
-        else:
-            raise ValueError(
-                "ApiConfiguration must have either api_url or access_url set"
-            )
-
         self.__username = username
         self.__password = password
         self.__client_id = client_id
