@@ -6,7 +6,7 @@ class TestConfigKeys(TestCase):
     def test_identity_url_in_config_keys(self):
         # Arrange
         expected_config_keys_subset = {
-            "access_url": {"env": "FBN_LUSID_ACCESS_URL", "config": "accessUrl"},
+            "api_url": {"env": "FBN_LUSID_ACCESS_URL", "config": "accessUrl"},
         }
 
         # Act
