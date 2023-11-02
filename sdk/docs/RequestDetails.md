@@ -11,6 +11,23 @@ Name | Type | Description | Notes
 **from_as_at** | **datetime** | The requested AsAt date for the resource (if null, Latest). If specifying a range of AsAt dates, this is the lower bounds. | [optional] 
 **to_as_at** | **datetime** | Upper bound if specifying a request that requires a range of AsAt dates. This is used if specifying the desire to grant access for a user between an AsAt range. | [optional] 
 
+## Example
+
+```python
+from finbourne_access.models.request_details import RequestDetails
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of RequestDetails from a JSON string
+request_details_instance = RequestDetails.from_json(json)
+# print the JSON string representation of the object
+print RequestDetails.to_json()
+
+# convert the object into a dict
+request_details_dict = request_details_instance.to_dict()
+# create an instance of RequestDetails from a dict
+request_details_form_dict = request_details.from_dict(request_details_dict)
+```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

@@ -35,41 +35,65 @@ Add Policies and/or PolicyCollections to a PolicyCollection
 ```python
 from __future__ import print_function
 import time
+import os
 import finbourne_access
 from finbourne_access.rest import ApiException
+from finbourne_access.models.add_to_policy_collection_request import AddToPolicyCollectionRequest
+from finbourne_access.models.policy_collection_response import PolicyCollectionResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://fbn-ci.lusid.com/access
-# See configuration.py for a list of all supported configuration parameters.
-configuration = finbourne_access.Configuration(
-    host = "https://fbn-ci.lusid.com/access"
+
+from finbourne_access import (
+	  ApiClientFactory,
+	  ApplicationMetadataApi,
+	  EnvironmentVariablesConfigurationLoader,
+	  SecretsFileConfigurationLoader,
+	  ArgsConfigurationLoader
 )
+
+# Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+# By default this will read config from environment variables
+# Then from a secrets.json file found in the current working directory
+api_client_factory = ApiClientFactory()
+
+# The ApiClientFactory can be passed an iterable of configuration loaders to read configuration from
+
+api_url = "https://fbn-ci.lusid.com/access"
+# Path to a secrets.json file containing authentication credentials
+# See https://support.lusid.com/knowledgebase/article/KA-01667/en-us
+# for a detailed guide to setting up the SDK make authenticated calls to LUSID APIs
+secrets_path = os.getenv("FBN_SECRETS_PATH")
+app_name="LusidJupyterNotebook"
+
+config_loaders = [
+	EnvironmentVariablesConfigurationLoader(),
+	SecretsFileConfigurationLoader(api_secrets_file=secrets_path),
+	ArgsConfigurationLoader(api_url=api_url, app_name=app_name)
+]
+api_client_factory = ApiClientFactory(config_loaders=config_loaders)
+
 
 # The client must configure the authentication and authorization parameters
 # in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oauth2
-configuration = finbourne_access.Configuration(
-    host = "https://fbn-ci.lusid.com/access"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with finbourne_access.ApiClient(configuration) as api_client:
+
+# Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
+async with api_client_factory:
     # Create an instance of the API class
-    api_instance = finbourne_access.PoliciesApi(api_client)
+    api_instance = api_client_factory.build(finbourne_access.PoliciesApi)
     code = 'code_example' # str | The code of the PolicyCollection
-add_to_policy_collection_request = {"policies":[{"scope":"default","code":"official-portfolios-read-only"},{"scope":"default","code":"desk-portfolios"}],"policyCollections":[{"scope":"default","code":"CompanyEmployeeAccess"}]} # AddToPolicyCollectionRequest | Ids of the PolicyCollections and/or Policies to add to the PolicyCollection
-scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the PolicyCollection (optional)
+    add_to_policy_collection_request = {"policies":[{"scope":"default","code":"official-portfolios-read-only"},{"scope":"default","code":"desk-portfolios"}],"policyCollections":[{"scope":"default","code":"CompanyEmployeeAccess"}]} # AddToPolicyCollectionRequest | Ids of the PolicyCollections and/or Policies to add to the PolicyCollection
+    scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the PolicyCollection (optional)
 
     try:
         # [EARLY ACCESS] AddToPolicyCollection: Add To PolicyCollection
-        api_response = api_instance.add_to_policy_collection(code, add_to_policy_collection_request, scope=scope)
+        api_response = await api_instance.add_to_policy_collection(code, add_to_policy_collection_request, scope=scope)
+        print("The response of PoliciesApi->add_to_policy_collection:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling PoliciesApi->add_to_policy_collection: %s\n" % e)
 ```
+
 
 ### Parameters
 
@@ -114,39 +138,63 @@ Creates a Policy
 ```python
 from __future__ import print_function
 import time
+import os
 import finbourne_access
 from finbourne_access.rest import ApiException
+from finbourne_access.models.policy_creation_request import PolicyCreationRequest
+from finbourne_access.models.policy_response import PolicyResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://fbn-ci.lusid.com/access
-# See configuration.py for a list of all supported configuration parameters.
-configuration = finbourne_access.Configuration(
-    host = "https://fbn-ci.lusid.com/access"
+
+from finbourne_access import (
+	  ApiClientFactory,
+	  ApplicationMetadataApi,
+	  EnvironmentVariablesConfigurationLoader,
+	  SecretsFileConfigurationLoader,
+	  ArgsConfigurationLoader
 )
+
+# Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+# By default this will read config from environment variables
+# Then from a secrets.json file found in the current working directory
+api_client_factory = ApiClientFactory()
+
+# The ApiClientFactory can be passed an iterable of configuration loaders to read configuration from
+
+api_url = "https://fbn-ci.lusid.com/access"
+# Path to a secrets.json file containing authentication credentials
+# See https://support.lusid.com/knowledgebase/article/KA-01667/en-us
+# for a detailed guide to setting up the SDK make authenticated calls to LUSID APIs
+secrets_path = os.getenv("FBN_SECRETS_PATH")
+app_name="LusidJupyterNotebook"
+
+config_loaders = [
+	EnvironmentVariablesConfigurationLoader(),
+	SecretsFileConfigurationLoader(api_secrets_file=secrets_path),
+	ArgsConfigurationLoader(api_url=api_url, app_name=app_name)
+]
+api_client_factory = ApiClientFactory(config_loaders=config_loaders)
+
 
 # The client must configure the authentication and authorization parameters
 # in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oauth2
-configuration = finbourne_access.Configuration(
-    host = "https://fbn-ci.lusid.com/access"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with finbourne_access.ApiClient(configuration) as api_client:
+
+# Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
+async with api_client_factory:
     # Create an instance of the API class
-    api_instance = finbourne_access.PoliciesApi(api_client)
+    api_instance = api_client_factory.build(finbourne_access.PoliciesApi)
     policy_creation_request = {"code":"example-policy","description":"Example policy demonstrating their creation","applications":["LUSID"],"grant":"Allow","selectors":[{"idSelectorDefinition":{"identifier":{"scope":"official"},"actions":[{"scope":"default","activity":"Read","entity":"Portfolio"},{"scope":"default","activity":"Aggregate","entity":"Portfolio"}],"name":"access-official-scope","description":"Allow readonly access to the 'official' scope"}}],"for":[{"effectiveRange":{"from":"2015-12-25T00:00:00.0000000+00:00","to":"2020-12-25T00:00:00.0000000+00:00"}},{"asAtRangeForSpec":{"from":{"dateTimeOffset":"2018-01-01T00:00:00.0000000+00:00"},"to":{"value":"AsAt=Latest"}}}],"if":[{"ifRequestHeaderExpression":{"headerName":"organisation.specific.group.header","operator":"EqualsCaseInsensitive","value":"special-group"}}],"when":{"activate":"2016-08-31T18:00:00.0000000+00:00","deactivate":"2020-08-31T18:00:00.0000000+00:00"}} # PolicyCreationRequest | The definition of the Policy
 
     try:
         # [EARLY ACCESS] CreatePolicy: Create Policy
-        api_response = api_instance.create_policy(policy_creation_request)
+        api_response = await api_instance.create_policy(policy_creation_request)
+        print("The response of PoliciesApi->create_policy:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling PoliciesApi->create_policy: %s\n" % e)
 ```
+
 
 ### Parameters
 
@@ -189,39 +237,63 @@ Creates a PolicyCollection
 ```python
 from __future__ import print_function
 import time
+import os
 import finbourne_access
 from finbourne_access.rest import ApiException
+from finbourne_access.models.policy_collection_creation_request import PolicyCollectionCreationRequest
+from finbourne_access.models.policy_collection_response import PolicyCollectionResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://fbn-ci.lusid.com/access
-# See configuration.py for a list of all supported configuration parameters.
-configuration = finbourne_access.Configuration(
-    host = "https://fbn-ci.lusid.com/access"
+
+from finbourne_access import (
+	  ApiClientFactory,
+	  ApplicationMetadataApi,
+	  EnvironmentVariablesConfigurationLoader,
+	  SecretsFileConfigurationLoader,
+	  ArgsConfigurationLoader
 )
+
+# Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+# By default this will read config from environment variables
+# Then from a secrets.json file found in the current working directory
+api_client_factory = ApiClientFactory()
+
+# The ApiClientFactory can be passed an iterable of configuration loaders to read configuration from
+
+api_url = "https://fbn-ci.lusid.com/access"
+# Path to a secrets.json file containing authentication credentials
+# See https://support.lusid.com/knowledgebase/article/KA-01667/en-us
+# for a detailed guide to setting up the SDK make authenticated calls to LUSID APIs
+secrets_path = os.getenv("FBN_SECRETS_PATH")
+app_name="LusidJupyterNotebook"
+
+config_loaders = [
+	EnvironmentVariablesConfigurationLoader(),
+	SecretsFileConfigurationLoader(api_secrets_file=secrets_path),
+	ArgsConfigurationLoader(api_url=api_url, app_name=app_name)
+]
+api_client_factory = ApiClientFactory(config_loaders=config_loaders)
+
 
 # The client must configure the authentication and authorization parameters
 # in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oauth2
-configuration = finbourne_access.Configuration(
-    host = "https://fbn-ci.lusid.com/access"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with finbourne_access.ApiClient(configuration) as api_client:
+
+# Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
+async with api_client_factory:
     # Create an instance of the API class
-    api_instance = finbourne_access.PoliciesApi(api_client)
+    api_instance = api_client_factory.build(finbourne_access.PoliciesApi)
     policy_collection_creation_request = {"code":"example-policy-collection","policies":[{"scope":"default","code":"official-portfolios-read-only"},{"scope":"default","code":"desk-portfolios"}],"metadata":{},"policyCollections":[{"scope":"default","code":"CompanyEmployeeAccess"}],"description":"Example policy collection"} # PolicyCollectionCreationRequest | The definition of the PolicyCollection
 
     try:
         # [EARLY ACCESS] CreatePolicyCollection: Create PolicyCollection
-        api_response = api_instance.create_policy_collection(policy_collection_creation_request)
+        api_response = await api_instance.create_policy_collection(policy_collection_creation_request)
+        print("The response of PoliciesApi->create_policy_collection:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling PoliciesApi->create_policy_collection: %s\n" % e)
 ```
+
 
 ### Parameters
 
@@ -264,39 +336,60 @@ Deletes an identified Policy
 ```python
 from __future__ import print_function
 import time
+import os
 import finbourne_access
 from finbourne_access.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://fbn-ci.lusid.com/access
-# See configuration.py for a list of all supported configuration parameters.
-configuration = finbourne_access.Configuration(
-    host = "https://fbn-ci.lusid.com/access"
+
+from finbourne_access import (
+	  ApiClientFactory,
+	  ApplicationMetadataApi,
+	  EnvironmentVariablesConfigurationLoader,
+	  SecretsFileConfigurationLoader,
+	  ArgsConfigurationLoader
 )
+
+# Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+# By default this will read config from environment variables
+# Then from a secrets.json file found in the current working directory
+api_client_factory = ApiClientFactory()
+
+# The ApiClientFactory can be passed an iterable of configuration loaders to read configuration from
+
+api_url = "https://fbn-ci.lusid.com/access"
+# Path to a secrets.json file containing authentication credentials
+# See https://support.lusid.com/knowledgebase/article/KA-01667/en-us
+# for a detailed guide to setting up the SDK make authenticated calls to LUSID APIs
+secrets_path = os.getenv("FBN_SECRETS_PATH")
+app_name="LusidJupyterNotebook"
+
+config_loaders = [
+	EnvironmentVariablesConfigurationLoader(),
+	SecretsFileConfigurationLoader(api_secrets_file=secrets_path),
+	ArgsConfigurationLoader(api_url=api_url, app_name=app_name)
+]
+api_client_factory = ApiClientFactory(config_loaders=config_loaders)
+
 
 # The client must configure the authentication and authorization parameters
 # in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oauth2
-configuration = finbourne_access.Configuration(
-    host = "https://fbn-ci.lusid.com/access"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with finbourne_access.ApiClient(configuration) as api_client:
+
+# Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
+async with api_client_factory:
     # Create an instance of the API class
-    api_instance = finbourne_access.PoliciesApi(api_client)
+    api_instance = api_client_factory.build(finbourne_access.PoliciesApi)
     code = 'code_example' # str | The code of the Policy
-scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the Policy (optional)
+    scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the Policy (optional)
 
     try:
         # [EARLY ACCESS] DeletePolicy: Delete Policy
-        api_instance.delete_policy(code, scope=scope)
-    except ApiException as e:
+        await api_instance.delete_policy(code, scope=scope)
+    except Exception as e:
         print("Exception when calling PoliciesApi->delete_policy: %s\n" % e)
 ```
+
 
 ### Parameters
 
@@ -340,39 +433,60 @@ Deletes an identified PolicyCollection
 ```python
 from __future__ import print_function
 import time
+import os
 import finbourne_access
 from finbourne_access.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://fbn-ci.lusid.com/access
-# See configuration.py for a list of all supported configuration parameters.
-configuration = finbourne_access.Configuration(
-    host = "https://fbn-ci.lusid.com/access"
+
+from finbourne_access import (
+	  ApiClientFactory,
+	  ApplicationMetadataApi,
+	  EnvironmentVariablesConfigurationLoader,
+	  SecretsFileConfigurationLoader,
+	  ArgsConfigurationLoader
 )
+
+# Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+# By default this will read config from environment variables
+# Then from a secrets.json file found in the current working directory
+api_client_factory = ApiClientFactory()
+
+# The ApiClientFactory can be passed an iterable of configuration loaders to read configuration from
+
+api_url = "https://fbn-ci.lusid.com/access"
+# Path to a secrets.json file containing authentication credentials
+# See https://support.lusid.com/knowledgebase/article/KA-01667/en-us
+# for a detailed guide to setting up the SDK make authenticated calls to LUSID APIs
+secrets_path = os.getenv("FBN_SECRETS_PATH")
+app_name="LusidJupyterNotebook"
+
+config_loaders = [
+	EnvironmentVariablesConfigurationLoader(),
+	SecretsFileConfigurationLoader(api_secrets_file=secrets_path),
+	ArgsConfigurationLoader(api_url=api_url, app_name=app_name)
+]
+api_client_factory = ApiClientFactory(config_loaders=config_loaders)
+
 
 # The client must configure the authentication and authorization parameters
 # in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oauth2
-configuration = finbourne_access.Configuration(
-    host = "https://fbn-ci.lusid.com/access"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with finbourne_access.ApiClient(configuration) as api_client:
+
+# Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
+async with api_client_factory:
     # Create an instance of the API class
-    api_instance = finbourne_access.PoliciesApi(api_client)
+    api_instance = api_client_factory.build(finbourne_access.PoliciesApi)
     code = 'code_example' # str | The code of the PolicyCollection
-scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the PolicyCollection (optional)
+    scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the PolicyCollection (optional)
 
     try:
         # [EARLY ACCESS] DeletePolicyCollection: Delete PolicyCollection
-        api_instance.delete_policy_collection(code, scope=scope)
-    except ApiException as e:
+        await api_instance.delete_policy_collection(code, scope=scope)
+    except Exception as e:
         print("Exception when calling PoliciesApi->delete_policy_collection: %s\n" % e)
 ```
+
 
 ### Parameters
 
@@ -404,7 +518,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **evaluate**
-> dict(str, EvaluationResponse) evaluate(request_body, applications=applications, as_at=as_at)
+> Dict[str, EvaluationResponse] evaluate(request_body, applications=applications, as_at=as_at)
 
 [EARLY ACCESS] Evaluate: Run one or more evaluations
 
@@ -416,53 +530,77 @@ Given a dictionary of evaluation requests (keyed by any arbitrary correlation id
 ```python
 from __future__ import print_function
 import time
+import os
 import finbourne_access
 from finbourne_access.rest import ApiException
+from finbourne_access.models.evaluation_request import EvaluationRequest
+from finbourne_access.models.evaluation_response import EvaluationResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://fbn-ci.lusid.com/access
-# See configuration.py for a list of all supported configuration parameters.
-configuration = finbourne_access.Configuration(
-    host = "https://fbn-ci.lusid.com/access"
+
+from finbourne_access import (
+	  ApiClientFactory,
+	  ApplicationMetadataApi,
+	  EnvironmentVariablesConfigurationLoader,
+	  SecretsFileConfigurationLoader,
+	  ArgsConfigurationLoader
 )
+
+# Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+# By default this will read config from environment variables
+# Then from a secrets.json file found in the current working directory
+api_client_factory = ApiClientFactory()
+
+# The ApiClientFactory can be passed an iterable of configuration loaders to read configuration from
+
+api_url = "https://fbn-ci.lusid.com/access"
+# Path to a secrets.json file containing authentication credentials
+# See https://support.lusid.com/knowledgebase/article/KA-01667/en-us
+# for a detailed guide to setting up the SDK make authenticated calls to LUSID APIs
+secrets_path = os.getenv("FBN_SECRETS_PATH")
+app_name="LusidJupyterNotebook"
+
+config_loaders = [
+	EnvironmentVariablesConfigurationLoader(),
+	SecretsFileConfigurationLoader(api_secrets_file=secrets_path),
+	ArgsConfigurationLoader(api_url=api_url, app_name=app_name)
+]
+api_client_factory = ApiClientFactory(config_loaders=config_loaders)
+
 
 # The client must configure the authentication and authorization parameters
 # in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oauth2
-configuration = finbourne_access.Configuration(
-    host = "https://fbn-ci.lusid.com/access"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with finbourne_access.ApiClient(configuration) as api_client:
+
+# Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
+async with api_client_factory:
     # Create an instance of the API class
-    api_instance = finbourne_access.PoliciesApi(api_client)
-    request_body = {"data-access-page-evaluation":{"request":{"action":{"entityCode":"WebSitePage","scope":"FINBOURNE","activity":"SeeAdminControls"},"toEffectiveDate":"2018-12-08T13:30:00.0000000+00:00","toAsAt":"2018-12-31T11:00:00.0000000+00:00"},"resource":{"id":{"scope":"FINBOURNE","code":"DataAccessPage"},"metadata":{"RequiredLicence":[{"provider":"WebsiteAccess","value":"FINBOURNE"}]}}}} # dict(str, EvaluationRequest) | A dictionary of evaluations, keyed using any arbitrary correlation id (it will be returned with the response for that evaluation).
-applications = ['applications_example'] # list[str] | Optional. The application type of the roles and policies to use when evaluating. (optional)
-as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The requested AsAt date of the entitlements (optional)
+    api_instance = api_client_factory.build(finbourne_access.PoliciesApi)
+    request_body = {"data-access-page-evaluation":{"request":{"action":{"entityCode":"WebSitePage","scope":"FINBOURNE","activity":"SeeAdminControls"},"toEffectiveDate":"2018-12-08T13:30:00.0000000+00:00","toAsAt":"2018-12-31T11:00:00.0000000+00:00"},"resource":{"id":{"scope":"FINBOURNE","code":"DataAccessPage"},"metadata":{"RequiredLicence":[{"provider":"WebsiteAccess","value":"FINBOURNE"}]}}}} # Dict[str, EvaluationRequest] | A dictionary of evaluations, keyed using any arbitrary correlation id (it will be returned with the response for that evaluation).
+    applications = ['applications_example'] # List[str] | Optional. The application type of the roles and policies to use when evaluating. (optional)
+    as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The requested AsAt date of the entitlements (optional)
 
     try:
         # [EARLY ACCESS] Evaluate: Run one or more evaluations
-        api_response = api_instance.evaluate(request_body, applications=applications, as_at=as_at)
+        api_response = await api_instance.evaluate(request_body, applications=applications, as_at=as_at)
+        print("The response of PoliciesApi->evaluate:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling PoliciesApi->evaluate: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **request_body** | [**dict(str, EvaluationRequest)**](EvaluationRequest.md)| A dictionary of evaluations, keyed using any arbitrary correlation id (it will be returned with the response for that evaluation). | 
- **applications** | [**list[str]**](str.md)| Optional. The application type of the roles and policies to use when evaluating. | [optional] 
+ **request_body** | [**Dict[str, EvaluationRequest]**](EvaluationRequest.md)| A dictionary of evaluations, keyed using any arbitrary correlation id (it will be returned with the response for that evaluation). | 
+ **applications** | [**List[str]**](str.md)| Optional. The application type of the roles and policies to use when evaluating. | [optional] 
  **as_at** | **datetime**| Optional. The requested AsAt date of the entitlements | [optional] 
 
 ### Return type
 
-[**dict(str, EvaluationResponse)**](EvaluationResponse.md)
+[**Dict[str, EvaluationResponse]**](EvaluationResponse.md)
 
 ### Authorization
 
@@ -483,7 +621,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_own_policies**
-> list[AttachedPolicyDefinitionResponse] get_own_policies(applications=applications, as_at=as_at, sort_by=sort_by, start=start, limit=limit, filter=filter)
+> List[AttachedPolicyDefinitionResponse] get_own_policies(applications=applications, as_at=as_at, sort_by=sort_by, start=start, limit=limit, filter=filter)
 
 GetOwnPolicies: Get policies of requesting user
 
@@ -495,59 +633,82 @@ Gets all Policies for the current user
 ```python
 from __future__ import print_function
 import time
+import os
 import finbourne_access
 from finbourne_access.rest import ApiException
+from finbourne_access.models.attached_policy_definition_response import AttachedPolicyDefinitionResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://fbn-ci.lusid.com/access
-# See configuration.py for a list of all supported configuration parameters.
-configuration = finbourne_access.Configuration(
-    host = "https://fbn-ci.lusid.com/access"
+
+from finbourne_access import (
+	  ApiClientFactory,
+	  ApplicationMetadataApi,
+	  EnvironmentVariablesConfigurationLoader,
+	  SecretsFileConfigurationLoader,
+	  ArgsConfigurationLoader
 )
+
+# Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+# By default this will read config from environment variables
+# Then from a secrets.json file found in the current working directory
+api_client_factory = ApiClientFactory()
+
+# The ApiClientFactory can be passed an iterable of configuration loaders to read configuration from
+
+api_url = "https://fbn-ci.lusid.com/access"
+# Path to a secrets.json file containing authentication credentials
+# See https://support.lusid.com/knowledgebase/article/KA-01667/en-us
+# for a detailed guide to setting up the SDK make authenticated calls to LUSID APIs
+secrets_path = os.getenv("FBN_SECRETS_PATH")
+app_name="LusidJupyterNotebook"
+
+config_loaders = [
+	EnvironmentVariablesConfigurationLoader(),
+	SecretsFileConfigurationLoader(api_secrets_file=secrets_path),
+	ArgsConfigurationLoader(api_url=api_url, app_name=app_name)
+]
+api_client_factory = ApiClientFactory(config_loaders=config_loaders)
+
 
 # The client must configure the authentication and authorization parameters
 # in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oauth2
-configuration = finbourne_access.Configuration(
-    host = "https://fbn-ci.lusid.com/access"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with finbourne_access.ApiClient(configuration) as api_client:
+
+# Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
+async with api_client_factory:
     # Create an instance of the API class
-    api_instance = finbourne_access.PoliciesApi(api_client)
-    applications = ['applications_example'] # list[str] | Optional. Filter on the applications that the policies apply to (optional)
-as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The AsAt date time of the data (optional)
-sort_by = ['sort_by_example'] # list[str] | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName (optional)
-start = 56 # int | Optional. When paginating, skip this number of results (optional)
-limit = 56 # int | Optional. When paginating, limit the number of returned results to this many. (optional)
-filter = 'filter_example' # str | Optional. Expression to filter the result set (optional)
+    api_instance = api_client_factory.build(finbourne_access.PoliciesApi)
+    applications = ['applications_example'] # List[str] | Optional. Filter on the applications that the policies apply to (optional)
+    as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The AsAt date time of the data (optional)
+    sort_by = ['sort_by_example'] # List[str] | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName (optional)
+    start = 56 # int | Optional. When paginating, skip this number of results (optional)
+    limit = 56 # int | Optional. When paginating, limit the number of returned results to this many. (optional)
+    filter = 'filter_example' # str | Optional. Expression to filter the result set (optional)
 
     try:
         # GetOwnPolicies: Get policies of requesting user
-        api_response = api_instance.get_own_policies(applications=applications, as_at=as_at, sort_by=sort_by, start=start, limit=limit, filter=filter)
+        api_response = await api_instance.get_own_policies(applications=applications, as_at=as_at, sort_by=sort_by, start=start, limit=limit, filter=filter)
+        print("The response of PoliciesApi->get_own_policies:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling PoliciesApi->get_own_policies: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applications** | [**list[str]**](str.md)| Optional. Filter on the applications that the policies apply to | [optional] 
+ **applications** | [**List[str]**](str.md)| Optional. Filter on the applications that the policies apply to | [optional] 
  **as_at** | **datetime**| Optional. The AsAt date time of the data | [optional] 
- **sort_by** | [**list[str]**](str.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional] 
+ **sort_by** | [**List[str]**](str.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional] 
  **start** | **int**| Optional. When paginating, skip this number of results | [optional] 
  **limit** | **int**| Optional. When paginating, limit the number of returned results to this many. | [optional] 
  **filter** | **str**| Optional. Expression to filter the result set | [optional] 
 
 ### Return type
 
-[**list[AttachedPolicyDefinitionResponse]**](AttachedPolicyDefinitionResponse.md)
+[**List[AttachedPolicyDefinitionResponse]**](AttachedPolicyDefinitionResponse.md)
 
 ### Authorization
 
@@ -580,41 +741,64 @@ Gets an identified Policy
 ```python
 from __future__ import print_function
 import time
+import os
 import finbourne_access
 from finbourne_access.rest import ApiException
+from finbourne_access.models.policy_response import PolicyResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://fbn-ci.lusid.com/access
-# See configuration.py for a list of all supported configuration parameters.
-configuration = finbourne_access.Configuration(
-    host = "https://fbn-ci.lusid.com/access"
+
+from finbourne_access import (
+	  ApiClientFactory,
+	  ApplicationMetadataApi,
+	  EnvironmentVariablesConfigurationLoader,
+	  SecretsFileConfigurationLoader,
+	  ArgsConfigurationLoader
 )
+
+# Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+# By default this will read config from environment variables
+# Then from a secrets.json file found in the current working directory
+api_client_factory = ApiClientFactory()
+
+# The ApiClientFactory can be passed an iterable of configuration loaders to read configuration from
+
+api_url = "https://fbn-ci.lusid.com/access"
+# Path to a secrets.json file containing authentication credentials
+# See https://support.lusid.com/knowledgebase/article/KA-01667/en-us
+# for a detailed guide to setting up the SDK make authenticated calls to LUSID APIs
+secrets_path = os.getenv("FBN_SECRETS_PATH")
+app_name="LusidJupyterNotebook"
+
+config_loaders = [
+	EnvironmentVariablesConfigurationLoader(),
+	SecretsFileConfigurationLoader(api_secrets_file=secrets_path),
+	ArgsConfigurationLoader(api_url=api_url, app_name=app_name)
+]
+api_client_factory = ApiClientFactory(config_loaders=config_loaders)
+
 
 # The client must configure the authentication and authorization parameters
 # in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oauth2
-configuration = finbourne_access.Configuration(
-    host = "https://fbn-ci.lusid.com/access"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with finbourne_access.ApiClient(configuration) as api_client:
+
+# Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
+async with api_client_factory:
     # Create an instance of the API class
-    api_instance = finbourne_access.PoliciesApi(api_client)
+    api_instance = api_client_factory.build(finbourne_access.PoliciesApi)
     code = 'code_example' # str | The code of the Policy
-as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The AsAt date time of the data (optional)
-scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the Policy (optional)
+    as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The AsAt date time of the data (optional)
+    scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the Policy (optional)
 
     try:
         # [EARLY ACCESS] GetPolicy: Get Policy
-        api_response = api_instance.get_policy(code, as_at=as_at, scope=scope)
+        api_response = await api_instance.get_policy(code, as_at=as_at, scope=scope)
+        print("The response of PoliciesApi->get_policy:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling PoliciesApi->get_policy: %s\n" % e)
 ```
+
 
 ### Parameters
 
@@ -659,41 +843,64 @@ Gets an identified PolicyCollection
 ```python
 from __future__ import print_function
 import time
+import os
 import finbourne_access
 from finbourne_access.rest import ApiException
+from finbourne_access.models.policy_collection_response import PolicyCollectionResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://fbn-ci.lusid.com/access
-# See configuration.py for a list of all supported configuration parameters.
-configuration = finbourne_access.Configuration(
-    host = "https://fbn-ci.lusid.com/access"
+
+from finbourne_access import (
+	  ApiClientFactory,
+	  ApplicationMetadataApi,
+	  EnvironmentVariablesConfigurationLoader,
+	  SecretsFileConfigurationLoader,
+	  ArgsConfigurationLoader
 )
+
+# Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+# By default this will read config from environment variables
+# Then from a secrets.json file found in the current working directory
+api_client_factory = ApiClientFactory()
+
+# The ApiClientFactory can be passed an iterable of configuration loaders to read configuration from
+
+api_url = "https://fbn-ci.lusid.com/access"
+# Path to a secrets.json file containing authentication credentials
+# See https://support.lusid.com/knowledgebase/article/KA-01667/en-us
+# for a detailed guide to setting up the SDK make authenticated calls to LUSID APIs
+secrets_path = os.getenv("FBN_SECRETS_PATH")
+app_name="LusidJupyterNotebook"
+
+config_loaders = [
+	EnvironmentVariablesConfigurationLoader(),
+	SecretsFileConfigurationLoader(api_secrets_file=secrets_path),
+	ArgsConfigurationLoader(api_url=api_url, app_name=app_name)
+]
+api_client_factory = ApiClientFactory(config_loaders=config_loaders)
+
 
 # The client must configure the authentication and authorization parameters
 # in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oauth2
-configuration = finbourne_access.Configuration(
-    host = "https://fbn-ci.lusid.com/access"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with finbourne_access.ApiClient(configuration) as api_client:
+
+# Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
+async with api_client_factory:
     # Create an instance of the API class
-    api_instance = finbourne_access.PoliciesApi(api_client)
+    api_instance = api_client_factory.build(finbourne_access.PoliciesApi)
     code = 'code_example' # str | The code of the PolicyCollection
-as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The AsAt date time of the data (optional)
-scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the PolicyCollection (optional)
+    as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The AsAt date time of the data (optional)
+    scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the PolicyCollection (optional)
 
     try:
         # [EARLY ACCESS] GetPolicyCollection: Get PolicyCollection
-        api_response = api_instance.get_policy_collection(code, as_at=as_at, scope=scope)
+        api_response = await api_instance.get_policy_collection(code, as_at=as_at, scope=scope)
+        print("The response of PoliciesApi->get_policy_collection:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling PoliciesApi->get_policy_collection: %s\n" % e)
 ```
+
 
 ### Parameters
 
@@ -726,7 +933,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_policies**
-> list[PolicyResponse] list_policies(scope=scope, as_at=as_at, sort_by=sort_by, start=start, limit=limit, filter=filter)
+> List[PolicyResponse] list_policies(scope=scope, as_at=as_at, sort_by=sort_by, start=start, limit=limit, filter=filter)
 
 [EARLY ACCESS] ListPolicies: List Policies
 
@@ -738,44 +945,67 @@ Gets all Policies in a scope. For pagination support, use PagePolicies.
 ```python
 from __future__ import print_function
 import time
+import os
 import finbourne_access
 from finbourne_access.rest import ApiException
+from finbourne_access.models.policy_response import PolicyResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://fbn-ci.lusid.com/access
-# See configuration.py for a list of all supported configuration parameters.
-configuration = finbourne_access.Configuration(
-    host = "https://fbn-ci.lusid.com/access"
+
+from finbourne_access import (
+	  ApiClientFactory,
+	  ApplicationMetadataApi,
+	  EnvironmentVariablesConfigurationLoader,
+	  SecretsFileConfigurationLoader,
+	  ArgsConfigurationLoader
 )
+
+# Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+# By default this will read config from environment variables
+# Then from a secrets.json file found in the current working directory
+api_client_factory = ApiClientFactory()
+
+# The ApiClientFactory can be passed an iterable of configuration loaders to read configuration from
+
+api_url = "https://fbn-ci.lusid.com/access"
+# Path to a secrets.json file containing authentication credentials
+# See https://support.lusid.com/knowledgebase/article/KA-01667/en-us
+# for a detailed guide to setting up the SDK make authenticated calls to LUSID APIs
+secrets_path = os.getenv("FBN_SECRETS_PATH")
+app_name="LusidJupyterNotebook"
+
+config_loaders = [
+	EnvironmentVariablesConfigurationLoader(),
+	SecretsFileConfigurationLoader(api_secrets_file=secrets_path),
+	ArgsConfigurationLoader(api_url=api_url, app_name=app_name)
+]
+api_client_factory = ApiClientFactory(config_loaders=config_loaders)
+
 
 # The client must configure the authentication and authorization parameters
 # in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oauth2
-configuration = finbourne_access.Configuration(
-    host = "https://fbn-ci.lusid.com/access"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with finbourne_access.ApiClient(configuration) as api_client:
+
+# Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
+async with api_client_factory:
     # Create an instance of the API class
-    api_instance = finbourne_access.PoliciesApi(api_client)
+    api_instance = api_client_factory.build(finbourne_access.PoliciesApi)
     scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The requested scope (optional)
-as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The AsAt date time of the data (optional)
-sort_by = ['sort_by_example'] # list[str] | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName (optional)
-start = 56 # int | Optional. When paginating, skip this number of results (optional)
-limit = 56 # int | Optional. When paginating, limit the number of returned results to this many. (optional)
-filter = 'filter_example' # str | Optional. Expression to filter the result set (optional)
+    as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The AsAt date time of the data (optional)
+    sort_by = ['sort_by_example'] # List[str] | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName (optional)
+    start = 56 # int | Optional. When paginating, skip this number of results (optional)
+    limit = 56 # int | Optional. When paginating, limit the number of returned results to this many. (optional)
+    filter = 'filter_example' # str | Optional. Expression to filter the result set (optional)
 
     try:
         # [EARLY ACCESS] ListPolicies: List Policies
-        api_response = api_instance.list_policies(scope=scope, as_at=as_at, sort_by=sort_by, start=start, limit=limit, filter=filter)
+        api_response = await api_instance.list_policies(scope=scope, as_at=as_at, sort_by=sort_by, start=start, limit=limit, filter=filter)
+        print("The response of PoliciesApi->list_policies:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling PoliciesApi->list_policies: %s\n" % e)
 ```
+
 
 ### Parameters
 
@@ -783,14 +1013,14 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **str**| Optional. Will use the default scope if not provided. The requested scope | [optional] 
  **as_at** | **datetime**| Optional. The AsAt date time of the data | [optional] 
- **sort_by** | [**list[str]**](str.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional] 
+ **sort_by** | [**List[str]**](str.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional] 
  **start** | **int**| Optional. When paginating, skip this number of results | [optional] 
  **limit** | **int**| Optional. When paginating, limit the number of returned results to this many. | [optional] 
  **filter** | **str**| Optional. Expression to filter the result set | [optional] 
 
 ### Return type
 
-[**list[PolicyResponse]**](PolicyResponse.md)
+[**List[PolicyResponse]**](PolicyResponse.md)
 
 ### Authorization
 
@@ -811,7 +1041,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_policy_collections**
-> list[PolicyCollectionResponse] list_policy_collections(scope=scope, as_at=as_at, sort_by=sort_by, start=start, limit=limit, filter=filter)
+> List[PolicyCollectionResponse] list_policy_collections(scope=scope, as_at=as_at, sort_by=sort_by, start=start, limit=limit, filter=filter)
 
 [EARLY ACCESS] ListPolicyCollections: List PolicyCollections
 
@@ -823,44 +1053,67 @@ Gets all PolicyCollections in a scope. For pagination support, use PagePolicyCol
 ```python
 from __future__ import print_function
 import time
+import os
 import finbourne_access
 from finbourne_access.rest import ApiException
+from finbourne_access.models.policy_collection_response import PolicyCollectionResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://fbn-ci.lusid.com/access
-# See configuration.py for a list of all supported configuration parameters.
-configuration = finbourne_access.Configuration(
-    host = "https://fbn-ci.lusid.com/access"
+
+from finbourne_access import (
+	  ApiClientFactory,
+	  ApplicationMetadataApi,
+	  EnvironmentVariablesConfigurationLoader,
+	  SecretsFileConfigurationLoader,
+	  ArgsConfigurationLoader
 )
+
+# Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+# By default this will read config from environment variables
+# Then from a secrets.json file found in the current working directory
+api_client_factory = ApiClientFactory()
+
+# The ApiClientFactory can be passed an iterable of configuration loaders to read configuration from
+
+api_url = "https://fbn-ci.lusid.com/access"
+# Path to a secrets.json file containing authentication credentials
+# See https://support.lusid.com/knowledgebase/article/KA-01667/en-us
+# for a detailed guide to setting up the SDK make authenticated calls to LUSID APIs
+secrets_path = os.getenv("FBN_SECRETS_PATH")
+app_name="LusidJupyterNotebook"
+
+config_loaders = [
+	EnvironmentVariablesConfigurationLoader(),
+	SecretsFileConfigurationLoader(api_secrets_file=secrets_path),
+	ArgsConfigurationLoader(api_url=api_url, app_name=app_name)
+]
+api_client_factory = ApiClientFactory(config_loaders=config_loaders)
+
 
 # The client must configure the authentication and authorization parameters
 # in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oauth2
-configuration = finbourne_access.Configuration(
-    host = "https://fbn-ci.lusid.com/access"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with finbourne_access.ApiClient(configuration) as api_client:
+
+# Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
+async with api_client_factory:
     # Create an instance of the API class
-    api_instance = finbourne_access.PoliciesApi(api_client)
+    api_instance = api_client_factory.build(finbourne_access.PoliciesApi)
     scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The requested scope (optional)
-as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The AsAt date time of the data (optional)
-sort_by = ['sort_by_example'] # list[str] | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName (optional)
-start = 56 # int | Optional. When paginating, skip this number of results (optional)
-limit = 56 # int | Optional. 2000 if not provided. When paginating, limit the number of returned results to this many. (optional)
-filter = 'filter_example' # str | Optional. Expression to filter the result set (optional)
+    as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The AsAt date time of the data (optional)
+    sort_by = ['sort_by_example'] # List[str] | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName (optional)
+    start = 56 # int | Optional. When paginating, skip this number of results (optional)
+    limit = 56 # int | Optional. 2000 if not provided. When paginating, limit the number of returned results to this many. (optional)
+    filter = 'filter_example' # str | Optional. Expression to filter the result set (optional)
 
     try:
         # [EARLY ACCESS] ListPolicyCollections: List PolicyCollections
-        api_response = api_instance.list_policy_collections(scope=scope, as_at=as_at, sort_by=sort_by, start=start, limit=limit, filter=filter)
+        api_response = await api_instance.list_policy_collections(scope=scope, as_at=as_at, sort_by=sort_by, start=start, limit=limit, filter=filter)
+        print("The response of PoliciesApi->list_policy_collections:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling PoliciesApi->list_policy_collections: %s\n" % e)
 ```
+
 
 ### Parameters
 
@@ -868,14 +1121,14 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **str**| Optional. Will use the default scope if not provided. The requested scope | [optional] 
  **as_at** | **datetime**| Optional. The AsAt date time of the data | [optional] 
- **sort_by** | [**list[str]**](str.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional] 
+ **sort_by** | [**List[str]**](str.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional] 
  **start** | **int**| Optional. When paginating, skip this number of results | [optional] 
  **limit** | **int**| Optional. 2000 if not provided. When paginating, limit the number of returned results to this many. | [optional] 
  **filter** | **str**| Optional. Expression to filter the result set | [optional] 
 
 ### Return type
 
-[**list[PolicyCollectionResponse]**](PolicyCollectionResponse.md)
+[**List[PolicyCollectionResponse]**](PolicyCollectionResponse.md)
 
 ### Authorization
 
@@ -908,43 +1161,66 @@ Gets all Policies with pagination support.
 ```python
 from __future__ import print_function
 import time
+import os
 import finbourne_access
 from finbourne_access.rest import ApiException
+from finbourne_access.models.resource_list_of_policy_response import ResourceListOfPolicyResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://fbn-ci.lusid.com/access
-# See configuration.py for a list of all supported configuration parameters.
-configuration = finbourne_access.Configuration(
-    host = "https://fbn-ci.lusid.com/access"
+
+from finbourne_access import (
+	  ApiClientFactory,
+	  ApplicationMetadataApi,
+	  EnvironmentVariablesConfigurationLoader,
+	  SecretsFileConfigurationLoader,
+	  ArgsConfigurationLoader
 )
+
+# Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+# By default this will read config from environment variables
+# Then from a secrets.json file found in the current working directory
+api_client_factory = ApiClientFactory()
+
+# The ApiClientFactory can be passed an iterable of configuration loaders to read configuration from
+
+api_url = "https://fbn-ci.lusid.com/access"
+# Path to a secrets.json file containing authentication credentials
+# See https://support.lusid.com/knowledgebase/article/KA-01667/en-us
+# for a detailed guide to setting up the SDK make authenticated calls to LUSID APIs
+secrets_path = os.getenv("FBN_SECRETS_PATH")
+app_name="LusidJupyterNotebook"
+
+config_loaders = [
+	EnvironmentVariablesConfigurationLoader(),
+	SecretsFileConfigurationLoader(api_secrets_file=secrets_path),
+	ArgsConfigurationLoader(api_url=api_url, app_name=app_name)
+]
+api_client_factory = ApiClientFactory(config_loaders=config_loaders)
+
 
 # The client must configure the authentication and authorization parameters
 # in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oauth2
-configuration = finbourne_access.Configuration(
-    host = "https://fbn-ci.lusid.com/access"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with finbourne_access.ApiClient(configuration) as api_client:
+
+# Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
+async with api_client_factory:
     # Create an instance of the API class
-    api_instance = finbourne_access.PoliciesApi(api_client)
+    api_instance = api_client_factory.build(finbourne_access.PoliciesApi)
     as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. Not currently used. The AsAt date time of the data (optional)
-sort_by = 'sort_by_example' # str | Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName (optional)
-limit = 56 # int | Optional. 2000 if not provided. When paginating, limit the number of returned results to this many (optional)
-filter = 'filter_example' # str | Optional. Expression to filter the result set (optional)
-page = 'page_example' # str | Optional. Paging token returned from a previous result (optional)
+    sort_by = 'sort_by_example' # str | Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName (optional)
+    limit = 56 # int | Optional. 2000 if not provided. When paginating, limit the number of returned results to this many (optional)
+    filter = 'filter_example' # str | Optional. Expression to filter the result set (optional)
+    page = 'page_example' # str | Optional. Paging token returned from a previous result (optional)
 
     try:
         # [EARLY ACCESS] PagePolicies: Page Policies
-        api_response = api_instance.page_policies(as_at=as_at, sort_by=sort_by, limit=limit, filter=filter, page=page)
+        api_response = await api_instance.page_policies(as_at=as_at, sort_by=sort_by, limit=limit, filter=filter, page=page)
+        print("The response of PoliciesApi->page_policies:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling PoliciesApi->page_policies: %s\n" % e)
 ```
+
 
 ### Parameters
 
@@ -991,43 +1267,66 @@ Gets all PolicyCollections with pagination support.
 ```python
 from __future__ import print_function
 import time
+import os
 import finbourne_access
 from finbourne_access.rest import ApiException
+from finbourne_access.models.resource_list_of_policy_collection_response import ResourceListOfPolicyCollectionResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://fbn-ci.lusid.com/access
-# See configuration.py for a list of all supported configuration parameters.
-configuration = finbourne_access.Configuration(
-    host = "https://fbn-ci.lusid.com/access"
+
+from finbourne_access import (
+	  ApiClientFactory,
+	  ApplicationMetadataApi,
+	  EnvironmentVariablesConfigurationLoader,
+	  SecretsFileConfigurationLoader,
+	  ArgsConfigurationLoader
 )
+
+# Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+# By default this will read config from environment variables
+# Then from a secrets.json file found in the current working directory
+api_client_factory = ApiClientFactory()
+
+# The ApiClientFactory can be passed an iterable of configuration loaders to read configuration from
+
+api_url = "https://fbn-ci.lusid.com/access"
+# Path to a secrets.json file containing authentication credentials
+# See https://support.lusid.com/knowledgebase/article/KA-01667/en-us
+# for a detailed guide to setting up the SDK make authenticated calls to LUSID APIs
+secrets_path = os.getenv("FBN_SECRETS_PATH")
+app_name="LusidJupyterNotebook"
+
+config_loaders = [
+	EnvironmentVariablesConfigurationLoader(),
+	SecretsFileConfigurationLoader(api_secrets_file=secrets_path),
+	ArgsConfigurationLoader(api_url=api_url, app_name=app_name)
+]
+api_client_factory = ApiClientFactory(config_loaders=config_loaders)
+
 
 # The client must configure the authentication and authorization parameters
 # in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oauth2
-configuration = finbourne_access.Configuration(
-    host = "https://fbn-ci.lusid.com/access"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with finbourne_access.ApiClient(configuration) as api_client:
+
+# Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
+async with api_client_factory:
     # Create an instance of the API class
-    api_instance = finbourne_access.PoliciesApi(api_client)
+    api_instance = api_client_factory.build(finbourne_access.PoliciesApi)
     as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. Not currently used. The AsAt date time of the data (optional)
-sort_by = 'sort_by_example' # str | Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName (optional)
-limit = 56 # int | Optional. 2000 if not provided. When paginating, limit the number of returned results to this many (optional)
-filter = 'filter_example' # str | Optional. Expression to filter the result set (optional)
-page = 'page_example' # str | Optional. Paging token returned from a previous result (optional)
+    sort_by = 'sort_by_example' # str | Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName (optional)
+    limit = 56 # int | Optional. 2000 if not provided. When paginating, limit the number of returned results to this many (optional)
+    filter = 'filter_example' # str | Optional. Expression to filter the result set (optional)
+    page = 'page_example' # str | Optional. Paging token returned from a previous result (optional)
 
     try:
         # [EARLY ACCESS] PagePolicyCollections: Page PolicyCollections
-        api_response = api_instance.page_policy_collections(as_at=as_at, sort_by=sort_by, limit=limit, filter=filter, page=page)
+        api_response = await api_instance.page_policy_collections(as_at=as_at, sort_by=sort_by, limit=limit, filter=filter, page=page)
+        print("The response of PoliciesApi->page_policy_collections:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling PoliciesApi->page_policy_collections: %s\n" % e)
 ```
+
 
 ### Parameters
 
@@ -1074,41 +1373,65 @@ Remove Policies and/or PolicyCollections from a PolicyCollection
 ```python
 from __future__ import print_function
 import time
+import os
 import finbourne_access
 from finbourne_access.rest import ApiException
+from finbourne_access.models.policy_collection_response import PolicyCollectionResponse
+from finbourne_access.models.remove_from_policy_collection_request import RemoveFromPolicyCollectionRequest
 from pprint import pprint
-# Defining the host is optional and defaults to https://fbn-ci.lusid.com/access
-# See configuration.py for a list of all supported configuration parameters.
-configuration = finbourne_access.Configuration(
-    host = "https://fbn-ci.lusid.com/access"
+
+from finbourne_access import (
+	  ApiClientFactory,
+	  ApplicationMetadataApi,
+	  EnvironmentVariablesConfigurationLoader,
+	  SecretsFileConfigurationLoader,
+	  ArgsConfigurationLoader
 )
+
+# Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+# By default this will read config from environment variables
+# Then from a secrets.json file found in the current working directory
+api_client_factory = ApiClientFactory()
+
+# The ApiClientFactory can be passed an iterable of configuration loaders to read configuration from
+
+api_url = "https://fbn-ci.lusid.com/access"
+# Path to a secrets.json file containing authentication credentials
+# See https://support.lusid.com/knowledgebase/article/KA-01667/en-us
+# for a detailed guide to setting up the SDK make authenticated calls to LUSID APIs
+secrets_path = os.getenv("FBN_SECRETS_PATH")
+app_name="LusidJupyterNotebook"
+
+config_loaders = [
+	EnvironmentVariablesConfigurationLoader(),
+	SecretsFileConfigurationLoader(api_secrets_file=secrets_path),
+	ArgsConfigurationLoader(api_url=api_url, app_name=app_name)
+]
+api_client_factory = ApiClientFactory(config_loaders=config_loaders)
+
 
 # The client must configure the authentication and authorization parameters
 # in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oauth2
-configuration = finbourne_access.Configuration(
-    host = "https://fbn-ci.lusid.com/access"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with finbourne_access.ApiClient(configuration) as api_client:
+
+# Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
+async with api_client_factory:
     # Create an instance of the API class
-    api_instance = finbourne_access.PoliciesApi(api_client)
+    api_instance = api_client_factory.build(finbourne_access.PoliciesApi)
     code = 'code_example' # str | The code of the PolicyCollection
-remove_from_policy_collection_request = {"policies":[{"scope":"default","code":"official-portfolios-read-only"},{"scope":"default","code":"desk-portfolios"}],"policyCollections":[{"scope":"default","code":"CompanyEmployeeAccess"}]} # RemoveFromPolicyCollectionRequest | Ids of the PolicyCollections and/or Policies to remove from the PolicyCollection
-scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the PolicyCollection (optional)
+    remove_from_policy_collection_request = {"policies":[{"scope":"default","code":"official-portfolios-read-only"},{"scope":"default","code":"desk-portfolios"}],"policyCollections":[{"scope":"default","code":"CompanyEmployeeAccess"}]} # RemoveFromPolicyCollectionRequest | Ids of the PolicyCollections and/or Policies to remove from the PolicyCollection
+    scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the PolicyCollection (optional)
 
     try:
         # [EARLY ACCESS] RemoveFromPolicyCollection: Remove From PolicyCollection
-        api_response = api_instance.remove_from_policy_collection(code, remove_from_policy_collection_request, scope=scope)
+        api_response = await api_instance.remove_from_policy_collection(code, remove_from_policy_collection_request, scope=scope)
+        print("The response of PoliciesApi->remove_from_policy_collection:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling PoliciesApi->remove_from_policy_collection: %s\n" % e)
 ```
+
 
 ### Parameters
 
@@ -1153,41 +1476,65 @@ Updates a Policy
 ```python
 from __future__ import print_function
 import time
+import os
 import finbourne_access
 from finbourne_access.rest import ApiException
+from finbourne_access.models.policy_response import PolicyResponse
+from finbourne_access.models.policy_update_request import PolicyUpdateRequest
 from pprint import pprint
-# Defining the host is optional and defaults to https://fbn-ci.lusid.com/access
-# See configuration.py for a list of all supported configuration parameters.
-configuration = finbourne_access.Configuration(
-    host = "https://fbn-ci.lusid.com/access"
+
+from finbourne_access import (
+	  ApiClientFactory,
+	  ApplicationMetadataApi,
+	  EnvironmentVariablesConfigurationLoader,
+	  SecretsFileConfigurationLoader,
+	  ArgsConfigurationLoader
 )
+
+# Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+# By default this will read config from environment variables
+# Then from a secrets.json file found in the current working directory
+api_client_factory = ApiClientFactory()
+
+# The ApiClientFactory can be passed an iterable of configuration loaders to read configuration from
+
+api_url = "https://fbn-ci.lusid.com/access"
+# Path to a secrets.json file containing authentication credentials
+# See https://support.lusid.com/knowledgebase/article/KA-01667/en-us
+# for a detailed guide to setting up the SDK make authenticated calls to LUSID APIs
+secrets_path = os.getenv("FBN_SECRETS_PATH")
+app_name="LusidJupyterNotebook"
+
+config_loaders = [
+	EnvironmentVariablesConfigurationLoader(),
+	SecretsFileConfigurationLoader(api_secrets_file=secrets_path),
+	ArgsConfigurationLoader(api_url=api_url, app_name=app_name)
+]
+api_client_factory = ApiClientFactory(config_loaders=config_loaders)
+
 
 # The client must configure the authentication and authorization parameters
 # in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oauth2
-configuration = finbourne_access.Configuration(
-    host = "https://fbn-ci.lusid.com/access"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with finbourne_access.ApiClient(configuration) as api_client:
+
+# Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
+async with api_client_factory:
     # Create an instance of the API class
-    api_instance = finbourne_access.PoliciesApi(api_client)
+    api_instance = api_client_factory.build(finbourne_access.PoliciesApi)
     code = 'code_example' # str | The code of the Policy
-policy_update_request = {"description":"Example policy demonstrating their update","applications":["LUSID"],"grant":"Allow","selectors":[{"idSelectorDefinition":{"identifier":{"scope":"official"},"actions":[{"scope":"default","activity":"Read","entity":"Portfolio"},{"scope":"default","activity":"Aggregate","entity":"Portfolio"}],"name":"access-official-scope","description":"Allow readonly access to the 'official' scope"}}],"for":[{"effectiveRange":{"from":"2015-12-25T00:00:00.0000000+00:00","to":"2020-12-25T00:00:00.0000000+00:00"}},{"asAtRangeForSpec":{"from":{"dateTimeOffset":"2018-01-01T00:00:00.0000000+00:00"},"to":{"value":"AsAt=Latest"}}}],"if":[{"ifRequestHeaderExpression":{"headerName":"organisation.specific.group.header","operator":"EqualsCaseInsensitive","value":"special-group"}}],"when":{"activate":"2016-08-31T18:00:00.0000000+00:00","deactivate":"2020-08-31T18:00:00.0000000+00:00"}} # PolicyUpdateRequest | The updated definition of the Policy
-scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the Policy (optional)
+    policy_update_request = {"description":"Example policy demonstrating their update","applications":["LUSID"],"grant":"Allow","selectors":[{"idSelectorDefinition":{"identifier":{"scope":"official"},"actions":[{"scope":"default","activity":"Read","entity":"Portfolio"},{"scope":"default","activity":"Aggregate","entity":"Portfolio"}],"name":"access-official-scope","description":"Allow readonly access to the 'official' scope"}}],"for":[{"effectiveRange":{"from":"2015-12-25T00:00:00.0000000+00:00","to":"2020-12-25T00:00:00.0000000+00:00"}},{"asAtRangeForSpec":{"from":{"dateTimeOffset":"2018-01-01T00:00:00.0000000+00:00"},"to":{"value":"AsAt=Latest"}}}],"if":[{"ifRequestHeaderExpression":{"headerName":"organisation.specific.group.header","operator":"EqualsCaseInsensitive","value":"special-group"}}],"when":{"activate":"2016-08-31T18:00:00.0000000+00:00","deactivate":"2020-08-31T18:00:00.0000000+00:00"}} # PolicyUpdateRequest | The updated definition of the Policy
+    scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the Policy (optional)
 
     try:
         # [EARLY ACCESS] UpdatePolicy: Update Policy
-        api_response = api_instance.update_policy(code, policy_update_request, scope=scope)
+        api_response = await api_instance.update_policy(code, policy_update_request, scope=scope)
+        print("The response of PoliciesApi->update_policy:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling PoliciesApi->update_policy: %s\n" % e)
 ```
+
 
 ### Parameters
 
@@ -1232,41 +1579,65 @@ Updates a PolicyCollection
 ```python
 from __future__ import print_function
 import time
+import os
 import finbourne_access
 from finbourne_access.rest import ApiException
+from finbourne_access.models.policy_collection_response import PolicyCollectionResponse
+from finbourne_access.models.policy_collection_update_request import PolicyCollectionUpdateRequest
 from pprint import pprint
-# Defining the host is optional and defaults to https://fbn-ci.lusid.com/access
-# See configuration.py for a list of all supported configuration parameters.
-configuration = finbourne_access.Configuration(
-    host = "https://fbn-ci.lusid.com/access"
+
+from finbourne_access import (
+	  ApiClientFactory,
+	  ApplicationMetadataApi,
+	  EnvironmentVariablesConfigurationLoader,
+	  SecretsFileConfigurationLoader,
+	  ArgsConfigurationLoader
 )
+
+# Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+# By default this will read config from environment variables
+# Then from a secrets.json file found in the current working directory
+api_client_factory = ApiClientFactory()
+
+# The ApiClientFactory can be passed an iterable of configuration loaders to read configuration from
+
+api_url = "https://fbn-ci.lusid.com/access"
+# Path to a secrets.json file containing authentication credentials
+# See https://support.lusid.com/knowledgebase/article/KA-01667/en-us
+# for a detailed guide to setting up the SDK make authenticated calls to LUSID APIs
+secrets_path = os.getenv("FBN_SECRETS_PATH")
+app_name="LusidJupyterNotebook"
+
+config_loaders = [
+	EnvironmentVariablesConfigurationLoader(),
+	SecretsFileConfigurationLoader(api_secrets_file=secrets_path),
+	ArgsConfigurationLoader(api_url=api_url, app_name=app_name)
+]
+api_client_factory = ApiClientFactory(config_loaders=config_loaders)
+
 
 # The client must configure the authentication and authorization parameters
 # in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: oauth2
-configuration = finbourne_access.Configuration(
-    host = "https://fbn-ci.lusid.com/access"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with finbourne_access.ApiClient(configuration) as api_client:
+
+# Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
+async with api_client_factory:
     # Create an instance of the API class
-    api_instance = finbourne_access.PoliciesApi(api_client)
+    api_instance = api_client_factory.build(finbourne_access.PoliciesApi)
     code = 'code_example' # str | The code of the PolicyCollection
-policy_collection_update_request = {"policies":[{"scope":"default","code":"official-portfolios-read-only"},{"scope":"default","code":"desk-portfolios"}],"metadata":{},"policyCollections":[{"scope":"default","code":"CompanyEmployeeAccess"}],"description":"Example policy collection"} # PolicyCollectionUpdateRequest | The updated definition of the PolicyCollection
-scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the PolicyCollection (optional)
+    policy_collection_update_request = {"policies":[{"scope":"default","code":"official-portfolios-read-only"},{"scope":"default","code":"desk-portfolios"}],"metadata":{},"policyCollections":[{"scope":"default","code":"CompanyEmployeeAccess"}],"description":"Example policy collection"} # PolicyCollectionUpdateRequest | The updated definition of the PolicyCollection
+    scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the PolicyCollection (optional)
 
     try:
         # [EARLY ACCESS] UpdatePolicyCollection: Update PolicyCollection
-        api_response = api_instance.update_policy_collection(code, policy_collection_update_request, scope=scope)
+        api_response = await api_instance.update_policy_collection(code, policy_collection_update_request, scope=scope)
+        print("The response of PoliciesApi->update_policy_collection:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling PoliciesApi->update_policy_collection: %s\n" % e)
 ```
+
 
 ### Parameters
 

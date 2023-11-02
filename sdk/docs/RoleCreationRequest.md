@@ -10,6 +10,23 @@ Name | Type | Description | Notes
 **resource** | [**RoleResourceRequest**](RoleResourceRequest.md) |  | 
 **when** | [**WhenSpec**](WhenSpec.md) |  | 
 
+## Example
+
+```python
+from finbourne_access.models.role_creation_request import RoleCreationRequest
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of RoleCreationRequest from a JSON string
+role_creation_request_instance = RoleCreationRequest.from_json(json)
+# print the JSON string representation of the object
+print RoleCreationRequest.to_json()
+
+# convert the object into a dict
+role_creation_request_dict = role_creation_request_instance.to_dict()
+# create an instance of RoleCreationRequest from a dict
+role_creation_request_form_dict = role_creation_request.from_dict(role_creation_request_dict)
+```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

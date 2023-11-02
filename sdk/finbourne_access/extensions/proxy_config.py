@@ -1,3 +1,7 @@
+from urllib3 import make_headers
+from typing import Any
+
+
 class ProxyConfig:
     """
     This class is used to hold the proxy configuration details
@@ -19,9 +23,10 @@ class ProxyConfig:
 
     @address.setter
     def address(self, address):
-
         if "http://" not in address and "https://" not in address:
-            raise ValueError(f"The provided proxy address of {address} does not contain a protocol, please specify in the full format e.g. http://myproxy.com:8080")
+            raise ValueError(
+                f"The provided proxy address of {address} does not contain a protocol, please specify in the full format e.g. http://myproxy.com:8080"
+            )
 
         self.__address = address
 
@@ -48,7 +53,17 @@ class ProxyConfig:
 
             proxy_url = f"{self.address[0:index + 3]}{self.username}:{self.password}@{self.address[index + 3:]}"
 
-        return {
-            "http": proxy_url,
-            "https": proxy_url
-        }
+        return {"http": proxy_url, "https": proxy_url}
+
+    @property
+    def headers(self) -> Any:
+        """Return Proxy auth headers
+
+        Returns
+        -------
+        Any
+            Proxy auth headers
+        """
+        return make_headers(
+            proxy_basic_auth=f"{self.__username}:{self.__password}"
+        )
