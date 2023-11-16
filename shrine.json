@@ -9,7 +9,7 @@
       "url": "https://www.finbourne.com",
       "email": "info@finbourne.com"
     },
-    "version": "0.0.3454",
+    "version": "0.0.3456",
     "x-logo": {
       "url": "https://www.lusid.com/app/assets/logo_white.png",
       "backgroundColor": "#415464"
@@ -8055,7 +8055,6 @@
       "IfIdentityClaimExpression": {
         "required": [
           "claimType",
-          "claimValueType",
           "operator"
         ],
         "type": "object",
@@ -8065,8 +8064,8 @@
             "type": "string"
           },
           "claimValueType": {
-            "minLength": 1,
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
           "claimIssuer": {
             "type": "string",
@@ -9279,7 +9278,8 @@
           "NotEqualsCaseInsensitive",
           "ContainsCaseSensitive",
           "NotPresentOrNotContainsCaseSensitive",
-          "NotPresent"
+          "NotPresent",
+          "InCaseInsensitive"
         ],
         "type": "string"
       },
