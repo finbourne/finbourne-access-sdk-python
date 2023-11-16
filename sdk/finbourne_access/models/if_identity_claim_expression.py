@@ -27,7 +27,7 @@ class IfIdentityClaimExpression(BaseModel):
     IfIdentityClaimExpression
     """
     claim_type: constr(strict=True, min_length=1) = Field(..., alias="claimType")
-    claim_value_type: constr(strict=True, min_length=1) = Field(..., alias="claimValueType")
+    claim_value_type: Optional[StrictStr] = Field(None, alias="claimValueType")
     claim_issuer: Optional[StrictStr] = Field(None, alias="claimIssuer")
     claim_original_issuer: Optional[StrictStr] = Field(None, alias="claimOriginalIssuer")
     operator: TextOperator = Field(...)
@@ -58,6 +58,11 @@ class IfIdentityClaimExpression(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
+        # set to None if claim_value_type (nullable) is None
+        # and __fields_set__ contains the field
+        if self.claim_value_type is None and "claim_value_type" in self.__fields_set__:
+            _dict['claimValueType'] = None
+
         # set to None if claim_issuer (nullable) is None
         # and __fields_set__ contains the field
         if self.claim_issuer is None and "claim_issuer" in self.__fields_set__:

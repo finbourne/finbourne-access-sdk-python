@@ -37,6 +37,7 @@ class TextOperator(str, Enum):
     CONTAINSCASESENSITIVE = 'ContainsCaseSensitive'
     NOTPRESENTORNOTCONTAINSCASESENSITIVE = 'NotPresentOrNotContainsCaseSensitive'
     NOTPRESENT = 'NotPresent'
+    INCASEINSENSITIVE = 'InCaseInsensitive'
 
     @classmethod
     def from_json(cls, json_str: str) -> TextOperator:

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **claim_type** | **str** |  | 
-**claim_value_type** | **str** |  | 
+**claim_value_type** | **str** |  | [optional] 
 **claim_issuer** | **str** |  | [optional] 
 **claim_original_issuer** | **str** |  | [optional] 
 **operator** | [**TextOperator**](TextOperator.md) |  | 
