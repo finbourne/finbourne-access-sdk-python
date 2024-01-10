@@ -9,7 +9,7 @@
       "url": "https://www.finbourne.com",
       "email": "info@finbourne.com"
     },
-    "version": "0.0.3586",
+    "version": "0.0.3588",
     "x-logo": {
       "url": "https://www.lusid.com/app/assets/logo_white.png",
       "backgroundColor": "#415464"
@@ -4418,6 +4418,1335 @@
         "x-fbn-apistatus": "EarlyAccess"
       }
     },
+    "/api/policytemplates": {
+      "post": {
+        "tags": [
+          "PolicyTemplates"
+        ],
+        "summary": "[EXPERIMENTAL] CreatePolicyTemplate: Create a Policy Template",
+        "description": "Creates a Policy Template",
+        "operationId": "CreatePolicyTemplate",
+        "requestBody": {
+          "description": "The definition of the policy template",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PolicyTemplateCreationRequest"
+              },
+              "example": {
+                "code": "official-portfolios-read-only",
+                "displayName": "updated-policy-template",
+                "description": "Example policy template for a policy that grants access to some resource",
+                "templatedSelectors": [
+                  {
+                    "application": "LUSID",
+                    "tag": "Data",
+                    "selector": {
+                      "idSelectorDefinition": {
+                        "identifier": {
+                          "scope": "official"
+                        },
+                        "actions": [
+                          {
+                            "scope": "default",
+                            "activity": "Read",
+                            "entity": "Portfolio"
+                          },
+                          {
+                            "scope": "default",
+                            "activity": "Aggregate",
+                            "entity": "Portfolio"
+                          }
+                        ],
+                        "name": "access-official-scope",
+                        "description": "Allow readonly access to the 'official' scope"
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PolicyTemplateCreationRequest"
+              },
+              "example": {
+                "code": "official-portfolios-read-only",
+                "displayName": "updated-policy-template",
+                "description": "Example policy template for a policy that grants access to some resource",
+                "templatedSelectors": [
+                  {
+                    "application": "LUSID",
+                    "tag": "Data",
+                    "selector": {
+                      "idSelectorDefinition": {
+                        "identifier": {
+                          "scope": "official"
+                        },
+                        "actions": [
+                          {
+                            "scope": "default",
+                            "activity": "Read",
+                            "entity": "Portfolio"
+                          },
+                          {
+                            "scope": "default",
+                            "activity": "Aggregate",
+                            "entity": "Portfolio"
+                          }
+                        ],
+                        "name": "access-official-scope",
+                        "description": "Allow readonly access to the 'official' scope"
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PolicyTemplateCreationRequest"
+              },
+              "example": {
+                "code": "official-portfolios-read-only",
+                "displayName": "updated-policy-template",
+                "description": "Example policy template for a policy that grants access to some resource",
+                "templatedSelectors": [
+                  {
+                    "application": "LUSID",
+                    "tag": "Data",
+                    "selector": {
+                      "idSelectorDefinition": {
+                        "identifier": {
+                          "scope": "official"
+                        },
+                        "actions": [
+                          {
+                            "scope": "default",
+                            "activity": "Read",
+                            "entity": "Portfolio"
+                          },
+                          {
+                            "scope": "default",
+                            "activity": "Aggregate",
+                            "entity": "Portfolio"
+                          }
+                        ],
+                        "name": "access-official-scope",
+                        "description": "Allow readonly access to the 'official' scope"
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PolicyTemplateCreationRequest"
+              },
+              "example": {
+                "code": "official-portfolios-read-only",
+                "displayName": "updated-policy-template",
+                "description": "Example policy template for a policy that grants access to some resource",
+                "templatedSelectors": [
+                  {
+                    "application": "LUSID",
+                    "tag": "Data",
+                    "selector": {
+                      "idSelectorDefinition": {
+                        "identifier": {
+                          "scope": "official"
+                        },
+                        "actions": [
+                          {
+                            "scope": "default",
+                            "activity": "Read",
+                            "entity": "Portfolio"
+                          },
+                          {
+                            "scope": "default",
+                            "activity": "Aggregate",
+                            "entity": "Portfolio"
+                          }
+                        ],
+                        "name": "access-official-scope",
+                        "description": "Allow readonly access to the 'official' scope"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created Policy Template",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PolicyTemplateResponse"
+                },
+                "example": {
+                  "displayName": "example-policy-template",
+                  "scope": "default",
+                  "code": "official-portfolios-read-only",
+                  "description": "Example policy template for a policy that grants access to some resource",
+                  "applications": [
+                    "LUSID"
+                  ],
+                  "tags": [
+                    "Data"
+                  ],
+                  "templatedSelectors": [
+                    {
+                      "application": "LUSID",
+                      "tag": "Data",
+                      "selector": {
+                        "idSelectorDefinition": {
+                          "identifier": {
+                            "scope": "official"
+                          },
+                          "actions": [
+                            {
+                              "scope": "default",
+                              "activity": "Read",
+                              "entity": "Portfolio"
+                            },
+                            {
+                              "scope": "default",
+                              "activity": "Aggregate",
+                              "entity": "Portfolio"
+                            }
+                          ],
+                          "name": "access-official-scope",
+                          "description": "Allow readonly access to the 'official' scope"
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PolicyTemplateResponse"
+                },
+                "example": {
+                  "displayName": "example-policy-template",
+                  "scope": "default",
+                  "code": "official-portfolios-read-only",
+                  "description": "Example policy template for a policy that grants access to some resource",
+                  "applications": [
+                    "LUSID"
+                  ],
+                  "tags": [
+                    "Data"
+                  ],
+                  "templatedSelectors": [
+                    {
+                      "application": "LUSID",
+                      "tag": "Data",
+                      "selector": {
+                        "idSelectorDefinition": {
+                          "identifier": {
+                            "scope": "official"
+                          },
+                          "actions": [
+                            {
+                              "scope": "default",
+                              "activity": "Read",
+                              "entity": "Portfolio"
+                            },
+                            {
+                              "scope": "default",
+                              "activity": "Aggregate",
+                              "entity": "Portfolio"
+                            }
+                          ],
+                          "name": "access-official-scope",
+                          "description": "Allow readonly access to the 'official' scope"
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PolicyTemplateResponse"
+                },
+                "example": {
+                  "displayName": "example-policy-template",
+                  "scope": "default",
+                  "code": "official-portfolios-read-only",
+                  "description": "Example policy template for a policy that grants access to some resource",
+                  "applications": [
+                    "LUSID"
+                  ],
+                  "tags": [
+                    "Data"
+                  ],
+                  "templatedSelectors": [
+                    {
+                      "application": "LUSID",
+                      "tag": "Data",
+                      "selector": {
+                        "idSelectorDefinition": {
+                          "identifier": {
+                            "scope": "official"
+                          },
+                          "actions": [
+                            {
+                              "scope": "default",
+                              "activity": "Read",
+                              "entity": "Portfolio"
+                            },
+                            {
+                              "scope": "default",
+                              "activity": "Aggregate",
+                              "entity": "Portfolio"
+                            }
+                          ],
+                          "name": "access-official-scope",
+                          "description": "Allow readonly access to the 'official' scope"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The details of the input related failure",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2": []
+          }
+        ],
+        "x-fbn-apistatus": "Experimental"
+      },
+      "get": {
+        "tags": [
+          "PolicyTemplates"
+        ],
+        "summary": "[EXPERIMENTAL] ListPolicyTemplates: List Policy Templates",
+        "description": "Gets all Policy Templates with pagination support.",
+        "operationId": "ListPolicyTemplates",
+        "parameters": [
+          {
+            "name": "asAt",
+            "in": "query",
+            "description": "Optional. The AsAt date time of the data",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List Policy Templates",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PolicyTemplateResponse"
+                  }
+                },
+                "example": [
+                  {
+                    "displayName": "example-policy-template",
+                    "scope": "default",
+                    "code": "official-portfolios-read-only",
+                    "description": "Example policy template for a policy that grants access to some resource",
+                    "applications": [
+                      "LUSID"
+                    ],
+                    "tags": [
+                      "Data"
+                    ],
+                    "templatedSelectors": [
+                      {
+                        "application": "LUSID",
+                        "tag": "Data",
+                        "selector": {
+                          "idSelectorDefinition": {
+                            "identifier": {
+                              "scope": "official"
+                            },
+                            "actions": [
+                              {
+                                "scope": "default",
+                                "activity": "Read",
+                                "entity": "Portfolio"
+                              },
+                              {
+                                "scope": "default",
+                                "activity": "Aggregate",
+                                "entity": "Portfolio"
+                              }
+                            ],
+                            "name": "access-official-scope",
+                            "description": "Allow readonly access to the 'official' scope"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PolicyTemplateResponse"
+                  }
+                },
+                "example": [
+                  {
+                    "displayName": "example-policy-template",
+                    "scope": "default",
+                    "code": "official-portfolios-read-only",
+                    "description": "Example policy template for a policy that grants access to some resource",
+                    "applications": [
+                      "LUSID"
+                    ],
+                    "tags": [
+                      "Data"
+                    ],
+                    "templatedSelectors": [
+                      {
+                        "application": "LUSID",
+                        "tag": "Data",
+                        "selector": {
+                          "idSelectorDefinition": {
+                            "identifier": {
+                              "scope": "official"
+                            },
+                            "actions": [
+                              {
+                                "scope": "default",
+                                "activity": "Read",
+                                "entity": "Portfolio"
+                              },
+                              {
+                                "scope": "default",
+                                "activity": "Aggregate",
+                                "entity": "Portfolio"
+                              }
+                            ],
+                            "name": "access-official-scope",
+                            "description": "Allow readonly access to the 'official' scope"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PolicyTemplateResponse"
+                  }
+                },
+                "example": [
+                  {
+                    "displayName": "example-policy-template",
+                    "scope": "default",
+                    "code": "official-portfolios-read-only",
+                    "description": "Example policy template for a policy that grants access to some resource",
+                    "applications": [
+                      "LUSID"
+                    ],
+                    "tags": [
+                      "Data"
+                    ],
+                    "templatedSelectors": [
+                      {
+                        "application": "LUSID",
+                        "tag": "Data",
+                        "selector": {
+                          "idSelectorDefinition": {
+                            "identifier": {
+                              "scope": "official"
+                            },
+                            "actions": [
+                              {
+                                "scope": "default",
+                                "activity": "Read",
+                                "entity": "Portfolio"
+                              },
+                              {
+                                "scope": "default",
+                                "activity": "Aggregate",
+                                "entity": "Portfolio"
+                              }
+                            ],
+                            "name": "access-official-scope",
+                            "description": "Allow readonly access to the 'official' scope"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "400": {
+            "description": "The details of the input related failure",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2": []
+          }
+        ],
+        "x-fbn-apistatus": "Experimental"
+      }
+    },
+    "/api/policytemplates/$generatepolicy": {
+      "post": {
+        "tags": [
+          "PolicyTemplates"
+        ],
+        "summary": "[EXPERIMENTAL] GeneratePolicyFromTemplate: Generate policy from template",
+        "description": "Generates policies from templates",
+        "operationId": "GeneratePolicyFromTemplate",
+        "parameters": [
+          {
+            "name": "asAt",
+            "in": "query",
+            "description": "Optional. The AsAt date time of the data",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "x-nullable": true
+          }
+        ],
+        "requestBody": {
+          "description": "Definition of the generate request",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneratePolicyFromTemplateRequest"
+              },
+              "example": {
+                "templateSelection": [
+                  {
+                    "scope": "default",
+                    "code": "example-policy-template",
+                    "selectorTags": [
+                      "Data",
+                      "Api"
+                    ]
+                  }
+                ]
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneratePolicyFromTemplateRequest"
+              },
+              "example": {
+                "templateSelection": [
+                  {
+                    "scope": "default",
+                    "code": "example-policy-template",
+                    "selectorTags": [
+                      "Data",
+                      "Api"
+                    ]
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneratePolicyFromTemplateRequest"
+              },
+              "example": {
+                "templateSelection": [
+                  {
+                    "scope": "default",
+                    "code": "example-policy-template",
+                    "selectorTags": [
+                      "Data",
+                      "Api"
+                    ]
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneratePolicyFromTemplateRequest"
+              },
+              "example": {
+                "templateSelection": [
+                  {
+                    "scope": "default",
+                    "code": "example-policy-template",
+                    "selectorTags": [
+                      "Data",
+                      "Api"
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/GeneratedPolicyComponents"
+                },
+                "example": {
+                  "applications": [
+                    "LUSID"
+                  ],
+                  "templateMetadata": {
+                    "templateSelection": [
+                      {
+                        "scope": "default",
+                        "code": "some-template-code",
+                        "selectorTags": [
+                          "Data"
+                        ]
+                      }
+                    ],
+                    "buildAsAt": "2024-01-09T00:00:00.0000000+00:00"
+                  },
+                  "selectors": [
+                    {
+                      "idSelectorDefinition": {
+                        "identifier": {
+                          "scope": "official"
+                        },
+                        "actions": [
+                          {
+                            "scope": "default",
+                            "activity": "Read",
+                            "entity": "Portfolio"
+                          },
+                          {
+                            "scope": "default",
+                            "activity": "Aggregate",
+                            "entity": "Portfolio"
+                          }
+                        ],
+                        "name": "access-official-scope",
+                        "description": "Allow readonly access to the 'official' scope"
+                      }
+                    }
+                  ]
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GeneratedPolicyComponents"
+                },
+                "example": {
+                  "applications": [
+                    "LUSID"
+                  ],
+                  "templateMetadata": {
+                    "templateSelection": [
+                      {
+                        "scope": "default",
+                        "code": "some-template-code",
+                        "selectorTags": [
+                          "Data"
+                        ]
+                      }
+                    ],
+                    "buildAsAt": "2024-01-09T00:00:00.0000000+00:00"
+                  },
+                  "selectors": [
+                    {
+                      "idSelectorDefinition": {
+                        "identifier": {
+                          "scope": "official"
+                        },
+                        "actions": [
+                          {
+                            "scope": "default",
+                            "activity": "Read",
+                            "entity": "Portfolio"
+                          },
+                          {
+                            "scope": "default",
+                            "activity": "Aggregate",
+                            "entity": "Portfolio"
+                          }
+                        ],
+                        "name": "access-official-scope",
+                        "description": "Allow readonly access to the 'official' scope"
+                      }
+                    }
+                  ]
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GeneratedPolicyComponents"
+                },
+                "example": {
+                  "applications": [
+                    "LUSID"
+                  ],
+                  "templateMetadata": {
+                    "templateSelection": [
+                      {
+                        "scope": "default",
+                        "code": "some-template-code",
+                        "selectorTags": [
+                          "Data"
+                        ]
+                      }
+                    ],
+                    "buildAsAt": "2024-01-09T00:00:00.0000000+00:00"
+                  },
+                  "selectors": [
+                    {
+                      "idSelectorDefinition": {
+                        "identifier": {
+                          "scope": "official"
+                        },
+                        "actions": [
+                          {
+                            "scope": "default",
+                            "activity": "Read",
+                            "entity": "Portfolio"
+                          },
+                          {
+                            "scope": "default",
+                            "activity": "Aggregate",
+                            "entity": "Portfolio"
+                          }
+                        ],
+                        "name": "access-official-scope",
+                        "description": "Allow readonly access to the 'official' scope"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The details of the input related failure",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2": []
+          }
+        ],
+        "x-fbn-apistatus": "Experimental"
+      }
+    },
+    "/api/policytemplates/{code}": {
+      "get": {
+        "tags": [
+          "PolicyTemplates"
+        ],
+        "summary": "[EXPERIMENTAL] GetPolicyTemplate: Retrieving one Policy Template",
+        "description": "Gets an identified Policy Template",
+        "operationId": "GetPolicyTemplate",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "description": "The code of the Policy Template",
+            "required": true,
+            "schema": {
+              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
+              "type": "string"
+            }
+          },
+          {
+            "name": "asAt",
+            "in": "query",
+            "description": "Optional. The AsAt date time of the data. If not specified defaults to current time",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "x-nullable": true
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "description": "Optional. Will use the default scope if not provided. The scope of the Policy Template",
+            "schema": {
+              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get a specific Policy Template",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PolicyTemplateResponse"
+                },
+                "example": {
+                  "displayName": "example-policy-template",
+                  "scope": "default",
+                  "code": "official-portfolios-read-only",
+                  "description": "Example policy template for a policy that grants access to some resource",
+                  "applications": [
+                    "LUSID"
+                  ],
+                  "tags": [
+                    "Data"
+                  ],
+                  "templatedSelectors": [
+                    {
+                      "application": "LUSID",
+                      "tag": "Data",
+                      "selector": {
+                        "idSelectorDefinition": {
+                          "identifier": {
+                            "scope": "official"
+                          },
+                          "actions": [
+                            {
+                              "scope": "default",
+                              "activity": "Read",
+                              "entity": "Portfolio"
+                            },
+                            {
+                              "scope": "default",
+                              "activity": "Aggregate",
+                              "entity": "Portfolio"
+                            }
+                          ],
+                          "name": "access-official-scope",
+                          "description": "Allow readonly access to the 'official' scope"
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PolicyTemplateResponse"
+                },
+                "example": {
+                  "displayName": "example-policy-template",
+                  "scope": "default",
+                  "code": "official-portfolios-read-only",
+                  "description": "Example policy template for a policy that grants access to some resource",
+                  "applications": [
+                    "LUSID"
+                  ],
+                  "tags": [
+                    "Data"
+                  ],
+                  "templatedSelectors": [
+                    {
+                      "application": "LUSID",
+                      "tag": "Data",
+                      "selector": {
+                        "idSelectorDefinition": {
+                          "identifier": {
+                            "scope": "official"
+                          },
+                          "actions": [
+                            {
+                              "scope": "default",
+                              "activity": "Read",
+                              "entity": "Portfolio"
+                            },
+                            {
+                              "scope": "default",
+                              "activity": "Aggregate",
+                              "entity": "Portfolio"
+                            }
+                          ],
+                          "name": "access-official-scope",
+                          "description": "Allow readonly access to the 'official' scope"
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PolicyTemplateResponse"
+                },
+                "example": {
+                  "displayName": "example-policy-template",
+                  "scope": "default",
+                  "code": "official-portfolios-read-only",
+                  "description": "Example policy template for a policy that grants access to some resource",
+                  "applications": [
+                    "LUSID"
+                  ],
+                  "tags": [
+                    "Data"
+                  ],
+                  "templatedSelectors": [
+                    {
+                      "application": "LUSID",
+                      "tag": "Data",
+                      "selector": {
+                        "idSelectorDefinition": {
+                          "identifier": {
+                            "scope": "official"
+                          },
+                          "actions": [
+                            {
+                              "scope": "default",
+                              "activity": "Read",
+                              "entity": "Portfolio"
+                            },
+                            {
+                              "scope": "default",
+                              "activity": "Aggregate",
+                              "entity": "Portfolio"
+                            }
+                          ],
+                          "name": "access-official-scope",
+                          "description": "Allow readonly access to the 'official' scope"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The details of the input related failure",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2": []
+          }
+        ],
+        "x-fbn-apistatus": "Experimental"
+      },
+      "delete": {
+        "tags": [
+          "PolicyTemplates"
+        ],
+        "summary": "[EXPERIMENTAL] DeletePolicyTemplate: Deleting a policy template",
+        "description": "Deletes an identified Policy Template",
+        "operationId": "DeletePolicyTemplate",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "description": "The code of the Policy Template",
+            "required": true,
+            "schema": {
+              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
+              "type": "string"
+            }
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "description": "Optional. Will use the default scope if not provided. The scope of the Policy Template",
+            "schema": {
+              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "The details of the input related failure",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2": []
+          }
+        ],
+        "x-fbn-apistatus": "Experimental"
+      },
+      "put": {
+        "tags": [
+          "PolicyTemplates"
+        ],
+        "summary": "[EXPERIMENTAL] UpdatePolicyTemplate: Update a Policy Template",
+        "description": "Updates an identified Policy Template",
+        "operationId": "UpdatePolicyTemplate",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "description": "Code of the policy template to update",
+            "required": true,
+            "schema": {
+              "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Definition of the updated policy template",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PolicyTemplateUpdateRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PolicyTemplateUpdateRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PolicyTemplateUpdateRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PolicyTemplateUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated Policy Template",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PolicyTemplateResponse"
+                },
+                "example": {
+                  "displayName": "example-policy-template",
+                  "scope": "default",
+                  "code": "official-portfolios-read-only",
+                  "description": "Example policy template for a policy that grants access to some resource",
+                  "applications": [
+                    "LUSID"
+                  ],
+                  "tags": [
+                    "Data"
+                  ],
+                  "templatedSelectors": [
+                    {
+                      "application": "LUSID",
+                      "tag": "Data",
+                      "selector": {
+                        "idSelectorDefinition": {
+                          "identifier": {
+                            "scope": "official"
+                          },
+                          "actions": [
+                            {
+                              "scope": "default",
+                              "activity": "Read",
+                              "entity": "Portfolio"
+                            },
+                            {
+                              "scope": "default",
+                              "activity": "Aggregate",
+                              "entity": "Portfolio"
+                            }
+                          ],
+                          "name": "access-official-scope",
+                          "description": "Allow readonly access to the 'official' scope"
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PolicyTemplateResponse"
+                },
+                "example": {
+                  "displayName": "example-policy-template",
+                  "scope": "default",
+                  "code": "official-portfolios-read-only",
+                  "description": "Example policy template for a policy that grants access to some resource",
+                  "applications": [
+                    "LUSID"
+                  ],
+                  "tags": [
+                    "Data"
+                  ],
+                  "templatedSelectors": [
+                    {
+                      "application": "LUSID",
+                      "tag": "Data",
+                      "selector": {
+                        "idSelectorDefinition": {
+                          "identifier": {
+                            "scope": "official"
+                          },
+                          "actions": [
+                            {
+                              "scope": "default",
+                              "activity": "Read",
+                              "entity": "Portfolio"
+                            },
+                            {
+                              "scope": "default",
+                              "activity": "Aggregate",
+                              "entity": "Portfolio"
+                            }
+                          ],
+                          "name": "access-official-scope",
+                          "description": "Allow readonly access to the 'official' scope"
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PolicyTemplateResponse"
+                },
+                "example": {
+                  "displayName": "example-policy-template",
+                  "scope": "default",
+                  "code": "official-portfolios-read-only",
+                  "description": "Example policy template for a policy that grants access to some resource",
+                  "applications": [
+                    "LUSID"
+                  ],
+                  "tags": [
+                    "Data"
+                  ],
+                  "templatedSelectors": [
+                    {
+                      "application": "LUSID",
+                      "tag": "Data",
+                      "selector": {
+                        "idSelectorDefinition": {
+                          "identifier": {
+                            "scope": "official"
+                          },
+                          "actions": [
+                            {
+                              "scope": "default",
+                              "activity": "Read",
+                              "entity": "Portfolio"
+                            },
+                            {
+                              "scope": "default",
+                              "activity": "Aggregate",
+                              "entity": "Portfolio"
+                            }
+                          ],
+                          "name": "access-official-scope",
+                          "description": "Allow readonly access to the 'official' scope"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The details of the input related failure",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LusidProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2": []
+          }
+        ],
+        "x-fbn-apistatus": "Experimental"
+      }
+    },
     "/api/roles": {
       "get": {
         "tags": [
@@ -7919,6 +9248,50 @@
         },
         "additionalProperties": false
       },
+      "GeneratedPolicyComponents": {
+        "type": "object",
+        "properties": {
+          "applications": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Applications to which the policy applies",
+            "nullable": true
+          },
+          "templateMetadata": {
+            "$ref": "#/components/schemas/TemplateMetadata"
+          },
+          "selectors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SelectorDefinition"
+            },
+            "description": "Selectors that this policy will be applied to",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Response object for policy generated from template"
+      },
+      "GeneratePolicyFromTemplateRequest": {
+        "required": [
+          "templateSelection"
+        ],
+        "type": "object",
+        "properties": {
+          "templateSelection": {
+            "maxItems": 10,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TemplateSelection"
+            },
+            "description": "List of template selection, identifying policy templates to use for generation"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Generate policy from template"
+      },
       "Grant": {
         "enum": [
           "Undefined",
@@ -8768,6 +10141,152 @@
         },
         "additionalProperties": false
       },
+      "PolicyTemplateCreationRequest": {
+        "required": [
+          "code",
+          "description",
+          "displayName",
+          "templatedSelectors"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "maxLength": 100,
+            "minLength": 3,
+            "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
+            "type": "string",
+            "description": "The Code of the policy template being created"
+          },
+          "displayName": {
+            "maxLength": 512,
+            "minLength": 1,
+            "type": "string",
+            "description": "The display name of the policy template being created"
+          },
+          "description": {
+            "maxLength": 1024,
+            "minLength": 0,
+            "type": "string",
+            "description": "Description of the policy template being craeted"
+          },
+          "templatedSelectors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PolicyTemplatedSelector"
+            },
+            "description": "The selector definitions of policies included in this policy template"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Request to create a policy template"
+      },
+      "PolicyTemplatedSelector": {
+        "required": [
+          "application",
+          "selector",
+          "tag"
+        ],
+        "type": "object",
+        "properties": {
+          "application": {
+            "minLength": 1,
+            "type": "string",
+            "description": "The application that this selector definition applies to"
+          },
+          "tag": {
+            "minLength": 1,
+            "type": "string",
+            "description": "The type of policy that this selector definition applies to"
+          },
+          "selector": {
+            "$ref": "#/components/schemas/SelectorDefinition"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Templated selector for a policy template"
+      },
+      "PolicyTemplateResponse": {
+        "type": "object",
+        "properties": {
+          "displayName": {
+            "type": "string",
+            "description": "Display name of the policy template being created",
+            "nullable": true
+          },
+          "scope": {
+            "type": "string",
+            "description": "The Scope of the policy template being created",
+            "nullable": true
+          },
+          "code": {
+            "type": "string",
+            "description": "The Code of the policy template being created",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the policy template being created",
+            "nullable": true
+          },
+          "applications": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of applications that this policy template covers",
+            "nullable": true
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of policy types that this policy template covers",
+            "nullable": true
+          },
+          "templatedSelectors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PolicyTemplatedSelector"
+            },
+            "description": "The selector definitions of policies included in this policy template",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Response object for a policy template"
+      },
+      "PolicyTemplateUpdateRequest": {
+        "required": [
+          "description",
+          "displayName",
+          "templatedSelectors"
+        ],
+        "type": "object",
+        "properties": {
+          "displayName": {
+            "maxLength": 512,
+            "minLength": 1,
+            "type": "string",
+            "description": "The display name of the policy template being created"
+          },
+          "description": {
+            "maxLength": 1024,
+            "minLength": 0,
+            "type": "string",
+            "description": "Description of the policy template being craeted"
+          },
+          "templatedSelectors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PolicyTemplatedSelector"
+            },
+            "description": "The selector definitions of policies included in this policy template"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Update policy template request"
+      },
       "PolicyType": {
         "enum": [
           "Undefined",
@@ -9269,6 +10788,59 @@
         },
         "additionalProperties": false
       },
+      "TemplateMetadata": {
+        "type": "object",
+        "properties": {
+          "templateSelection": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TemplateSelection"
+            },
+            "description": "List of policy templates used for a generation request",
+            "nullable": true
+          },
+          "buildAsAt": {
+            "type": "string",
+            "description": "Policy template build AsAt time used for a generation request",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Extra policy template metadata information, used during a generation request"
+      },
+      "TemplateSelection": {
+        "required": [
+          "code",
+          "scope"
+        ],
+        "type": "object",
+        "properties": {
+          "scope": {
+            "maxLength": 100,
+            "minLength": 3,
+            "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
+            "type": "string",
+            "description": "Scope identifying policy template to use for generation"
+          },
+          "code": {
+            "maxLength": 100,
+            "minLength": 3,
+            "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
+            "type": "string",
+            "description": "Code identifying policy template to use for generation"
+          },
+          "selectorTags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of selector tags to optionally filter in the template generation \r\n(Eg: API, Data, etc)",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "A template selection, identifying a policy template to use for generation"
+      },
       "TextOperator": {
         "enum": [
           "Undefined",
@@ -9385,6 +10957,10 @@
       "description": "Endpoints for interacting with the current user's access rights"
     },
     {
+      "name": "PolicyTemplates",
+      "description": "Endpoints for administering Policy Templates"
+    },
+    {
       "name": "Roles",
       "description": "Endpoints for administering Roles"
     },
@@ -9398,6 +10974,7 @@
     "tags": [
       "Application Metadata",
       "Policies",
+      "PolicyTemplates",
       "Roles",
       "User-roles"
     ]
