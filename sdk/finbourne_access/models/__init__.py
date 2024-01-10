@@ -34,6 +34,8 @@ from finbourne_access.models.evaluation_request import EvaluationRequest
 from finbourne_access.models.evaluation_response import EvaluationResponse
 from finbourne_access.models.evaluation_result import EvaluationResult
 from finbourne_access.models.for_spec import ForSpec
+from finbourne_access.models.generate_policy_from_template_request import GeneratePolicyFromTemplateRequest
+from finbourne_access.models.generated_policy_components import GeneratedPolicyComponents
 from finbourne_access.models.grant import Grant
 from finbourne_access.models.how_spec import HowSpec
 from finbourne_access.models.id_selector_definition import IdSelectorDefinition
@@ -62,6 +64,10 @@ from finbourne_access.models.policy_id import PolicyId
 from finbourne_access.models.policy_id_role_resource import PolicyIdRoleResource
 from finbourne_access.models.policy_response import PolicyResponse
 from finbourne_access.models.policy_selector_definition import PolicySelectorDefinition
+from finbourne_access.models.policy_template_creation_request import PolicyTemplateCreationRequest
+from finbourne_access.models.policy_template_response import PolicyTemplateResponse
+from finbourne_access.models.policy_template_update_request import PolicyTemplateUpdateRequest
+from finbourne_access.models.policy_templated_selector import PolicyTemplatedSelector
 from finbourne_access.models.policy_type import PolicyType
 from finbourne_access.models.policy_update_request import PolicyUpdateRequest
 from finbourne_access.models.relative_to_date_time import RelativeToDateTime
@@ -79,6 +85,8 @@ from finbourne_access.models.role_resource_request import RoleResourceRequest
 from finbourne_access.models.role_response import RoleResponse
 from finbourne_access.models.role_update_request import RoleUpdateRequest
 from finbourne_access.models.selector_definition import SelectorDefinition
+from finbourne_access.models.template_metadata import TemplateMetadata
+from finbourne_access.models.template_selection import TemplateSelection
 from finbourne_access.models.text_operator import TextOperator
 from finbourne_access.models.user_role_creation_request import UserRoleCreationRequest
 from finbourne_access.models.user_role_response import UserRoleResponse
