@@ -22,15 +22,16 @@ from typing import overload, Optional, Union, Awaitable
 from typing_extensions import Annotated
 from datetime import datetime
 
-from pydantic import Field, constr, validator
+from pydantic import Field, StrictInt, constr, validator
 
-from typing import List, Optional
+from typing import Optional
 
 from finbourne_access.models.generate_policy_from_template_request import GeneratePolicyFromTemplateRequest
 from finbourne_access.models.generated_policy_components import GeneratedPolicyComponents
 from finbourne_access.models.policy_template_creation_request import PolicyTemplateCreationRequest
 from finbourne_access.models.policy_template_response import PolicyTemplateResponse
 from finbourne_access.models.policy_template_update_request import PolicyTemplateUpdateRequest
+from finbourne_access.models.resource_list_of_policy_template_response import ResourceListOfPolicyTemplateResponse
 
 from finbourne_access.api_client import ApiClient
 from finbourne_access.api_response import ApiResponse
@@ -706,26 +707,34 @@ class PolicyTemplatesApi:
             _request_auth=_params.get('_request_auth'))
 
     @overload
-    async def list_policy_templates(self, as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, **kwargs) -> List[PolicyTemplateResponse]:  # noqa: E501
+    async def list_policy_templates(self, as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, sort_by : Annotated[Optional[constr(strict=True, max_length=16384, min_length=1)], Field(description="Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[StrictInt], Field(description="Optional. When paginating, limit the number of returned results to this many.")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, page : Annotated[Optional[constr(strict=True, max_length=500, min_length=1)], Field(description="Optional. Paging token returned from a previous result")] = None, **kwargs) -> ResourceListOfPolicyTemplateResponse:  # noqa: E501
         ...
 
     @overload
-    def list_policy_templates(self, as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, async_req: Optional[bool]=True, **kwargs) -> List[PolicyTemplateResponse]:  # noqa: E501
+    def list_policy_templates(self, as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, sort_by : Annotated[Optional[constr(strict=True, max_length=16384, min_length=1)], Field(description="Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[StrictInt], Field(description="Optional. When paginating, limit the number of returned results to this many.")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, page : Annotated[Optional[constr(strict=True, max_length=500, min_length=1)], Field(description="Optional. Paging token returned from a previous result")] = None, async_req: Optional[bool]=True, **kwargs) -> ResourceListOfPolicyTemplateResponse:  # noqa: E501
         ...
 
     @validate_arguments
-    def list_policy_templates(self, as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[List[PolicyTemplateResponse], Awaitable[List[PolicyTemplateResponse]]]:  # noqa: E501
+    def list_policy_templates(self, as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, sort_by : Annotated[Optional[constr(strict=True, max_length=16384, min_length=1)], Field(description="Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[StrictInt], Field(description="Optional. When paginating, limit the number of returned results to this many.")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, page : Annotated[Optional[constr(strict=True, max_length=500, min_length=1)], Field(description="Optional. Paging token returned from a previous result")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[ResourceListOfPolicyTemplateResponse, Awaitable[ResourceListOfPolicyTemplateResponse]]:  # noqa: E501
         """[EXPERIMENTAL] ListPolicyTemplates: List Policy Templates  # noqa: E501
 
         Gets all Policy Templates with pagination support.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.list_policy_templates(as_at, async_req=True)
+        >>> thread = api.list_policy_templates(as_at, sort_by, limit, filter, page, async_req=True)
         >>> result = thread.get()
 
         :param as_at: Optional. The AsAt date time of the data
         :type as_at: datetime
+        :param sort_by: Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
+        :type sort_by: str
+        :param limit: Optional. When paginating, limit the number of returned results to this many.
+        :type limit: int
+        :param filter: Optional. Expression to filter the result set
+        :type filter: str
+        :param page: Optional. Paging token returned from a previous result
+        :type page: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
@@ -735,7 +744,7 @@ class PolicyTemplatesApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: List[PolicyTemplateResponse]
+        :rtype: ResourceListOfPolicyTemplateResponse
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
@@ -743,21 +752,29 @@ class PolicyTemplatesApi:
             raise ValueError(message)
         if async_req is not None:
             kwargs['async_req'] = async_req
-        return self.list_policy_templates_with_http_info(as_at, **kwargs)  # noqa: E501
+        return self.list_policy_templates_with_http_info(as_at, sort_by, limit, filter, page, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_policy_templates_with_http_info(self, as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_policy_templates_with_http_info(self, as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, sort_by : Annotated[Optional[constr(strict=True, max_length=16384, min_length=1)], Field(description="Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[StrictInt], Field(description="Optional. When paginating, limit the number of returned results to this many.")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, page : Annotated[Optional[constr(strict=True, max_length=500, min_length=1)], Field(description="Optional. Paging token returned from a previous result")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """[EXPERIMENTAL] ListPolicyTemplates: List Policy Templates  # noqa: E501
 
         Gets all Policy Templates with pagination support.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.list_policy_templates_with_http_info(as_at, async_req=True)
+        >>> thread = api.list_policy_templates_with_http_info(as_at, sort_by, limit, filter, page, async_req=True)
         >>> result = thread.get()
 
         :param as_at: Optional. The AsAt date time of the data
         :type as_at: datetime
+        :param sort_by: Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
+        :type sort_by: str
+        :param limit: Optional. When paginating, limit the number of returned results to this many.
+        :type limit: int
+        :param filter: Optional. Expression to filter the result set
+        :type filter: str
+        :param page: Optional. Paging token returned from a previous result
+        :type page: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -780,13 +797,17 @@ class PolicyTemplatesApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(List[PolicyTemplateResponse], status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(ResourceListOfPolicyTemplateResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
 
         _all_params = [
-            'as_at'
+            'as_at',
+            'sort_by',
+            'limit',
+            'filter',
+            'page'
         ]
         _all_params.extend(
             [
@@ -823,6 +844,18 @@ class PolicyTemplatesApi:
             else:
                 _query_params.append(('asAt', _params['as_at']))
 
+        if _params.get('sort_by') is not None:  # noqa: E501
+            _query_params.append(('sortBy', _params['sort_by']))
+
+        if _params.get('limit') is not None:  # noqa: E501
+            _query_params.append(('limit', _params['limit']))
+
+        if _params.get('filter') is not None:  # noqa: E501
+            _query_params.append(('filter', _params['filter']))
+
+        if _params.get('page') is not None:  # noqa: E501
+            _query_params.append(('page', _params['page']))
+
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
         # process the form parameters
@@ -838,7 +871,7 @@ class PolicyTemplatesApi:
         _auth_settings = ['oauth2']  # noqa: E501
 
         _response_types_map = {
-            '200': "List[PolicyTemplateResponse]",
+            '200': "ResourceListOfPolicyTemplateResponse",
             '400': "LusidValidationProblemDetails",
         }
 

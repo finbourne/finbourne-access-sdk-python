@@ -412,7 +412,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_policy_templates**
-> List[PolicyTemplateResponse] list_policy_templates(as_at=as_at)
+> ResourceListOfPolicyTemplateResponse list_policy_templates(as_at=as_at, sort_by=sort_by, limit=limit, filter=filter, page=page)
 
 [EXPERIMENTAL] ListPolicyTemplates: List Policy Templates
 
@@ -427,7 +427,7 @@ import time
 import os
 import finbourne_access
 from finbourne_access.rest import ApiException
-from finbourne_access.models.policy_template_response import PolicyTemplateResponse
+from finbourne_access.models.resource_list_of_policy_template_response import ResourceListOfPolicyTemplateResponse
 from pprint import pprint
 
 from finbourne_access import (
@@ -470,10 +470,14 @@ async with api_client_factory:
     # Create an instance of the API class
     api_instance = api_client_factory.build(finbourne_access.PolicyTemplatesApi)
     as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The AsAt date time of the data (optional)
+    sort_by = 'sort_by_example' # str | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName (optional)
+    limit = 56 # int | Optional. When paginating, limit the number of returned results to this many. (optional)
+    filter = 'filter_example' # str | Optional. Expression to filter the result set (optional)
+    page = 'page_example' # str | Optional. Paging token returned from a previous result (optional)
 
     try:
         # [EXPERIMENTAL] ListPolicyTemplates: List Policy Templates
-        api_response = await api_instance.list_policy_templates(as_at=as_at)
+        api_response = await api_instance.list_policy_templates(as_at=as_at, sort_by=sort_by, limit=limit, filter=filter, page=page)
         print("The response of PolicyTemplatesApi->list_policy_templates:\n")
         pprint(api_response)
     except Exception as e:
@@ -486,10 +490,14 @@ async with api_client_factory:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **as_at** | **datetime**| Optional. The AsAt date time of the data | [optional] 
+ **sort_by** | **str**| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional] 
+ **limit** | **int**| Optional. When paginating, limit the number of returned results to this many. | [optional] 
+ **filter** | **str**| Optional. Expression to filter the result set | [optional] 
+ **page** | **str**| Optional. Paging token returned from a previous result | [optional] 
 
 ### Return type
 
-[**List[PolicyTemplateResponse]**](PolicyTemplateResponse.md)
+[**ResourceListOfPolicyTemplateResponse**](ResourceListOfPolicyTemplateResponse.md)
 
 ### Authorization
 
