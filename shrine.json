@@ -9,7 +9,7 @@
       "url": "https://www.finbourne.com",
       "email": "info@finbourne.com"
     },
-    "version": "0.0.3636",
+    "version": "0.0.3638",
     "x-logo": {
       "url": "https://www.lusid.com/app/assets/logo_white.png",
       "backgroundColor": "#415464"
@@ -4773,6 +4773,49 @@
               "format": "date-time"
             },
             "x-nullable": true
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName",
+            "schema": {
+              "maxLength": 16384,
+              "minLength": 1,
+              "pattern": "^[\\s\\S]*$",
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Optional. When paginating, limit the number of returned results to this many.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-nullable": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "description": "Optional. Expression to filter the result set",
+            "schema": {
+              "maxLength": 16384,
+              "minLength": 0,
+              "pattern": "^[\\s\\S]*$",
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Optional. Paging token returned from a previous result",
+            "schema": {
+              "maxLength": 500,
+              "minLength": 1,
+              "pattern": "^[a-zA-Z0-9\\+/]*={0,3}$",
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -4781,150 +4824,153 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/PolicyTemplateResponse"
-                  }
+                  "$ref": "#/components/schemas/ResourceListOfPolicyTemplateResponse"
                 },
-                "example": [
-                  {
-                    "displayName": "example-policy-template",
-                    "scope": "default",
-                    "code": "official-portfolios-read-only",
-                    "description": "Example policy template for a policy that grants access to some resource",
-                    "applications": [
-                      "LUSID"
-                    ],
-                    "tags": [
-                      "Data"
-                    ],
-                    "templatedSelectors": [
-                      {
-                        "application": "LUSID",
-                        "tag": "Data",
-                        "selector": {
-                          "idSelectorDefinition": {
-                            "identifier": {
-                              "scope": "official"
-                            },
-                            "actions": [
-                              {
-                                "scope": "default",
-                                "activity": "Read",
-                                "entity": "Portfolio"
+                "example": {
+                  "values": [
+                    {
+                      "displayName": "example-policy-template",
+                      "scope": "default",
+                      "code": "official-portfolios-read-only",
+                      "description": "Example policy template for a policy that grants access to some resource",
+                      "applications": [
+                        "LUSID"
+                      ],
+                      "tags": [
+                        "Data"
+                      ],
+                      "templatedSelectors": [
+                        {
+                          "application": "LUSID",
+                          "tag": "Data",
+                          "selector": {
+                            "idSelectorDefinition": {
+                              "identifier": {
+                                "scope": "official"
                               },
-                              {
-                                "scope": "default",
-                                "activity": "Aggregate",
-                                "entity": "Portfolio"
-                              }
-                            ],
-                            "name": "access-official-scope",
-                            "description": "Allow readonly access to the 'official' scope"
+                              "actions": [
+                                {
+                                  "scope": "default",
+                                  "activity": "Read",
+                                  "entity": "Portfolio"
+                                },
+                                {
+                                  "scope": "default",
+                                  "activity": "Aggregate",
+                                  "entity": "Portfolio"
+                                }
+                              ],
+                              "name": "access-official-scope",
+                              "description": "Allow readonly access to the 'official' scope"
+                            }
                           }
                         }
-                      }
-                    ]
-                  }
-                ]
+                      ]
+                    }
+                  ],
+                  "href": "https://example.lusid.com/access/api/policytemplates/",
+                  "links": []
+                }
               },
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/PolicyTemplateResponse"
-                  }
+                  "$ref": "#/components/schemas/ResourceListOfPolicyTemplateResponse"
                 },
-                "example": [
-                  {
-                    "displayName": "example-policy-template",
-                    "scope": "default",
-                    "code": "official-portfolios-read-only",
-                    "description": "Example policy template for a policy that grants access to some resource",
-                    "applications": [
-                      "LUSID"
-                    ],
-                    "tags": [
-                      "Data"
-                    ],
-                    "templatedSelectors": [
-                      {
-                        "application": "LUSID",
-                        "tag": "Data",
-                        "selector": {
-                          "idSelectorDefinition": {
-                            "identifier": {
-                              "scope": "official"
-                            },
-                            "actions": [
-                              {
-                                "scope": "default",
-                                "activity": "Read",
-                                "entity": "Portfolio"
+                "example": {
+                  "values": [
+                    {
+                      "displayName": "example-policy-template",
+                      "scope": "default",
+                      "code": "official-portfolios-read-only",
+                      "description": "Example policy template for a policy that grants access to some resource",
+                      "applications": [
+                        "LUSID"
+                      ],
+                      "tags": [
+                        "Data"
+                      ],
+                      "templatedSelectors": [
+                        {
+                          "application": "LUSID",
+                          "tag": "Data",
+                          "selector": {
+                            "idSelectorDefinition": {
+                              "identifier": {
+                                "scope": "official"
                               },
-                              {
-                                "scope": "default",
-                                "activity": "Aggregate",
-                                "entity": "Portfolio"
-                              }
-                            ],
-                            "name": "access-official-scope",
-                            "description": "Allow readonly access to the 'official' scope"
+                              "actions": [
+                                {
+                                  "scope": "default",
+                                  "activity": "Read",
+                                  "entity": "Portfolio"
+                                },
+                                {
+                                  "scope": "default",
+                                  "activity": "Aggregate",
+                                  "entity": "Portfolio"
+                                }
+                              ],
+                              "name": "access-official-scope",
+                              "description": "Allow readonly access to the 'official' scope"
+                            }
                           }
                         }
-                      }
-                    ]
-                  }
-                ]
+                      ]
+                    }
+                  ],
+                  "href": "https://example.lusid.com/access/api/policytemplates/",
+                  "links": []
+                }
               },
               "text/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/PolicyTemplateResponse"
-                  }
+                  "$ref": "#/components/schemas/ResourceListOfPolicyTemplateResponse"
                 },
-                "example": [
-                  {
-                    "displayName": "example-policy-template",
-                    "scope": "default",
-                    "code": "official-portfolios-read-only",
-                    "description": "Example policy template for a policy that grants access to some resource",
-                    "applications": [
-                      "LUSID"
-                    ],
-                    "tags": [
-                      "Data"
-                    ],
-                    "templatedSelectors": [
-                      {
-                        "application": "LUSID",
-                        "tag": "Data",
-                        "selector": {
-                          "idSelectorDefinition": {
-                            "identifier": {
-                              "scope": "official"
-                            },
-                            "actions": [
-                              {
-                                "scope": "default",
-                                "activity": "Read",
-                                "entity": "Portfolio"
+                "example": {
+                  "values": [
+                    {
+                      "displayName": "example-policy-template",
+                      "scope": "default",
+                      "code": "official-portfolios-read-only",
+                      "description": "Example policy template for a policy that grants access to some resource",
+                      "applications": [
+                        "LUSID"
+                      ],
+                      "tags": [
+                        "Data"
+                      ],
+                      "templatedSelectors": [
+                        {
+                          "application": "LUSID",
+                          "tag": "Data",
+                          "selector": {
+                            "idSelectorDefinition": {
+                              "identifier": {
+                                "scope": "official"
                               },
-                              {
-                                "scope": "default",
-                                "activity": "Aggregate",
-                                "entity": "Portfolio"
-                              }
-                            ],
-                            "name": "access-official-scope",
-                            "description": "Allow readonly access to the 'official' scope"
+                              "actions": [
+                                {
+                                  "scope": "default",
+                                  "activity": "Read",
+                                  "entity": "Portfolio"
+                                },
+                                {
+                                  "scope": "default",
+                                  "activity": "Aggregate",
+                                  "entity": "Portfolio"
+                                }
+                              ],
+                              "name": "access-official-scope",
+                              "description": "Allow readonly access to the 'official' scope"
+                            }
                           }
                         }
-                      }
-                    ]
-                  }
-                ]
+                      ]
+                    }
+                  ],
+                  "href": "https://example.lusid.com/access/api/policytemplates/",
+                  "links": []
+                }
               }
             }
           },
@@ -10567,6 +10613,41 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/PolicyResponse"
+            }
+          },
+          "href": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true
+          },
+          "links": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Link"
+            },
+            "nullable": true
+          },
+          "nextPage": {
+            "type": "string",
+            "nullable": true
+          },
+          "previousPage": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ResourceListOfPolicyTemplateResponse": {
+        "required": [
+          "values"
+        ],
+        "type": "object",
+        "properties": {
+          "values": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PolicyTemplateResponse"
             }
           },
           "href": {

@@ -320,7 +320,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_policy_templates**
-> list[PolicyTemplateResponse] list_policy_templates(as_at=as_at)
+> ResourceListOfPolicyTemplateResponse list_policy_templates(as_at=as_at, sort_by=sort_by, limit=limit, filter=filter, page=page)
 
 [EXPERIMENTAL] ListPolicyTemplates: List Policy Templates
 
@@ -357,10 +357,14 @@ with finbourne_access.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = finbourne_access.PolicyTemplatesApi(api_client)
     as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The AsAt date time of the data (optional)
+sort_by = 'sort_by_example' # str | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName (optional)
+limit = 56 # int | Optional. When paginating, limit the number of returned results to this many. (optional)
+filter = 'filter_example' # str | Optional. Expression to filter the result set (optional)
+page = 'page_example' # str | Optional. Paging token returned from a previous result (optional)
 
     try:
         # [EXPERIMENTAL] ListPolicyTemplates: List Policy Templates
-        api_response = api_instance.list_policy_templates(as_at=as_at)
+        api_response = api_instance.list_policy_templates(as_at=as_at, sort_by=sort_by, limit=limit, filter=filter, page=page)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling PolicyTemplatesApi->list_policy_templates: %s\n" % e)
@@ -371,10 +375,14 @@ with finbourne_access.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **as_at** | **datetime**| Optional. The AsAt date time of the data | [optional] 
+ **sort_by** | **str**| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional] 
+ **limit** | **int**| Optional. When paginating, limit the number of returned results to this many. | [optional] 
+ **filter** | **str**| Optional. Expression to filter the result set | [optional] 
+ **page** | **str**| Optional. Paging token returned from a previous result | [optional] 
 
 ### Return type
 
-[**list[PolicyTemplateResponse]**](PolicyTemplateResponse.md)
+[**ResourceListOfPolicyTemplateResponse**](ResourceListOfPolicyTemplateResponse.md)
 
 ### Authorization
 
