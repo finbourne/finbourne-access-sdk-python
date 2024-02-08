@@ -9,7 +9,7 @@
       "url": "https://www.finbourne.com",
       "email": "info@finbourne.com"
     },
-    "version": "0.0.3674",
+    "version": "0.0.3675",
     "x-logo": {
       "url": "https://www.lusid.com/app/assets/logo_white.png",
       "backgroundColor": "#415464"
@@ -10035,6 +10035,9 @@
           },
           "how": {
             "$ref": "#/components/schemas/HowSpec"
+          },
+          "templateMetadata": {
+            "$ref": "#/components/schemas/TemplateMetadata"
           }
         },
         "additionalProperties": false,
@@ -10133,6 +10136,9 @@
           },
           "how": {
             "$ref": "#/components/schemas/HowSpec"
+          },
+          "templateMetadata": {
+            "$ref": "#/components/schemas/TemplateMetadata"
           },
           "links": {
             "type": "array",
@@ -10395,6 +10401,9 @@
           },
           "how": {
             "$ref": "#/components/schemas/HowSpec"
+          },
+          "templateMetadata": {
+            "$ref": "#/components/schemas/TemplateMetadata"
           }
         },
         "additionalProperties": false,
@@ -10915,7 +10924,7 @@
             "items": {
               "type": "string"
             },
-            "description": "List of selector tags to optionally filter in the template generation \r\n(Eg: API, Data, etc)",
+            "description": "List of selector tags to optionally filter in the template generation \r\n(Eg: Feature, Data, etc)",
             "nullable": true
           }
         },
