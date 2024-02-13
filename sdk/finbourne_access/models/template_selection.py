@@ -27,7 +27,7 @@ class TemplateSelection(BaseModel):
     """
     scope: constr(strict=True, max_length=100, min_length=3) = Field(..., description="Scope identifying policy template to use for generation")
     code: constr(strict=True, max_length=100, min_length=3) = Field(..., description="Code identifying policy template to use for generation")
-    selector_tags: Optional[conlist(StrictStr)] = Field(None, alias="selectorTags", description="List of selector tags to optionally filter in the template generation   (Eg: API, Data, etc)")
+    selector_tags: Optional[conlist(StrictStr)] = Field(None, alias="selectorTags", description="List of selector tags to optionally filter in the template generation   (Eg: Feature, Data, etc)")
     __properties = ["scope", "code", "selectorTags"]
 
     @validator('scope')

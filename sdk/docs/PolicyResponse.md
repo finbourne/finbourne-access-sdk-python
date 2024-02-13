@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **var_if** | [**List[IfExpression]**](IfExpression.md) | \&quot;If Specification\&quot; for when the policy is to be applied | [optional] 
 **when** | [**WhenSpec**](WhenSpec.md) |  | [optional] 
 **how** | [**HowSpec**](HowSpec.md) |  | [optional] 
+**template_metadata** | [**TemplateMetadata**](TemplateMetadata.md) |  | [optional] 
 **links** | [**List[Link]**](Link.md) |  | [optional] 
 
 ## Example

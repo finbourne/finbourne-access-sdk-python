@@ -27,6 +27,7 @@ from finbourne_access.models.if_expression import IfExpression
 from finbourne_access.models.link import Link
 from finbourne_access.models.policy_id import PolicyId
 from finbourne_access.models.selector_definition import SelectorDefinition
+from finbourne_access.models.template_metadata import TemplateMetadata
 from finbourne_access.models.when_spec import WhenSpec
 
 class PolicyResponse(BaseModel):
@@ -42,8 +43,9 @@ class PolicyResponse(BaseModel):
     var_if: Optional[conlist(IfExpression)] = Field(None, alias="if", description="\"If Specification\" for when the policy is to be applied")
     when: Optional[WhenSpec] = None
     how: Optional[HowSpec] = None
+    template_metadata: Optional[TemplateMetadata] = Field(None, alias="templateMetadata")
     links: Optional[conlist(Link)] = None
-    __properties = ["id", "description", "applications", "grant", "selectors", "for", "if", "when", "how", "links"]
+    __properties = ["id", "description", "applications", "grant", "selectors", "for", "if", "when", "how", "templateMetadata", "links"]
 
     class Config:
         """Pydantic configuration"""
@@ -99,6 +101,9 @@ class PolicyResponse(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of how
         if self.how:
             _dict['how'] = self.how.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of template_metadata
+        if self.template_metadata:
+            _dict['templateMetadata'] = self.template_metadata.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in links (list)
         _items = []
         if self.links:
@@ -157,6 +162,7 @@ class PolicyResponse(BaseModel):
             "var_if": [IfExpression.from_dict(_item) for _item in obj.get("if")] if obj.get("if") is not None else None,
             "when": WhenSpec.from_dict(obj.get("when")) if obj.get("when") is not None else None,
             "how": HowSpec.from_dict(obj.get("how")) if obj.get("how") is not None else None,
+            "template_metadata": TemplateMetadata.from_dict(obj.get("templateMetadata")) if obj.get("templateMetadata") is not None else None,
             "links": [Link.from_dict(_item) for _item in obj.get("links")] if obj.get("links") is not None else None
         })
         return _obj

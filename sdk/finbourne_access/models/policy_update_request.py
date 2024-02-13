@@ -25,6 +25,7 @@ from finbourne_access.models.grant import Grant
 from finbourne_access.models.how_spec import HowSpec
 from finbourne_access.models.if_expression import IfExpression
 from finbourne_access.models.selector_definition import SelectorDefinition
+from finbourne_access.models.template_metadata import TemplateMetadata
 from finbourne_access.models.when_spec import WhenSpec
 
 class PolicyUpdateRequest(BaseModel):
@@ -39,7 +40,8 @@ class PolicyUpdateRequest(BaseModel):
     var_if: Optional[conlist(IfExpression)] = Field(None, alias="if", description="\"If Specification\" for when the policy is to be applied")
     when: WhenSpec = Field(...)
     how: Optional[HowSpec] = None
-    __properties = ["description", "applications", "grant", "selectors", "for", "if", "when", "how"]
+    template_metadata: Optional[TemplateMetadata] = Field(None, alias="templateMetadata")
+    __properties = ["description", "applications", "grant", "selectors", "for", "if", "when", "how", "templateMetadata"]
 
     class Config:
         """Pydantic configuration"""
@@ -92,6 +94,9 @@ class PolicyUpdateRequest(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of how
         if self.how:
             _dict['how'] = self.how.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of template_metadata
+        if self.template_metadata:
+            _dict['templateMetadata'] = self.template_metadata.to_dict()
         # set to None if description (nullable) is None
         # and __fields_set__ contains the field
         if self.description is None and "description" in self.__fields_set__:
@@ -131,6 +136,7 @@ class PolicyUpdateRequest(BaseModel):
             "var_for": [ForSpec.from_dict(_item) for _item in obj.get("for")] if obj.get("for") is not None else None,
             "var_if": [IfExpression.from_dict(_item) for _item in obj.get("if")] if obj.get("if") is not None else None,
             "when": WhenSpec.from_dict(obj.get("when")) if obj.get("when") is not None else None,
-            "how": HowSpec.from_dict(obj.get("how")) if obj.get("how") is not None else None
+            "how": HowSpec.from_dict(obj.get("how")) if obj.get("how") is not None else None,
+            "template_metadata": TemplateMetadata.from_dict(obj.get("templateMetadata")) if obj.get("templateMetadata") is not None else None
         })
         return _obj
