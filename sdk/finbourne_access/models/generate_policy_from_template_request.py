@@ -18,8 +18,9 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field, conlist
+from finbourne_access.models.selector_definition import SelectorDefinition
 from finbourne_access.models.template_selection import TemplateSelection
 
 class GeneratePolicyFromTemplateRequest(BaseModel):
@@ -27,7 +28,8 @@ class GeneratePolicyFromTemplateRequest(BaseModel):
     Generate policy from template  # noqa: E501
     """
     template_selection: conlist(TemplateSelection, max_items=10) = Field(..., alias="templateSelection", description="List of template selection, identifying policy templates to use for generation")
-    __properties = ["templateSelection"]
+    selectors: Optional[conlist(SelectorDefinition, max_items=10)] = Field(None, description="List of additional selectors to be included in the policy")
+    __properties = ["templateSelection", "selectors"]
 
     class Config:
         """Pydantic configuration"""
@@ -60,6 +62,18 @@ class GeneratePolicyFromTemplateRequest(BaseModel):
                 if _item:
                     _items.append(_item.to_dict())
             _dict['templateSelection'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in selectors (list)
+        _items = []
+        if self.selectors:
+            for _item in self.selectors:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['selectors'] = _items
+        # set to None if selectors (nullable) is None
+        # and __fields_set__ contains the field
+        if self.selectors is None and "selectors" in self.__fields_set__:
+            _dict['selectors'] = None
+
         return _dict
 
     @classmethod
@@ -72,6 +86,7 @@ class GeneratePolicyFromTemplateRequest(BaseModel):
             return GeneratePolicyFromTemplateRequest.parse_obj(obj)
 
         _obj = GeneratePolicyFromTemplateRequest.parse_obj({
-            "template_selection": [TemplateSelection.from_dict(_item) for _item in obj.get("templateSelection")] if obj.get("templateSelection") is not None else None
+            "template_selection": [TemplateSelection.from_dict(_item) for _item in obj.get("templateSelection")] if obj.get("templateSelection") is not None else None,
+            "selectors": [SelectorDefinition.from_dict(_item) for _item in obj.get("selectors")] if obj.get("selectors") is not None else None
         })
         return _obj

@@ -6,6 +6,7 @@ Generate policy from template
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **template_selection** | [**List[TemplateSelection]**](TemplateSelection.md) | List of template selection, identifying policy templates to use for generation | 
+**selectors** | [**List[SelectorDefinition]**](SelectorDefinition.md) | List of additional selectors to be included in the policy | [optional] 
 
 ## Example
 
