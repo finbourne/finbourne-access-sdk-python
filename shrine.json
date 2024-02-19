@@ -9,7 +9,7 @@
       "url": "https://www.finbourne.com",
       "email": "info@finbourne.com"
     },
-    "version": "0.0.3697",
+    "version": "0.0.3698",
     "x-logo": {
       "url": "https://www.lusid.com/app/assets/logo_white.png",
       "backgroundColor": "#415464"
@@ -9333,6 +9333,15 @@
               "$ref": "#/components/schemas/TemplateSelection"
             },
             "description": "List of template selection, identifying policy templates to use for generation"
+          },
+          "selectors": {
+            "maxItems": 10,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SelectorDefinition"
+            },
+            "description": "List of additional selectors to be included in the policy",
+            "nullable": true
           }
         },
         "additionalProperties": false,
