@@ -35,19 +35,19 @@ Add Policies and/or PolicyCollections to a PolicyCollection
 ```python
 from __future__ import print_function
 import time
-import os
 import finbourne_access
 from finbourne_access.rest import ApiException
 from finbourne_access.models.add_to_policy_collection_request import AddToPolicyCollectionRequest
 from finbourne_access.models.policy_collection_response import PolicyCollectionResponse
 from pprint import pprint
 
+import os
 from finbourne_access import (
-	  ApiClientFactory,
-	  ApplicationMetadataApi,
-	  EnvironmentVariablesConfigurationLoader,
-	  SecretsFileConfigurationLoader,
-	  ArgsConfigurationLoader
+    ApiClientFactory,
+    PoliciesApi,
+    EnvironmentVariablesConfigurationLoader,
+    SecretsFileConfigurationLoader,
+    ArgsConfigurationLoader
 )
 
 # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
@@ -138,19 +138,19 @@ Creates a Policy
 ```python
 from __future__ import print_function
 import time
-import os
 import finbourne_access
 from finbourne_access.rest import ApiException
 from finbourne_access.models.policy_creation_request import PolicyCreationRequest
 from finbourne_access.models.policy_response import PolicyResponse
 from pprint import pprint
 
+import os
 from finbourne_access import (
-	  ApiClientFactory,
-	  ApplicationMetadataApi,
-	  EnvironmentVariablesConfigurationLoader,
-	  SecretsFileConfigurationLoader,
-	  ArgsConfigurationLoader
+    ApiClientFactory,
+    PoliciesApi,
+    EnvironmentVariablesConfigurationLoader,
+    SecretsFileConfigurationLoader,
+    ArgsConfigurationLoader
 )
 
 # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
@@ -237,19 +237,19 @@ Creates a PolicyCollection
 ```python
 from __future__ import print_function
 import time
-import os
 import finbourne_access
 from finbourne_access.rest import ApiException
 from finbourne_access.models.policy_collection_creation_request import PolicyCollectionCreationRequest
 from finbourne_access.models.policy_collection_response import PolicyCollectionResponse
 from pprint import pprint
 
+import os
 from finbourne_access import (
-	  ApiClientFactory,
-	  ApplicationMetadataApi,
-	  EnvironmentVariablesConfigurationLoader,
-	  SecretsFileConfigurationLoader,
-	  ArgsConfigurationLoader
+    ApiClientFactory,
+    PoliciesApi,
+    EnvironmentVariablesConfigurationLoader,
+    SecretsFileConfigurationLoader,
+    ArgsConfigurationLoader
 )
 
 # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
@@ -336,17 +336,17 @@ Deletes an identified Policy
 ```python
 from __future__ import print_function
 import time
-import os
 import finbourne_access
 from finbourne_access.rest import ApiException
 from pprint import pprint
 
+import os
 from finbourne_access import (
-	  ApiClientFactory,
-	  ApplicationMetadataApi,
-	  EnvironmentVariablesConfigurationLoader,
-	  SecretsFileConfigurationLoader,
-	  ArgsConfigurationLoader
+    ApiClientFactory,
+    PoliciesApi,
+    EnvironmentVariablesConfigurationLoader,
+    SecretsFileConfigurationLoader,
+    ArgsConfigurationLoader
 )
 
 # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
@@ -433,17 +433,17 @@ Deletes an identified PolicyCollection
 ```python
 from __future__ import print_function
 import time
-import os
 import finbourne_access
 from finbourne_access.rest import ApiException
 from pprint import pprint
 
+import os
 from finbourne_access import (
-	  ApiClientFactory,
-	  ApplicationMetadataApi,
-	  EnvironmentVariablesConfigurationLoader,
-	  SecretsFileConfigurationLoader,
-	  ArgsConfigurationLoader
+    ApiClientFactory,
+    PoliciesApi,
+    EnvironmentVariablesConfigurationLoader,
+    SecretsFileConfigurationLoader,
+    ArgsConfigurationLoader
 )
 
 # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
@@ -530,19 +530,19 @@ Given a dictionary of evaluation requests (keyed by any arbitrary correlation id
 ```python
 from __future__ import print_function
 import time
-import os
 import finbourne_access
 from finbourne_access.rest import ApiException
 from finbourne_access.models.evaluation_request import EvaluationRequest
 from finbourne_access.models.evaluation_response import EvaluationResponse
 from pprint import pprint
 
+import os
 from finbourne_access import (
-	  ApiClientFactory,
-	  ApplicationMetadataApi,
-	  EnvironmentVariablesConfigurationLoader,
-	  SecretsFileConfigurationLoader,
-	  ArgsConfigurationLoader
+    ApiClientFactory,
+    PoliciesApi,
+    EnvironmentVariablesConfigurationLoader,
+    SecretsFileConfigurationLoader,
+    ArgsConfigurationLoader
 )
 
 # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
@@ -633,18 +633,18 @@ Gets all Policies for the current user
 ```python
 from __future__ import print_function
 import time
-import os
 import finbourne_access
 from finbourne_access.rest import ApiException
 from finbourne_access.models.attached_policy_definition_response import AttachedPolicyDefinitionResponse
 from pprint import pprint
 
+import os
 from finbourne_access import (
-	  ApiClientFactory,
-	  ApplicationMetadataApi,
-	  EnvironmentVariablesConfigurationLoader,
-	  SecretsFileConfigurationLoader,
-	  ArgsConfigurationLoader
+    ApiClientFactory,
+    PoliciesApi,
+    EnvironmentVariablesConfigurationLoader,
+    SecretsFileConfigurationLoader,
+    ArgsConfigurationLoader
 )
 
 # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
@@ -741,18 +741,18 @@ Gets an identified Policy
 ```python
 from __future__ import print_function
 import time
-import os
 import finbourne_access
 from finbourne_access.rest import ApiException
 from finbourne_access.models.policy_response import PolicyResponse
 from pprint import pprint
 
+import os
 from finbourne_access import (
-	  ApiClientFactory,
-	  ApplicationMetadataApi,
-	  EnvironmentVariablesConfigurationLoader,
-	  SecretsFileConfigurationLoader,
-	  ArgsConfigurationLoader
+    ApiClientFactory,
+    PoliciesApi,
+    EnvironmentVariablesConfigurationLoader,
+    SecretsFileConfigurationLoader,
+    ArgsConfigurationLoader
 )
 
 # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
@@ -843,18 +843,18 @@ Gets an identified PolicyCollection
 ```python
 from __future__ import print_function
 import time
-import os
 import finbourne_access
 from finbourne_access.rest import ApiException
 from finbourne_access.models.policy_collection_response import PolicyCollectionResponse
 from pprint import pprint
 
+import os
 from finbourne_access import (
-	  ApiClientFactory,
-	  ApplicationMetadataApi,
-	  EnvironmentVariablesConfigurationLoader,
-	  SecretsFileConfigurationLoader,
-	  ArgsConfigurationLoader
+    ApiClientFactory,
+    PoliciesApi,
+    EnvironmentVariablesConfigurationLoader,
+    SecretsFileConfigurationLoader,
+    ArgsConfigurationLoader
 )
 
 # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
@@ -945,18 +945,18 @@ Gets all Policies in a scope. For pagination support, use PagePolicies.
 ```python
 from __future__ import print_function
 import time
-import os
 import finbourne_access
 from finbourne_access.rest import ApiException
 from finbourne_access.models.policy_response import PolicyResponse
 from pprint import pprint
 
+import os
 from finbourne_access import (
-	  ApiClientFactory,
-	  ApplicationMetadataApi,
-	  EnvironmentVariablesConfigurationLoader,
-	  SecretsFileConfigurationLoader,
-	  ArgsConfigurationLoader
+    ApiClientFactory,
+    PoliciesApi,
+    EnvironmentVariablesConfigurationLoader,
+    SecretsFileConfigurationLoader,
+    ArgsConfigurationLoader
 )
 
 # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
@@ -1053,18 +1053,18 @@ Gets all PolicyCollections in a scope. For pagination support, use PagePolicyCol
 ```python
 from __future__ import print_function
 import time
-import os
 import finbourne_access
 from finbourne_access.rest import ApiException
 from finbourne_access.models.policy_collection_response import PolicyCollectionResponse
 from pprint import pprint
 
+import os
 from finbourne_access import (
-	  ApiClientFactory,
-	  ApplicationMetadataApi,
-	  EnvironmentVariablesConfigurationLoader,
-	  SecretsFileConfigurationLoader,
-	  ArgsConfigurationLoader
+    ApiClientFactory,
+    PoliciesApi,
+    EnvironmentVariablesConfigurationLoader,
+    SecretsFileConfigurationLoader,
+    ArgsConfigurationLoader
 )
 
 # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
@@ -1161,18 +1161,18 @@ Gets all Policies with pagination support.
 ```python
 from __future__ import print_function
 import time
-import os
 import finbourne_access
 from finbourne_access.rest import ApiException
 from finbourne_access.models.resource_list_of_policy_response import ResourceListOfPolicyResponse
 from pprint import pprint
 
+import os
 from finbourne_access import (
-	  ApiClientFactory,
-	  ApplicationMetadataApi,
-	  EnvironmentVariablesConfigurationLoader,
-	  SecretsFileConfigurationLoader,
-	  ArgsConfigurationLoader
+    ApiClientFactory,
+    PoliciesApi,
+    EnvironmentVariablesConfigurationLoader,
+    SecretsFileConfigurationLoader,
+    ArgsConfigurationLoader
 )
 
 # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
@@ -1267,18 +1267,18 @@ Gets all PolicyCollections with pagination support.
 ```python
 from __future__ import print_function
 import time
-import os
 import finbourne_access
 from finbourne_access.rest import ApiException
 from finbourne_access.models.resource_list_of_policy_collection_response import ResourceListOfPolicyCollectionResponse
 from pprint import pprint
 
+import os
 from finbourne_access import (
-	  ApiClientFactory,
-	  ApplicationMetadataApi,
-	  EnvironmentVariablesConfigurationLoader,
-	  SecretsFileConfigurationLoader,
-	  ArgsConfigurationLoader
+    ApiClientFactory,
+    PoliciesApi,
+    EnvironmentVariablesConfigurationLoader,
+    SecretsFileConfigurationLoader,
+    ArgsConfigurationLoader
 )
 
 # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
@@ -1373,19 +1373,19 @@ Remove Policies and/or PolicyCollections from a PolicyCollection
 ```python
 from __future__ import print_function
 import time
-import os
 import finbourne_access
 from finbourne_access.rest import ApiException
 from finbourne_access.models.policy_collection_response import PolicyCollectionResponse
 from finbourne_access.models.remove_from_policy_collection_request import RemoveFromPolicyCollectionRequest
 from pprint import pprint
 
+import os
 from finbourne_access import (
-	  ApiClientFactory,
-	  ApplicationMetadataApi,
-	  EnvironmentVariablesConfigurationLoader,
-	  SecretsFileConfigurationLoader,
-	  ArgsConfigurationLoader
+    ApiClientFactory,
+    PoliciesApi,
+    EnvironmentVariablesConfigurationLoader,
+    SecretsFileConfigurationLoader,
+    ArgsConfigurationLoader
 )
 
 # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
@@ -1476,19 +1476,19 @@ Updates a Policy
 ```python
 from __future__ import print_function
 import time
-import os
 import finbourne_access
 from finbourne_access.rest import ApiException
 from finbourne_access.models.policy_response import PolicyResponse
 from finbourne_access.models.policy_update_request import PolicyUpdateRequest
 from pprint import pprint
 
+import os
 from finbourne_access import (
-	  ApiClientFactory,
-	  ApplicationMetadataApi,
-	  EnvironmentVariablesConfigurationLoader,
-	  SecretsFileConfigurationLoader,
-	  ArgsConfigurationLoader
+    ApiClientFactory,
+    PoliciesApi,
+    EnvironmentVariablesConfigurationLoader,
+    SecretsFileConfigurationLoader,
+    ArgsConfigurationLoader
 )
 
 # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
@@ -1579,19 +1579,19 @@ Updates a PolicyCollection
 ```python
 from __future__ import print_function
 import time
-import os
 import finbourne_access
 from finbourne_access.rest import ApiException
 from finbourne_access.models.policy_collection_response import PolicyCollectionResponse
 from finbourne_access.models.policy_collection_update_request import PolicyCollectionUpdateRequest
 from pprint import pprint
 
+import os
 from finbourne_access import (
-	  ApiClientFactory,
-	  ApplicationMetadataApi,
-	  EnvironmentVariablesConfigurationLoader,
-	  SecretsFileConfigurationLoader,
-	  ArgsConfigurationLoader
+    ApiClientFactory,
+    PoliciesApi,
+    EnvironmentVariablesConfigurationLoader,
+    SecretsFileConfigurationLoader,
+    ArgsConfigurationLoader
 )
 
 # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client

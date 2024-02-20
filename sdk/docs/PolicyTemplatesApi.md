@@ -25,19 +25,19 @@ Creates a Policy Template
 ```python
 from __future__ import print_function
 import time
-import os
 import finbourne_access
 from finbourne_access.rest import ApiException
 from finbourne_access.models.policy_template_creation_request import PolicyTemplateCreationRequest
 from finbourne_access.models.policy_template_response import PolicyTemplateResponse
 from pprint import pprint
 
+import os
 from finbourne_access import (
-	  ApiClientFactory,
-	  ApplicationMetadataApi,
-	  EnvironmentVariablesConfigurationLoader,
-	  SecretsFileConfigurationLoader,
-	  ArgsConfigurationLoader
+    ApiClientFactory,
+    PolicyTemplatesApi,
+    EnvironmentVariablesConfigurationLoader,
+    SecretsFileConfigurationLoader,
+    ArgsConfigurationLoader
 )
 
 # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
@@ -124,17 +124,17 @@ Deletes an identified Policy Template
 ```python
 from __future__ import print_function
 import time
-import os
 import finbourne_access
 from finbourne_access.rest import ApiException
 from pprint import pprint
 
+import os
 from finbourne_access import (
-	  ApiClientFactory,
-	  ApplicationMetadataApi,
-	  EnvironmentVariablesConfigurationLoader,
-	  SecretsFileConfigurationLoader,
-	  ArgsConfigurationLoader
+    ApiClientFactory,
+    PolicyTemplatesApi,
+    EnvironmentVariablesConfigurationLoader,
+    SecretsFileConfigurationLoader,
+    ArgsConfigurationLoader
 )
 
 # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
@@ -221,19 +221,19 @@ Generates policies from templates
 ```python
 from __future__ import print_function
 import time
-import os
 import finbourne_access
 from finbourne_access.rest import ApiException
 from finbourne_access.models.generate_policy_from_template_request import GeneratePolicyFromTemplateRequest
 from finbourne_access.models.generated_policy_components import GeneratedPolicyComponents
 from pprint import pprint
 
+import os
 from finbourne_access import (
-	  ApiClientFactory,
-	  ApplicationMetadataApi,
-	  EnvironmentVariablesConfigurationLoader,
-	  SecretsFileConfigurationLoader,
-	  ArgsConfigurationLoader
+    ApiClientFactory,
+    PolicyTemplatesApi,
+    EnvironmentVariablesConfigurationLoader,
+    SecretsFileConfigurationLoader,
+    ArgsConfigurationLoader
 )
 
 # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
@@ -322,18 +322,18 @@ Gets an identified Policy Template
 ```python
 from __future__ import print_function
 import time
-import os
 import finbourne_access
 from finbourne_access.rest import ApiException
 from finbourne_access.models.policy_template_response import PolicyTemplateResponse
 from pprint import pprint
 
+import os
 from finbourne_access import (
-	  ApiClientFactory,
-	  ApplicationMetadataApi,
-	  EnvironmentVariablesConfigurationLoader,
-	  SecretsFileConfigurationLoader,
-	  ArgsConfigurationLoader
+    ApiClientFactory,
+    PolicyTemplatesApi,
+    EnvironmentVariablesConfigurationLoader,
+    SecretsFileConfigurationLoader,
+    ArgsConfigurationLoader
 )
 
 # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
@@ -424,18 +424,18 @@ Gets all Policy Templates with pagination support.
 ```python
 from __future__ import print_function
 import time
-import os
 import finbourne_access
 from finbourne_access.rest import ApiException
 from finbourne_access.models.resource_list_of_policy_template_response import ResourceListOfPolicyTemplateResponse
 from pprint import pprint
 
+import os
 from finbourne_access import (
-	  ApiClientFactory,
-	  ApplicationMetadataApi,
-	  EnvironmentVariablesConfigurationLoader,
-	  SecretsFileConfigurationLoader,
-	  ArgsConfigurationLoader
+    ApiClientFactory,
+    PolicyTemplatesApi,
+    EnvironmentVariablesConfigurationLoader,
+    SecretsFileConfigurationLoader,
+    ArgsConfigurationLoader
 )
 
 # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
@@ -530,19 +530,19 @@ Updates an identified Policy Template
 ```python
 from __future__ import print_function
 import time
-import os
 import finbourne_access
 from finbourne_access.rest import ApiException
 from finbourne_access.models.policy_template_response import PolicyTemplateResponse
 from finbourne_access.models.policy_template_update_request import PolicyTemplateUpdateRequest
 from pprint import pprint
 
+import os
 from finbourne_access import (
-	  ApiClientFactory,
-	  ApplicationMetadataApi,
-	  EnvironmentVariablesConfigurationLoader,
-	  SecretsFileConfigurationLoader,
-	  ArgsConfigurationLoader
+    ApiClientFactory,
+    PolicyTemplatesApi,
+    EnvironmentVariablesConfigurationLoader,
+    SecretsFileConfigurationLoader,
+    ArgsConfigurationLoader
 )
 
 # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client

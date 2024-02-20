@@ -26,19 +26,19 @@ Assigns policy collections to a role
 ```python
 from __future__ import print_function
 import time
-import os
 import finbourne_access
 from finbourne_access.rest import ApiException
 from finbourne_access.models.add_policy_collection_to_role_request import AddPolicyCollectionToRoleRequest
 from finbourne_access.models.role_response import RoleResponse
 from pprint import pprint
 
+import os
 from finbourne_access import (
-	  ApiClientFactory,
-	  ApplicationMetadataApi,
-	  EnvironmentVariablesConfigurationLoader,
-	  SecretsFileConfigurationLoader,
-	  ArgsConfigurationLoader
+    ApiClientFactory,
+    RolesApi,
+    EnvironmentVariablesConfigurationLoader,
+    SecretsFileConfigurationLoader,
+    ArgsConfigurationLoader
 )
 
 # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
@@ -129,19 +129,19 @@ Creates a Role
 ```python
 from __future__ import print_function
 import time
-import os
 import finbourne_access
 from finbourne_access.rest import ApiException
 from finbourne_access.models.role_creation_request import RoleCreationRequest
 from finbourne_access.models.role_response import RoleResponse
 from pprint import pprint
 
+import os
 from finbourne_access import (
-	  ApiClientFactory,
-	  ApplicationMetadataApi,
-	  EnvironmentVariablesConfigurationLoader,
-	  SecretsFileConfigurationLoader,
-	  ArgsConfigurationLoader
+    ApiClientFactory,
+    RolesApi,
+    EnvironmentVariablesConfigurationLoader,
+    SecretsFileConfigurationLoader,
+    ArgsConfigurationLoader
 )
 
 # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
@@ -228,17 +228,17 @@ Deletes an identified Role
 ```python
 from __future__ import print_function
 import time
-import os
 import finbourne_access
 from finbourne_access.rest import ApiException
 from pprint import pprint
 
+import os
 from finbourne_access import (
-	  ApiClientFactory,
-	  ApplicationMetadataApi,
-	  EnvironmentVariablesConfigurationLoader,
-	  SecretsFileConfigurationLoader,
-	  ArgsConfigurationLoader
+    ApiClientFactory,
+    RolesApi,
+    EnvironmentVariablesConfigurationLoader,
+    SecretsFileConfigurationLoader,
+    ArgsConfigurationLoader
 )
 
 # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
@@ -325,18 +325,18 @@ Gets an identified Role
 ```python
 from __future__ import print_function
 import time
-import os
 import finbourne_access
 from finbourne_access.rest import ApiException
 from finbourne_access.models.role_response import RoleResponse
 from pprint import pprint
 
+import os
 from finbourne_access import (
-	  ApiClientFactory,
-	  ApplicationMetadataApi,
-	  EnvironmentVariablesConfigurationLoader,
-	  SecretsFileConfigurationLoader,
-	  ArgsConfigurationLoader
+    ApiClientFactory,
+    RolesApi,
+    EnvironmentVariablesConfigurationLoader,
+    SecretsFileConfigurationLoader,
+    ArgsConfigurationLoader
 )
 
 # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
@@ -427,18 +427,18 @@ Gets all Roles in a scope
 ```python
 from __future__ import print_function
 import time
-import os
 import finbourne_access
 from finbourne_access.rest import ApiException
 from finbourne_access.models.role_response import RoleResponse
 from pprint import pprint
 
+import os
 from finbourne_access import (
-	  ApiClientFactory,
-	  ApplicationMetadataApi,
-	  EnvironmentVariablesConfigurationLoader,
-	  SecretsFileConfigurationLoader,
-	  ArgsConfigurationLoader
+    ApiClientFactory,
+    RolesApi,
+    EnvironmentVariablesConfigurationLoader,
+    SecretsFileConfigurationLoader,
+    ArgsConfigurationLoader
 )
 
 # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
@@ -535,18 +535,18 @@ Removes a policy collection from a role
 ```python
 from __future__ import print_function
 import time
-import os
 import finbourne_access
 from finbourne_access.rest import ApiException
 from finbourne_access.models.role_response import RoleResponse
 from pprint import pprint
 
+import os
 from finbourne_access import (
-	  ApiClientFactory,
-	  ApplicationMetadataApi,
-	  EnvironmentVariablesConfigurationLoader,
-	  SecretsFileConfigurationLoader,
-	  ArgsConfigurationLoader
+    ApiClientFactory,
+    RolesApi,
+    EnvironmentVariablesConfigurationLoader,
+    SecretsFileConfigurationLoader,
+    ArgsConfigurationLoader
 )
 
 # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
@@ -639,19 +639,19 @@ Updates a Role
 ```python
 from __future__ import print_function
 import time
-import os
 import finbourne_access
 from finbourne_access.rest import ApiException
 from finbourne_access.models.role_response import RoleResponse
 from finbourne_access.models.role_update_request import RoleUpdateRequest
 from pprint import pprint
 
+import os
 from finbourne_access import (
-	  ApiClientFactory,
-	  ApplicationMetadataApi,
-	  EnvironmentVariablesConfigurationLoader,
-	  SecretsFileConfigurationLoader,
-	  ArgsConfigurationLoader
+    ApiClientFactory,
+    RolesApi,
+    EnvironmentVariablesConfigurationLoader,
+    SecretsFileConfigurationLoader,
+    ArgsConfigurationLoader
 )
 
 # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client

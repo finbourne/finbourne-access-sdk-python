@@ -20,18 +20,18 @@ Get the comprehensive set of resources that are available for access control
 ```python
 from __future__ import print_function
 import time
-import os
 import finbourne_access
 from finbourne_access.rest import ApiException
 from finbourne_access.models.resource_list_of_access_controlled_resource import ResourceListOfAccessControlledResource
 from pprint import pprint
 
+import os
 from finbourne_access import (
-	  ApiClientFactory,
-	  ApplicationMetadataApi,
-	  EnvironmentVariablesConfigurationLoader,
-	  SecretsFileConfigurationLoader,
-	  ArgsConfigurationLoader
+    ApiClientFactory,
+    ApplicationMetadataApi,
+    EnvironmentVariablesConfigurationLoader,
+    SecretsFileConfigurationLoader,
+    ArgsConfigurationLoader
 )
 
 # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client

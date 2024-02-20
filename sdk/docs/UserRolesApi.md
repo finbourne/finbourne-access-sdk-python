@@ -28,19 +28,19 @@ Adds a policy collection to a user-role.
 ```python
 from __future__ import print_function
 import time
-import os
 import finbourne_access
 from finbourne_access.rest import ApiException
 from finbourne_access.models.add_policy_collection_to_role_request import AddPolicyCollectionToRoleRequest
 from finbourne_access.models.user_role_response import UserRoleResponse
 from pprint import pprint
 
+import os
 from finbourne_access import (
-	  ApiClientFactory,
-	  ApplicationMetadataApi,
-	  EnvironmentVariablesConfigurationLoader,
-	  SecretsFileConfigurationLoader,
-	  ArgsConfigurationLoader
+    ApiClientFactory,
+    UserRolesApi,
+    EnvironmentVariablesConfigurationLoader,
+    SecretsFileConfigurationLoader,
+    ArgsConfigurationLoader
 )
 
 # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
@@ -129,19 +129,19 @@ Adds a policy to a user-role.
 ```python
 from __future__ import print_function
 import time
-import os
 import finbourne_access
 from finbourne_access.rest import ApiException
 from finbourne_access.models.add_policy_to_role_request import AddPolicyToRoleRequest
 from finbourne_access.models.user_role_response import UserRoleResponse
 from pprint import pprint
 
+import os
 from finbourne_access import (
-	  ApiClientFactory,
-	  ApplicationMetadataApi,
-	  EnvironmentVariablesConfigurationLoader,
-	  SecretsFileConfigurationLoader,
-	  ArgsConfigurationLoader
+    ApiClientFactory,
+    UserRolesApi,
+    EnvironmentVariablesConfigurationLoader,
+    SecretsFileConfigurationLoader,
+    ArgsConfigurationLoader
 )
 
 # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
@@ -230,19 +230,19 @@ Creates a new user-role.
 ```python
 from __future__ import print_function
 import time
-import os
 import finbourne_access
 from finbourne_access.rest import ApiException
 from finbourne_access.models.user_role_creation_request import UserRoleCreationRequest
 from finbourne_access.models.user_role_response import UserRoleResponse
 from pprint import pprint
 
+import os
 from finbourne_access import (
-	  ApiClientFactory,
-	  ApplicationMetadataApi,
-	  EnvironmentVariablesConfigurationLoader,
-	  SecretsFileConfigurationLoader,
-	  ArgsConfigurationLoader
+    ApiClientFactory,
+    UserRolesApi,
+    EnvironmentVariablesConfigurationLoader,
+    SecretsFileConfigurationLoader,
+    ArgsConfigurationLoader
 )
 
 # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
@@ -329,17 +329,17 @@ Deletes an identified user-role.
 ```python
 from __future__ import print_function
 import time
-import os
 import finbourne_access
 from finbourne_access.rest import ApiException
 from pprint import pprint
 
+import os
 from finbourne_access import (
-	  ApiClientFactory,
-	  ApplicationMetadataApi,
-	  EnvironmentVariablesConfigurationLoader,
-	  SecretsFileConfigurationLoader,
-	  ArgsConfigurationLoader
+    ApiClientFactory,
+    UserRolesApi,
+    EnvironmentVariablesConfigurationLoader,
+    SecretsFileConfigurationLoader,
+    ArgsConfigurationLoader
 )
 
 # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
@@ -424,18 +424,18 @@ Get an identified user-role.
 ```python
 from __future__ import print_function
 import time
-import os
 import finbourne_access
 from finbourne_access.rest import ApiException
 from finbourne_access.models.user_role_response import UserRoleResponse
 from pprint import pprint
 
+import os
 from finbourne_access import (
-	  ApiClientFactory,
-	  ApplicationMetadataApi,
-	  EnvironmentVariablesConfigurationLoader,
-	  SecretsFileConfigurationLoader,
-	  ArgsConfigurationLoader
+    ApiClientFactory,
+    UserRolesApi,
+    EnvironmentVariablesConfigurationLoader,
+    SecretsFileConfigurationLoader,
+    ArgsConfigurationLoader
 )
 
 # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
@@ -522,18 +522,18 @@ Lists all user-roles and pages.
 ```python
 from __future__ import print_function
 import time
-import os
 import finbourne_access
 from finbourne_access.rest import ApiException
 from finbourne_access.models.resource_list_of_user_role_response import ResourceListOfUserRoleResponse
 from pprint import pprint
 
+import os
 from finbourne_access import (
-	  ApiClientFactory,
-	  ApplicationMetadataApi,
-	  EnvironmentVariablesConfigurationLoader,
-	  SecretsFileConfigurationLoader,
-	  ArgsConfigurationLoader
+    ApiClientFactory,
+    UserRolesApi,
+    EnvironmentVariablesConfigurationLoader,
+    SecretsFileConfigurationLoader,
+    ArgsConfigurationLoader
 )
 
 # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
@@ -626,17 +626,17 @@ Removes a policy collection from a user-role.
 ```python
 from __future__ import print_function
 import time
-import os
 import finbourne_access
 from finbourne_access.rest import ApiException
 from pprint import pprint
 
+import os
 from finbourne_access import (
-	  ApiClientFactory,
-	  ApplicationMetadataApi,
-	  EnvironmentVariablesConfigurationLoader,
-	  SecretsFileConfigurationLoader,
-	  ArgsConfigurationLoader
+    ApiClientFactory,
+    UserRolesApi,
+    EnvironmentVariablesConfigurationLoader,
+    SecretsFileConfigurationLoader,
+    ArgsConfigurationLoader
 )
 
 # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
@@ -725,17 +725,17 @@ Removes a policy from a user-role.
 ```python
 from __future__ import print_function
 import time
-import os
 import finbourne_access
 from finbourne_access.rest import ApiException
 from pprint import pprint
 
+import os
 from finbourne_access import (
-	  ApiClientFactory,
-	  ApplicationMetadataApi,
-	  EnvironmentVariablesConfigurationLoader,
-	  SecretsFileConfigurationLoader,
-	  ArgsConfigurationLoader
+    ApiClientFactory,
+    UserRolesApi,
+    EnvironmentVariablesConfigurationLoader,
+    SecretsFileConfigurationLoader,
+    ArgsConfigurationLoader
 )
 
 # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
@@ -824,19 +824,19 @@ Updates an identified user-role.
 ```python
 from __future__ import print_function
 import time
-import os
 import finbourne_access
 from finbourne_access.rest import ApiException
 from finbourne_access.models.user_role_response import UserRoleResponse
 from finbourne_access.models.user_role_update_request import UserRoleUpdateRequest
 from pprint import pprint
 
+import os
 from finbourne_access import (
-	  ApiClientFactory,
-	  ApplicationMetadataApi,
-	  EnvironmentVariablesConfigurationLoader,
-	  SecretsFileConfigurationLoader,
-	  ArgsConfigurationLoader
+    ApiClientFactory,
+    UserRolesApi,
+    EnvironmentVariablesConfigurationLoader,
+    SecretsFileConfigurationLoader,
+    ArgsConfigurationLoader
 )
 
 # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
