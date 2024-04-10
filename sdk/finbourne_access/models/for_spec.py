@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, Dict, Optional
-from pydantic import BaseModel, Field
+from pydantic.v1 import BaseModel, Field
 from finbourne_access.models.as_at_range_for_spec import AsAtRangeForSpec
 from finbourne_access.models.as_at_relative import AsAtRelative
 from finbourne_access.models.effective_date_has_quality import EffectiveDateHasQuality

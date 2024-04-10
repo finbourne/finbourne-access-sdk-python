@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, Dict, List
-from pydantic import BaseModel, Field, conlist
+from pydantic.v1 import BaseModel, Field, conlist
 from finbourne_access.models.policy_id import PolicyId
 
 class AddPolicyToRoleRequest(BaseModel):

@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, Dict, List
-from pydantic import BaseModel, Field, conlist, constr, validator
+from pydantic.v1 import BaseModel, Field, conlist, constr, validator
 from finbourne_access.models.policy_templated_selector import PolicyTemplatedSelector
 
 class PolicyTemplateCreationRequest(BaseModel):

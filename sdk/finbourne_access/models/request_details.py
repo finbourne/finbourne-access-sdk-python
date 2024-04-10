@@ -19,7 +19,7 @@ import json
 
 from datetime import datetime
 from typing import Any, Dict, Optional
-from pydantic import BaseModel, Field
+from pydantic.v1 import BaseModel, Field
 from finbourne_access.models.requested_action_key import RequestedActionKey
 
 class RequestDetails(BaseModel):

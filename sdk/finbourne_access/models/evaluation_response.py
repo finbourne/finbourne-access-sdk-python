@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, Dict, Optional
-from pydantic import BaseModel, Field, StrictStr
+from pydantic.v1 import BaseModel, Field, StrictStr
 from finbourne_access.models.evaluation_result import EvaluationResult
 
 class EvaluationResponse(BaseModel):

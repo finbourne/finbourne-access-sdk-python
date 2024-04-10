@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, Dict, Optional
-from pydantic import BaseModel, Field, constr
+from pydantic.v1 import BaseModel, Field, constr
 from finbourne_access.models.role_resource_request import RoleResourceRequest
 from finbourne_access.models.when_spec import WhenSpec
 

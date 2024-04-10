@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, Dict, Optional
-from pydantic import BaseModel, Field, StrictStr, constr
+from pydantic.v1 import BaseModel, Field, StrictStr, constr
 from finbourne_access.models.text_operator import TextOperator
 
 class IfIdentityClaimExpression(BaseModel):

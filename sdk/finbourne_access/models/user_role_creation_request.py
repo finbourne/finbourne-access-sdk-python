@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, Dict
-from pydantic import BaseModel, Field, constr, validator
+from pydantic.v1 import BaseModel, Field, constr, validator
 from finbourne_access.models.policy_id_role_resource import PolicyIdRoleResource
 
 class UserRoleCreationRequest(BaseModel):

@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, Dict, Optional
-from pydantic import BaseModel, Field
+from pydantic.v1 import BaseModel, Field
 from finbourne_access.models.if_feature_chain_expression import IfFeatureChainExpression
 from finbourne_access.models.if_identity_claim_expression import IfIdentityClaimExpression
 from finbourne_access.models.if_identity_scope_expression import IfIdentityScopeExpression
