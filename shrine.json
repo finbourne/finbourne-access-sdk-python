@@ -9,7 +9,7 @@
       "url": "https://www.finbourne.com",
       "email": "info@finbourne.com"
     },
-    "version": "0.0.3774",
+    "version": "0.0.3775",
     "x-logo": {
       "url": "https://www.lusid.com/app/assets/logo_white.png",
       "backgroundColor": "#415464"
@@ -387,7 +387,7 @@
         "tags": [
           "Policies"
         ],
-        "summary": "[EARLY ACCESS] Evaluate: Run one or more evaluations",
+        "summary": "Evaluate: Run one or more evaluations",
         "description": "Given a dictionary of evaluation requests (keyed by any arbitrary correlation identifier), each will be evaluated according to the current user's policies (deduced from the provided OAuth token).",
         "operationId": "Evaluate",
         "parameters": [
@@ -644,7 +644,7 @@
             "oauth2": []
           }
         ],
-        "x-fbn-apistatus": "EarlyAccess"
+        "x-fbn-apistatus": "Stable"
       }
     },
     "/api/metadata/access/resources": {
@@ -652,7 +652,7 @@
         "tags": [
           "Application Metadata"
         ],
-        "summary": "[EARLY ACCESS] ListAccessControlledResources: Get resources available for access control",
+        "summary": "ListAccessControlledResources: Get resources available for access control",
         "description": "Get the comprehensive set of resources that are available for access control",
         "operationId": "ListAccessControlledResources",
         "responses": {
@@ -692,7 +692,7 @@
             "oauth2": []
           }
         ],
-        "x-fbn-apistatus": "EarlyAccess"
+        "x-fbn-apistatus": "Stable"
       }
     },
     "/api/policies": {
@@ -1040,7 +1040,7 @@
         "tags": [
           "Policies"
         ],
-        "summary": "[EARLY ACCESS] CreatePolicy: Create Policy",
+        "summary": "CreatePolicy: Create Policy",
         "description": "Creates a Policy",
         "operationId": "CreatePolicy",
         "requestBody": {
@@ -1476,7 +1476,7 @@
             "oauth2": []
           }
         ],
-        "x-fbn-apistatus": "EarlyAccess"
+        "x-fbn-apistatus": "Stable"
       }
     },
     "/api/policies/page": {
@@ -1822,7 +1822,7 @@
         "tags": [
           "Policies"
         ],
-        "summary": "[EARLY ACCESS] GetPolicy: Get Policy",
+        "summary": "GetPolicy: Get Policy",
         "description": "Gets an identified Policy",
         "operationId": "GetPolicy",
         "parameters": [
@@ -2108,13 +2108,13 @@
             "oauth2": []
           }
         ],
-        "x-fbn-apistatus": "EarlyAccess"
+        "x-fbn-apistatus": "Stable"
       },
       "delete": {
         "tags": [
           "Policies"
         ],
-        "summary": "[EARLY ACCESS] DeletePolicy: Delete Policy",
+        "summary": "DeletePolicy: Delete Policy",
         "description": "Deletes an identified Policy",
         "operationId": "DeletePolicy",
         "parameters": [
@@ -2178,13 +2178,13 @@
             "oauth2": []
           }
         ],
-        "x-fbn-apistatus": "EarlyAccess"
+        "x-fbn-apistatus": "Stable"
       },
       "put": {
         "tags": [
           "Policies"
         ],
-        "summary": "[EARLY ACCESS] UpdatePolicy: Update Policy",
+        "summary": "UpdatePolicy: Update Policy",
         "description": "Updates a Policy",
         "operationId": "UpdatePolicy",
         "parameters": [
@@ -2730,7 +2730,7 @@
             "oauth2": []
           }
         ],
-        "x-fbn-apistatus": "EarlyAccess"
+        "x-fbn-apistatus": "Stable"
       }
     },
     "/api/policycollections": {
@@ -2738,7 +2738,7 @@
         "tags": [
           "Policies"
         ],
-        "summary": "[EARLY ACCESS] ListPolicyCollections: List PolicyCollections",
+        "summary": "ListPolicyCollections: List PolicyCollections",
         "description": "Gets all PolicyCollections in a scope. For pagination support, use PagePolicyCollections",
         "operationId": "ListPolicyCollections",
         "parameters": [
@@ -2946,13 +2946,13 @@
             "oauth2": []
           }
         ],
-        "x-fbn-apistatus": "EarlyAccess"
+        "x-fbn-apistatus": "Stable"
       },
       "post": {
         "tags": [
           "Policies"
         ],
-        "summary": "[EARLY ACCESS] CreatePolicyCollection: Create PolicyCollection",
+        "summary": "CreatePolicyCollection: Create PolicyCollection",
         "description": "Creates a PolicyCollection",
         "operationId": "CreatePolicyCollection",
         "requestBody": {
@@ -3191,7 +3191,7 @@
             "oauth2": []
           }
         ],
-        "x-fbn-apistatus": "EarlyAccess"
+        "x-fbn-apistatus": "Stable"
       }
     },
     "/api/policycollections/page": {
@@ -3199,7 +3199,7 @@
         "tags": [
           "Policies"
         ],
-        "summary": "[EARLY ACCESS] PagePolicyCollections: Page PolicyCollections",
+        "summary": "PagePolicyCollections: Page PolicyCollections",
         "description": "Gets all PolicyCollections with pagination support.",
         "operationId": "PagePolicyCollections",
         "parameters": [
@@ -3403,7 +3403,7 @@
             "oauth2": []
           }
         ],
-        "x-fbn-apistatus": "EarlyAccess"
+        "x-fbn-apistatus": "Stable"
       }
     },
     "/api/policycollections/{code}": {
@@ -3411,7 +3411,7 @@
         "tags": [
           "Policies"
         ],
-        "summary": "[EARLY ACCESS] GetPolicyCollection: Get PolicyCollection",
+        "summary": "GetPolicyCollection: Get PolicyCollection",
         "description": "Gets an identified PolicyCollection",
         "operationId": "GetPolicyCollection",
         "parameters": [
@@ -3571,13 +3571,13 @@
             "oauth2": []
           }
         ],
-        "x-fbn-apistatus": "EarlyAccess"
+        "x-fbn-apistatus": "Stable"
       },
       "delete": {
         "tags": [
           "Policies"
         ],
-        "summary": "[EARLY ACCESS] DeletePolicyCollection: Delete PolicyCollection",
+        "summary": "DeletePolicyCollection: Delete PolicyCollection",
         "description": "Deletes an identified PolicyCollection",
         "operationId": "DeletePolicyCollection",
         "parameters": [
@@ -3641,13 +3641,13 @@
             "oauth2": []
           }
         ],
-        "x-fbn-apistatus": "EarlyAccess"
+        "x-fbn-apistatus": "Stable"
       },
       "put": {
         "tags": [
           "Policies"
         ],
-        "summary": "[EARLY ACCESS] UpdatePolicyCollection: Update PolicyCollection",
+        "summary": "UpdatePolicyCollection: Update PolicyCollection",
         "description": "Updates a PolicyCollection",
         "operationId": "UpdatePolicyCollection",
         "parameters": [
@@ -3903,7 +3903,7 @@
             "oauth2": []
           }
         ],
-        "x-fbn-apistatus": "EarlyAccess"
+        "x-fbn-apistatus": "Stable"
       }
     },
     "/api/policycollections/{code}/add": {
@@ -3911,7 +3911,7 @@
         "tags": [
           "Policies"
         ],
-        "summary": "[EARLY ACCESS] AddToPolicyCollection: Add To PolicyCollection",
+        "summary": "AddToPolicyCollection: Add To PolicyCollection",
         "description": "Add Policies and/or PolicyCollections to a PolicyCollection",
         "operationId": "AddToPolicyCollection",
         "parameters": [
@@ -4159,7 +4159,7 @@
             "oauth2": []
           }
         ],
-        "x-fbn-apistatus": "EarlyAccess"
+        "x-fbn-apistatus": "Stable"
       }
     },
     "/api/policycollections/{code}/remove": {
@@ -4167,7 +4167,7 @@
         "tags": [
           "Policies"
         ],
-        "summary": "[EARLY ACCESS] RemoveFromPolicyCollection: Remove From PolicyCollection",
+        "summary": "RemoveFromPolicyCollection: Remove From PolicyCollection",
         "description": "Remove Policies and/or PolicyCollections from a PolicyCollection",
         "operationId": "RemoveFromPolicyCollection",
         "parameters": [
@@ -4415,7 +4415,7 @@
             "oauth2": []
           }
         ],
-        "x-fbn-apistatus": "EarlyAccess"
+        "x-fbn-apistatus": "Stable"
       }
     },
     "/api/policytemplates": {
@@ -5798,7 +5798,7 @@
         "tags": [
           "Roles"
         ],
-        "summary": "[EARLY ACCESS] ListRoles: List Roles",
+        "summary": "ListRoles: List Roles",
         "description": "Gets all Roles in a scope",
         "operationId": "ListRoles",
         "parameters": [
@@ -6036,13 +6036,13 @@
             "oauth2": []
           }
         ],
-        "x-fbn-apistatus": "EarlyAccess"
+        "x-fbn-apistatus": "Stable"
       },
       "post": {
         "tags": [
           "Roles"
         ],
-        "summary": "[EARLY ACCESS] CreateRole: Create Role",
+        "summary": "CreateRole: Create Role",
         "description": "Creates a Role",
         "operationId": "CreateRole",
         "requestBody": {
@@ -6339,7 +6339,7 @@
             "oauth2": []
           }
         ],
-        "x-fbn-apistatus": "EarlyAccess"
+        "x-fbn-apistatus": "Stable"
       }
     },
     "/api/roles/{code}": {
@@ -6347,7 +6347,7 @@
         "tags": [
           "Roles"
         ],
-        "summary": "[EARLY ACCESS] GetRole: Get Role",
+        "summary": "GetRole: Get Role",
         "description": "Gets an identified Role",
         "operationId": "GetRole",
         "parameters": [
@@ -6537,13 +6537,13 @@
             "oauth2": []
           }
         ],
-        "x-fbn-apistatus": "EarlyAccess"
+        "x-fbn-apistatus": "Stable"
       },
       "delete": {
         "tags": [
           "Roles"
         ],
-        "summary": "[EARLY ACCESS] DeleteRole: Delete Role",
+        "summary": "DeleteRole: Delete Role",
         "description": "Deletes an identified Role",
         "operationId": "DeleteRole",
         "parameters": [
@@ -6607,13 +6607,13 @@
             "oauth2": []
           }
         ],
-        "x-fbn-apistatus": "EarlyAccess"
+        "x-fbn-apistatus": "Stable"
       },
       "put": {
         "tags": [
           "Roles"
         ],
-        "summary": "[EARLY ACCESS] UpdateRole: Update Role",
+        "summary": "UpdateRole: Update Role",
         "description": "Updates a Role",
         "operationId": "UpdateRole",
         "parameters": [
@@ -6963,7 +6963,7 @@
             "oauth2": []
           }
         ],
-        "x-fbn-apistatus": "EarlyAccess"
+        "x-fbn-apistatus": "Stable"
       }
     },
     "/api/roles/{scope}/{code}/policycollections": {
@@ -6971,7 +6971,7 @@
         "tags": [
           "Roles"
         ],
-        "summary": "[EARLY ACCESS] AddPolicyCollectionToRole: Add policy collections to a role",
+        "summary": "AddPolicyCollectionToRole: Add policy collections to a role",
         "description": "Assigns policy collections to a role",
         "operationId": "AddPolicyCollectionToRole",
         "parameters": [
@@ -7226,7 +7226,7 @@
             "oauth2": []
           }
         ],
-        "x-fbn-apistatus": "EarlyAccess"
+        "x-fbn-apistatus": "Stable"
       }
     },
     "/api/roles/{scope}/{code}/policycollections/{policycollectionscope}/{policycollectioncode}": {
@@ -7234,7 +7234,7 @@
         "tags": [
           "Roles"
         ],
-        "summary": "[EARLY ACCESS] RemovePolicyCollectionFromRole: Remove policy collection from role",
+        "summary": "RemovePolicyCollectionFromRole: Remove policy collection from role",
         "description": "Removes a policy collection from a role",
         "operationId": "RemovePolicyCollectionFromRole",
         "parameters": [
@@ -7435,7 +7435,7 @@
             "oauth2": []
           }
         ],
-        "x-fbn-apistatus": "EarlyAccess"
+        "x-fbn-apistatus": "Stable"
       }
     },
     "/api/userroles": {
@@ -7443,7 +7443,7 @@
         "tags": [
           "User-roles"
         ],
-        "summary": "[EXPERIMENTAL] CreateUserRole: Create a user-role",
+        "summary": "CreateUserRole: Create a user-role",
         "description": "Creates a new user-role.",
         "operationId": "CreateUserRole",
         "requestBody": {
@@ -7663,13 +7663,13 @@
             "oauth2": []
           }
         ],
-        "x-fbn-apistatus": "Experimental"
+        "x-fbn-apistatus": "Stable"
       },
       "get": {
         "tags": [
           "User-roles"
         ],
-        "summary": "[EXPERIMENTAL] ListUserRoles: List user-roles",
+        "summary": "ListUserRoles: List user-roles",
         "description": "Lists all user-roles and pages.",
         "operationId": "ListUserRoles",
         "parameters": [
@@ -7860,7 +7860,7 @@
             "oauth2": []
           }
         ],
-        "x-fbn-apistatus": "Experimental"
+        "x-fbn-apistatus": "Stable"
       }
     },
     "/api/userroles/{userid}": {
@@ -7868,7 +7868,7 @@
         "tags": [
           "User-roles"
         ],
-        "summary": "[EXPERIMENTAL] GetUserRole: Get a user-role",
+        "summary": "GetUserRole: Get a user-role",
         "description": "Get an identified user-role.",
         "operationId": "GetUserRole",
         "parameters": [
@@ -8005,13 +8005,13 @@
             "oauth2": []
           }
         ],
-        "x-fbn-apistatus": "Experimental"
+        "x-fbn-apistatus": "Stable"
       },
       "delete": {
         "tags": [
           "User-roles"
         ],
-        "summary": "[EXPERIMENTAL] DeleteUserRole: Delete a user-role",
+        "summary": "DeleteUserRole: Delete a user-role",
         "description": "Deletes an identified user-role.",
         "operationId": "DeleteUserRole",
         "parameters": [
@@ -8065,7 +8065,7 @@
             "oauth2": []
           }
         ],
-        "x-fbn-apistatus": "Experimental"
+        "x-fbn-apistatus": "Stable"
       }
     },
     "/api/userroles/{userid}/policies": {
@@ -8073,7 +8073,7 @@
         "tags": [
           "User-roles"
         ],
-        "summary": "[EXPERIMENTAL] AddPolicyToUserRole: Add a policy to a user-role",
+        "summary": "AddPolicyToUserRole: Add a policy to a user-role",
         "description": "Adds a policy to a user-role.",
         "operationId": "AddPolicyToUserRole",
         "parameters": [
@@ -8268,7 +8268,7 @@
             "oauth2": []
           }
         ],
-        "x-fbn-apistatus": "Experimental"
+        "x-fbn-apistatus": "Stable"
       }
     },
     "/api/userroles/{userid}/policies/{policyScope}/{policyCode}": {
@@ -8276,7 +8276,7 @@
         "tags": [
           "User-roles"
         ],
-        "summary": "[EXPERIMENTAL] RemovePolicyFromUserRole: Remove a policy from a user-role",
+        "summary": "RemovePolicyFromUserRole: Remove a policy from a user-role",
         "description": "Removes a policy from a user-role.",
         "operationId": "RemovePolicyFromUserRole",
         "parameters": [
@@ -8350,7 +8350,7 @@
             "oauth2": []
           }
         ],
-        "x-fbn-apistatus": "Experimental"
+        "x-fbn-apistatus": "Stable"
       }
     },
     "/api/userroles/{userid}/policycollections": {
@@ -8358,7 +8358,7 @@
         "tags": [
           "User-roles"
         ],
-        "summary": "[EXPERIMENTAL] AddPolicyCollectionToUserRole: Add a policy collection to a user-role",
+        "summary": "AddPolicyCollectionToUserRole: Add a policy collection to a user-role",
         "description": "Adds a policy collection to a user-role.",
         "operationId": "AddPolicyCollectionToUserRole",
         "parameters": [
@@ -8553,7 +8553,7 @@
             "oauth2": []
           }
         ],
-        "x-fbn-apistatus": "Experimental"
+        "x-fbn-apistatus": "Stable"
       }
     },
     "/api/userroles/{userid}/policycollections/{policyCollectionScope}/{policyCollectionCode}": {
@@ -8561,7 +8561,7 @@
         "tags": [
           "User-roles"
         ],
-        "summary": "[EXPERIMENTAL] RemovePolicyCollectionFromUserRole: Remove a policy collection from a user-role",
+        "summary": "RemovePolicyCollectionFromUserRole: Remove a policy collection from a user-role",
         "description": "Removes a policy collection from a user-role.",
         "operationId": "RemovePolicyCollectionFromUserRole",
         "parameters": [
@@ -8635,7 +8635,7 @@
             "oauth2": []
           }
         ],
-        "x-fbn-apistatus": "Experimental"
+        "x-fbn-apistatus": "Stable"
       }
     },
     "/api/userroles/{userid}/update": {
@@ -8643,7 +8643,7 @@
         "tags": [
           "User-roles"
         ],
-        "summary": "[EXPERIMENTAL] UpdateUserRole: Update a user-role",
+        "summary": "UpdateUserRole: Update a user-role",
         "description": "Updates an identified user-role.",
         "operationId": "UpdateUserRole",
         "parameters": [
@@ -8870,7 +8870,7 @@
             "oauth2": []
           }
         ],
-        "x-fbn-apistatus": "Experimental"
+        "x-fbn-apistatus": "Stable"
       }
     }
   },

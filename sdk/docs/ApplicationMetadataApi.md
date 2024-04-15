@@ -4,13 +4,13 @@ All URIs are relative to *https://fbn-ci.lusid.com/access*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**list_access_controlled_resources**](ApplicationMetadataApi.md#list_access_controlled_resources) | **GET** /api/metadata/access/resources | [EARLY ACCESS] ListAccessControlledResources: Get resources available for access control
+[**list_access_controlled_resources**](ApplicationMetadataApi.md#list_access_controlled_resources) | **GET** /api/metadata/access/resources | ListAccessControlledResources: Get resources available for access control
 
 
 # **list_access_controlled_resources**
 > ResourceListOfAccessControlledResource list_access_controlled_resources()
 
-[EARLY ACCESS] ListAccessControlledResources: Get resources available for access control
+ListAccessControlledResources: Get resources available for access control
 
 Get the comprehensive set of resources that are available for access control
 
@@ -46,7 +46,7 @@ with finbourne_access.ApiClient(configuration) as api_client:
     api_instance = finbourne_access.ApplicationMetadataApi(api_client)
     
     try:
-        # [EARLY ACCESS] ListAccessControlledResources: Get resources available for access control
+        # ListAccessControlledResources: Get resources available for access control
         api_response = api_instance.list_access_controlled_resources()
         pprint(api_response)
     except ApiException as e:

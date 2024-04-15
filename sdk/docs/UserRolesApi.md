@@ -4,21 +4,21 @@ All URIs are relative to *https://fbn-ci.lusid.com/access*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**add_policy_collection_to_user_role**](UserRolesApi.md#add_policy_collection_to_user_role) | **POST** /api/userroles/{userid}/policycollections | [EXPERIMENTAL] AddPolicyCollectionToUserRole: Add a policy collection to a user-role
-[**add_policy_to_user_role**](UserRolesApi.md#add_policy_to_user_role) | **POST** /api/userroles/{userid}/policies | [EXPERIMENTAL] AddPolicyToUserRole: Add a policy to a user-role
-[**create_user_role**](UserRolesApi.md#create_user_role) | **POST** /api/userroles | [EXPERIMENTAL] CreateUserRole: Create a user-role
-[**delete_user_role**](UserRolesApi.md#delete_user_role) | **DELETE** /api/userroles/{userid} | [EXPERIMENTAL] DeleteUserRole: Delete a user-role
-[**get_user_role**](UserRolesApi.md#get_user_role) | **GET** /api/userroles/{userid} | [EXPERIMENTAL] GetUserRole: Get a user-role
-[**list_user_roles**](UserRolesApi.md#list_user_roles) | **GET** /api/userroles | [EXPERIMENTAL] ListUserRoles: List user-roles
-[**remove_policy_collection_from_user_role**](UserRolesApi.md#remove_policy_collection_from_user_role) | **DELETE** /api/userroles/{userid}/policycollections/{policyCollectionScope}/{policyCollectionCode} | [EXPERIMENTAL] RemovePolicyCollectionFromUserRole: Remove a policy collection from a user-role
-[**remove_policy_from_user_role**](UserRolesApi.md#remove_policy_from_user_role) | **DELETE** /api/userroles/{userid}/policies/{policyScope}/{policyCode} | [EXPERIMENTAL] RemovePolicyFromUserRole: Remove a policy from a user-role
-[**update_user_role**](UserRolesApi.md#update_user_role) | **POST** /api/userroles/{userid}/update | [EXPERIMENTAL] UpdateUserRole: Update a user-role
+[**add_policy_collection_to_user_role**](UserRolesApi.md#add_policy_collection_to_user_role) | **POST** /api/userroles/{userid}/policycollections | AddPolicyCollectionToUserRole: Add a policy collection to a user-role
+[**add_policy_to_user_role**](UserRolesApi.md#add_policy_to_user_role) | **POST** /api/userroles/{userid}/policies | AddPolicyToUserRole: Add a policy to a user-role
+[**create_user_role**](UserRolesApi.md#create_user_role) | **POST** /api/userroles | CreateUserRole: Create a user-role
+[**delete_user_role**](UserRolesApi.md#delete_user_role) | **DELETE** /api/userroles/{userid} | DeleteUserRole: Delete a user-role
+[**get_user_role**](UserRolesApi.md#get_user_role) | **GET** /api/userroles/{userid} | GetUserRole: Get a user-role
+[**list_user_roles**](UserRolesApi.md#list_user_roles) | **GET** /api/userroles | ListUserRoles: List user-roles
+[**remove_policy_collection_from_user_role**](UserRolesApi.md#remove_policy_collection_from_user_role) | **DELETE** /api/userroles/{userid}/policycollections/{policyCollectionScope}/{policyCollectionCode} | RemovePolicyCollectionFromUserRole: Remove a policy collection from a user-role
+[**remove_policy_from_user_role**](UserRolesApi.md#remove_policy_from_user_role) | **DELETE** /api/userroles/{userid}/policies/{policyScope}/{policyCode} | RemovePolicyFromUserRole: Remove a policy from a user-role
+[**update_user_role**](UserRolesApi.md#update_user_role) | **POST** /api/userroles/{userid}/update | UpdateUserRole: Update a user-role
 
 
 # **add_policy_collection_to_user_role**
 > UserRoleResponse add_policy_collection_to_user_role(userid, add_policy_collection_to_role_request)
 
-[EXPERIMENTAL] AddPolicyCollectionToUserRole: Add a policy collection to a user-role
+AddPolicyCollectionToUserRole: Add a policy collection to a user-role
 
 Adds a policy collection to a user-role.
 
@@ -56,7 +56,7 @@ with finbourne_access.ApiClient(configuration) as api_client:
 add_policy_collection_to_role_request = {"policyCollections":[{"scope":"ExampleAddPolicyCollectionScope","code":"ExampleAddPolicyCollectionCode"}]} # AddPolicyCollectionToRoleRequest | Dto of the policy collection to be added.
 
     try:
-        # [EXPERIMENTAL] AddPolicyCollectionToUserRole: Add a policy collection to a user-role
+        # AddPolicyCollectionToUserRole: Add a policy collection to a user-role
         api_response = api_instance.add_policy_collection_to_user_role(userid, add_policy_collection_to_role_request)
         pprint(api_response)
     except ApiException as e:
@@ -95,7 +95,7 @@ Name | Type | Description  | Notes
 # **add_policy_to_user_role**
 > UserRoleResponse add_policy_to_user_role(userid, add_policy_to_role_request)
 
-[EXPERIMENTAL] AddPolicyToUserRole: Add a policy to a user-role
+AddPolicyToUserRole: Add a policy to a user-role
 
 Adds a policy to a user-role.
 
@@ -133,7 +133,7 @@ with finbourne_access.ApiClient(configuration) as api_client:
 add_policy_to_role_request = {"policies":[{"scope":"ExampleAddPolicyScope","code":"ExampleAddPolicyCode"}]} # AddPolicyToRoleRequest | Dto of the policy to be added.
 
     try:
-        # [EXPERIMENTAL] AddPolicyToUserRole: Add a policy to a user-role
+        # AddPolicyToUserRole: Add a policy to a user-role
         api_response = api_instance.add_policy_to_user_role(userid, add_policy_to_role_request)
         pprint(api_response)
     except ApiException as e:
@@ -172,7 +172,7 @@ Name | Type | Description  | Notes
 # **create_user_role**
 > UserRoleResponse create_user_role(user_role_creation_request)
 
-[EXPERIMENTAL] CreateUserRole: Create a user-role
+CreateUserRole: Create a user-role
 
 Creates a new user-role.
 
@@ -209,7 +209,7 @@ with finbourne_access.ApiClient(configuration) as api_client:
     user_role_creation_request = {"userId":"ExampleUserId","resource":{"policies":[{"scope":"ExamplePolicyId","code":"ExampleScope"}],"policyCollections":[{"scope":"ExamplePolicyCollectionId","code":"ExampleScope"}]}} # UserRoleCreationRequest | Definition of the user-role to create.
 
     try:
-        # [EXPERIMENTAL] CreateUserRole: Create a user-role
+        # CreateUserRole: Create a user-role
         api_response = api_instance.create_user_role(user_role_creation_request)
         pprint(api_response)
     except ApiException as e:
@@ -247,7 +247,7 @@ Name | Type | Description  | Notes
 # **delete_user_role**
 > delete_user_role(userid)
 
-[EXPERIMENTAL] DeleteUserRole: Delete a user-role
+DeleteUserRole: Delete a user-role
 
 Deletes an identified user-role.
 
@@ -284,7 +284,7 @@ with finbourne_access.ApiClient(configuration) as api_client:
     userid = 'userid_example' # str | Id of the user-role to delete.
 
     try:
-        # [EXPERIMENTAL] DeleteUserRole: Delete a user-role
+        # DeleteUserRole: Delete a user-role
         api_instance.delete_user_role(userid)
     except ApiException as e:
         print("Exception when calling UserRolesApi->delete_user_role: %s\n" % e)
@@ -321,7 +321,7 @@ void (empty response body)
 # **get_user_role**
 > UserRoleResponse get_user_role(userid)
 
-[EXPERIMENTAL] GetUserRole: Get a user-role
+GetUserRole: Get a user-role
 
 Get an identified user-role.
 
@@ -358,7 +358,7 @@ with finbourne_access.ApiClient(configuration) as api_client:
     userid = 'userid_example' # str | Id of the user-role to get.
 
     try:
-        # [EXPERIMENTAL] GetUserRole: Get a user-role
+        # GetUserRole: Get a user-role
         api_response = api_instance.get_user_role(userid)
         pprint(api_response)
     except ApiException as e:
@@ -396,7 +396,7 @@ Name | Type | Description  | Notes
 # **list_user_roles**
 > ResourceListOfUserRoleResponse list_user_roles(filter=filter, sort_by=sort_by, limit=limit, page=page)
 
-[EXPERIMENTAL] ListUserRoles: List user-roles
+ListUserRoles: List user-roles
 
 Lists all user-roles and pages.
 
@@ -436,7 +436,7 @@ limit = 56 # int | Optional. When paginating, limit the number of returned resul
 page = 'page_example' # str | Optional. Encoded page string returned from a previous search result that will retrieve              the next page of data. (optional)
 
     try:
-        # [EXPERIMENTAL] ListUserRoles: List user-roles
+        # ListUserRoles: List user-roles
         api_response = api_instance.list_user_roles(filter=filter, sort_by=sort_by, limit=limit, page=page)
         pprint(api_response)
     except ApiException as e:
@@ -477,7 +477,7 @@ Name | Type | Description  | Notes
 # **remove_policy_collection_from_user_role**
 > remove_policy_collection_from_user_role(userid, policy_collection_scope, policy_collection_code)
 
-[EXPERIMENTAL] RemovePolicyCollectionFromUserRole: Remove a policy collection from a user-role
+RemovePolicyCollectionFromUserRole: Remove a policy collection from a user-role
 
 Removes a policy collection from a user-role.
 
@@ -516,7 +516,7 @@ policy_collection_scope = 'policy_collection_scope_example' # str | The scope of
 policy_collection_code = 'policy_collection_code_example' # str | The code of the policy collection to remove from the User Role
 
     try:
-        # [EXPERIMENTAL] RemovePolicyCollectionFromUserRole: Remove a policy collection from a user-role
+        # RemovePolicyCollectionFromUserRole: Remove a policy collection from a user-role
         api_instance.remove_policy_collection_from_user_role(userid, policy_collection_scope, policy_collection_code)
     except ApiException as e:
         print("Exception when calling UserRolesApi->remove_policy_collection_from_user_role: %s\n" % e)
@@ -555,7 +555,7 @@ void (empty response body)
 # **remove_policy_from_user_role**
 > remove_policy_from_user_role(userid, policy_scope, policy_code)
 
-[EXPERIMENTAL] RemovePolicyFromUserRole: Remove a policy from a user-role
+RemovePolicyFromUserRole: Remove a policy from a user-role
 
 Removes a policy from a user-role.
 
@@ -594,7 +594,7 @@ policy_scope = 'policy_scope_example' # str | The scope of the policy to remove 
 policy_code = 'policy_code_example' # str | The code of the policy to remove from the User Role
 
     try:
-        # [EXPERIMENTAL] RemovePolicyFromUserRole: Remove a policy from a user-role
+        # RemovePolicyFromUserRole: Remove a policy from a user-role
         api_instance.remove_policy_from_user_role(userid, policy_scope, policy_code)
     except ApiException as e:
         print("Exception when calling UserRolesApi->remove_policy_from_user_role: %s\n" % e)
@@ -633,7 +633,7 @@ void (empty response body)
 # **update_user_role**
 > UserRoleResponse update_user_role(userid, user_role_update_request)
 
-[EXPERIMENTAL] UpdateUserRole: Update a user-role
+UpdateUserRole: Update a user-role
 
 Updates an identified user-role.
 
@@ -671,7 +671,7 @@ with finbourne_access.ApiClient(configuration) as api_client:
 user_role_update_request = {"resource":{"policies":[{"scope":"ExamplePolicyId","code":"ExampleScope"}],"policyCollections":[{"scope":"ExamplePolicyCollectionId","code":"ExampleScope"}]}} # UserRoleUpdateRequest | Definition of the update to apply to the user-role.
 
     try:
-        # [EXPERIMENTAL] UpdateUserRole: Update a user-role
+        # UpdateUserRole: Update a user-role
         api_response = api_instance.update_user_role(userid, user_role_update_request)
         pprint(api_response)
     except ApiException as e:
