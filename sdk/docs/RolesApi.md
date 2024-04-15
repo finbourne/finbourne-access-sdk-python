@@ -4,19 +4,19 @@ All URIs are relative to *https://fbn-prd.lusid.com/access*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**add_policy_collection_to_role**](RolesApi.md#add_policy_collection_to_role) | **POST** /api/roles/{scope}/{code}/policycollections | [EARLY ACCESS] AddPolicyCollectionToRole: Add policy collections to a role
-[**create_role**](RolesApi.md#create_role) | **POST** /api/roles | [EARLY ACCESS] CreateRole: Create Role
-[**delete_role**](RolesApi.md#delete_role) | **DELETE** /api/roles/{code} | [EARLY ACCESS] DeleteRole: Delete Role
-[**get_role**](RolesApi.md#get_role) | **GET** /api/roles/{code} | [EARLY ACCESS] GetRole: Get Role
-[**list_roles**](RolesApi.md#list_roles) | **GET** /api/roles | [EARLY ACCESS] ListRoles: List Roles
-[**remove_policy_collection_from_role**](RolesApi.md#remove_policy_collection_from_role) | **DELETE** /api/roles/{scope}/{code}/policycollections/{policycollectionscope}/{policycollectioncode} | [EARLY ACCESS] RemovePolicyCollectionFromRole: Remove policy collection from role
-[**update_role**](RolesApi.md#update_role) | **PUT** /api/roles/{code} | [EARLY ACCESS] UpdateRole: Update Role
+[**add_policy_collection_to_role**](RolesApi.md#add_policy_collection_to_role) | **POST** /api/roles/{scope}/{code}/policycollections | AddPolicyCollectionToRole: Add policy collections to a role
+[**create_role**](RolesApi.md#create_role) | **POST** /api/roles | CreateRole: Create Role
+[**delete_role**](RolesApi.md#delete_role) | **DELETE** /api/roles/{code} | DeleteRole: Delete Role
+[**get_role**](RolesApi.md#get_role) | **GET** /api/roles/{code} | GetRole: Get Role
+[**list_roles**](RolesApi.md#list_roles) | **GET** /api/roles | ListRoles: List Roles
+[**remove_policy_collection_from_role**](RolesApi.md#remove_policy_collection_from_role) | **DELETE** /api/roles/{scope}/{code}/policycollections/{policycollectionscope}/{policycollectioncode} | RemovePolicyCollectionFromRole: Remove policy collection from role
+[**update_role**](RolesApi.md#update_role) | **PUT** /api/roles/{code} | UpdateRole: Update Role
 
 
 # **add_policy_collection_to_role**
 > RoleResponse add_policy_collection_to_role(scope, code, add_policy_collection_to_role_request)
 
-[EARLY ACCESS] AddPolicyCollectionToRole: Add policy collections to a role
+AddPolicyCollectionToRole: Add policy collections to a role
 
 Assigns policy collections to a role
 
@@ -77,7 +77,7 @@ async with api_client_factory:
     add_policy_collection_to_role_request = {"policyCollections":[{"scope":"ScopeValue","code":"SomePolCollectionCode"},{"scope":"ScopeValue2","code":"AnotherPolicyCollection"}]} # AddPolicyCollectionToRoleRequest | The policy collections to add
 
     try:
-        # [EARLY ACCESS] AddPolicyCollectionToRole: Add policy collections to a role
+        # AddPolicyCollectionToRole: Add policy collections to a role
         api_response = await api_instance.add_policy_collection_to_role(scope, code, add_policy_collection_to_role_request)
         print("The response of RolesApi->add_policy_collection_to_role:\n")
         pprint(api_response)
@@ -119,7 +119,7 @@ Name | Type | Description  | Notes
 # **create_role**
 > RoleResponse create_role(role_creation_request)
 
-[EARLY ACCESS] CreateRole: Create Role
+CreateRole: Create Role
 
 Creates a Role
 
@@ -178,7 +178,7 @@ async with api_client_factory:
     role_creation_request = {"code":"example-organisation-role-id","description":"This is an example role to demonstrate their creation","resource":{"policyIdRoleResource":{"policies":[{"scope":"default","code":"official-portfolios-read-only"},{"scope":"default","code":"desk-portfolios"}],"policyCollections":[{"scope":"default","code":"CompanyEmployeeAccess"}]}},"when":{"activate":"2016-08-31T18:00:00.0000000+00:00","deactivate":"2020-08-31T18:00:00.0000000+00:00"}} # RoleCreationRequest | The definition of the Role
 
     try:
-        # [EARLY ACCESS] CreateRole: Create Role
+        # CreateRole: Create Role
         api_response = await api_instance.create_role(role_creation_request)
         print("The response of RolesApi->create_role:\n")
         pprint(api_response)
@@ -218,7 +218,7 @@ Name | Type | Description  | Notes
 # **delete_role**
 > delete_role(code, scope=scope)
 
-[EARLY ACCESS] DeleteRole: Delete Role
+DeleteRole: Delete Role
 
 Deletes an identified Role
 
@@ -276,7 +276,7 @@ async with api_client_factory:
     scope = 'scope_example' # str | >Optional. Will use default scope if not supplied. The scope of the Role (optional)
 
     try:
-        # [EARLY ACCESS] DeleteRole: Delete Role
+        # DeleteRole: Delete Role
         await api_instance.delete_role(code, scope=scope)
     except Exception as e:
         print("Exception when calling RolesApi->delete_role: %s\n" % e)
@@ -315,7 +315,7 @@ void (empty response body)
 # **get_role**
 > RoleResponse get_role(code, as_at=as_at, scope=scope)
 
-[EARLY ACCESS] GetRole: Get Role
+GetRole: Get Role
 
 Gets an identified Role
 
@@ -375,7 +375,7 @@ async with api_client_factory:
     scope = 'scope_example' # str | Optional. Will use default scope if not supplied. The scope of the Role (optional)
 
     try:
-        # [EARLY ACCESS] GetRole: Get Role
+        # GetRole: Get Role
         api_response = await api_instance.get_role(code, as_at=as_at, scope=scope)
         print("The response of RolesApi->get_role:\n")
         pprint(api_response)
@@ -417,7 +417,7 @@ Name | Type | Description  | Notes
 # **list_roles**
 > List[RoleResponse] list_roles(scope=scope, as_at=as_at, sort_by=sort_by, start=start, limit=limit, filter=filter)
 
-[EARLY ACCESS] ListRoles: List Roles
+ListRoles: List Roles
 
 Gets all Roles in a scope
 
@@ -480,7 +480,7 @@ async with api_client_factory:
     filter = 'filter_example' # str | Optional. Expression to filter the result set (optional)
 
     try:
-        # [EARLY ACCESS] ListRoles: List Roles
+        # ListRoles: List Roles
         api_response = await api_instance.list_roles(scope=scope, as_at=as_at, sort_by=sort_by, start=start, limit=limit, filter=filter)
         print("The response of RolesApi->list_roles:\n")
         pprint(api_response)
@@ -525,7 +525,7 @@ Name | Type | Description  | Notes
 # **remove_policy_collection_from_role**
 > RoleResponse remove_policy_collection_from_role(scope, code, policycollectionscope, policycollectioncode)
 
-[EARLY ACCESS] RemovePolicyCollectionFromRole: Remove policy collection from role
+RemovePolicyCollectionFromRole: Remove policy collection from role
 
 Removes a policy collection from a role
 
@@ -586,7 +586,7 @@ async with api_client_factory:
     policycollectioncode = 'policycollectioncode_example' # str | The code of the policy collection to remove from the Role
 
     try:
-        # [EARLY ACCESS] RemovePolicyCollectionFromRole: Remove policy collection from role
+        # RemovePolicyCollectionFromRole: Remove policy collection from role
         api_response = await api_instance.remove_policy_collection_from_role(scope, code, policycollectionscope, policycollectioncode)
         print("The response of RolesApi->remove_policy_collection_from_role:\n")
         pprint(api_response)
@@ -629,7 +629,7 @@ Name | Type | Description  | Notes
 # **update_role**
 > RoleResponse update_role(code, role_update_request, scope=scope, before_scope=before_scope, before_code=before_code, after_scope=after_scope, after_code=after_code)
 
-[EARLY ACCESS] UpdateRole: Update Role
+UpdateRole: Update Role
 
 Updates a Role
 
@@ -694,7 +694,7 @@ async with api_client_factory:
     after_code = 'after_code_example' # str | Optional. The code of the Role (optional)
 
     try:
-        # [EARLY ACCESS] UpdateRole: Update Role
+        # UpdateRole: Update Role
         api_response = await api_instance.update_role(code, role_update_request, scope=scope, before_scope=before_scope, before_code=before_code, after_scope=after_scope, after_code=after_code)
         print("The response of RolesApi->update_role:\n")
         pprint(api_response)

@@ -70,7 +70,7 @@ class PoliciesApi:
 
     @validate_arguments
     def add_to_policy_collection(self, code : Annotated[constr(strict=True), Field(..., description="The code of the PolicyCollection")], add_to_policy_collection_request : Annotated[AddToPolicyCollectionRequest, Field(..., description="Ids of the PolicyCollections and/or Policies to add to the PolicyCollection")], scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The scope of the PolicyCollection")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[PolicyCollectionResponse, Awaitable[PolicyCollectionResponse]]:  # noqa: E501
-        """[EARLY ACCESS] AddToPolicyCollection: Add To PolicyCollection  # noqa: E501
+        """AddToPolicyCollection: Add To PolicyCollection  # noqa: E501
 
         Add Policies and/or PolicyCollections to a PolicyCollection  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -106,7 +106,7 @@ class PoliciesApi:
 
     @validate_arguments
     def add_to_policy_collection_with_http_info(self, code : Annotated[constr(strict=True), Field(..., description="The code of the PolicyCollection")], add_to_policy_collection_request : Annotated[AddToPolicyCollectionRequest, Field(..., description="Ids of the PolicyCollections and/or Policies to add to the PolicyCollection")], scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The scope of the PolicyCollection")] = None, **kwargs) -> ApiResponse:  # noqa: E501
-        """[EARLY ACCESS] AddToPolicyCollection: Add To PolicyCollection  # noqa: E501
+        """AddToPolicyCollection: Add To PolicyCollection  # noqa: E501
 
         Add Policies and/or PolicyCollections to a PolicyCollection  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -244,7 +244,7 @@ class PoliciesApi:
 
     @validate_arguments
     def create_policy(self, policy_creation_request : Annotated[PolicyCreationRequest, Field(..., description="The definition of the Policy")], async_req: Optional[bool]=None, **kwargs) -> Union[PolicyResponse, Awaitable[PolicyResponse]]:  # noqa: E501
-        """[EARLY ACCESS] CreatePolicy: Create Policy  # noqa: E501
+        """CreatePolicy: Create Policy  # noqa: E501
 
         Creates a Policy  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -276,7 +276,7 @@ class PoliciesApi:
 
     @validate_arguments
     def create_policy_with_http_info(self, policy_creation_request : Annotated[PolicyCreationRequest, Field(..., description="The definition of the Policy")], **kwargs) -> ApiResponse:  # noqa: E501
-        """[EARLY ACCESS] CreatePolicy: Create Policy  # noqa: E501
+        """CreatePolicy: Create Policy  # noqa: E501
 
         Creates a Policy  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -402,7 +402,7 @@ class PoliciesApi:
 
     @validate_arguments
     def create_policy_collection(self, policy_collection_creation_request : Annotated[PolicyCollectionCreationRequest, Field(..., description="The definition of the PolicyCollection")], async_req: Optional[bool]=None, **kwargs) -> Union[PolicyCollectionResponse, Awaitable[PolicyCollectionResponse]]:  # noqa: E501
-        """[EARLY ACCESS] CreatePolicyCollection: Create PolicyCollection  # noqa: E501
+        """CreatePolicyCollection: Create PolicyCollection  # noqa: E501
 
         Creates a PolicyCollection  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -434,7 +434,7 @@ class PoliciesApi:
 
     @validate_arguments
     def create_policy_collection_with_http_info(self, policy_collection_creation_request : Annotated[PolicyCollectionCreationRequest, Field(..., description="The definition of the PolicyCollection")], **kwargs) -> ApiResponse:  # noqa: E501
-        """[EARLY ACCESS] CreatePolicyCollection: Create PolicyCollection  # noqa: E501
+        """CreatePolicyCollection: Create PolicyCollection  # noqa: E501
 
         Creates a PolicyCollection  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -560,7 +560,7 @@ class PoliciesApi:
 
     @validate_arguments
     def delete_policy(self, code : Annotated[constr(strict=True), Field(..., description="The code of the Policy")], scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The scope of the Policy")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[None, Awaitable[None]]:  # noqa: E501
-        """[EARLY ACCESS] DeletePolicy: Delete Policy  # noqa: E501
+        """DeletePolicy: Delete Policy  # noqa: E501
 
         Deletes an identified Policy  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -594,7 +594,7 @@ class PoliciesApi:
 
     @validate_arguments
     def delete_policy_with_http_info(self, code : Annotated[constr(strict=True), Field(..., description="The code of the Policy")], scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The scope of the Policy")] = None, **kwargs) -> ApiResponse:  # noqa: E501
-        """[EARLY ACCESS] DeletePolicy: Delete Policy  # noqa: E501
+        """DeletePolicy: Delete Policy  # noqa: E501
 
         Deletes an identified Policy  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -716,7 +716,7 @@ class PoliciesApi:
 
     @validate_arguments
     def delete_policy_collection(self, code : Annotated[constr(strict=True), Field(..., description="The code of the PolicyCollection")], scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The scope of the PolicyCollection")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[None, Awaitable[None]]:  # noqa: E501
-        """[EARLY ACCESS] DeletePolicyCollection: Delete PolicyCollection  # noqa: E501
+        """DeletePolicyCollection: Delete PolicyCollection  # noqa: E501
 
         Deletes an identified PolicyCollection  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -750,7 +750,7 @@ class PoliciesApi:
 
     @validate_arguments
     def delete_policy_collection_with_http_info(self, code : Annotated[constr(strict=True), Field(..., description="The code of the PolicyCollection")], scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The scope of the PolicyCollection")] = None, **kwargs) -> ApiResponse:  # noqa: E501
-        """[EARLY ACCESS] DeletePolicyCollection: Delete PolicyCollection  # noqa: E501
+        """DeletePolicyCollection: Delete PolicyCollection  # noqa: E501
 
         Deletes an identified PolicyCollection  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -872,7 +872,7 @@ class PoliciesApi:
 
     @validate_arguments
     def evaluate(self, request_body : Annotated[Dict[str, EvaluationRequest], Field(..., description="A dictionary of evaluations, keyed using any arbitrary correlation id (it will be returned with the response for that evaluation).")], applications : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. The application type of the roles and policies to use when evaluating.")] = None, as_at : Annotated[Optional[datetime], Field(description="Optional. The requested AsAt date of the entitlements")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[Dict[str, EvaluationResponse], Awaitable[Dict[str, EvaluationResponse]]]:  # noqa: E501
-        """[EARLY ACCESS] Evaluate: Run one or more evaluations  # noqa: E501
+        """Evaluate: Run one or more evaluations  # noqa: E501
 
         Given a dictionary of evaluation requests (keyed by any arbitrary correlation identifier), each will be evaluated according to the current user's policies (deduced from the provided OAuth token).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -908,7 +908,7 @@ class PoliciesApi:
 
     @validate_arguments
     def evaluate_with_http_info(self, request_body : Annotated[Dict[str, EvaluationRequest], Field(..., description="A dictionary of evaluations, keyed using any arbitrary correlation id (it will be returned with the response for that evaluation).")], applications : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. The application type of the roles and policies to use when evaluating.")] = None, as_at : Annotated[Optional[datetime], Field(description="Optional. The requested AsAt date of the entitlements")] = None, **kwargs) -> ApiResponse:  # noqa: E501
-        """[EARLY ACCESS] Evaluate: Run one or more evaluations  # noqa: E501
+        """Evaluate: Run one or more evaluations  # noqa: E501
 
         Given a dictionary of evaluation requests (keyed by any arbitrary correlation identifier), each will be evaluated according to the current user's policies (deduced from the provided OAuth token).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -1246,7 +1246,7 @@ class PoliciesApi:
 
     @validate_arguments
     def get_policy(self, code : Annotated[constr(strict=True), Field(..., description="The code of the Policy")], as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The scope of the Policy")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[PolicyResponse, Awaitable[PolicyResponse]]:  # noqa: E501
-        """[EARLY ACCESS] GetPolicy: Get Policy  # noqa: E501
+        """GetPolicy: Get Policy  # noqa: E501
 
         Gets an identified Policy  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -1282,7 +1282,7 @@ class PoliciesApi:
 
     @validate_arguments
     def get_policy_with_http_info(self, code : Annotated[constr(strict=True), Field(..., description="The code of the Policy")], as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The scope of the Policy")] = None, **kwargs) -> ApiResponse:  # noqa: E501
-        """[EARLY ACCESS] GetPolicy: Get Policy  # noqa: E501
+        """GetPolicy: Get Policy  # noqa: E501
 
         Gets an identified Policy  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -1416,7 +1416,7 @@ class PoliciesApi:
 
     @validate_arguments
     def get_policy_collection(self, code : Annotated[constr(strict=True), Field(..., description="The code of the PolicyCollection")], as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The scope of the PolicyCollection")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[PolicyCollectionResponse, Awaitable[PolicyCollectionResponse]]:  # noqa: E501
-        """[EARLY ACCESS] GetPolicyCollection: Get PolicyCollection  # noqa: E501
+        """GetPolicyCollection: Get PolicyCollection  # noqa: E501
 
         Gets an identified PolicyCollection  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -1452,7 +1452,7 @@ class PoliciesApi:
 
     @validate_arguments
     def get_policy_collection_with_http_info(self, code : Annotated[constr(strict=True), Field(..., description="The code of the PolicyCollection")], as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The scope of the PolicyCollection")] = None, **kwargs) -> ApiResponse:  # noqa: E501
-        """[EARLY ACCESS] GetPolicyCollection: Get PolicyCollection  # noqa: E501
+        """GetPolicyCollection: Get PolicyCollection  # noqa: E501
 
         Gets an identified PolicyCollection  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -1781,7 +1781,7 @@ class PoliciesApi:
 
     @validate_arguments
     def list_policy_collections(self, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The requested scope")] = None, as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, sort_by : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName")] = None, start : Annotated[Optional[StrictInt], Field(description="Optional. When paginating, skip this number of results")] = None, limit : Annotated[Optional[StrictInt], Field(description="Optional. 2000 if not provided. When paginating, limit the number of returned results to this many.")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[List[PolicyCollectionResponse], Awaitable[List[PolicyCollectionResponse]]]:  # noqa: E501
-        """[EARLY ACCESS] ListPolicyCollections: List PolicyCollections  # noqa: E501
+        """ListPolicyCollections: List PolicyCollections  # noqa: E501
 
         Gets all PolicyCollections in a scope. For pagination support, use PagePolicyCollections  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -1823,7 +1823,7 @@ class PoliciesApi:
 
     @validate_arguments
     def list_policy_collections_with_http_info(self, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The requested scope")] = None, as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, sort_by : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName")] = None, start : Annotated[Optional[StrictInt], Field(description="Optional. When paginating, skip this number of results")] = None, limit : Annotated[Optional[StrictInt], Field(description="Optional. 2000 if not provided. When paginating, limit the number of returned results to this many.")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, **kwargs) -> ApiResponse:  # noqa: E501
-        """[EARLY ACCESS] ListPolicyCollections: List PolicyCollections  # noqa: E501
+        """ListPolicyCollections: List PolicyCollections  # noqa: E501
 
         Gets all PolicyCollections in a scope. For pagination support, use PagePolicyCollections  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -2162,7 +2162,7 @@ class PoliciesApi:
 
     @validate_arguments
     def page_policy_collections(self, as_at : Annotated[Optional[datetime], Field(description="Optional. Not currently used. The AsAt date time of the data")] = None, sort_by : Annotated[Optional[constr(strict=True, max_length=16384, min_length=1)], Field(description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[conint(strict=True, le=5000, ge=1)], Field(description="Optional. 2000 if not provided. When paginating, limit the number of returned results to this many")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, page : Annotated[Optional[constr(strict=True, max_length=500, min_length=1)], Field(description="Optional. Paging token returned from a previous result")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[ResourceListOfPolicyCollectionResponse, Awaitable[ResourceListOfPolicyCollectionResponse]]:  # noqa: E501
-        """[EARLY ACCESS] PagePolicyCollections: Page PolicyCollections  # noqa: E501
+        """PagePolicyCollections: Page PolicyCollections  # noqa: E501
 
         Gets all PolicyCollections with pagination support.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -2202,7 +2202,7 @@ class PoliciesApi:
 
     @validate_arguments
     def page_policy_collections_with_http_info(self, as_at : Annotated[Optional[datetime], Field(description="Optional. Not currently used. The AsAt date time of the data")] = None, sort_by : Annotated[Optional[constr(strict=True, max_length=16384, min_length=1)], Field(description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[conint(strict=True, le=5000, ge=1)], Field(description="Optional. 2000 if not provided. When paginating, limit the number of returned results to this many")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, page : Annotated[Optional[constr(strict=True, max_length=500, min_length=1)], Field(description="Optional. Paging token returned from a previous result")] = None, **kwargs) -> ApiResponse:  # noqa: E501
-        """[EARLY ACCESS] PagePolicyCollections: Page PolicyCollections  # noqa: E501
+        """PagePolicyCollections: Page PolicyCollections  # noqa: E501
 
         Gets all PolicyCollections with pagination support.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -2348,7 +2348,7 @@ class PoliciesApi:
 
     @validate_arguments
     def remove_from_policy_collection(self, code : Annotated[constr(strict=True), Field(..., description="The code of the PolicyCollection")], remove_from_policy_collection_request : Annotated[RemoveFromPolicyCollectionRequest, Field(..., description="Ids of the PolicyCollections and/or Policies to remove from the PolicyCollection")], scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The scope of the PolicyCollection")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[PolicyCollectionResponse, Awaitable[PolicyCollectionResponse]]:  # noqa: E501
-        """[EARLY ACCESS] RemoveFromPolicyCollection: Remove From PolicyCollection  # noqa: E501
+        """RemoveFromPolicyCollection: Remove From PolicyCollection  # noqa: E501
 
         Remove Policies and/or PolicyCollections from a PolicyCollection  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -2384,7 +2384,7 @@ class PoliciesApi:
 
     @validate_arguments
     def remove_from_policy_collection_with_http_info(self, code : Annotated[constr(strict=True), Field(..., description="The code of the PolicyCollection")], remove_from_policy_collection_request : Annotated[RemoveFromPolicyCollectionRequest, Field(..., description="Ids of the PolicyCollections and/or Policies to remove from the PolicyCollection")], scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The scope of the PolicyCollection")] = None, **kwargs) -> ApiResponse:  # noqa: E501
-        """[EARLY ACCESS] RemoveFromPolicyCollection: Remove From PolicyCollection  # noqa: E501
+        """RemoveFromPolicyCollection: Remove From PolicyCollection  # noqa: E501
 
         Remove Policies and/or PolicyCollections from a PolicyCollection  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -2522,7 +2522,7 @@ class PoliciesApi:
 
     @validate_arguments
     def update_policy(self, code : Annotated[constr(strict=True), Field(..., description="The code of the Policy")], policy_update_request : Annotated[PolicyUpdateRequest, Field(..., description="The updated definition of the Policy")], scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The scope of the Policy")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[PolicyResponse, Awaitable[PolicyResponse]]:  # noqa: E501
-        """[EARLY ACCESS] UpdatePolicy: Update Policy  # noqa: E501
+        """UpdatePolicy: Update Policy  # noqa: E501
 
         Updates a Policy  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -2558,7 +2558,7 @@ class PoliciesApi:
 
     @validate_arguments
     def update_policy_with_http_info(self, code : Annotated[constr(strict=True), Field(..., description="The code of the Policy")], policy_update_request : Annotated[PolicyUpdateRequest, Field(..., description="The updated definition of the Policy")], scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The scope of the Policy")] = None, **kwargs) -> ApiResponse:  # noqa: E501
-        """[EARLY ACCESS] UpdatePolicy: Update Policy  # noqa: E501
+        """UpdatePolicy: Update Policy  # noqa: E501
 
         Updates a Policy  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -2696,7 +2696,7 @@ class PoliciesApi:
 
     @validate_arguments
     def update_policy_collection(self, code : Annotated[constr(strict=True), Field(..., description="The code of the PolicyCollection")], policy_collection_update_request : Annotated[PolicyCollectionUpdateRequest, Field(..., description="The updated definition of the PolicyCollection")], scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The scope of the PolicyCollection")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[PolicyCollectionResponse, Awaitable[PolicyCollectionResponse]]:  # noqa: E501
-        """[EARLY ACCESS] UpdatePolicyCollection: Update PolicyCollection  # noqa: E501
+        """UpdatePolicyCollection: Update PolicyCollection  # noqa: E501
 
         Updates a PolicyCollection  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -2732,7 +2732,7 @@ class PoliciesApi:
 
     @validate_arguments
     def update_policy_collection_with_http_info(self, code : Annotated[constr(strict=True), Field(..., description="The code of the PolicyCollection")], policy_collection_update_request : Annotated[PolicyCollectionUpdateRequest, Field(..., description="The updated definition of the PolicyCollection")], scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The scope of the PolicyCollection")] = None, **kwargs) -> ApiResponse:  # noqa: E501
-        """[EARLY ACCESS] UpdatePolicyCollection: Update PolicyCollection  # noqa: E501
+        """UpdatePolicyCollection: Update PolicyCollection  # noqa: E501
 
         Updates a PolicyCollection  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an

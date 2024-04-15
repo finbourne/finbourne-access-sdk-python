@@ -4,13 +4,13 @@ All URIs are relative to *https://fbn-prd.lusid.com/access*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**list_access_controlled_resources**](ApplicationMetadataApi.md#list_access_controlled_resources) | **GET** /api/metadata/access/resources | [EARLY ACCESS] ListAccessControlledResources: Get resources available for access control
+[**list_access_controlled_resources**](ApplicationMetadataApi.md#list_access_controlled_resources) | **GET** /api/metadata/access/resources | ListAccessControlledResources: Get resources available for access control
 
 
 # **list_access_controlled_resources**
 > ResourceListOfAccessControlledResource list_access_controlled_resources()
 
-[EARLY ACCESS] ListAccessControlledResources: Get resources available for access control
+ListAccessControlledResources: Get resources available for access control
 
 Get the comprehensive set of resources that are available for access control
 
@@ -67,7 +67,7 @@ async with api_client_factory:
     api_instance = api_client_factory.build(finbourne_access.ApplicationMetadataApi)
 
     try:
-        # [EARLY ACCESS] ListAccessControlledResources: Get resources available for access control
+        # ListAccessControlledResources: Get resources available for access control
         api_response = await api_instance.list_access_controlled_resources()
         print("The response of ApplicationMetadataApi->list_access_controlled_resources:\n")
         pprint(api_response)

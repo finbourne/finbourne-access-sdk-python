@@ -61,7 +61,7 @@ class UserRolesApi:
 
     @validate_arguments
     def add_policy_collection_to_user_role(self, userid : Annotated[StrictStr, Field(..., description="Id of the User Role to get")], add_policy_collection_to_role_request : Annotated[AddPolicyCollectionToRoleRequest, Field(..., description="Dto of the policy collection to be added.")], async_req: Optional[bool]=None, **kwargs) -> Union[UserRoleResponse, Awaitable[UserRoleResponse]]:  # noqa: E501
-        """[EXPERIMENTAL] AddPolicyCollectionToUserRole: Add a policy collection to a user-role  # noqa: E501
+        """AddPolicyCollectionToUserRole: Add a policy collection to a user-role  # noqa: E501
 
         Adds a policy collection to a user-role.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -95,7 +95,7 @@ class UserRolesApi:
 
     @validate_arguments
     def add_policy_collection_to_user_role_with_http_info(self, userid : Annotated[StrictStr, Field(..., description="Id of the User Role to get")], add_policy_collection_to_role_request : Annotated[AddPolicyCollectionToRoleRequest, Field(..., description="Dto of the policy collection to be added.")], **kwargs) -> ApiResponse:  # noqa: E501
-        """[EXPERIMENTAL] AddPolicyCollectionToUserRole: Add a policy collection to a user-role  # noqa: E501
+        """AddPolicyCollectionToUserRole: Add a policy collection to a user-role  # noqa: E501
 
         Adds a policy collection to a user-role.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -227,7 +227,7 @@ class UserRolesApi:
 
     @validate_arguments
     def add_policy_to_user_role(self, userid : Annotated[StrictStr, Field(..., description="Id of the User Role to get")], add_policy_to_role_request : Annotated[AddPolicyToRoleRequest, Field(..., description="Dto of the policy to be added.")], async_req: Optional[bool]=None, **kwargs) -> Union[UserRoleResponse, Awaitable[UserRoleResponse]]:  # noqa: E501
-        """[EXPERIMENTAL] AddPolicyToUserRole: Add a policy to a user-role  # noqa: E501
+        """AddPolicyToUserRole: Add a policy to a user-role  # noqa: E501
 
         Adds a policy to a user-role.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -261,7 +261,7 @@ class UserRolesApi:
 
     @validate_arguments
     def add_policy_to_user_role_with_http_info(self, userid : Annotated[StrictStr, Field(..., description="Id of the User Role to get")], add_policy_to_role_request : Annotated[AddPolicyToRoleRequest, Field(..., description="Dto of the policy to be added.")], **kwargs) -> ApiResponse:  # noqa: E501
-        """[EXPERIMENTAL] AddPolicyToUserRole: Add a policy to a user-role  # noqa: E501
+        """AddPolicyToUserRole: Add a policy to a user-role  # noqa: E501
 
         Adds a policy to a user-role.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -393,7 +393,7 @@ class UserRolesApi:
 
     @validate_arguments
     def create_user_role(self, user_role_creation_request : Annotated[UserRoleCreationRequest, Field(..., description="Definition of the user-role to create.")], async_req: Optional[bool]=None, **kwargs) -> Union[UserRoleResponse, Awaitable[UserRoleResponse]]:  # noqa: E501
-        """[EXPERIMENTAL] CreateUserRole: Create a user-role  # noqa: E501
+        """CreateUserRole: Create a user-role  # noqa: E501
 
         Creates a new user-role.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -425,7 +425,7 @@ class UserRolesApi:
 
     @validate_arguments
     def create_user_role_with_http_info(self, user_role_creation_request : Annotated[UserRoleCreationRequest, Field(..., description="Definition of the user-role to create.")], **kwargs) -> ApiResponse:  # noqa: E501
-        """[EXPERIMENTAL] CreateUserRole: Create a user-role  # noqa: E501
+        """CreateUserRole: Create a user-role  # noqa: E501
 
         Creates a new user-role.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -551,7 +551,7 @@ class UserRolesApi:
 
     @validate_arguments
     def delete_user_role(self, userid : Annotated[StrictStr, Field(..., description="Id of the user-role to delete.")], async_req: Optional[bool]=None, **kwargs) -> Union[None, Awaitable[None]]:  # noqa: E501
-        """[EXPERIMENTAL] DeleteUserRole: Delete a user-role  # noqa: E501
+        """DeleteUserRole: Delete a user-role  # noqa: E501
 
         Deletes an identified user-role.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -583,7 +583,7 @@ class UserRolesApi:
 
     @validate_arguments
     def delete_user_role_with_http_info(self, userid : Annotated[StrictStr, Field(..., description="Id of the user-role to delete.")], **kwargs) -> ApiResponse:  # noqa: E501
-        """[EXPERIMENTAL] DeleteUserRole: Delete a user-role  # noqa: E501
+        """DeleteUserRole: Delete a user-role  # noqa: E501
 
         Deletes an identified user-role.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -699,7 +699,7 @@ class UserRolesApi:
 
     @validate_arguments
     def get_user_role(self, userid : Annotated[StrictStr, Field(..., description="Id of the user-role to get.")], async_req: Optional[bool]=None, **kwargs) -> Union[UserRoleResponse, Awaitable[UserRoleResponse]]:  # noqa: E501
-        """[EXPERIMENTAL] GetUserRole: Get a user-role  # noqa: E501
+        """GetUserRole: Get a user-role  # noqa: E501
 
         Get an identified user-role.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -731,7 +731,7 @@ class UserRolesApi:
 
     @validate_arguments
     def get_user_role_with_http_info(self, userid : Annotated[StrictStr, Field(..., description="Id of the user-role to get.")], **kwargs) -> ApiResponse:  # noqa: E501
-        """[EXPERIMENTAL] GetUserRole: Get a user-role  # noqa: E501
+        """GetUserRole: Get a user-role  # noqa: E501
 
         Get an identified user-role.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -850,7 +850,7 @@ class UserRolesApi:
 
     @validate_arguments
     def list_user_roles(self, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, sort_by : Annotated[Optional[constr(strict=True, max_length=16384, min_length=1)], Field(description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[conint(strict=True, le=5000, ge=1)], Field(description="Optional. When paginating, limit the number of returned results to this many.")] = None, page : Annotated[Optional[constr(strict=True, max_length=500, min_length=1)], Field(description="Optional. Encoded page string returned from a previous search result that will retrieve              the next page of data.")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[ResourceListOfUserRoleResponse, Awaitable[ResourceListOfUserRoleResponse]]:  # noqa: E501
-        """[EXPERIMENTAL] ListUserRoles: List user-roles  # noqa: E501
+        """ListUserRoles: List user-roles  # noqa: E501
 
         Lists all user-roles and pages.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -888,7 +888,7 @@ class UserRolesApi:
 
     @validate_arguments
     def list_user_roles_with_http_info(self, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, sort_by : Annotated[Optional[constr(strict=True, max_length=16384, min_length=1)], Field(description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[conint(strict=True, le=5000, ge=1)], Field(description="Optional. When paginating, limit the number of returned results to this many.")] = None, page : Annotated[Optional[constr(strict=True, max_length=500, min_length=1)], Field(description="Optional. Encoded page string returned from a previous search result that will retrieve              the next page of data.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
-        """[EXPERIMENTAL] ListUserRoles: List user-roles  # noqa: E501
+        """ListUserRoles: List user-roles  # noqa: E501
 
         Lists all user-roles and pages.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -1025,7 +1025,7 @@ class UserRolesApi:
 
     @validate_arguments
     def remove_policy_collection_from_user_role(self, userid : Annotated[StrictStr, Field(..., description="Id of the User Role to get")], policy_collection_scope : Annotated[constr(strict=True), Field(..., description="The scope of policy collection to remove from the User Role")], policy_collection_code : Annotated[constr(strict=True), Field(..., description="The code of the policy collection to remove from the User Role")], async_req: Optional[bool]=None, **kwargs) -> Union[None, Awaitable[None]]:  # noqa: E501
-        """[EXPERIMENTAL] RemovePolicyCollectionFromUserRole: Remove a policy collection from a user-role  # noqa: E501
+        """RemovePolicyCollectionFromUserRole: Remove a policy collection from a user-role  # noqa: E501
 
         Removes a policy collection from a user-role.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -1061,7 +1061,7 @@ class UserRolesApi:
 
     @validate_arguments
     def remove_policy_collection_from_user_role_with_http_info(self, userid : Annotated[StrictStr, Field(..., description="Id of the User Role to get")], policy_collection_scope : Annotated[constr(strict=True), Field(..., description="The scope of policy collection to remove from the User Role")], policy_collection_code : Annotated[constr(strict=True), Field(..., description="The code of the policy collection to remove from the User Role")], **kwargs) -> ApiResponse:  # noqa: E501
-        """[EXPERIMENTAL] RemovePolicyCollectionFromUserRole: Remove a policy collection from a user-role  # noqa: E501
+        """RemovePolicyCollectionFromUserRole: Remove a policy collection from a user-role  # noqa: E501
 
         Removes a policy collection from a user-role.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -1189,7 +1189,7 @@ class UserRolesApi:
 
     @validate_arguments
     def remove_policy_from_user_role(self, userid : Annotated[StrictStr, Field(..., description="Id of the User Role to get")], policy_scope : Annotated[constr(strict=True), Field(..., description="The scope of the policy to remove from the User Role")], policy_code : Annotated[constr(strict=True), Field(..., description="The code of the policy to remove from the User Role")], async_req: Optional[bool]=None, **kwargs) -> Union[None, Awaitable[None]]:  # noqa: E501
-        """[EXPERIMENTAL] RemovePolicyFromUserRole: Remove a policy from a user-role  # noqa: E501
+        """RemovePolicyFromUserRole: Remove a policy from a user-role  # noqa: E501
 
         Removes a policy from a user-role.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -1225,7 +1225,7 @@ class UserRolesApi:
 
     @validate_arguments
     def remove_policy_from_user_role_with_http_info(self, userid : Annotated[StrictStr, Field(..., description="Id of the User Role to get")], policy_scope : Annotated[constr(strict=True), Field(..., description="The scope of the policy to remove from the User Role")], policy_code : Annotated[constr(strict=True), Field(..., description="The code of the policy to remove from the User Role")], **kwargs) -> ApiResponse:  # noqa: E501
-        """[EXPERIMENTAL] RemovePolicyFromUserRole: Remove a policy from a user-role  # noqa: E501
+        """RemovePolicyFromUserRole: Remove a policy from a user-role  # noqa: E501
 
         Removes a policy from a user-role.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -1353,7 +1353,7 @@ class UserRolesApi:
 
     @validate_arguments
     def update_user_role(self, userid : Annotated[StrictStr, Field(..., description="Id of the user-role to be updated.")], user_role_update_request : Annotated[UserRoleUpdateRequest, Field(..., description="Definition of the update to apply to the user-role.")], async_req: Optional[bool]=None, **kwargs) -> Union[UserRoleResponse, Awaitable[UserRoleResponse]]:  # noqa: E501
-        """[EXPERIMENTAL] UpdateUserRole: Update a user-role  # noqa: E501
+        """UpdateUserRole: Update a user-role  # noqa: E501
 
         Updates an identified user-role.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -1387,7 +1387,7 @@ class UserRolesApi:
 
     @validate_arguments
     def update_user_role_with_http_info(self, userid : Annotated[StrictStr, Field(..., description="Id of the user-role to be updated.")], user_role_update_request : Annotated[UserRoleUpdateRequest, Field(..., description="Definition of the update to apply to the user-role.")], **kwargs) -> ApiResponse:  # noqa: E501
-        """[EXPERIMENTAL] UpdateUserRole: Update a user-role  # noqa: E501
+        """UpdateUserRole: Update a user-role  # noqa: E501
 
         Updates an identified user-role.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
