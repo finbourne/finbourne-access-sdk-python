@@ -34,6 +34,6 @@ attached_policy_definition_response_dict = attached_policy_definition_response_i
 # create an instance of AttachedPolicyDefinitionResponse from a dict
 attached_policy_definition_response_form_dict = attached_policy_definition_response.from_dict(attached_policy_definition_response_dict)
 ```
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 
 

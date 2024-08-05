@@ -27,6 +27,6 @@ policy_template_creation_request_dict = policy_template_creation_request_instanc
 # create an instance of PolicyTemplateCreationRequest from a dict
 policy_template_creation_request_form_dict = policy_template_creation_request.from_dict(policy_template_creation_request_dict)
 ```
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 
 

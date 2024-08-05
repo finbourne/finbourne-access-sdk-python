@@ -25,6 +25,6 @@ evaluation_response_dict = evaluation_response_instance.to_dict()
 # create an instance of EvaluationResponse from a dict
 evaluation_response_form_dict = evaluation_response.from_dict(evaluation_response_dict)
 ```
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 
 

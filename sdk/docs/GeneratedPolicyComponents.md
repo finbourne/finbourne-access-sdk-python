@@ -26,6 +26,6 @@ generated_policy_components_dict = generated_policy_components_instance.to_dict(
 # create an instance of GeneratedPolicyComponents from a dict
 generated_policy_components_form_dict = generated_policy_components.from_dict(generated_policy_components_dict)
 ```
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 
 

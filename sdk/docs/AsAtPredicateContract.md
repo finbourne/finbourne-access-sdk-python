@@ -24,6 +24,6 @@ as_at_predicate_contract_dict = as_at_predicate_contract_instance.to_dict()
 # create an instance of AsAtPredicateContract from a dict
 as_at_predicate_contract_form_dict = as_at_predicate_contract.from_dict(as_at_predicate_contract_dict)
 ```
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 
 

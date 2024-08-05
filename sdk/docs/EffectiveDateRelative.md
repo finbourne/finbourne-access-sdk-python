@@ -26,6 +26,6 @@ effective_date_relative_dict = effective_date_relative_instance.to_dict()
 # create an instance of EffectiveDateRelative from a dict
 effective_date_relative_form_dict = effective_date_relative.from_dict(effective_date_relative_dict)
 ```
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 
 

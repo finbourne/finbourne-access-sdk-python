@@ -25,6 +25,6 @@ remove_from_policy_collection_request_dict = remove_from_policy_collection_reque
 # create an instance of RemoveFromPolicyCollectionRequest from a dict
 remove_from_policy_collection_request_form_dict = remove_from_policy_collection_request.from_dict(remove_from_policy_collection_request_dict)
 ```
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 
 

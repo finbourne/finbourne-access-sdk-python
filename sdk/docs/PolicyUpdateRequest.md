@@ -32,6 +32,6 @@ policy_update_request_dict = policy_update_request_instance.to_dict()
 # create an instance of PolicyUpdateRequest from a dict
 policy_update_request_form_dict = policy_update_request.from_dict(policy_update_request_dict)
 ```
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 
 

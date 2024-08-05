@@ -24,6 +24,6 @@ key_value_pair_of_string_to_string_dict = key_value_pair_of_string_to_string_ins
 # create an instance of KeyValuePairOfStringToString from a dict
 key_value_pair_of_string_to_string_form_dict = key_value_pair_of_string_to_string.from_dict(key_value_pair_of_string_to_string_dict)
 ```
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 
 

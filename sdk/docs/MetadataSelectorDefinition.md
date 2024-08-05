@@ -26,6 +26,6 @@ metadata_selector_definition_dict = metadata_selector_definition_instance.to_dic
 # create an instance of MetadataSelectorDefinition from a dict
 metadata_selector_definition_form_dict = metadata_selector_definition.from_dict(metadata_selector_definition_dict)
 ```
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 
 

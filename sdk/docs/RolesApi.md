@@ -22,69 +22,59 @@ Assigns policy collections to a role
 
 ### Example
 
-* OAuth Authentication (oauth2):
 ```python
-from __future__ import print_function
-import time
-import finbourne_access
-from finbourne_access.rest import ApiException
-from finbourne_access.models.add_policy_collection_to_role_request import AddPolicyCollectionToRoleRequest
-from finbourne_access.models.role_response import RoleResponse
+import asyncio
+from finbourne_access.exceptions import ApiException
+from finbourne_access.models import *
 from pprint import pprint
-
-import os
 from finbourne_access import (
     ApiClientFactory,
-    RolesApi,
-    EnvironmentVariablesConfigurationLoader,
-    SecretsFileConfigurationLoader,
-    ArgsConfigurationLoader
+    RolesApi
 )
 
-# Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
-# By default this will read config from environment variables
-# Then from a secrets.json file found in the current working directory
-api_client_factory = ApiClientFactory()
+async def main():
 
-# The ApiClientFactory can be passed an iterable of configuration loaders to read configuration from
+    with open("secrets.json", "w") as file:
+        file.write('''
+{
+    "api":
+    {
+        "tokenUrl":"<your-token-url>",
+        "accessUrl":"https://<your-domain>.lusid.com/access",
+        "username":"<your-username>",
+        "password":"<your-password>",
+        "clientId":"<your-client-id>",
+        "clientSecret":"<your-client-secret>"
+    }
+}''')
 
-api_url = "https://fbn-prd.lusid.com/access"
-# Path to a secrets.json file containing authentication credentials
-# See https://support.lusid.com/knowledgebase/article/KA-01667/en-us
-# for a detailed guide to setting up the SDK make authenticated calls to LUSID APIs
-secrets_path = os.getenv("FBN_SECRETS_PATH")
-app_name="LusidJupyterNotebook"
+    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # By default this will read config from environment variables
+    # Then from a secrets.json file found in the current working directory
+    api_client_factory = ApiClientFactory()
 
-config_loaders = [
-	EnvironmentVariablesConfigurationLoader(),
-	SecretsFileConfigurationLoader(api_secrets_file=secrets_path),
-	ArgsConfigurationLoader(api_url=api_url, app_name=app_name)
-]
-api_client_factory = ApiClientFactory(config_loaders=config_loaders)
+    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
+    async with api_client_factory:
+        # Create an instance of the API class
+        api_instance = api_client_factory.build(RolesApi)
+        scope = 'scope_example' # str | The scope of the Role
+        code = 'code_example' # str | The code of the Role
 
+        # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
+        # Change the lines below to switch approach
+        # add_policy_collection_to_role_request = AddPolicyCollectionToRoleRequest()
+        # add_policy_collection_to_role_request = AddPolicyCollectionToRoleRequest.from_json("")
+        add_policy_collection_to_role_request = AddPolicyCollectionToRoleRequest.from_dict({"policyCollections":[{"scope":"ScopeValue","code":"SomePolCollectionCode"},{"scope":"ScopeValue2","code":"AnotherPolicyCollection"}]}) # AddPolicyCollectionToRoleRequest | The policy collections to add
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
+        try:
+            # AddPolicyCollectionToRole: Add policy collections to a role
+            api_response = await api_instance.add_policy_collection_to_role(scope, code, add_policy_collection_to_role_request)
+            pprint(api_response)
+        except ApiException as e:
+            print("Exception when calling RolesApi->add_policy_collection_to_role: %s\n" % e)
 
-
-
-# Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-async with api_client_factory:
-    # Create an instance of the API class
-    api_instance = api_client_factory.build(finbourne_access.RolesApi)
-    scope = 'scope_example' # str | The scope of the Role
-    code = 'code_example' # str | The code of the Role
-    add_policy_collection_to_role_request = {"policyCollections":[{"scope":"ScopeValue","code":"SomePolCollectionCode"},{"scope":"ScopeValue2","code":"AnotherPolicyCollection"}]} # AddPolicyCollectionToRoleRequest | The policy collections to add
-
-    try:
-        # AddPolicyCollectionToRole: Add policy collections to a role
-        api_response = await api_instance.add_policy_collection_to_role(scope, code, add_policy_collection_to_role_request)
-        print("The response of RolesApi->add_policy_collection_to_role:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling RolesApi->add_policy_collection_to_role: %s\n" % e)
+asyncio.run(main())
 ```
-
 
 ### Parameters
 
@@ -98,10 +88,6 @@ Name | Type | Description  | Notes
 
 [**RoleResponse**](RoleResponse.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
  - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
@@ -114,7 +100,7 @@ Name | Type | Description  | Notes
 **400** | The details of the input related failure |  -  |
 **0** | Error response |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
 
 # **create_role**
 > RoleResponse create_role(role_creation_request)
@@ -125,67 +111,57 @@ Creates a Role
 
 ### Example
 
-* OAuth Authentication (oauth2):
 ```python
-from __future__ import print_function
-import time
-import finbourne_access
-from finbourne_access.rest import ApiException
-from finbourne_access.models.role_creation_request import RoleCreationRequest
-from finbourne_access.models.role_response import RoleResponse
+import asyncio
+from finbourne_access.exceptions import ApiException
+from finbourne_access.models import *
 from pprint import pprint
-
-import os
 from finbourne_access import (
     ApiClientFactory,
-    RolesApi,
-    EnvironmentVariablesConfigurationLoader,
-    SecretsFileConfigurationLoader,
-    ArgsConfigurationLoader
+    RolesApi
 )
 
-# Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
-# By default this will read config from environment variables
-# Then from a secrets.json file found in the current working directory
-api_client_factory = ApiClientFactory()
+async def main():
 
-# The ApiClientFactory can be passed an iterable of configuration loaders to read configuration from
+    with open("secrets.json", "w") as file:
+        file.write('''
+{
+    "api":
+    {
+        "tokenUrl":"<your-token-url>",
+        "accessUrl":"https://<your-domain>.lusid.com/access",
+        "username":"<your-username>",
+        "password":"<your-password>",
+        "clientId":"<your-client-id>",
+        "clientSecret":"<your-client-secret>"
+    }
+}''')
 
-api_url = "https://fbn-prd.lusid.com/access"
-# Path to a secrets.json file containing authentication credentials
-# See https://support.lusid.com/knowledgebase/article/KA-01667/en-us
-# for a detailed guide to setting up the SDK make authenticated calls to LUSID APIs
-secrets_path = os.getenv("FBN_SECRETS_PATH")
-app_name="LusidJupyterNotebook"
+    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # By default this will read config from environment variables
+    # Then from a secrets.json file found in the current working directory
+    api_client_factory = ApiClientFactory()
 
-config_loaders = [
-	EnvironmentVariablesConfigurationLoader(),
-	SecretsFileConfigurationLoader(api_secrets_file=secrets_path),
-	ArgsConfigurationLoader(api_url=api_url, app_name=app_name)
-]
-api_client_factory = ApiClientFactory(config_loaders=config_loaders)
+    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
+    async with api_client_factory:
+        # Create an instance of the API class
+        api_instance = api_client_factory.build(RolesApi)
 
+        # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
+        # Change the lines below to switch approach
+        # role_creation_request = RoleCreationRequest()
+        # role_creation_request = RoleCreationRequest.from_json("")
+        role_creation_request = RoleCreationRequest.from_dict({"code":"example-organisation-role-id","description":"This is an example role to demonstrate their creation","resource":{"policyIdRoleResource":{"policies":[{"scope":"default","code":"official-portfolios-read-only"},{"scope":"default","code":"desk-portfolios"}],"policyCollections":[{"scope":"default","code":"CompanyEmployeeAccess"}]}},"when":{"activate":"2016-08-31T18:00:00.0000000+00:00","deactivate":"2020-08-31T18:00:00.0000000+00:00"}}) # RoleCreationRequest | The definition of the Role
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
+        try:
+            # CreateRole: Create Role
+            api_response = await api_instance.create_role(role_creation_request)
+            pprint(api_response)
+        except ApiException as e:
+            print("Exception when calling RolesApi->create_role: %s\n" % e)
 
-
-
-# Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-async with api_client_factory:
-    # Create an instance of the API class
-    api_instance = api_client_factory.build(finbourne_access.RolesApi)
-    role_creation_request = {"code":"example-organisation-role-id","description":"This is an example role to demonstrate their creation","resource":{"policyIdRoleResource":{"policies":[{"scope":"default","code":"official-portfolios-read-only"},{"scope":"default","code":"desk-portfolios"}],"policyCollections":[{"scope":"default","code":"CompanyEmployeeAccess"}]}},"when":{"activate":"2016-08-31T18:00:00.0000000+00:00","deactivate":"2020-08-31T18:00:00.0000000+00:00"}} # RoleCreationRequest | The definition of the Role
-
-    try:
-        # CreateRole: Create Role
-        api_response = await api_instance.create_role(role_creation_request)
-        print("The response of RolesApi->create_role:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling RolesApi->create_role: %s\n" % e)
+asyncio.run(main())
 ```
-
 
 ### Parameters
 
@@ -196,10 +172,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**RoleResponse**](RoleResponse.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -213,7 +185,7 @@ Name | Type | Description  | Notes
 **400** | The details of the input related failure |  -  |
 **0** | Error response |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
 
 # **delete_role**
 > delete_role(code, scope=scope)
@@ -224,64 +196,51 @@ Deletes an identified Role
 
 ### Example
 
-* OAuth Authentication (oauth2):
 ```python
-from __future__ import print_function
-import time
-import finbourne_access
-from finbourne_access.rest import ApiException
+import asyncio
+from finbourne_access.exceptions import ApiException
+from finbourne_access.models import *
 from pprint import pprint
-
-import os
 from finbourne_access import (
     ApiClientFactory,
-    RolesApi,
-    EnvironmentVariablesConfigurationLoader,
-    SecretsFileConfigurationLoader,
-    ArgsConfigurationLoader
+    RolesApi
 )
 
-# Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
-# By default this will read config from environment variables
-# Then from a secrets.json file found in the current working directory
-api_client_factory = ApiClientFactory()
+async def main():
 
-# The ApiClientFactory can be passed an iterable of configuration loaders to read configuration from
+    with open("secrets.json", "w") as file:
+        file.write('''
+{
+    "api":
+    {
+        "tokenUrl":"<your-token-url>",
+        "accessUrl":"https://<your-domain>.lusid.com/access",
+        "username":"<your-username>",
+        "password":"<your-password>",
+        "clientId":"<your-client-id>",
+        "clientSecret":"<your-client-secret>"
+    }
+}''')
 
-api_url = "https://fbn-prd.lusid.com/access"
-# Path to a secrets.json file containing authentication credentials
-# See https://support.lusid.com/knowledgebase/article/KA-01667/en-us
-# for a detailed guide to setting up the SDK make authenticated calls to LUSID APIs
-secrets_path = os.getenv("FBN_SECRETS_PATH")
-app_name="LusidJupyterNotebook"
+    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # By default this will read config from environment variables
+    # Then from a secrets.json file found in the current working directory
+    api_client_factory = ApiClientFactory()
 
-config_loaders = [
-	EnvironmentVariablesConfigurationLoader(),
-	SecretsFileConfigurationLoader(api_secrets_file=secrets_path),
-	ArgsConfigurationLoader(api_url=api_url, app_name=app_name)
-]
-api_client_factory = ApiClientFactory(config_loaders=config_loaders)
+    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
+    async with api_client_factory:
+        # Create an instance of the API class
+        api_instance = api_client_factory.build(RolesApi)
+        code = 'code_example' # str | The code of the Role
+        scope = 'scope_example' # str | >Optional. Will use default scope if not supplied. The scope of the Role (optional)
 
+        try:
+            # DeleteRole: Delete Role
+            await api_instance.delete_role(code, scope=scope)        except ApiException as e:
+            print("Exception when calling RolesApi->delete_role: %s\n" % e)
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-
-
-
-# Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-async with api_client_factory:
-    # Create an instance of the API class
-    api_instance = api_client_factory.build(finbourne_access.RolesApi)
-    code = 'code_example' # str | The code of the Role
-    scope = 'scope_example' # str | >Optional. Will use default scope if not supplied. The scope of the Role (optional)
-
-    try:
-        # DeleteRole: Delete Role
-        await api_instance.delete_role(code, scope=scope)
-    except Exception as e:
-        print("Exception when calling RolesApi->delete_role: %s\n" % e)
+asyncio.run(main())
 ```
-
 
 ### Parameters
 
@@ -293,10 +252,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 void (empty response body)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -310,7 +265,7 @@ void (empty response body)
 **400** | The details of the input related failure |  -  |
 **0** | Error response |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
 
 # **get_role**
 > RoleResponse get_role(code, as_at=as_at, scope=scope)
@@ -321,68 +276,54 @@ Gets an identified Role
 
 ### Example
 
-* OAuth Authentication (oauth2):
 ```python
-from __future__ import print_function
-import time
-import finbourne_access
-from finbourne_access.rest import ApiException
-from finbourne_access.models.role_response import RoleResponse
+import asyncio
+from finbourne_access.exceptions import ApiException
+from finbourne_access.models import *
 from pprint import pprint
-
-import os
 from finbourne_access import (
     ApiClientFactory,
-    RolesApi,
-    EnvironmentVariablesConfigurationLoader,
-    SecretsFileConfigurationLoader,
-    ArgsConfigurationLoader
+    RolesApi
 )
 
-# Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
-# By default this will read config from environment variables
-# Then from a secrets.json file found in the current working directory
-api_client_factory = ApiClientFactory()
+async def main():
 
-# The ApiClientFactory can be passed an iterable of configuration loaders to read configuration from
+    with open("secrets.json", "w") as file:
+        file.write('''
+{
+    "api":
+    {
+        "tokenUrl":"<your-token-url>",
+        "accessUrl":"https://<your-domain>.lusid.com/access",
+        "username":"<your-username>",
+        "password":"<your-password>",
+        "clientId":"<your-client-id>",
+        "clientSecret":"<your-client-secret>"
+    }
+}''')
 
-api_url = "https://fbn-prd.lusid.com/access"
-# Path to a secrets.json file containing authentication credentials
-# See https://support.lusid.com/knowledgebase/article/KA-01667/en-us
-# for a detailed guide to setting up the SDK make authenticated calls to LUSID APIs
-secrets_path = os.getenv("FBN_SECRETS_PATH")
-app_name="LusidJupyterNotebook"
+    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # By default this will read config from environment variables
+    # Then from a secrets.json file found in the current working directory
+    api_client_factory = ApiClientFactory()
 
-config_loaders = [
-	EnvironmentVariablesConfigurationLoader(),
-	SecretsFileConfigurationLoader(api_secrets_file=secrets_path),
-	ArgsConfigurationLoader(api_url=api_url, app_name=app_name)
-]
-api_client_factory = ApiClientFactory(config_loaders=config_loaders)
+    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
+    async with api_client_factory:
+        # Create an instance of the API class
+        api_instance = api_client_factory.build(RolesApi)
+        code = 'code_example' # str | The code of the Role
+        as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The AsAt date time of the data (optional)
+        scope = 'scope_example' # str | Optional. Will use default scope if not supplied. The scope of the Role (optional)
 
+        try:
+            # GetRole: Get Role
+            api_response = await api_instance.get_role(code, as_at=as_at, scope=scope)
+            pprint(api_response)
+        except ApiException as e:
+            print("Exception when calling RolesApi->get_role: %s\n" % e)
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-
-
-
-# Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-async with api_client_factory:
-    # Create an instance of the API class
-    api_instance = api_client_factory.build(finbourne_access.RolesApi)
-    code = 'code_example' # str | The code of the Role
-    as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The AsAt date time of the data (optional)
-    scope = 'scope_example' # str | Optional. Will use default scope if not supplied. The scope of the Role (optional)
-
-    try:
-        # GetRole: Get Role
-        api_response = await api_instance.get_role(code, as_at=as_at, scope=scope)
-        print("The response of RolesApi->get_role:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling RolesApi->get_role: %s\n" % e)
+asyncio.run(main())
 ```
-
 
 ### Parameters
 
@@ -396,10 +337,6 @@ Name | Type | Description  | Notes
 
 [**RoleResponse**](RoleResponse.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
  - **Content-Type**: Not defined
@@ -412,7 +349,7 @@ Name | Type | Description  | Notes
 **400** | The details of the input related failure |  -  |
 **0** | Error response |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
 
 # **list_roles**
 > List[RoleResponse] list_roles(scope=scope, as_at=as_at, sort_by=sort_by, start=start, limit=limit, filter=filter)
@@ -423,71 +360,57 @@ Gets all Roles in a scope
 
 ### Example
 
-* OAuth Authentication (oauth2):
 ```python
-from __future__ import print_function
-import time
-import finbourne_access
-from finbourne_access.rest import ApiException
-from finbourne_access.models.role_response import RoleResponse
+import asyncio
+from finbourne_access.exceptions import ApiException
+from finbourne_access.models import *
 from pprint import pprint
-
-import os
 from finbourne_access import (
     ApiClientFactory,
-    RolesApi,
-    EnvironmentVariablesConfigurationLoader,
-    SecretsFileConfigurationLoader,
-    ArgsConfigurationLoader
+    RolesApi
 )
 
-# Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
-# By default this will read config from environment variables
-# Then from a secrets.json file found in the current working directory
-api_client_factory = ApiClientFactory()
+async def main():
 
-# The ApiClientFactory can be passed an iterable of configuration loaders to read configuration from
+    with open("secrets.json", "w") as file:
+        file.write('''
+{
+    "api":
+    {
+        "tokenUrl":"<your-token-url>",
+        "accessUrl":"https://<your-domain>.lusid.com/access",
+        "username":"<your-username>",
+        "password":"<your-password>",
+        "clientId":"<your-client-id>",
+        "clientSecret":"<your-client-secret>"
+    }
+}''')
 
-api_url = "https://fbn-prd.lusid.com/access"
-# Path to a secrets.json file containing authentication credentials
-# See https://support.lusid.com/knowledgebase/article/KA-01667/en-us
-# for a detailed guide to setting up the SDK make authenticated calls to LUSID APIs
-secrets_path = os.getenv("FBN_SECRETS_PATH")
-app_name="LusidJupyterNotebook"
+    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # By default this will read config from environment variables
+    # Then from a secrets.json file found in the current working directory
+    api_client_factory = ApiClientFactory()
 
-config_loaders = [
-	EnvironmentVariablesConfigurationLoader(),
-	SecretsFileConfigurationLoader(api_secrets_file=secrets_path),
-	ArgsConfigurationLoader(api_url=api_url, app_name=app_name)
-]
-api_client_factory = ApiClientFactory(config_loaders=config_loaders)
+    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
+    async with api_client_factory:
+        # Create an instance of the API class
+        api_instance = api_client_factory.build(RolesApi)
+        scope = 'scope_example' # str | Optional. Will use all scopes if not supplied. The requested scope (optional)
+        as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The AsAt date time of the data (optional)
+        sort_by = ['sort_by_example'] # List[str] | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName (optional)
+        start = 56 # int | Optional. When paginating, skip this number of results (optional)
+        limit = 56 # int | Optional. When paginating, limit the number of returned results to this many. (optional)
+        filter = 'filter_example' # str | Optional. Expression to filter the result set (optional)
 
+        try:
+            # ListRoles: List Roles
+            api_response = await api_instance.list_roles(scope=scope, as_at=as_at, sort_by=sort_by, start=start, limit=limit, filter=filter)
+            pprint(api_response)
+        except ApiException as e:
+            print("Exception when calling RolesApi->list_roles: %s\n" % e)
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-
-
-
-# Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-async with api_client_factory:
-    # Create an instance of the API class
-    api_instance = api_client_factory.build(finbourne_access.RolesApi)
-    scope = 'scope_example' # str | Optional. Will use all scopes if not supplied. The requested scope (optional)
-    as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The AsAt date time of the data (optional)
-    sort_by = ['sort_by_example'] # List[str] | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName (optional)
-    start = 56 # int | Optional. When paginating, skip this number of results (optional)
-    limit = 56 # int | Optional. When paginating, limit the number of returned results to this many. (optional)
-    filter = 'filter_example' # str | Optional. Expression to filter the result set (optional)
-
-    try:
-        # ListRoles: List Roles
-        api_response = await api_instance.list_roles(scope=scope, as_at=as_at, sort_by=sort_by, start=start, limit=limit, filter=filter)
-        print("The response of RolesApi->list_roles:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling RolesApi->list_roles: %s\n" % e)
+asyncio.run(main())
 ```
-
 
 ### Parameters
 
@@ -504,10 +427,6 @@ Name | Type | Description  | Notes
 
 [**List[RoleResponse]**](RoleResponse.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
  - **Content-Type**: Not defined
@@ -520,7 +439,7 @@ Name | Type | Description  | Notes
 **400** | The details of the input related failure |  -  |
 **0** | Error response |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
 
 # **remove_policy_collection_from_role**
 > RoleResponse remove_policy_collection_from_role(scope, code, policycollectionscope, policycollectioncode)
@@ -531,69 +450,55 @@ Removes a policy collection from a role
 
 ### Example
 
-* OAuth Authentication (oauth2):
 ```python
-from __future__ import print_function
-import time
-import finbourne_access
-from finbourne_access.rest import ApiException
-from finbourne_access.models.role_response import RoleResponse
+import asyncio
+from finbourne_access.exceptions import ApiException
+from finbourne_access.models import *
 from pprint import pprint
-
-import os
 from finbourne_access import (
     ApiClientFactory,
-    RolesApi,
-    EnvironmentVariablesConfigurationLoader,
-    SecretsFileConfigurationLoader,
-    ArgsConfigurationLoader
+    RolesApi
 )
 
-# Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
-# By default this will read config from environment variables
-# Then from a secrets.json file found in the current working directory
-api_client_factory = ApiClientFactory()
+async def main():
 
-# The ApiClientFactory can be passed an iterable of configuration loaders to read configuration from
+    with open("secrets.json", "w") as file:
+        file.write('''
+{
+    "api":
+    {
+        "tokenUrl":"<your-token-url>",
+        "accessUrl":"https://<your-domain>.lusid.com/access",
+        "username":"<your-username>",
+        "password":"<your-password>",
+        "clientId":"<your-client-id>",
+        "clientSecret":"<your-client-secret>"
+    }
+}''')
 
-api_url = "https://fbn-prd.lusid.com/access"
-# Path to a secrets.json file containing authentication credentials
-# See https://support.lusid.com/knowledgebase/article/KA-01667/en-us
-# for a detailed guide to setting up the SDK make authenticated calls to LUSID APIs
-secrets_path = os.getenv("FBN_SECRETS_PATH")
-app_name="LusidJupyterNotebook"
+    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # By default this will read config from environment variables
+    # Then from a secrets.json file found in the current working directory
+    api_client_factory = ApiClientFactory()
 
-config_loaders = [
-	EnvironmentVariablesConfigurationLoader(),
-	SecretsFileConfigurationLoader(api_secrets_file=secrets_path),
-	ArgsConfigurationLoader(api_url=api_url, app_name=app_name)
-]
-api_client_factory = ApiClientFactory(config_loaders=config_loaders)
+    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
+    async with api_client_factory:
+        # Create an instance of the API class
+        api_instance = api_client_factory.build(RolesApi)
+        scope = 'scope_example' # str | The scope of the Role
+        code = 'code_example' # str | The code of the Role
+        policycollectionscope = 'policycollectionscope_example' # str | The scope of policy collection to remove from the Role
+        policycollectioncode = 'policycollectioncode_example' # str | The code of the policy collection to remove from the Role
 
+        try:
+            # RemovePolicyCollectionFromRole: Remove policy collection from role
+            api_response = await api_instance.remove_policy_collection_from_role(scope, code, policycollectionscope, policycollectioncode)
+            pprint(api_response)
+        except ApiException as e:
+            print("Exception when calling RolesApi->remove_policy_collection_from_role: %s\n" % e)
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-
-
-
-# Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-async with api_client_factory:
-    # Create an instance of the API class
-    api_instance = api_client_factory.build(finbourne_access.RolesApi)
-    scope = 'scope_example' # str | The scope of the Role
-    code = 'code_example' # str | The code of the Role
-    policycollectionscope = 'policycollectionscope_example' # str | The scope of policy collection to remove from the Role
-    policycollectioncode = 'policycollectioncode_example' # str | The code of the policy collection to remove from the Role
-
-    try:
-        # RemovePolicyCollectionFromRole: Remove policy collection from role
-        api_response = await api_instance.remove_policy_collection_from_role(scope, code, policycollectionscope, policycollectioncode)
-        print("The response of RolesApi->remove_policy_collection_from_role:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling RolesApi->remove_policy_collection_from_role: %s\n" % e)
+asyncio.run(main())
 ```
-
 
 ### Parameters
 
@@ -608,10 +513,6 @@ Name | Type | Description  | Notes
 
 [**RoleResponse**](RoleResponse.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
  - **Content-Type**: Not defined
@@ -624,7 +525,7 @@ Name | Type | Description  | Notes
 **400** | The details of the input related failure |  -  |
 **0** | Error response |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
 
 # **update_role**
 > RoleResponse update_role(code, role_update_request, scope=scope, before_scope=before_scope, before_code=before_code, after_scope=after_scope, after_code=after_code)
@@ -635,73 +536,63 @@ Updates a Role
 
 ### Example
 
-* OAuth Authentication (oauth2):
 ```python
-from __future__ import print_function
-import time
-import finbourne_access
-from finbourne_access.rest import ApiException
-from finbourne_access.models.role_response import RoleResponse
-from finbourne_access.models.role_update_request import RoleUpdateRequest
+import asyncio
+from finbourne_access.exceptions import ApiException
+from finbourne_access.models import *
 from pprint import pprint
-
-import os
 from finbourne_access import (
     ApiClientFactory,
-    RolesApi,
-    EnvironmentVariablesConfigurationLoader,
-    SecretsFileConfigurationLoader,
-    ArgsConfigurationLoader
+    RolesApi
 )
 
-# Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
-# By default this will read config from environment variables
-# Then from a secrets.json file found in the current working directory
-api_client_factory = ApiClientFactory()
+async def main():
 
-# The ApiClientFactory can be passed an iterable of configuration loaders to read configuration from
+    with open("secrets.json", "w") as file:
+        file.write('''
+{
+    "api":
+    {
+        "tokenUrl":"<your-token-url>",
+        "accessUrl":"https://<your-domain>.lusid.com/access",
+        "username":"<your-username>",
+        "password":"<your-password>",
+        "clientId":"<your-client-id>",
+        "clientSecret":"<your-client-secret>"
+    }
+}''')
 
-api_url = "https://fbn-prd.lusid.com/access"
-# Path to a secrets.json file containing authentication credentials
-# See https://support.lusid.com/knowledgebase/article/KA-01667/en-us
-# for a detailed guide to setting up the SDK make authenticated calls to LUSID APIs
-secrets_path = os.getenv("FBN_SECRETS_PATH")
-app_name="LusidJupyterNotebook"
+    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # By default this will read config from environment variables
+    # Then from a secrets.json file found in the current working directory
+    api_client_factory = ApiClientFactory()
 
-config_loaders = [
-	EnvironmentVariablesConfigurationLoader(),
-	SecretsFileConfigurationLoader(api_secrets_file=secrets_path),
-	ArgsConfigurationLoader(api_url=api_url, app_name=app_name)
-]
-api_client_factory = ApiClientFactory(config_loaders=config_loaders)
+    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
+    async with api_client_factory:
+        # Create an instance of the API class
+        api_instance = api_client_factory.build(RolesApi)
+        code = 'code_example' # str | The code of the Role
 
+        # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
+        # Change the lines below to switch approach
+        # role_update_request = RoleUpdateRequest()
+        # role_update_request = RoleUpdateRequest.from_json("")
+        role_update_request = RoleUpdateRequest.from_dict({"description":"This is an example role to demonstrate their update","resource":{"policyIdRoleResource":{"policies":[{"scope":"default","code":"official-portfolios-read-only"},{"scope":"default","code":"desk-portfolios"}],"policyCollections":[{"scope":"default","code":"CompanyEmployeeAccess"}]}},"when":{"activate":"2016-08-31T18:00:00.0000000+00:00","deactivate":"2020-08-31T18:00:00.0000000+00:00"}}) # RoleUpdateRequest | The updated definition of the Role
+        scope = 'scope_example' # str | >Optional. Will use default scope if not supplied. The scope of the Role (optional)
+        before_scope = 'before_scope_example' # str | Optional. The scope of the Role. Will use default scope if not supplied. (optional)
+        before_code = 'before_code_example' # str | Optional. The code of the Role (optional)
+        after_scope = 'after_scope_example' # str | Optional. The scope of the Role. Will use default scope if not supplied. (optional)
+        after_code = 'after_code_example' # str | Optional. The code of the Role (optional)
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
+        try:
+            # UpdateRole: Update Role
+            api_response = await api_instance.update_role(code, role_update_request, scope=scope, before_scope=before_scope, before_code=before_code, after_scope=after_scope, after_code=after_code)
+            pprint(api_response)
+        except ApiException as e:
+            print("Exception when calling RolesApi->update_role: %s\n" % e)
 
-
-
-# Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-async with api_client_factory:
-    # Create an instance of the API class
-    api_instance = api_client_factory.build(finbourne_access.RolesApi)
-    code = 'code_example' # str | The code of the Role
-    role_update_request = {"description":"This is an example role to demonstrate their update","resource":{"policyIdRoleResource":{"policies":[{"scope":"default","code":"official-portfolios-read-only"},{"scope":"default","code":"desk-portfolios"}],"policyCollections":[{"scope":"default","code":"CompanyEmployeeAccess"}]}},"when":{"activate":"2016-08-31T18:00:00.0000000+00:00","deactivate":"2020-08-31T18:00:00.0000000+00:00"}} # RoleUpdateRequest | The updated definition of the Role
-    scope = 'scope_example' # str | >Optional. Will use default scope if not supplied. The scope of the Role (optional)
-    before_scope = 'before_scope_example' # str | Optional. The scope of the Role. Will use default scope if not supplied. (optional)
-    before_code = 'before_code_example' # str | Optional. The code of the Role (optional)
-    after_scope = 'after_scope_example' # str | Optional. The scope of the Role. Will use default scope if not supplied. (optional)
-    after_code = 'after_code_example' # str | Optional. The code of the Role (optional)
-
-    try:
-        # UpdateRole: Update Role
-        api_response = await api_instance.update_role(code, role_update_request, scope=scope, before_scope=before_scope, before_code=before_code, after_scope=after_scope, after_code=after_code)
-        print("The response of RolesApi->update_role:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling RolesApi->update_role: %s\n" % e)
+asyncio.run(main())
 ```
-
 
 ### Parameters
 
@@ -719,10 +610,6 @@ Name | Type | Description  | Notes
 
 [**RoleResponse**](RoleResponse.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
  - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
@@ -735,5 +622,5 @@ Name | Type | Description  | Notes
 **400** | The details of the input related failure |  -  |
 **0** | Error response |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
 

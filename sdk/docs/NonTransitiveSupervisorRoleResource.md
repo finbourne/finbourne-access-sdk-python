@@ -23,6 +23,6 @@ non_transitive_supervisor_role_resource_dict = non_transitive_supervisor_role_re
 # create an instance of NonTransitiveSupervisorRoleResource from a dict
 non_transitive_supervisor_role_resource_form_dict = non_transitive_supervisor_role_resource.from_dict(non_transitive_supervisor_role_resource_dict)
 ```
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 
 

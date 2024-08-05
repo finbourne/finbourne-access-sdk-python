@@ -24,6 +24,6 @@ add_policy_to_role_request_dict = add_policy_to_role_request_instance.to_dict()
 # create an instance of AddPolicyToRoleRequest from a dict
 add_policy_to_role_request_form_dict = add_policy_to_role_request.from_dict(add_policy_to_role_request_dict)
 ```
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 
 

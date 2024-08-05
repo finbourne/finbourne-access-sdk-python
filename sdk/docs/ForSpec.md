@@ -27,6 +27,6 @@ for_spec_dict = for_spec_instance.to_dict()
 # create an instance of ForSpec from a dict
 for_spec_form_dict = for_spec.from_dict(for_spec_dict)
 ```
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 
 

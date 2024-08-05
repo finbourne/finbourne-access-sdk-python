@@ -23,6 +23,6 @@ if_identity_scope_expression_dict = if_identity_scope_expression_instance.to_dic
 # create an instance of IfIdentityScopeExpression from a dict
 if_identity_scope_expression_form_dict = if_identity_scope_expression.from_dict(if_identity_scope_expression_dict)
 ```
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 
 

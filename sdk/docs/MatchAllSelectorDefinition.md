@@ -25,6 +25,6 @@ match_all_selector_definition_dict = match_all_selector_definition_instance.to_d
 # create an instance of MatchAllSelectorDefinition from a dict
 match_all_selector_definition_form_dict = match_all_selector_definition.from_dict(match_all_selector_definition_dict)
 ```
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 
 
