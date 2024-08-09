@@ -9,7 +9,7 @@
       "url": "https://www.finbourne.com",
       "email": "info@finbourne.com"
     },
-    "version": "0.0.3902",
+    "version": "0.0.3904",
     "x-logo": {
       "url": "https://www.lusid.com/app/assets/logo_white.png",
       "backgroundColor": "#415464"
@@ -700,7 +700,7 @@
         "tags": [
           "Policies"
         ],
-        "summary": "[EARLY ACCESS] ListPolicies: List Policies",
+        "summary": "ListPolicies: List Policies",
         "description": "Gets all Policies in a scope. For pagination support, use PagePolicies.",
         "operationId": "ListPolicies",
         "parameters": [
@@ -1034,7 +1034,7 @@
             "oauth2": []
           }
         ],
-        "x-fbn-apistatus": "EarlyAccess"
+        "x-fbn-apistatus": "Stable"
       },
       "post": {
         "tags": [
@@ -1484,7 +1484,7 @@
         "tags": [
           "Policies"
         ],
-        "summary": "[EARLY ACCESS] PagePolicies: Page Policies",
+        "summary": "PagePolicies: Page Policies",
         "description": "Gets all Policies with pagination support.",
         "operationId": "PagePolicies",
         "parameters": [
@@ -1814,7 +1814,7 @@
             "oauth2": []
           }
         ],
-        "x-fbn-apistatus": "EarlyAccess"
+        "x-fbn-apistatus": "Stable"
       }
     },
     "/api/policies/{code}": {
