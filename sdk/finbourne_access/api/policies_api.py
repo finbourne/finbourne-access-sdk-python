@@ -1586,7 +1586,7 @@ class PoliciesApi:
 
     @validate_arguments
     def list_policies(self, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The requested scope")] = None, as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, sort_by : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName")] = None, start : Annotated[Optional[StrictInt], Field(description="Optional. When paginating, skip this number of results")] = None, limit : Annotated[Optional[StrictInt], Field(description="Optional. When paginating, limit the number of returned results to this many.")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[List[PolicyResponse], Awaitable[List[PolicyResponse]]]:  # noqa: E501
-        """[EARLY ACCESS] ListPolicies: List Policies  # noqa: E501
+        """ListPolicies: List Policies  # noqa: E501
 
         Gets all Policies in a scope. For pagination support, use PagePolicies.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -1628,7 +1628,7 @@ class PoliciesApi:
 
     @validate_arguments
     def list_policies_with_http_info(self, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The requested scope")] = None, as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, sort_by : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName")] = None, start : Annotated[Optional[StrictInt], Field(description="Optional. When paginating, skip this number of results")] = None, limit : Annotated[Optional[StrictInt], Field(description="Optional. When paginating, limit the number of returned results to this many.")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, **kwargs) -> ApiResponse:  # noqa: E501
-        """[EARLY ACCESS] ListPolicies: List Policies  # noqa: E501
+        """ListPolicies: List Policies  # noqa: E501
 
         Gets all Policies in a scope. For pagination support, use PagePolicies.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -1976,7 +1976,7 @@ class PoliciesApi:
 
     @validate_arguments
     def page_policies(self, as_at : Annotated[Optional[datetime], Field(description="Optional. Not currently used. The AsAt date time of the data")] = None, sort_by : Annotated[Optional[constr(strict=True, max_length=16384, min_length=1)], Field(description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[conint(strict=True, le=5000, ge=1)], Field(description="Optional. 2000 if not provided. When paginating, limit the number of returned results to this many")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, page : Annotated[Optional[constr(strict=True, max_length=500, min_length=1)], Field(description="Optional. Paging token returned from a previous result")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[ResourceListOfPolicyResponse, Awaitable[ResourceListOfPolicyResponse]]:  # noqa: E501
-        """[EARLY ACCESS] PagePolicies: Page Policies  # noqa: E501
+        """PagePolicies: Page Policies  # noqa: E501
 
         Gets all Policies with pagination support.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -2016,7 +2016,7 @@ class PoliciesApi:
 
     @validate_arguments
     def page_policies_with_http_info(self, as_at : Annotated[Optional[datetime], Field(description="Optional. Not currently used. The AsAt date time of the data")] = None, sort_by : Annotated[Optional[constr(strict=True, max_length=16384, min_length=1)], Field(description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[conint(strict=True, le=5000, ge=1)], Field(description="Optional. 2000 if not provided. When paginating, limit the number of returned results to this many")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, page : Annotated[Optional[constr(strict=True, max_length=500, min_length=1)], Field(description="Optional. Paging token returned from a previous result")] = None, **kwargs) -> ApiResponse:  # noqa: E501
-        """[EARLY ACCESS] PagePolicies: Page Policies  # noqa: E501
+        """PagePolicies: Page Policies  # noqa: E501
 
         Gets all Policies with pagination support.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an

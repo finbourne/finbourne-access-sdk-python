@@ -15,9 +15,9 @@ Class | Method | HTTP request | Description
 *PoliciesApi* | [**get_own_policies**](docs/PoliciesApi.md#get_own_policies) | **GET** /api/me | GetOwnPolicies: Get policies of requesting user
 *PoliciesApi* | [**get_policy**](docs/PoliciesApi.md#get_policy) | **GET** /api/policies/{code} | GetPolicy: Get Policy
 *PoliciesApi* | [**get_policy_collection**](docs/PoliciesApi.md#get_policy_collection) | **GET** /api/policycollections/{code} | GetPolicyCollection: Get PolicyCollection
-*PoliciesApi* | [**list_policies**](docs/PoliciesApi.md#list_policies) | **GET** /api/policies | [EARLY ACCESS] ListPolicies: List Policies
+*PoliciesApi* | [**list_policies**](docs/PoliciesApi.md#list_policies) | **GET** /api/policies | ListPolicies: List Policies
 *PoliciesApi* | [**list_policy_collections**](docs/PoliciesApi.md#list_policy_collections) | **GET** /api/policycollections | ListPolicyCollections: List PolicyCollections
-*PoliciesApi* | [**page_policies**](docs/PoliciesApi.md#page_policies) | **GET** /api/policies/page | [EARLY ACCESS] PagePolicies: Page Policies
+*PoliciesApi* | [**page_policies**](docs/PoliciesApi.md#page_policies) | **GET** /api/policies/page | PagePolicies: Page Policies
 *PoliciesApi* | [**page_policy_collections**](docs/PoliciesApi.md#page_policy_collections) | **GET** /api/policycollections/page | PagePolicyCollections: Page PolicyCollections
 *PoliciesApi* | [**remove_from_policy_collection**](docs/PoliciesApi.md#remove_from_policy_collection) | **POST** /api/policycollections/{code}/remove | RemoveFromPolicyCollection: Remove From PolicyCollection
 *PoliciesApi* | [**update_policy**](docs/PoliciesApi.md#update_policy) | **PUT** /api/policies/{code} | UpdatePolicy: Update Policy

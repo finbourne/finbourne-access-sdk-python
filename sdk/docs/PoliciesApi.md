@@ -13,9 +13,9 @@ Method | HTTP request | Description
 [**get_own_policies**](PoliciesApi.md#get_own_policies) | **GET** /api/me | GetOwnPolicies: Get policies of requesting user
 [**get_policy**](PoliciesApi.md#get_policy) | **GET** /api/policies/{code} | GetPolicy: Get Policy
 [**get_policy_collection**](PoliciesApi.md#get_policy_collection) | **GET** /api/policycollections/{code} | GetPolicyCollection: Get PolicyCollection
-[**list_policies**](PoliciesApi.md#list_policies) | **GET** /api/policies | [EARLY ACCESS] ListPolicies: List Policies
+[**list_policies**](PoliciesApi.md#list_policies) | **GET** /api/policies | ListPolicies: List Policies
 [**list_policy_collections**](PoliciesApi.md#list_policy_collections) | **GET** /api/policycollections | ListPolicyCollections: List PolicyCollections
-[**page_policies**](PoliciesApi.md#page_policies) | **GET** /api/policies/page | [EARLY ACCESS] PagePolicies: Page Policies
+[**page_policies**](PoliciesApi.md#page_policies) | **GET** /api/policies/page | PagePolicies: Page Policies
 [**page_policy_collections**](PoliciesApi.md#page_policy_collections) | **GET** /api/policycollections/page | PagePolicyCollections: Page PolicyCollections
 [**remove_from_policy_collection**](PoliciesApi.md#remove_from_policy_collection) | **POST** /api/policycollections/{code}/remove | RemoveFromPolicyCollection: Remove From PolicyCollection
 [**update_policy**](PoliciesApi.md#update_policy) | **PUT** /api/policies/{code} | UpdatePolicy: Update Policy
@@ -786,7 +786,7 @@ Name | Type | Description  | Notes
 # **list_policies**
 > List[PolicyResponse] list_policies(scope=scope, as_at=as_at, sort_by=sort_by, start=start, limit=limit, filter=filter)
 
-[EARLY ACCESS] ListPolicies: List Policies
+ListPolicies: List Policies
 
 Gets all Policies in a scope. For pagination support, use PagePolicies.
 
@@ -835,7 +835,7 @@ async def main():
         filter = 'filter_example' # str | Optional. Expression to filter the result set (optional)
 
         try:
-            # [EARLY ACCESS] ListPolicies: List Policies
+            # ListPolicies: List Policies
             api_response = await api_instance.list_policies(scope=scope, as_at=as_at, sort_by=sort_by, start=start, limit=limit, filter=filter)
             pprint(api_response)
         except ApiException as e:
@@ -966,7 +966,7 @@ Name | Type | Description  | Notes
 # **page_policies**
 > ResourceListOfPolicyResponse page_policies(as_at=as_at, sort_by=sort_by, limit=limit, filter=filter, page=page)
 
-[EARLY ACCESS] PagePolicies: Page Policies
+PagePolicies: Page Policies
 
 Gets all Policies with pagination support.
 
@@ -1014,7 +1014,7 @@ async def main():
         page = 'page_example' # str | Optional. Paging token returned from a previous result (optional)
 
         try:
-            # [EARLY ACCESS] PagePolicies: Page Policies
+            # PagePolicies: Page Policies
             api_response = await api_instance.page_policies(as_at=as_at, sort_by=sort_by, limit=limit, filter=filter, page=page)
             pprint(api_response)
         except ApiException as e:
