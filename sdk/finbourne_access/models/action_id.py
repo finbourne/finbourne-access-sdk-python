@@ -27,7 +27,7 @@ class ActionId(BaseModel):
     """
     scope: constr(strict=True, max_length=100, min_length=3) = Field(...)
     activity: constr(strict=True, max_length=25, min_length=3) = Field(...)
-    entity: constr(strict=True, max_length=25, min_length=3) = Field(...)
+    entity: constr(strict=True, max_length=40, min_length=3) = Field(...)
     __properties = ["scope", "activity", "entity"]
 
     class Config:
