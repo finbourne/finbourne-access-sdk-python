@@ -29,7 +29,6 @@ class Grant(str, Enum):
     """
     allowed enum values
     """
-    UNDEFINED = 'Undefined'
     ALLOW = 'Allow'
     DENY = 'Deny'
 
