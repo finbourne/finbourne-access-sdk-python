@@ -244,7 +244,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_role**
-> RoleResponse get_role(code, as_at=as_at, scope=scope)
+> RoleResponse get_role(code, scope=scope)
 
 GetRole: Get Role
 
@@ -281,12 +281,11 @@ with finbourne_access.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = finbourne_access.RolesApi(api_client)
     code = 'code_example' # str | The code of the Role
-as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The AsAt date time of the data (optional)
 scope = 'scope_example' # str | Optional. Will use default scope if not supplied. The scope of the Role (optional)
 
     try:
         # GetRole: Get Role
-        api_response = api_instance.get_role(code, as_at=as_at, scope=scope)
+        api_response = api_instance.get_role(code, scope=scope)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling RolesApi->get_role: %s\n" % e)
@@ -297,7 +296,6 @@ scope = 'scope_example' # str | Optional. Will use default scope if not supplied
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **code** | **str**| The code of the Role | 
- **as_at** | **datetime**| Optional. The AsAt date time of the data | [optional] 
  **scope** | **str**| Optional. Will use default scope if not supplied. The scope of the Role | [optional] 
 
 ### Return type
@@ -323,7 +321,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_roles**
-> list[RoleResponse] list_roles(scope=scope, as_at=as_at, sort_by=sort_by, start=start, limit=limit, filter=filter)
+> list[RoleResponse] list_roles(scope=scope)
 
 ListRoles: List Roles
 
@@ -360,15 +358,10 @@ with finbourne_access.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = finbourne_access.RolesApi(api_client)
     scope = 'scope_example' # str | Optional. Will use all scopes if not supplied. The requested scope (optional)
-as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The AsAt date time of the data (optional)
-sort_by = ['sort_by_example'] # list[str] | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName (optional)
-start = 56 # int | Optional. When paginating, skip this number of results (optional)
-limit = 56 # int | Optional. When paginating, limit the number of returned results to this many. (optional)
-filter = 'filter_example' # str | Optional. Expression to filter the result set (optional)
 
     try:
         # ListRoles: List Roles
-        api_response = api_instance.list_roles(scope=scope, as_at=as_at, sort_by=sort_by, start=start, limit=limit, filter=filter)
+        api_response = api_instance.list_roles(scope=scope)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling RolesApi->list_roles: %s\n" % e)
@@ -379,11 +372,6 @@ filter = 'filter_example' # str | Optional. Expression to filter the result set 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **str**| Optional. Will use all scopes if not supplied. The requested scope | [optional] 
- **as_at** | **datetime**| Optional. The AsAt date time of the data | [optional] 
- **sort_by** | [**list[str]**](str.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional] 
- **start** | **int**| Optional. When paginating, skip this number of results | [optional] 
- **limit** | **int**| Optional. When paginating, limit the number of returned results to this many. | [optional] 
- **filter** | **str**| Optional. Expression to filter the result set | [optional] 
 
 ### Return type
 

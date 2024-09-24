@@ -9,7 +9,7 @@
       "url": "https://www.finbourne.com",
       "email": "info@finbourne.com"
     },
-    "version": "0.0.3943",
+    "version": "0.0.3944",
     "x-logo": {
       "url": "https://www.lusid.com/app/assets/logo_white.png",
       "backgroundColor": "#415464"
@@ -41,59 +41,6 @@
               }
             },
             "x-nullable": true
-          },
-          {
-            "name": "asAt",
-            "in": "query",
-            "description": "Optional. The AsAt date time of the data",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            },
-            "x-nullable": true
-          },
-          {
-            "name": "sortBy",
-            "in": "query",
-            "description": "Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName",
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "x-nullable": true
-          },
-          {
-            "name": "start",
-            "in": "query",
-            "description": "Optional. When paginating, skip this number of results",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "x-nullable": true
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "Optional. When paginating, limit the number of returned results to this many.",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "x-nullable": true
-          },
-          {
-            "name": "filter",
-            "in": "query",
-            "description": "Optional. Expression to filter the result set",
-            "schema": {
-              "maxLength": 16384,
-              "minLength": 0,
-              "pattern": "^[\\s\\S]*$",
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -402,16 +349,6 @@
               }
             },
             "x-nullable": true
-          },
-          {
-            "name": "asAt",
-            "in": "query",
-            "description": "Optional. The requested AsAt date of the entitlements",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            },
-            "x-nullable": true
           }
         ],
         "requestBody": {
@@ -710,59 +647,6 @@
             "description": "Optional. Will use the default scope if not provided. The requested scope",
             "schema": {
               "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
-              "type": "string"
-            }
-          },
-          {
-            "name": "asAt",
-            "in": "query",
-            "description": "Optional. The AsAt date time of the data",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            },
-            "x-nullable": true
-          },
-          {
-            "name": "sortBy",
-            "in": "query",
-            "description": "Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName",
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "x-nullable": true
-          },
-          {
-            "name": "start",
-            "in": "query",
-            "description": "Optional. When paginating, skip this number of results",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "x-nullable": true
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "Optional. When paginating, limit the number of returned results to this many.",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "x-nullable": true
-          },
-          {
-            "name": "filter",
-            "in": "query",
-            "description": "Optional. Expression to filter the result set",
-            "schema": {
-              "maxLength": 16384,
-              "minLength": 0,
-              "pattern": "^[\\s\\S]*$",
               "type": "string"
             }
           }
@@ -1489,16 +1373,6 @@
         "operationId": "PagePolicies",
         "parameters": [
           {
-            "name": "asAt",
-            "in": "query",
-            "description": "Optional. Not currently used. The AsAt date time of the data",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            },
-            "x-nullable": true
-          },
-          {
             "name": "sortBy",
             "in": "query",
             "description": "Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName",
@@ -1835,16 +1709,6 @@
               "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string"
             }
-          },
-          {
-            "name": "asAt",
-            "in": "query",
-            "description": "Optional. The AsAt date time of the data",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            },
-            "x-nullable": true
           },
           {
             "name": "scope",
@@ -2750,59 +2614,6 @@
               "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string"
             }
-          },
-          {
-            "name": "asAt",
-            "in": "query",
-            "description": "Optional. The AsAt date time of the data",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            },
-            "x-nullable": true
-          },
-          {
-            "name": "sortBy",
-            "in": "query",
-            "description": "Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName",
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "x-nullable": true
-          },
-          {
-            "name": "start",
-            "in": "query",
-            "description": "Optional. When paginating, skip this number of results",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "x-nullable": true
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "Optional. 2000 if not provided. When paginating, limit the number of returned results to this many.",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "x-nullable": true
-          },
-          {
-            "name": "filter",
-            "in": "query",
-            "description": "Optional. Expression to filter the result set",
-            "schema": {
-              "maxLength": 16384,
-              "minLength": 0,
-              "pattern": "^[\\s\\S]*$",
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -3204,16 +3015,6 @@
         "operationId": "PagePolicyCollections",
         "parameters": [
           {
-            "name": "asAt",
-            "in": "query",
-            "description": "Optional. Not currently used. The AsAt date time of the data",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            },
-            "x-nullable": true
-          },
-          {
             "name": "sortBy",
             "in": "query",
             "description": "Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName",
@@ -3424,16 +3225,6 @@
               "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string"
             }
-          },
-          {
-            "name": "asAt",
-            "in": "query",
-            "description": "Optional. The AsAt date time of the data",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            },
-            "x-nullable": true
           },
           {
             "name": "scope",
@@ -5810,59 +5601,6 @@
               "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string"
             }
-          },
-          {
-            "name": "asAt",
-            "in": "query",
-            "description": "Optional. The AsAt date time of the data",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            },
-            "x-nullable": true
-          },
-          {
-            "name": "sortBy",
-            "in": "query",
-            "description": "Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName",
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "x-nullable": true
-          },
-          {
-            "name": "start",
-            "in": "query",
-            "description": "Optional. When paginating, skip this number of results",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "x-nullable": true
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "Optional. When paginating, limit the number of returned results to this many.",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "x-nullable": true
-          },
-          {
-            "name": "filter",
-            "in": "query",
-            "description": "Optional. Expression to filter the result set",
-            "schema": {
-              "maxLength": 16384,
-              "minLength": 0,
-              "pattern": "^[\\s\\S]*$",
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -6360,16 +6098,6 @@
               "pattern": "^(?=.*[a-zA-Z])[\\w][\\w +-]{2,100}$",
               "type": "string"
             }
-          },
-          {
-            "name": "asAt",
-            "in": "query",
-            "description": "Optional. The AsAt date time of the data",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            },
-            "x-nullable": true
           },
           {
             "name": "scope",
