@@ -24,6 +24,7 @@ Creates a Policy Template
 ```python
 import asyncio
 from finbourne_access.exceptions import ApiException
+from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
@@ -50,6 +51,14 @@ async def main():
     # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
+
+    # uncomment the below to use configuration overrides
+    # opts = ConfigurationOptions();
+    # opts.total_timeout_ms = 30_000
+
+    # uncomment the below to use an api client factory with overrides
+    # api_client_factory = ApiClientFactory(opts=opts)
+
     api_client_factory = ApiClientFactory()
 
     # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
@@ -64,6 +73,9 @@ async def main():
         policy_template_creation_request = PolicyTemplateCreationRequest.from_dict({"code":"official-portfolios-read-only","displayName":"updated-policy-template","description":"Example policy template for a policy that grants access to some resource","templatedSelectors":[{"application":"LUSID","tag":"Data","selector":{"idSelectorDefinition":{"identifier":{"scope":"official"},"actions":[{"scope":"default","activity":"Read","entity":"Portfolio"},{"scope":"default","activity":"Aggregate","entity":"Portfolio"}],"name":"access-official-scope","description":"Allow readonly access to the 'official' scope"}}}]}) # PolicyTemplateCreationRequest | The definition of the policy template
 
         try:
+            # uncomment the below to set overrides at the request level
+            # api_response = await api_instance.create_policy_template(policy_template_creation_request, opts=opts)
+
             # [EXPERIMENTAL] CreatePolicyTemplate: Create a Policy Template
             api_response = await api_instance.create_policy_template(policy_template_creation_request)
             pprint(api_response)
@@ -109,6 +121,7 @@ Deletes an identified Policy Template
 ```python
 import asyncio
 from finbourne_access.exceptions import ApiException
+from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
@@ -135,6 +148,14 @@ async def main():
     # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
+
+    # uncomment the below to use configuration overrides
+    # opts = ConfigurationOptions();
+    # opts.total_timeout_ms = 30_000
+
+    # uncomment the below to use an api client factory with overrides
+    # api_client_factory = ApiClientFactory(opts=opts)
+
     api_client_factory = ApiClientFactory()
 
     # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
@@ -145,6 +166,9 @@ async def main():
         scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the Policy Template (optional)
 
         try:
+            # uncomment the below to set overrides at the request level
+            # await api_instance.delete_policy_template(code, scope=scope, opts=opts)
+
             # [EXPERIMENTAL] DeletePolicyTemplate: Deleting a policy template
             await api_instance.delete_policy_template(code, scope=scope)        except ApiException as e:
             print("Exception when calling PolicyTemplatesApi->delete_policy_template: %s\n" % e)
@@ -189,6 +213,7 @@ Generates policies from templates
 ```python
 import asyncio
 from finbourne_access.exceptions import ApiException
+from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
@@ -215,6 +240,14 @@ async def main():
     # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
+
+    # uncomment the below to use configuration overrides
+    # opts = ConfigurationOptions();
+    # opts.total_timeout_ms = 30_000
+
+    # uncomment the below to use an api client factory with overrides
+    # api_client_factory = ApiClientFactory(opts=opts)
+
     api_client_factory = ApiClientFactory()
 
     # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
@@ -230,6 +263,9 @@ async def main():
         as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The AsAt date time of the data (optional)
 
         try:
+            # uncomment the below to set overrides at the request level
+            # api_response = await api_instance.generate_policy_from_template(generate_policy_from_template_request, as_at=as_at, opts=opts)
+
             # [EXPERIMENTAL] GeneratePolicyFromTemplate: Generate policy from template
             api_response = await api_instance.generate_policy_from_template(generate_policy_from_template_request, as_at=as_at)
             pprint(api_response)
@@ -276,6 +312,7 @@ Gets an identified Policy Template
 ```python
 import asyncio
 from finbourne_access.exceptions import ApiException
+from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
@@ -302,6 +339,14 @@ async def main():
     # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
+
+    # uncomment the below to use configuration overrides
+    # opts = ConfigurationOptions();
+    # opts.total_timeout_ms = 30_000
+
+    # uncomment the below to use an api client factory with overrides
+    # api_client_factory = ApiClientFactory(opts=opts)
+
     api_client_factory = ApiClientFactory()
 
     # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
@@ -313,6 +358,9 @@ async def main():
         scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the Policy Template (optional)
 
         try:
+            # uncomment the below to set overrides at the request level
+            # api_response = await api_instance.get_policy_template(code, as_at=as_at, scope=scope, opts=opts)
+
             # [EXPERIMENTAL] GetPolicyTemplate: Retrieving one Policy Template
             api_response = await api_instance.get_policy_template(code, as_at=as_at, scope=scope)
             pprint(api_response)
@@ -360,6 +408,7 @@ Gets all Policy Templates with pagination support.
 ```python
 import asyncio
 from finbourne_access.exceptions import ApiException
+from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
@@ -386,6 +435,14 @@ async def main():
     # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
+
+    # uncomment the below to use configuration overrides
+    # opts = ConfigurationOptions();
+    # opts.total_timeout_ms = 30_000
+
+    # uncomment the below to use an api client factory with overrides
+    # api_client_factory = ApiClientFactory(opts=opts)
+
     api_client_factory = ApiClientFactory()
 
     # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
@@ -399,6 +456,9 @@ async def main():
         page = 'page_example' # str | Optional. Paging token returned from a previous result (optional)
 
         try:
+            # uncomment the below to set overrides at the request level
+            # api_response = await api_instance.list_policy_templates(as_at=as_at, sort_by=sort_by, limit=limit, filter=filter, page=page, opts=opts)
+
             # [EXPERIMENTAL] ListPolicyTemplates: List Policy Templates
             api_response = await api_instance.list_policy_templates(as_at=as_at, sort_by=sort_by, limit=limit, filter=filter, page=page)
             pprint(api_response)
@@ -448,6 +508,7 @@ Updates an identified Policy Template
 ```python
 import asyncio
 from finbourne_access.exceptions import ApiException
+from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
@@ -474,6 +535,14 @@ async def main():
     # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
+
+    # uncomment the below to use configuration overrides
+    # opts = ConfigurationOptions();
+    # opts.total_timeout_ms = 30_000
+
+    # uncomment the below to use an api client factory with overrides
+    # api_client_factory = ApiClientFactory(opts=opts)
+
     api_client_factory = ApiClientFactory()
 
     # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
@@ -489,6 +558,9 @@ async def main():
         policy_template_update_request = PolicyTemplateUpdateRequest.from_dict(finbourne_access.PolicyTemplateUpdateRequest()) # PolicyTemplateUpdateRequest | Definition of the updated policy template (optional)
 
         try:
+            # uncomment the below to set overrides at the request level
+            # api_response = await api_instance.update_policy_template(code, policy_template_update_request=policy_template_update_request, opts=opts)
+
             # [EXPERIMENTAL] UpdatePolicyTemplate: Update a Policy Template
             api_response = await api_instance.update_policy_template(code, policy_template_update_request=policy_template_update_request)
             pprint(api_response)

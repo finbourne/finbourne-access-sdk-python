@@ -20,9 +20,7 @@ from pydantic.v1 import validate_arguments, ValidationError
 from typing import overload, Optional, Union, Awaitable
 
 from typing_extensions import Annotated
-from datetime import datetime
-
-from pydantic.v1 import Field, StrictInt, StrictStr, conlist, constr, validator
+from pydantic.v1 import Field, constr, validator
 
 from typing import List, Optional
 
@@ -37,6 +35,7 @@ from finbourne_access.exceptions import (  # noqa: F401
     ApiTypeError,
     ApiValueError
 )
+from finbourne_access.extensions.configuration_options import ConfigurationOptions
 
 
 class RolesApi:
@@ -78,10 +77,9 @@ class RolesApi:
         :type add_policy_collection_to_role_request: AddPolicyCollectionToRoleRequest
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -122,10 +120,9 @@ class RolesApi:
         :param _return_http_data_only: response data instead of ApiResponse
                                        object with status code, headers, etc
         :type _return_http_data_only: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :param _request_auth: set to override the auth_settings for an a single
                               request; this effectively ignores the authentication
                               in the spec for a single request.
@@ -152,7 +149,8 @@ class RolesApi:
                 '_request_timeout',
                 '_request_auth',
                 '_content_type',
-                '_headers'
+                '_headers',
+                'opts'
             ]
         )
 
@@ -222,6 +220,7 @@ class RolesApi:
             _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
+            opts=_params.get('opts'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
@@ -248,10 +247,9 @@ class RolesApi:
         :type role_creation_request: RoleCreationRequest
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -288,10 +286,9 @@ class RolesApi:
         :param _return_http_data_only: response data instead of ApiResponse
                                        object with status code, headers, etc
         :type _return_http_data_only: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :param _request_auth: set to override the auth_settings for an a single
                               request; this effectively ignores the authentication
                               in the spec for a single request.
@@ -316,7 +313,8 @@ class RolesApi:
                 '_request_timeout',
                 '_request_auth',
                 '_content_type',
-                '_headers'
+                '_headers',
+                'opts'
             ]
         )
 
@@ -380,6 +378,7 @@ class RolesApi:
             _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
+            opts=_params.get('opts'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
@@ -408,10 +407,9 @@ class RolesApi:
         :type scope: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -450,10 +448,9 @@ class RolesApi:
         :param _return_http_data_only: response data instead of ApiResponse
                                        object with status code, headers, etc
         :type _return_http_data_only: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :param _request_auth: set to override the auth_settings for an a single
                               request; this effectively ignores the authentication
                               in the spec for a single request.
@@ -479,7 +476,8 @@ class RolesApi:
                 '_request_timeout',
                 '_request_auth',
                 '_content_type',
-                '_headers'
+                '_headers',
+                'opts'
             ]
         )
 
@@ -536,40 +534,38 @@ class RolesApi:
             _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
+            opts=_params.get('opts'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @overload
-    async def get_role(self, code : Annotated[constr(strict=True), Field(..., description="The code of the Role")], as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use default scope if not supplied. The scope of the Role")] = None, **kwargs) -> RoleResponse:  # noqa: E501
+    async def get_role(self, code : Annotated[constr(strict=True), Field(..., description="The code of the Role")], scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use default scope if not supplied. The scope of the Role")] = None, **kwargs) -> RoleResponse:  # noqa: E501
         ...
 
     @overload
-    def get_role(self, code : Annotated[constr(strict=True), Field(..., description="The code of the Role")], as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use default scope if not supplied. The scope of the Role")] = None, async_req: Optional[bool]=True, **kwargs) -> RoleResponse:  # noqa: E501
+    def get_role(self, code : Annotated[constr(strict=True), Field(..., description="The code of the Role")], scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use default scope if not supplied. The scope of the Role")] = None, async_req: Optional[bool]=True, **kwargs) -> RoleResponse:  # noqa: E501
         ...
 
     @validate_arguments
-    def get_role(self, code : Annotated[constr(strict=True), Field(..., description="The code of the Role")], as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use default scope if not supplied. The scope of the Role")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[RoleResponse, Awaitable[RoleResponse]]:  # noqa: E501
+    def get_role(self, code : Annotated[constr(strict=True), Field(..., description="The code of the Role")], scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use default scope if not supplied. The scope of the Role")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[RoleResponse, Awaitable[RoleResponse]]:  # noqa: E501
         """GetRole: Get Role  # noqa: E501
 
         Gets an identified Role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_role(code, as_at, scope, async_req=True)
+        >>> thread = api.get_role(code, scope, async_req=True)
         >>> result = thread.get()
 
         :param code: The code of the Role (required)
         :type code: str
-        :param as_at: Optional. The AsAt date time of the data
-        :type as_at: datetime
         :param scope: Optional. Will use default scope if not supplied. The scope of the Role
         :type scope: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -581,23 +577,21 @@ class RolesApi:
             raise ValueError(message)
         if async_req is not None:
             kwargs['async_req'] = async_req
-        return self.get_role_with_http_info(code, as_at, scope, **kwargs)  # noqa: E501
+        return self.get_role_with_http_info(code, scope, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_role_with_http_info(self, code : Annotated[constr(strict=True), Field(..., description="The code of the Role")], as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use default scope if not supplied. The scope of the Role")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_role_with_http_info(self, code : Annotated[constr(strict=True), Field(..., description="The code of the Role")], scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use default scope if not supplied. The scope of the Role")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """GetRole: Get Role  # noqa: E501
 
         Gets an identified Role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_role_with_http_info(code, as_at, scope, async_req=True)
+        >>> thread = api.get_role_with_http_info(code, scope, async_req=True)
         >>> result = thread.get()
 
         :param code: The code of the Role (required)
         :type code: str
-        :param as_at: Optional. The AsAt date time of the data
-        :type as_at: datetime
         :param scope: Optional. Will use default scope if not supplied. The scope of the Role
         :type scope: str
         :param async_req: Whether to execute the request asynchronously.
@@ -610,10 +604,9 @@ class RolesApi:
         :param _return_http_data_only: response data instead of ApiResponse
                                        object with status code, headers, etc
         :type _return_http_data_only: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :param _request_auth: set to override the auth_settings for an a single
                               request; this effectively ignores the authentication
                               in the spec for a single request.
@@ -629,7 +622,6 @@ class RolesApi:
 
         _all_params = [
             'code',
-            'as_at',
             'scope'
         ]
         _all_params.extend(
@@ -640,7 +632,8 @@ class RolesApi:
                 '_request_timeout',
                 '_request_auth',
                 '_content_type',
-                '_headers'
+                '_headers',
+                'opts'
             ]
         )
 
@@ -664,12 +657,6 @@ class RolesApi:
 
         # process the query parameters
         _query_params = []
-        if _params.get('as_at') is not None:  # noqa: E501
-            if isinstance(_params['as_at'], datetime):
-                _query_params.append(('asAt', _params['as_at'].strftime(self.api_client.configuration.datetime_format)))
-            else:
-                _query_params.append(('asAt', _params['as_at']))
-
         if _params.get('scope') is not None:  # noqa: E501
             _query_params.append(('scope', _params['scope']))
 
@@ -706,46 +693,36 @@ class RolesApi:
             _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
+            opts=_params.get('opts'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @overload
-    async def list_roles(self, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use all scopes if not supplied. The requested scope")] = None, as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, sort_by : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName")] = None, start : Annotated[Optional[StrictInt], Field(description="Optional. When paginating, skip this number of results")] = None, limit : Annotated[Optional[StrictInt], Field(description="Optional. When paginating, limit the number of returned results to this many.")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, **kwargs) -> List[RoleResponse]:  # noqa: E501
+    async def list_roles(self, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use all scopes if not supplied. The requested scope")] = None, **kwargs) -> List[RoleResponse]:  # noqa: E501
         ...
 
     @overload
-    def list_roles(self, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use all scopes if not supplied. The requested scope")] = None, as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, sort_by : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName")] = None, start : Annotated[Optional[StrictInt], Field(description="Optional. When paginating, skip this number of results")] = None, limit : Annotated[Optional[StrictInt], Field(description="Optional. When paginating, limit the number of returned results to this many.")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, async_req: Optional[bool]=True, **kwargs) -> List[RoleResponse]:  # noqa: E501
+    def list_roles(self, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use all scopes if not supplied. The requested scope")] = None, async_req: Optional[bool]=True, **kwargs) -> List[RoleResponse]:  # noqa: E501
         ...
 
     @validate_arguments
-    def list_roles(self, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use all scopes if not supplied. The requested scope")] = None, as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, sort_by : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName")] = None, start : Annotated[Optional[StrictInt], Field(description="Optional. When paginating, skip this number of results")] = None, limit : Annotated[Optional[StrictInt], Field(description="Optional. When paginating, limit the number of returned results to this many.")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[List[RoleResponse], Awaitable[List[RoleResponse]]]:  # noqa: E501
+    def list_roles(self, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use all scopes if not supplied. The requested scope")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[List[RoleResponse], Awaitable[List[RoleResponse]]]:  # noqa: E501
         """ListRoles: List Roles  # noqa: E501
 
         Gets all Roles in a scope  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.list_roles(scope, as_at, sort_by, start, limit, filter, async_req=True)
+        >>> thread = api.list_roles(scope, async_req=True)
         >>> result = thread.get()
 
         :param scope: Optional. Will use all scopes if not supplied. The requested scope
         :type scope: str
-        :param as_at: Optional. The AsAt date time of the data
-        :type as_at: datetime
-        :param sort_by: Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
-        :type sort_by: List[str]
-        :param start: Optional. When paginating, skip this number of results
-        :type start: int
-        :param limit: Optional. When paginating, limit the number of returned results to this many.
-        :type limit: int
-        :param filter: Optional. Expression to filter the result set
-        :type filter: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -757,31 +734,21 @@ class RolesApi:
             raise ValueError(message)
         if async_req is not None:
             kwargs['async_req'] = async_req
-        return self.list_roles_with_http_info(scope, as_at, sort_by, start, limit, filter, **kwargs)  # noqa: E501
+        return self.list_roles_with_http_info(scope, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_roles_with_http_info(self, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use all scopes if not supplied. The requested scope")] = None, as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, sort_by : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName")] = None, start : Annotated[Optional[StrictInt], Field(description="Optional. When paginating, skip this number of results")] = None, limit : Annotated[Optional[StrictInt], Field(description="Optional. When paginating, limit the number of returned results to this many.")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_roles_with_http_info(self, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use all scopes if not supplied. The requested scope")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """ListRoles: List Roles  # noqa: E501
 
         Gets all Roles in a scope  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.list_roles_with_http_info(scope, as_at, sort_by, start, limit, filter, async_req=True)
+        >>> thread = api.list_roles_with_http_info(scope, async_req=True)
         >>> result = thread.get()
 
         :param scope: Optional. Will use all scopes if not supplied. The requested scope
         :type scope: str
-        :param as_at: Optional. The AsAt date time of the data
-        :type as_at: datetime
-        :param sort_by: Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
-        :type sort_by: List[str]
-        :param start: Optional. When paginating, skip this number of results
-        :type start: int
-        :param limit: Optional. When paginating, limit the number of returned results to this many.
-        :type limit: int
-        :param filter: Optional. Expression to filter the result set
-        :type filter: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -792,10 +759,9 @@ class RolesApi:
         :param _return_http_data_only: response data instead of ApiResponse
                                        object with status code, headers, etc
         :type _return_http_data_only: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :param _request_auth: set to override the auth_settings for an a single
                               request; this effectively ignores the authentication
                               in the spec for a single request.
@@ -810,12 +776,7 @@ class RolesApi:
         _params = locals()
 
         _all_params = [
-            'scope',
-            'as_at',
-            'sort_by',
-            'start',
-            'limit',
-            'filter'
+            'scope'
         ]
         _all_params.extend(
             [
@@ -825,7 +786,8 @@ class RolesApi:
                 '_request_timeout',
                 '_request_auth',
                 '_content_type',
-                '_headers'
+                '_headers',
+                'opts'
             ]
         )
 
@@ -848,25 +810,6 @@ class RolesApi:
         _query_params = []
         if _params.get('scope') is not None:  # noqa: E501
             _query_params.append(('scope', _params['scope']))
-
-        if _params.get('as_at') is not None:  # noqa: E501
-            if isinstance(_params['as_at'], datetime):
-                _query_params.append(('asAt', _params['as_at'].strftime(self.api_client.configuration.datetime_format)))
-            else:
-                _query_params.append(('asAt', _params['as_at']))
-
-        if _params.get('sort_by') is not None:  # noqa: E501
-            _query_params.append(('sortBy', _params['sort_by']))
-            _collection_formats['sortBy'] = 'multi'
-
-        if _params.get('start') is not None:  # noqa: E501
-            _query_params.append(('start', _params['start']))
-
-        if _params.get('limit') is not None:  # noqa: E501
-            _query_params.append(('limit', _params['limit']))
-
-        if _params.get('filter') is not None:  # noqa: E501
-            _query_params.append(('filter', _params['filter']))
 
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
@@ -901,6 +844,7 @@ class RolesApi:
             _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
+            opts=_params.get('opts'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
@@ -933,10 +877,9 @@ class RolesApi:
         :type policycollectioncode: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -979,10 +922,9 @@ class RolesApi:
         :param _return_http_data_only: response data instead of ApiResponse
                                        object with status code, headers, etc
         :type _return_http_data_only: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :param _request_auth: set to override the auth_settings for an a single
                               request; this effectively ignores the authentication
                               in the spec for a single request.
@@ -1010,7 +952,8 @@ class RolesApi:
                 '_request_timeout',
                 '_request_auth',
                 '_content_type',
-                '_headers'
+                '_headers',
+                'opts'
             ]
         )
 
@@ -1076,6 +1019,7 @@ class RolesApi:
             _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
+            opts=_params.get('opts'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
@@ -1114,10 +1058,9 @@ class RolesApi:
         :type after_code: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1166,10 +1109,9 @@ class RolesApi:
         :param _return_http_data_only: response data instead of ApiResponse
                                        object with status code, headers, etc
         :type _return_http_data_only: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :param _request_auth: set to override the auth_settings for an a single
                               request; this effectively ignores the authentication
                               in the spec for a single request.
@@ -1200,7 +1142,8 @@ class RolesApi:
                 '_request_timeout',
                 '_request_auth',
                 '_content_type',
-                '_headers'
+                '_headers',
+                'opts'
             ]
         )
 
@@ -1282,5 +1225,6 @@ class RolesApi:
             _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
+            opts=_params.get('opts'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))

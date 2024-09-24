@@ -25,6 +25,7 @@ Assigns policy collections to a role
 ```python
 import asyncio
 from finbourne_access.exceptions import ApiException
+from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
@@ -51,6 +52,14 @@ async def main():
     # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
+
+    # uncomment the below to use configuration overrides
+    # opts = ConfigurationOptions();
+    # opts.total_timeout_ms = 30_000
+
+    # uncomment the below to use an api client factory with overrides
+    # api_client_factory = ApiClientFactory(opts=opts)
+
     api_client_factory = ApiClientFactory()
 
     # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
@@ -67,6 +76,9 @@ async def main():
         add_policy_collection_to_role_request = AddPolicyCollectionToRoleRequest.from_dict({"policyCollections":[{"scope":"ScopeValue","code":"SomePolCollectionCode"},{"scope":"ScopeValue2","code":"AnotherPolicyCollection"}]}) # AddPolicyCollectionToRoleRequest | The policy collections to add
 
         try:
+            # uncomment the below to set overrides at the request level
+            # api_response = await api_instance.add_policy_collection_to_role(scope, code, add_policy_collection_to_role_request, opts=opts)
+
             # AddPolicyCollectionToRole: Add policy collections to a role
             api_response = await api_instance.add_policy_collection_to_role(scope, code, add_policy_collection_to_role_request)
             pprint(api_response)
@@ -114,6 +126,7 @@ Creates a Role
 ```python
 import asyncio
 from finbourne_access.exceptions import ApiException
+from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
@@ -140,6 +153,14 @@ async def main():
     # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
+
+    # uncomment the below to use configuration overrides
+    # opts = ConfigurationOptions();
+    # opts.total_timeout_ms = 30_000
+
+    # uncomment the below to use an api client factory with overrides
+    # api_client_factory = ApiClientFactory(opts=opts)
+
     api_client_factory = ApiClientFactory()
 
     # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
@@ -154,6 +175,9 @@ async def main():
         role_creation_request = RoleCreationRequest.from_dict({"code":"example-organisation-role-id","description":"This is an example role to demonstrate their creation","resource":{"policyIdRoleResource":{"policies":[{"scope":"default","code":"official-portfolios-read-only"},{"scope":"default","code":"desk-portfolios"}],"policyCollections":[{"scope":"default","code":"CompanyEmployeeAccess"}]}},"when":{"activate":"2016-08-31T18:00:00.0000000+00:00","deactivate":"2020-08-31T18:00:00.0000000+00:00"}}) # RoleCreationRequest | The definition of the Role
 
         try:
+            # uncomment the below to set overrides at the request level
+            # api_response = await api_instance.create_role(role_creation_request, opts=opts)
+
             # CreateRole: Create Role
             api_response = await api_instance.create_role(role_creation_request)
             pprint(api_response)
@@ -199,6 +223,7 @@ Deletes an identified Role
 ```python
 import asyncio
 from finbourne_access.exceptions import ApiException
+from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
@@ -225,6 +250,14 @@ async def main():
     # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
+
+    # uncomment the below to use configuration overrides
+    # opts = ConfigurationOptions();
+    # opts.total_timeout_ms = 30_000
+
+    # uncomment the below to use an api client factory with overrides
+    # api_client_factory = ApiClientFactory(opts=opts)
+
     api_client_factory = ApiClientFactory()
 
     # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
@@ -235,6 +268,9 @@ async def main():
         scope = 'scope_example' # str | >Optional. Will use default scope if not supplied. The scope of the Role (optional)
 
         try:
+            # uncomment the below to set overrides at the request level
+            # await api_instance.delete_role(code, scope=scope, opts=opts)
+
             # DeleteRole: Delete Role
             await api_instance.delete_role(code, scope=scope)        except ApiException as e:
             print("Exception when calling RolesApi->delete_role: %s\n" % e)
@@ -268,7 +304,7 @@ void (empty response body)
 [Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
 
 # **get_role**
-> RoleResponse get_role(code, as_at=as_at, scope=scope)
+> RoleResponse get_role(code, scope=scope)
 
 GetRole: Get Role
 
@@ -279,6 +315,7 @@ Gets an identified Role
 ```python
 import asyncio
 from finbourne_access.exceptions import ApiException
+from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
@@ -305,6 +342,14 @@ async def main():
     # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
+
+    # uncomment the below to use configuration overrides
+    # opts = ConfigurationOptions();
+    # opts.total_timeout_ms = 30_000
+
+    # uncomment the below to use an api client factory with overrides
+    # api_client_factory = ApiClientFactory(opts=opts)
+
     api_client_factory = ApiClientFactory()
 
     # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
@@ -312,12 +357,14 @@ async def main():
         # Create an instance of the API class
         api_instance = api_client_factory.build(RolesApi)
         code = 'code_example' # str | The code of the Role
-        as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The AsAt date time of the data (optional)
         scope = 'scope_example' # str | Optional. Will use default scope if not supplied. The scope of the Role (optional)
 
         try:
+            # uncomment the below to set overrides at the request level
+            # api_response = await api_instance.get_role(code, scope=scope, opts=opts)
+
             # GetRole: Get Role
-            api_response = await api_instance.get_role(code, as_at=as_at, scope=scope)
+            api_response = await api_instance.get_role(code, scope=scope)
             pprint(api_response)
         except ApiException as e:
             print("Exception when calling RolesApi->get_role: %s\n" % e)
@@ -330,7 +377,6 @@ asyncio.run(main())
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **code** | **str**| The code of the Role | 
- **as_at** | **datetime**| Optional. The AsAt date time of the data | [optional] 
  **scope** | **str**| Optional. Will use default scope if not supplied. The scope of the Role | [optional] 
 
 ### Return type
@@ -352,7 +398,7 @@ Name | Type | Description  | Notes
 [Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
 
 # **list_roles**
-> List[RoleResponse] list_roles(scope=scope, as_at=as_at, sort_by=sort_by, start=start, limit=limit, filter=filter)
+> List[RoleResponse] list_roles(scope=scope)
 
 ListRoles: List Roles
 
@@ -363,6 +409,7 @@ Gets all Roles in a scope
 ```python
 import asyncio
 from finbourne_access.exceptions import ApiException
+from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
@@ -389,6 +436,14 @@ async def main():
     # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
+
+    # uncomment the below to use configuration overrides
+    # opts = ConfigurationOptions();
+    # opts.total_timeout_ms = 30_000
+
+    # uncomment the below to use an api client factory with overrides
+    # api_client_factory = ApiClientFactory(opts=opts)
+
     api_client_factory = ApiClientFactory()
 
     # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
@@ -396,15 +451,13 @@ async def main():
         # Create an instance of the API class
         api_instance = api_client_factory.build(RolesApi)
         scope = 'scope_example' # str | Optional. Will use all scopes if not supplied. The requested scope (optional)
-        as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The AsAt date time of the data (optional)
-        sort_by = ['sort_by_example'] # List[str] | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName (optional)
-        start = 56 # int | Optional. When paginating, skip this number of results (optional)
-        limit = 56 # int | Optional. When paginating, limit the number of returned results to this many. (optional)
-        filter = 'filter_example' # str | Optional. Expression to filter the result set (optional)
 
         try:
+            # uncomment the below to set overrides at the request level
+            # api_response = await api_instance.list_roles(scope=scope, opts=opts)
+
             # ListRoles: List Roles
-            api_response = await api_instance.list_roles(scope=scope, as_at=as_at, sort_by=sort_by, start=start, limit=limit, filter=filter)
+            api_response = await api_instance.list_roles(scope=scope)
             pprint(api_response)
         except ApiException as e:
             print("Exception when calling RolesApi->list_roles: %s\n" % e)
@@ -417,11 +470,6 @@ asyncio.run(main())
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **str**| Optional. Will use all scopes if not supplied. The requested scope | [optional] 
- **as_at** | **datetime**| Optional. The AsAt date time of the data | [optional] 
- **sort_by** | [**List[str]**](str.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional] 
- **start** | **int**| Optional. When paginating, skip this number of results | [optional] 
- **limit** | **int**| Optional. When paginating, limit the number of returned results to this many. | [optional] 
- **filter** | **str**| Optional. Expression to filter the result set | [optional] 
 
 ### Return type
 
@@ -453,6 +501,7 @@ Removes a policy collection from a role
 ```python
 import asyncio
 from finbourne_access.exceptions import ApiException
+from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
@@ -479,6 +528,14 @@ async def main():
     # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
+
+    # uncomment the below to use configuration overrides
+    # opts = ConfigurationOptions();
+    # opts.total_timeout_ms = 30_000
+
+    # uncomment the below to use an api client factory with overrides
+    # api_client_factory = ApiClientFactory(opts=opts)
+
     api_client_factory = ApiClientFactory()
 
     # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
@@ -491,6 +548,9 @@ async def main():
         policycollectioncode = 'policycollectioncode_example' # str | The code of the policy collection to remove from the Role
 
         try:
+            # uncomment the below to set overrides at the request level
+            # api_response = await api_instance.remove_policy_collection_from_role(scope, code, policycollectionscope, policycollectioncode, opts=opts)
+
             # RemovePolicyCollectionFromRole: Remove policy collection from role
             api_response = await api_instance.remove_policy_collection_from_role(scope, code, policycollectionscope, policycollectioncode)
             pprint(api_response)
@@ -539,6 +599,7 @@ Updates a Role
 ```python
 import asyncio
 from finbourne_access.exceptions import ApiException
+from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
@@ -565,6 +626,14 @@ async def main():
     # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
+
+    # uncomment the below to use configuration overrides
+    # opts = ConfigurationOptions();
+    # opts.total_timeout_ms = 30_000
+
+    # uncomment the below to use an api client factory with overrides
+    # api_client_factory = ApiClientFactory(opts=opts)
+
     api_client_factory = ApiClientFactory()
 
     # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
@@ -585,6 +654,9 @@ async def main():
         after_code = 'after_code_example' # str | Optional. The code of the Role (optional)
 
         try:
+            # uncomment the below to set overrides at the request level
+            # api_response = await api_instance.update_role(code, role_update_request, scope=scope, before_scope=before_scope, before_code=before_code, after_scope=after_scope, after_code=after_code, opts=opts)
+
             # UpdateRole: Update Role
             api_response = await api_instance.update_role(code, role_update_request, scope=scope, before_scope=before_scope, before_code=before_code, after_scope=after_scope, after_code=after_code)
             pprint(api_response)

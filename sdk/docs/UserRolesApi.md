@@ -27,6 +27,7 @@ Adds a policy collection to a user-role.
 ```python
 import asyncio
 from finbourne_access.exceptions import ApiException
+from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
@@ -53,6 +54,14 @@ async def main():
     # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
+
+    # uncomment the below to use configuration overrides
+    # opts = ConfigurationOptions();
+    # opts.total_timeout_ms = 30_000
+
+    # uncomment the below to use an api client factory with overrides
+    # api_client_factory = ApiClientFactory(opts=opts)
+
     api_client_factory = ApiClientFactory()
 
     # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
@@ -68,6 +77,9 @@ async def main():
         add_policy_collection_to_role_request = AddPolicyCollectionToRoleRequest.from_dict({"policyCollections":[{"scope":"ExampleAddPolicyCollectionScope","code":"ExampleAddPolicyCollectionCode"}]}) # AddPolicyCollectionToRoleRequest | Dto of the policy collection to be added.
 
         try:
+            # uncomment the below to set overrides at the request level
+            # api_response = await api_instance.add_policy_collection_to_user_role(userid, add_policy_collection_to_role_request, opts=opts)
+
             # AddPolicyCollectionToUserRole: Add a policy collection to a user-role
             api_response = await api_instance.add_policy_collection_to_user_role(userid, add_policy_collection_to_role_request)
             pprint(api_response)
@@ -114,6 +126,7 @@ Adds a policy to a user-role.
 ```python
 import asyncio
 from finbourne_access.exceptions import ApiException
+from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
@@ -140,6 +153,14 @@ async def main():
     # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
+
+    # uncomment the below to use configuration overrides
+    # opts = ConfigurationOptions();
+    # opts.total_timeout_ms = 30_000
+
+    # uncomment the below to use an api client factory with overrides
+    # api_client_factory = ApiClientFactory(opts=opts)
+
     api_client_factory = ApiClientFactory()
 
     # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
@@ -155,6 +176,9 @@ async def main():
         add_policy_to_role_request = AddPolicyToRoleRequest.from_dict({"policies":[{"scope":"ExampleAddPolicyScope","code":"ExampleAddPolicyCode"}]}) # AddPolicyToRoleRequest | Dto of the policy to be added.
 
         try:
+            # uncomment the below to set overrides at the request level
+            # api_response = await api_instance.add_policy_to_user_role(userid, add_policy_to_role_request, opts=opts)
+
             # AddPolicyToUserRole: Add a policy to a user-role
             api_response = await api_instance.add_policy_to_user_role(userid, add_policy_to_role_request)
             pprint(api_response)
@@ -201,6 +225,7 @@ Creates a new user-role.
 ```python
 import asyncio
 from finbourne_access.exceptions import ApiException
+from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
@@ -227,6 +252,14 @@ async def main():
     # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
+
+    # uncomment the below to use configuration overrides
+    # opts = ConfigurationOptions();
+    # opts.total_timeout_ms = 30_000
+
+    # uncomment the below to use an api client factory with overrides
+    # api_client_factory = ApiClientFactory(opts=opts)
+
     api_client_factory = ApiClientFactory()
 
     # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
@@ -241,6 +274,9 @@ async def main():
         user_role_creation_request = UserRoleCreationRequest.from_dict({"userId":"ExampleUserId","resource":{"policies":[{"scope":"ExamplePolicyId","code":"ExampleScope"}],"policyCollections":[{"scope":"ExamplePolicyCollectionId","code":"ExampleScope"}]}}) # UserRoleCreationRequest | Definition of the user-role to create.
 
         try:
+            # uncomment the below to set overrides at the request level
+            # api_response = await api_instance.create_user_role(user_role_creation_request, opts=opts)
+
             # CreateUserRole: Create a user-role
             api_response = await api_instance.create_user_role(user_role_creation_request)
             pprint(api_response)
@@ -286,6 +322,7 @@ Deletes an identified user-role.
 ```python
 import asyncio
 from finbourne_access.exceptions import ApiException
+from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
@@ -312,6 +349,14 @@ async def main():
     # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
+
+    # uncomment the below to use configuration overrides
+    # opts = ConfigurationOptions();
+    # opts.total_timeout_ms = 30_000
+
+    # uncomment the below to use an api client factory with overrides
+    # api_client_factory = ApiClientFactory(opts=opts)
+
     api_client_factory = ApiClientFactory()
 
     # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
@@ -321,6 +366,9 @@ async def main():
         userid = 'userid_example' # str | Id of the user-role to delete.
 
         try:
+            # uncomment the below to set overrides at the request level
+            # await api_instance.delete_user_role(userid, opts=opts)
+
             # DeleteUserRole: Delete a user-role
             await api_instance.delete_user_role(userid)        except ApiException as e:
             print("Exception when calling UserRolesApi->delete_user_role: %s\n" % e)
@@ -364,6 +412,7 @@ Get an identified user-role.
 ```python
 import asyncio
 from finbourne_access.exceptions import ApiException
+from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
@@ -390,6 +439,14 @@ async def main():
     # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
+
+    # uncomment the below to use configuration overrides
+    # opts = ConfigurationOptions();
+    # opts.total_timeout_ms = 30_000
+
+    # uncomment the below to use an api client factory with overrides
+    # api_client_factory = ApiClientFactory(opts=opts)
+
     api_client_factory = ApiClientFactory()
 
     # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
@@ -399,6 +456,9 @@ async def main():
         userid = 'userid_example' # str | Id of the user-role to get.
 
         try:
+            # uncomment the below to set overrides at the request level
+            # api_response = await api_instance.get_user_role(userid, opts=opts)
+
             # GetUserRole: Get a user-role
             api_response = await api_instance.get_user_role(userid)
             pprint(api_response)
@@ -444,6 +504,7 @@ Lists all user-roles and pages.
 ```python
 import asyncio
 from finbourne_access.exceptions import ApiException
+from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
@@ -470,6 +531,14 @@ async def main():
     # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
+
+    # uncomment the below to use configuration overrides
+    # opts = ConfigurationOptions();
+    # opts.total_timeout_ms = 30_000
+
+    # uncomment the below to use an api client factory with overrides
+    # api_client_factory = ApiClientFactory(opts=opts)
+
     api_client_factory = ApiClientFactory()
 
     # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
@@ -482,6 +551,9 @@ async def main():
         page = 'page_example' # str | Optional. Encoded page string returned from a previous search result that will retrieve              the next page of data. (optional)
 
         try:
+            # uncomment the below to set overrides at the request level
+            # api_response = await api_instance.list_user_roles(filter=filter, sort_by=sort_by, limit=limit, page=page, opts=opts)
+
             # ListUserRoles: List user-roles
             api_response = await api_instance.list_user_roles(filter=filter, sort_by=sort_by, limit=limit, page=page)
             pprint(api_response)
@@ -530,6 +602,7 @@ Removes a policy collection from a user-role.
 ```python
 import asyncio
 from finbourne_access.exceptions import ApiException
+from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
@@ -556,6 +629,14 @@ async def main():
     # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
+
+    # uncomment the below to use configuration overrides
+    # opts = ConfigurationOptions();
+    # opts.total_timeout_ms = 30_000
+
+    # uncomment the below to use an api client factory with overrides
+    # api_client_factory = ApiClientFactory(opts=opts)
+
     api_client_factory = ApiClientFactory()
 
     # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
@@ -567,6 +648,9 @@ async def main():
         policy_collection_code = 'policy_collection_code_example' # str | The code of the policy collection to remove from the User Role
 
         try:
+            # uncomment the below to set overrides at the request level
+            # await api_instance.remove_policy_collection_from_user_role(userid, policy_collection_scope, policy_collection_code, opts=opts)
+
             # RemovePolicyCollectionFromUserRole: Remove a policy collection from a user-role
             await api_instance.remove_policy_collection_from_user_role(userid, policy_collection_scope, policy_collection_code)        except ApiException as e:
             print("Exception when calling UserRolesApi->remove_policy_collection_from_user_role: %s\n" % e)
@@ -612,6 +696,7 @@ Removes a policy from a user-role.
 ```python
 import asyncio
 from finbourne_access.exceptions import ApiException
+from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
@@ -638,6 +723,14 @@ async def main():
     # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
+
+    # uncomment the below to use configuration overrides
+    # opts = ConfigurationOptions();
+    # opts.total_timeout_ms = 30_000
+
+    # uncomment the below to use an api client factory with overrides
+    # api_client_factory = ApiClientFactory(opts=opts)
+
     api_client_factory = ApiClientFactory()
 
     # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
@@ -649,6 +742,9 @@ async def main():
         policy_code = 'policy_code_example' # str | The code of the policy to remove from the User Role
 
         try:
+            # uncomment the below to set overrides at the request level
+            # await api_instance.remove_policy_from_user_role(userid, policy_scope, policy_code, opts=opts)
+
             # RemovePolicyFromUserRole: Remove a policy from a user-role
             await api_instance.remove_policy_from_user_role(userid, policy_scope, policy_code)        except ApiException as e:
             print("Exception when calling UserRolesApi->remove_policy_from_user_role: %s\n" % e)
@@ -694,6 +790,7 @@ Updates an identified user-role.
 ```python
 import asyncio
 from finbourne_access.exceptions import ApiException
+from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
@@ -720,6 +817,14 @@ async def main():
     # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
+
+    # uncomment the below to use configuration overrides
+    # opts = ConfigurationOptions();
+    # opts.total_timeout_ms = 30_000
+
+    # uncomment the below to use an api client factory with overrides
+    # api_client_factory = ApiClientFactory(opts=opts)
+
     api_client_factory = ApiClientFactory()
 
     # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
@@ -735,6 +840,9 @@ async def main():
         user_role_update_request = UserRoleUpdateRequest.from_dict({"resource":{"policies":[{"scope":"ExamplePolicyId","code":"ExampleScope"}],"policyCollections":[{"scope":"ExamplePolicyCollectionId","code":"ExampleScope"}]}}) # UserRoleUpdateRequest | Definition of the update to apply to the user-role.
 
         try:
+            # uncomment the below to set overrides at the request level
+            # api_response = await api_instance.update_user_role(userid, user_role_update_request, opts=opts)
+
             # UpdateUserRole: Update a user-role
             api_response = await api_instance.update_user_role(userid, user_role_update_request)
             pprint(api_response)

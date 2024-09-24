@@ -20,9 +20,7 @@ from pydantic.v1 import validate_arguments, ValidationError
 from typing import overload, Optional, Union, Awaitable
 
 from typing_extensions import Annotated
-from datetime import datetime
-
-from pydantic.v1 import Field, StrictInt, StrictStr, conint, conlist, constr, validator
+from pydantic.v1 import Field, StrictStr, conint, conlist, constr, validator
 
 from typing import Dict, List, Optional
 
@@ -46,6 +44,7 @@ from finbourne_access.exceptions import (  # noqa: F401
     ApiTypeError,
     ApiValueError
 )
+from finbourne_access.extensions.configuration_options import ConfigurationOptions
 
 
 class PoliciesApi:
@@ -87,10 +86,9 @@ class PoliciesApi:
         :type scope: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -131,10 +129,9 @@ class PoliciesApi:
         :param _return_http_data_only: response data instead of ApiResponse
                                        object with status code, headers, etc
         :type _return_http_data_only: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :param _request_auth: set to override the auth_settings for an a single
                               request; this effectively ignores the authentication
                               in the spec for a single request.
@@ -161,7 +158,8 @@ class PoliciesApi:
                 '_request_timeout',
                 '_request_auth',
                 '_content_type',
-                '_headers'
+                '_headers',
+                'opts'
             ]
         )
 
@@ -231,6 +229,7 @@ class PoliciesApi:
             _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
+            opts=_params.get('opts'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
@@ -257,10 +256,9 @@ class PoliciesApi:
         :type policy_creation_request: PolicyCreationRequest
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -297,10 +295,9 @@ class PoliciesApi:
         :param _return_http_data_only: response data instead of ApiResponse
                                        object with status code, headers, etc
         :type _return_http_data_only: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :param _request_auth: set to override the auth_settings for an a single
                               request; this effectively ignores the authentication
                               in the spec for a single request.
@@ -325,7 +322,8 @@ class PoliciesApi:
                 '_request_timeout',
                 '_request_auth',
                 '_content_type',
-                '_headers'
+                '_headers',
+                'opts'
             ]
         )
 
@@ -389,6 +387,7 @@ class PoliciesApi:
             _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
+            opts=_params.get('opts'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
@@ -415,10 +414,9 @@ class PoliciesApi:
         :type policy_collection_creation_request: PolicyCollectionCreationRequest
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -455,10 +453,9 @@ class PoliciesApi:
         :param _return_http_data_only: response data instead of ApiResponse
                                        object with status code, headers, etc
         :type _return_http_data_only: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :param _request_auth: set to override the auth_settings for an a single
                               request; this effectively ignores the authentication
                               in the spec for a single request.
@@ -483,7 +480,8 @@ class PoliciesApi:
                 '_request_timeout',
                 '_request_auth',
                 '_content_type',
-                '_headers'
+                '_headers',
+                'opts'
             ]
         )
 
@@ -547,6 +545,7 @@ class PoliciesApi:
             _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
+            opts=_params.get('opts'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
@@ -575,10 +574,9 @@ class PoliciesApi:
         :type scope: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -617,10 +615,9 @@ class PoliciesApi:
         :param _return_http_data_only: response data instead of ApiResponse
                                        object with status code, headers, etc
         :type _return_http_data_only: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :param _request_auth: set to override the auth_settings for an a single
                               request; this effectively ignores the authentication
                               in the spec for a single request.
@@ -646,7 +643,8 @@ class PoliciesApi:
                 '_request_timeout',
                 '_request_auth',
                 '_content_type',
-                '_headers'
+                '_headers',
+                'opts'
             ]
         )
 
@@ -703,6 +701,7 @@ class PoliciesApi:
             _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
+            opts=_params.get('opts'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
@@ -731,10 +730,9 @@ class PoliciesApi:
         :type scope: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -773,10 +771,9 @@ class PoliciesApi:
         :param _return_http_data_only: response data instead of ApiResponse
                                        object with status code, headers, etc
         :type _return_http_data_only: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :param _request_auth: set to override the auth_settings for an a single
                               request; this effectively ignores the authentication
                               in the spec for a single request.
@@ -802,7 +799,8 @@ class PoliciesApi:
                 '_request_timeout',
                 '_request_auth',
                 '_content_type',
-                '_headers'
+                '_headers',
+                'opts'
             ]
         )
 
@@ -859,40 +857,38 @@ class PoliciesApi:
             _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
+            opts=_params.get('opts'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @overload
-    async def evaluate(self, request_body : Annotated[Dict[str, EvaluationRequest], Field(..., description="A dictionary of evaluations, keyed using any arbitrary correlation id (it will be returned with the response for that evaluation).")], applications : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. The application type of the roles and policies to use when evaluating.")] = None, as_at : Annotated[Optional[datetime], Field(description="Optional. The requested AsAt date of the entitlements")] = None, **kwargs) -> Dict[str, EvaluationResponse]:  # noqa: E501
+    async def evaluate(self, request_body : Annotated[Dict[str, EvaluationRequest], Field(..., description="A dictionary of evaluations, keyed using any arbitrary correlation id (it will be returned with the response for that evaluation).")], applications : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. The application type of the roles and policies to use when evaluating.")] = None, **kwargs) -> Dict[str, EvaluationResponse]:  # noqa: E501
         ...
 
     @overload
-    def evaluate(self, request_body : Annotated[Dict[str, EvaluationRequest], Field(..., description="A dictionary of evaluations, keyed using any arbitrary correlation id (it will be returned with the response for that evaluation).")], applications : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. The application type of the roles and policies to use when evaluating.")] = None, as_at : Annotated[Optional[datetime], Field(description="Optional. The requested AsAt date of the entitlements")] = None, async_req: Optional[bool]=True, **kwargs) -> Dict[str, EvaluationResponse]:  # noqa: E501
+    def evaluate(self, request_body : Annotated[Dict[str, EvaluationRequest], Field(..., description="A dictionary of evaluations, keyed using any arbitrary correlation id (it will be returned with the response for that evaluation).")], applications : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. The application type of the roles and policies to use when evaluating.")] = None, async_req: Optional[bool]=True, **kwargs) -> Dict[str, EvaluationResponse]:  # noqa: E501
         ...
 
     @validate_arguments
-    def evaluate(self, request_body : Annotated[Dict[str, EvaluationRequest], Field(..., description="A dictionary of evaluations, keyed using any arbitrary correlation id (it will be returned with the response for that evaluation).")], applications : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. The application type of the roles and policies to use when evaluating.")] = None, as_at : Annotated[Optional[datetime], Field(description="Optional. The requested AsAt date of the entitlements")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[Dict[str, EvaluationResponse], Awaitable[Dict[str, EvaluationResponse]]]:  # noqa: E501
+    def evaluate(self, request_body : Annotated[Dict[str, EvaluationRequest], Field(..., description="A dictionary of evaluations, keyed using any arbitrary correlation id (it will be returned with the response for that evaluation).")], applications : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. The application type of the roles and policies to use when evaluating.")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[Dict[str, EvaluationResponse], Awaitable[Dict[str, EvaluationResponse]]]:  # noqa: E501
         """Evaluate: Run one or more evaluations  # noqa: E501
 
         Given a dictionary of evaluation requests (keyed by any arbitrary correlation identifier), each will be evaluated according to the current user's policies (deduced from the provided OAuth token).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.evaluate(request_body, applications, as_at, async_req=True)
+        >>> thread = api.evaluate(request_body, applications, async_req=True)
         >>> result = thread.get()
 
         :param request_body: A dictionary of evaluations, keyed using any arbitrary correlation id (it will be returned with the response for that evaluation). (required)
         :type request_body: Dict[str, EvaluationRequest]
         :param applications: Optional. The application type of the roles and policies to use when evaluating.
         :type applications: List[str]
-        :param as_at: Optional. The requested AsAt date of the entitlements
-        :type as_at: datetime
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -904,25 +900,23 @@ class PoliciesApi:
             raise ValueError(message)
         if async_req is not None:
             kwargs['async_req'] = async_req
-        return self.evaluate_with_http_info(request_body, applications, as_at, **kwargs)  # noqa: E501
+        return self.evaluate_with_http_info(request_body, applications, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def evaluate_with_http_info(self, request_body : Annotated[Dict[str, EvaluationRequest], Field(..., description="A dictionary of evaluations, keyed using any arbitrary correlation id (it will be returned with the response for that evaluation).")], applications : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. The application type of the roles and policies to use when evaluating.")] = None, as_at : Annotated[Optional[datetime], Field(description="Optional. The requested AsAt date of the entitlements")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def evaluate_with_http_info(self, request_body : Annotated[Dict[str, EvaluationRequest], Field(..., description="A dictionary of evaluations, keyed using any arbitrary correlation id (it will be returned with the response for that evaluation).")], applications : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. The application type of the roles and policies to use when evaluating.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Evaluate: Run one or more evaluations  # noqa: E501
 
         Given a dictionary of evaluation requests (keyed by any arbitrary correlation identifier), each will be evaluated according to the current user's policies (deduced from the provided OAuth token).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.evaluate_with_http_info(request_body, applications, as_at, async_req=True)
+        >>> thread = api.evaluate_with_http_info(request_body, applications, async_req=True)
         >>> result = thread.get()
 
         :param request_body: A dictionary of evaluations, keyed using any arbitrary correlation id (it will be returned with the response for that evaluation). (required)
         :type request_body: Dict[str, EvaluationRequest]
         :param applications: Optional. The application type of the roles and policies to use when evaluating.
         :type applications: List[str]
-        :param as_at: Optional. The requested AsAt date of the entitlements
-        :type as_at: datetime
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -933,10 +927,9 @@ class PoliciesApi:
         :param _return_http_data_only: response data instead of ApiResponse
                                        object with status code, headers, etc
         :type _return_http_data_only: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :param _request_auth: set to override the auth_settings for an a single
                               request; this effectively ignores the authentication
                               in the spec for a single request.
@@ -952,8 +945,7 @@ class PoliciesApi:
 
         _all_params = [
             'request_body',
-            'applications',
-            'as_at'
+            'applications'
         ]
         _all_params.extend(
             [
@@ -963,7 +955,8 @@ class PoliciesApi:
                 '_request_timeout',
                 '_request_auth',
                 '_content_type',
-                '_headers'
+                '_headers',
+                'opts'
             ]
         )
 
@@ -987,12 +980,6 @@ class PoliciesApi:
         if _params.get('applications') is not None:  # noqa: E501
             _query_params.append(('applications', _params['applications']))
             _collection_formats['applications'] = 'multi'
-
-        if _params.get('as_at') is not None:  # noqa: E501
-            if isinstance(_params['as_at'], datetime):
-                _query_params.append(('asAt', _params['as_at'].strftime(self.api_client.configuration.datetime_format)))
-            else:
-                _query_params.append(('asAt', _params['as_at']))
 
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
@@ -1037,46 +1024,36 @@ class PoliciesApi:
             _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
+            opts=_params.get('opts'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @overload
-    async def get_own_policies(self, applications : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. Filter on the applications that the policies apply to")] = None, as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, sort_by : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName")] = None, start : Annotated[Optional[StrictInt], Field(description="Optional. When paginating, skip this number of results")] = None, limit : Annotated[Optional[StrictInt], Field(description="Optional. When paginating, limit the number of returned results to this many.")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, **kwargs) -> List[AttachedPolicyDefinitionResponse]:  # noqa: E501
+    async def get_own_policies(self, applications : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. Filter on the applications that the policies apply to")] = None, **kwargs) -> List[AttachedPolicyDefinitionResponse]:  # noqa: E501
         ...
 
     @overload
-    def get_own_policies(self, applications : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. Filter on the applications that the policies apply to")] = None, as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, sort_by : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName")] = None, start : Annotated[Optional[StrictInt], Field(description="Optional. When paginating, skip this number of results")] = None, limit : Annotated[Optional[StrictInt], Field(description="Optional. When paginating, limit the number of returned results to this many.")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, async_req: Optional[bool]=True, **kwargs) -> List[AttachedPolicyDefinitionResponse]:  # noqa: E501
+    def get_own_policies(self, applications : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. Filter on the applications that the policies apply to")] = None, async_req: Optional[bool]=True, **kwargs) -> List[AttachedPolicyDefinitionResponse]:  # noqa: E501
         ...
 
     @validate_arguments
-    def get_own_policies(self, applications : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. Filter on the applications that the policies apply to")] = None, as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, sort_by : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName")] = None, start : Annotated[Optional[StrictInt], Field(description="Optional. When paginating, skip this number of results")] = None, limit : Annotated[Optional[StrictInt], Field(description="Optional. When paginating, limit the number of returned results to this many.")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[List[AttachedPolicyDefinitionResponse], Awaitable[List[AttachedPolicyDefinitionResponse]]]:  # noqa: E501
+    def get_own_policies(self, applications : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. Filter on the applications that the policies apply to")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[List[AttachedPolicyDefinitionResponse], Awaitable[List[AttachedPolicyDefinitionResponse]]]:  # noqa: E501
         """GetOwnPolicies: Get policies of requesting user  # noqa: E501
 
         Gets all Policies for the current user  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_own_policies(applications, as_at, sort_by, start, limit, filter, async_req=True)
+        >>> thread = api.get_own_policies(applications, async_req=True)
         >>> result = thread.get()
 
         :param applications: Optional. Filter on the applications that the policies apply to
         :type applications: List[str]
-        :param as_at: Optional. The AsAt date time of the data
-        :type as_at: datetime
-        :param sort_by: Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
-        :type sort_by: List[str]
-        :param start: Optional. When paginating, skip this number of results
-        :type start: int
-        :param limit: Optional. When paginating, limit the number of returned results to this many.
-        :type limit: int
-        :param filter: Optional. Expression to filter the result set
-        :type filter: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1088,31 +1065,21 @@ class PoliciesApi:
             raise ValueError(message)
         if async_req is not None:
             kwargs['async_req'] = async_req
-        return self.get_own_policies_with_http_info(applications, as_at, sort_by, start, limit, filter, **kwargs)  # noqa: E501
+        return self.get_own_policies_with_http_info(applications, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_own_policies_with_http_info(self, applications : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. Filter on the applications that the policies apply to")] = None, as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, sort_by : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName")] = None, start : Annotated[Optional[StrictInt], Field(description="Optional. When paginating, skip this number of results")] = None, limit : Annotated[Optional[StrictInt], Field(description="Optional. When paginating, limit the number of returned results to this many.")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_own_policies_with_http_info(self, applications : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. Filter on the applications that the policies apply to")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """GetOwnPolicies: Get policies of requesting user  # noqa: E501
 
         Gets all Policies for the current user  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_own_policies_with_http_info(applications, as_at, sort_by, start, limit, filter, async_req=True)
+        >>> thread = api.get_own_policies_with_http_info(applications, async_req=True)
         >>> result = thread.get()
 
         :param applications: Optional. Filter on the applications that the policies apply to
         :type applications: List[str]
-        :param as_at: Optional. The AsAt date time of the data
-        :type as_at: datetime
-        :param sort_by: Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
-        :type sort_by: List[str]
-        :param start: Optional. When paginating, skip this number of results
-        :type start: int
-        :param limit: Optional. When paginating, limit the number of returned results to this many.
-        :type limit: int
-        :param filter: Optional. Expression to filter the result set
-        :type filter: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -1123,10 +1090,9 @@ class PoliciesApi:
         :param _return_http_data_only: response data instead of ApiResponse
                                        object with status code, headers, etc
         :type _return_http_data_only: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :param _request_auth: set to override the auth_settings for an a single
                               request; this effectively ignores the authentication
                               in the spec for a single request.
@@ -1141,12 +1107,7 @@ class PoliciesApi:
         _params = locals()
 
         _all_params = [
-            'applications',
-            'as_at',
-            'sort_by',
-            'start',
-            'limit',
-            'filter'
+            'applications'
         ]
         _all_params.extend(
             [
@@ -1156,7 +1117,8 @@ class PoliciesApi:
                 '_request_timeout',
                 '_request_auth',
                 '_content_type',
-                '_headers'
+                '_headers',
+                'opts'
             ]
         )
 
@@ -1180,25 +1142,6 @@ class PoliciesApi:
         if _params.get('applications') is not None:  # noqa: E501
             _query_params.append(('applications', _params['applications']))
             _collection_formats['applications'] = 'multi'
-
-        if _params.get('as_at') is not None:  # noqa: E501
-            if isinstance(_params['as_at'], datetime):
-                _query_params.append(('asAt', _params['as_at'].strftime(self.api_client.configuration.datetime_format)))
-            else:
-                _query_params.append(('asAt', _params['as_at']))
-
-        if _params.get('sort_by') is not None:  # noqa: E501
-            _query_params.append(('sortBy', _params['sort_by']))
-            _collection_formats['sortBy'] = 'multi'
-
-        if _params.get('start') is not None:  # noqa: E501
-            _query_params.append(('start', _params['start']))
-
-        if _params.get('limit') is not None:  # noqa: E501
-            _query_params.append(('limit', _params['limit']))
-
-        if _params.get('filter') is not None:  # noqa: E501
-            _query_params.append(('filter', _params['filter']))
 
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
@@ -1233,40 +1176,38 @@ class PoliciesApi:
             _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
+            opts=_params.get('opts'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @overload
-    async def get_policy(self, code : Annotated[constr(strict=True), Field(..., description="The code of the Policy")], as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The scope of the Policy")] = None, **kwargs) -> PolicyResponse:  # noqa: E501
+    async def get_policy(self, code : Annotated[constr(strict=True), Field(..., description="The code of the Policy")], scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The scope of the Policy")] = None, **kwargs) -> PolicyResponse:  # noqa: E501
         ...
 
     @overload
-    def get_policy(self, code : Annotated[constr(strict=True), Field(..., description="The code of the Policy")], as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The scope of the Policy")] = None, async_req: Optional[bool]=True, **kwargs) -> PolicyResponse:  # noqa: E501
+    def get_policy(self, code : Annotated[constr(strict=True), Field(..., description="The code of the Policy")], scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The scope of the Policy")] = None, async_req: Optional[bool]=True, **kwargs) -> PolicyResponse:  # noqa: E501
         ...
 
     @validate_arguments
-    def get_policy(self, code : Annotated[constr(strict=True), Field(..., description="The code of the Policy")], as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The scope of the Policy")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[PolicyResponse, Awaitable[PolicyResponse]]:  # noqa: E501
+    def get_policy(self, code : Annotated[constr(strict=True), Field(..., description="The code of the Policy")], scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The scope of the Policy")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[PolicyResponse, Awaitable[PolicyResponse]]:  # noqa: E501
         """GetPolicy: Get Policy  # noqa: E501
 
         Gets an identified Policy  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_policy(code, as_at, scope, async_req=True)
+        >>> thread = api.get_policy(code, scope, async_req=True)
         >>> result = thread.get()
 
         :param code: The code of the Policy (required)
         :type code: str
-        :param as_at: Optional. The AsAt date time of the data
-        :type as_at: datetime
         :param scope: Optional. Will use the default scope if not provided. The scope of the Policy
         :type scope: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1278,23 +1219,21 @@ class PoliciesApi:
             raise ValueError(message)
         if async_req is not None:
             kwargs['async_req'] = async_req
-        return self.get_policy_with_http_info(code, as_at, scope, **kwargs)  # noqa: E501
+        return self.get_policy_with_http_info(code, scope, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_policy_with_http_info(self, code : Annotated[constr(strict=True), Field(..., description="The code of the Policy")], as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The scope of the Policy")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_policy_with_http_info(self, code : Annotated[constr(strict=True), Field(..., description="The code of the Policy")], scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The scope of the Policy")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """GetPolicy: Get Policy  # noqa: E501
 
         Gets an identified Policy  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_policy_with_http_info(code, as_at, scope, async_req=True)
+        >>> thread = api.get_policy_with_http_info(code, scope, async_req=True)
         >>> result = thread.get()
 
         :param code: The code of the Policy (required)
         :type code: str
-        :param as_at: Optional. The AsAt date time of the data
-        :type as_at: datetime
         :param scope: Optional. Will use the default scope if not provided. The scope of the Policy
         :type scope: str
         :param async_req: Whether to execute the request asynchronously.
@@ -1307,10 +1246,9 @@ class PoliciesApi:
         :param _return_http_data_only: response data instead of ApiResponse
                                        object with status code, headers, etc
         :type _return_http_data_only: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :param _request_auth: set to override the auth_settings for an a single
                               request; this effectively ignores the authentication
                               in the spec for a single request.
@@ -1326,7 +1264,6 @@ class PoliciesApi:
 
         _all_params = [
             'code',
-            'as_at',
             'scope'
         ]
         _all_params.extend(
@@ -1337,7 +1274,8 @@ class PoliciesApi:
                 '_request_timeout',
                 '_request_auth',
                 '_content_type',
-                '_headers'
+                '_headers',
+                'opts'
             ]
         )
 
@@ -1361,12 +1299,6 @@ class PoliciesApi:
 
         # process the query parameters
         _query_params = []
-        if _params.get('as_at') is not None:  # noqa: E501
-            if isinstance(_params['as_at'], datetime):
-                _query_params.append(('asAt', _params['as_at'].strftime(self.api_client.configuration.datetime_format)))
-            else:
-                _query_params.append(('asAt', _params['as_at']))
-
         if _params.get('scope') is not None:  # noqa: E501
             _query_params.append(('scope', _params['scope']))
 
@@ -1403,40 +1335,38 @@ class PoliciesApi:
             _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
+            opts=_params.get('opts'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @overload
-    async def get_policy_collection(self, code : Annotated[constr(strict=True), Field(..., description="The code of the PolicyCollection")], as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The scope of the PolicyCollection")] = None, **kwargs) -> PolicyCollectionResponse:  # noqa: E501
+    async def get_policy_collection(self, code : Annotated[constr(strict=True), Field(..., description="The code of the PolicyCollection")], scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The scope of the PolicyCollection")] = None, **kwargs) -> PolicyCollectionResponse:  # noqa: E501
         ...
 
     @overload
-    def get_policy_collection(self, code : Annotated[constr(strict=True), Field(..., description="The code of the PolicyCollection")], as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The scope of the PolicyCollection")] = None, async_req: Optional[bool]=True, **kwargs) -> PolicyCollectionResponse:  # noqa: E501
+    def get_policy_collection(self, code : Annotated[constr(strict=True), Field(..., description="The code of the PolicyCollection")], scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The scope of the PolicyCollection")] = None, async_req: Optional[bool]=True, **kwargs) -> PolicyCollectionResponse:  # noqa: E501
         ...
 
     @validate_arguments
-    def get_policy_collection(self, code : Annotated[constr(strict=True), Field(..., description="The code of the PolicyCollection")], as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The scope of the PolicyCollection")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[PolicyCollectionResponse, Awaitable[PolicyCollectionResponse]]:  # noqa: E501
+    def get_policy_collection(self, code : Annotated[constr(strict=True), Field(..., description="The code of the PolicyCollection")], scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The scope of the PolicyCollection")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[PolicyCollectionResponse, Awaitable[PolicyCollectionResponse]]:  # noqa: E501
         """GetPolicyCollection: Get PolicyCollection  # noqa: E501
 
         Gets an identified PolicyCollection  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_policy_collection(code, as_at, scope, async_req=True)
+        >>> thread = api.get_policy_collection(code, scope, async_req=True)
         >>> result = thread.get()
 
         :param code: The code of the PolicyCollection (required)
         :type code: str
-        :param as_at: Optional. The AsAt date time of the data
-        :type as_at: datetime
         :param scope: Optional. Will use the default scope if not provided. The scope of the PolicyCollection
         :type scope: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1448,23 +1378,21 @@ class PoliciesApi:
             raise ValueError(message)
         if async_req is not None:
             kwargs['async_req'] = async_req
-        return self.get_policy_collection_with_http_info(code, as_at, scope, **kwargs)  # noqa: E501
+        return self.get_policy_collection_with_http_info(code, scope, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_policy_collection_with_http_info(self, code : Annotated[constr(strict=True), Field(..., description="The code of the PolicyCollection")], as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The scope of the PolicyCollection")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_policy_collection_with_http_info(self, code : Annotated[constr(strict=True), Field(..., description="The code of the PolicyCollection")], scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The scope of the PolicyCollection")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """GetPolicyCollection: Get PolicyCollection  # noqa: E501
 
         Gets an identified PolicyCollection  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_policy_collection_with_http_info(code, as_at, scope, async_req=True)
+        >>> thread = api.get_policy_collection_with_http_info(code, scope, async_req=True)
         >>> result = thread.get()
 
         :param code: The code of the PolicyCollection (required)
         :type code: str
-        :param as_at: Optional. The AsAt date time of the data
-        :type as_at: datetime
         :param scope: Optional. Will use the default scope if not provided. The scope of the PolicyCollection
         :type scope: str
         :param async_req: Whether to execute the request asynchronously.
@@ -1477,10 +1405,9 @@ class PoliciesApi:
         :param _return_http_data_only: response data instead of ApiResponse
                                        object with status code, headers, etc
         :type _return_http_data_only: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :param _request_auth: set to override the auth_settings for an a single
                               request; this effectively ignores the authentication
                               in the spec for a single request.
@@ -1496,7 +1423,6 @@ class PoliciesApi:
 
         _all_params = [
             'code',
-            'as_at',
             'scope'
         ]
         _all_params.extend(
@@ -1507,7 +1433,8 @@ class PoliciesApi:
                 '_request_timeout',
                 '_request_auth',
                 '_content_type',
-                '_headers'
+                '_headers',
+                'opts'
             ]
         )
 
@@ -1531,12 +1458,6 @@ class PoliciesApi:
 
         # process the query parameters
         _query_params = []
-        if _params.get('as_at') is not None:  # noqa: E501
-            if isinstance(_params['as_at'], datetime):
-                _query_params.append(('asAt', _params['as_at'].strftime(self.api_client.configuration.datetime_format)))
-            else:
-                _query_params.append(('asAt', _params['as_at']))
-
         if _params.get('scope') is not None:  # noqa: E501
             _query_params.append(('scope', _params['scope']))
 
@@ -1573,46 +1494,36 @@ class PoliciesApi:
             _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
+            opts=_params.get('opts'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @overload
-    async def list_policies(self, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The requested scope")] = None, as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, sort_by : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName")] = None, start : Annotated[Optional[StrictInt], Field(description="Optional. When paginating, skip this number of results")] = None, limit : Annotated[Optional[StrictInt], Field(description="Optional. When paginating, limit the number of returned results to this many.")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, **kwargs) -> List[PolicyResponse]:  # noqa: E501
+    async def list_policies(self, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The requested scope")] = None, **kwargs) -> List[PolicyResponse]:  # noqa: E501
         ...
 
     @overload
-    def list_policies(self, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The requested scope")] = None, as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, sort_by : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName")] = None, start : Annotated[Optional[StrictInt], Field(description="Optional. When paginating, skip this number of results")] = None, limit : Annotated[Optional[StrictInt], Field(description="Optional. When paginating, limit the number of returned results to this many.")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, async_req: Optional[bool]=True, **kwargs) -> List[PolicyResponse]:  # noqa: E501
+    def list_policies(self, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The requested scope")] = None, async_req: Optional[bool]=True, **kwargs) -> List[PolicyResponse]:  # noqa: E501
         ...
 
     @validate_arguments
-    def list_policies(self, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The requested scope")] = None, as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, sort_by : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName")] = None, start : Annotated[Optional[StrictInt], Field(description="Optional. When paginating, skip this number of results")] = None, limit : Annotated[Optional[StrictInt], Field(description="Optional. When paginating, limit the number of returned results to this many.")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[List[PolicyResponse], Awaitable[List[PolicyResponse]]]:  # noqa: E501
+    def list_policies(self, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The requested scope")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[List[PolicyResponse], Awaitable[List[PolicyResponse]]]:  # noqa: E501
         """ListPolicies: List Policies  # noqa: E501
 
         Gets all Policies in a scope. For pagination support, use PagePolicies.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.list_policies(scope, as_at, sort_by, start, limit, filter, async_req=True)
+        >>> thread = api.list_policies(scope, async_req=True)
         >>> result = thread.get()
 
         :param scope: Optional. Will use the default scope if not provided. The requested scope
         :type scope: str
-        :param as_at: Optional. The AsAt date time of the data
-        :type as_at: datetime
-        :param sort_by: Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
-        :type sort_by: List[str]
-        :param start: Optional. When paginating, skip this number of results
-        :type start: int
-        :param limit: Optional. When paginating, limit the number of returned results to this many.
-        :type limit: int
-        :param filter: Optional. Expression to filter the result set
-        :type filter: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1624,31 +1535,21 @@ class PoliciesApi:
             raise ValueError(message)
         if async_req is not None:
             kwargs['async_req'] = async_req
-        return self.list_policies_with_http_info(scope, as_at, sort_by, start, limit, filter, **kwargs)  # noqa: E501
+        return self.list_policies_with_http_info(scope, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_policies_with_http_info(self, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The requested scope")] = None, as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, sort_by : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName")] = None, start : Annotated[Optional[StrictInt], Field(description="Optional. When paginating, skip this number of results")] = None, limit : Annotated[Optional[StrictInt], Field(description="Optional. When paginating, limit the number of returned results to this many.")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_policies_with_http_info(self, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The requested scope")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """ListPolicies: List Policies  # noqa: E501
 
         Gets all Policies in a scope. For pagination support, use PagePolicies.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.list_policies_with_http_info(scope, as_at, sort_by, start, limit, filter, async_req=True)
+        >>> thread = api.list_policies_with_http_info(scope, async_req=True)
         >>> result = thread.get()
 
         :param scope: Optional. Will use the default scope if not provided. The requested scope
         :type scope: str
-        :param as_at: Optional. The AsAt date time of the data
-        :type as_at: datetime
-        :param sort_by: Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
-        :type sort_by: List[str]
-        :param start: Optional. When paginating, skip this number of results
-        :type start: int
-        :param limit: Optional. When paginating, limit the number of returned results to this many.
-        :type limit: int
-        :param filter: Optional. Expression to filter the result set
-        :type filter: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -1659,10 +1560,9 @@ class PoliciesApi:
         :param _return_http_data_only: response data instead of ApiResponse
                                        object with status code, headers, etc
         :type _return_http_data_only: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :param _request_auth: set to override the auth_settings for an a single
                               request; this effectively ignores the authentication
                               in the spec for a single request.
@@ -1677,12 +1577,7 @@ class PoliciesApi:
         _params = locals()
 
         _all_params = [
-            'scope',
-            'as_at',
-            'sort_by',
-            'start',
-            'limit',
-            'filter'
+            'scope'
         ]
         _all_params.extend(
             [
@@ -1692,7 +1587,8 @@ class PoliciesApi:
                 '_request_timeout',
                 '_request_auth',
                 '_content_type',
-                '_headers'
+                '_headers',
+                'opts'
             ]
         )
 
@@ -1715,25 +1611,6 @@ class PoliciesApi:
         _query_params = []
         if _params.get('scope') is not None:  # noqa: E501
             _query_params.append(('scope', _params['scope']))
-
-        if _params.get('as_at') is not None:  # noqa: E501
-            if isinstance(_params['as_at'], datetime):
-                _query_params.append(('asAt', _params['as_at'].strftime(self.api_client.configuration.datetime_format)))
-            else:
-                _query_params.append(('asAt', _params['as_at']))
-
-        if _params.get('sort_by') is not None:  # noqa: E501
-            _query_params.append(('sortBy', _params['sort_by']))
-            _collection_formats['sortBy'] = 'multi'
-
-        if _params.get('start') is not None:  # noqa: E501
-            _query_params.append(('start', _params['start']))
-
-        if _params.get('limit') is not None:  # noqa: E501
-            _query_params.append(('limit', _params['limit']))
-
-        if _params.get('filter') is not None:  # noqa: E501
-            _query_params.append(('filter', _params['filter']))
 
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
@@ -1768,46 +1645,36 @@ class PoliciesApi:
             _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
+            opts=_params.get('opts'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @overload
-    async def list_policy_collections(self, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The requested scope")] = None, as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, sort_by : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName")] = None, start : Annotated[Optional[StrictInt], Field(description="Optional. When paginating, skip this number of results")] = None, limit : Annotated[Optional[StrictInt], Field(description="Optional. 2000 if not provided. When paginating, limit the number of returned results to this many.")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, **kwargs) -> List[PolicyCollectionResponse]:  # noqa: E501
+    async def list_policy_collections(self, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The requested scope")] = None, **kwargs) -> List[PolicyCollectionResponse]:  # noqa: E501
         ...
 
     @overload
-    def list_policy_collections(self, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The requested scope")] = None, as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, sort_by : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName")] = None, start : Annotated[Optional[StrictInt], Field(description="Optional. When paginating, skip this number of results")] = None, limit : Annotated[Optional[StrictInt], Field(description="Optional. 2000 if not provided. When paginating, limit the number of returned results to this many.")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, async_req: Optional[bool]=True, **kwargs) -> List[PolicyCollectionResponse]:  # noqa: E501
+    def list_policy_collections(self, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The requested scope")] = None, async_req: Optional[bool]=True, **kwargs) -> List[PolicyCollectionResponse]:  # noqa: E501
         ...
 
     @validate_arguments
-    def list_policy_collections(self, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The requested scope")] = None, as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, sort_by : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName")] = None, start : Annotated[Optional[StrictInt], Field(description="Optional. When paginating, skip this number of results")] = None, limit : Annotated[Optional[StrictInt], Field(description="Optional. 2000 if not provided. When paginating, limit the number of returned results to this many.")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[List[PolicyCollectionResponse], Awaitable[List[PolicyCollectionResponse]]]:  # noqa: E501
+    def list_policy_collections(self, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The requested scope")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[List[PolicyCollectionResponse], Awaitable[List[PolicyCollectionResponse]]]:  # noqa: E501
         """ListPolicyCollections: List PolicyCollections  # noqa: E501
 
         Gets all PolicyCollections in a scope. For pagination support, use PagePolicyCollections  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.list_policy_collections(scope, as_at, sort_by, start, limit, filter, async_req=True)
+        >>> thread = api.list_policy_collections(scope, async_req=True)
         >>> result = thread.get()
 
         :param scope: Optional. Will use the default scope if not provided. The requested scope
         :type scope: str
-        :param as_at: Optional. The AsAt date time of the data
-        :type as_at: datetime
-        :param sort_by: Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
-        :type sort_by: List[str]
-        :param start: Optional. When paginating, skip this number of results
-        :type start: int
-        :param limit: Optional. 2000 if not provided. When paginating, limit the number of returned results to this many.
-        :type limit: int
-        :param filter: Optional. Expression to filter the result set
-        :type filter: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1819,31 +1686,21 @@ class PoliciesApi:
             raise ValueError(message)
         if async_req is not None:
             kwargs['async_req'] = async_req
-        return self.list_policy_collections_with_http_info(scope, as_at, sort_by, start, limit, filter, **kwargs)  # noqa: E501
+        return self.list_policy_collections_with_http_info(scope, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_policy_collections_with_http_info(self, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The requested scope")] = None, as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, sort_by : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName")] = None, start : Annotated[Optional[StrictInt], Field(description="Optional. When paginating, skip this number of results")] = None, limit : Annotated[Optional[StrictInt], Field(description="Optional. 2000 if not provided. When paginating, limit the number of returned results to this many.")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_policy_collections_with_http_info(self, scope : Annotated[Optional[constr(strict=True)], Field(description="Optional. Will use the default scope if not provided. The requested scope")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """ListPolicyCollections: List PolicyCollections  # noqa: E501
 
         Gets all PolicyCollections in a scope. For pagination support, use PagePolicyCollections  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.list_policy_collections_with_http_info(scope, as_at, sort_by, start, limit, filter, async_req=True)
+        >>> thread = api.list_policy_collections_with_http_info(scope, async_req=True)
         >>> result = thread.get()
 
         :param scope: Optional. Will use the default scope if not provided. The requested scope
         :type scope: str
-        :param as_at: Optional. The AsAt date time of the data
-        :type as_at: datetime
-        :param sort_by: Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
-        :type sort_by: List[str]
-        :param start: Optional. When paginating, skip this number of results
-        :type start: int
-        :param limit: Optional. 2000 if not provided. When paginating, limit the number of returned results to this many.
-        :type limit: int
-        :param filter: Optional. Expression to filter the result set
-        :type filter: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -1854,10 +1711,9 @@ class PoliciesApi:
         :param _return_http_data_only: response data instead of ApiResponse
                                        object with status code, headers, etc
         :type _return_http_data_only: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :param _request_auth: set to override the auth_settings for an a single
                               request; this effectively ignores the authentication
                               in the spec for a single request.
@@ -1872,12 +1728,7 @@ class PoliciesApi:
         _params = locals()
 
         _all_params = [
-            'scope',
-            'as_at',
-            'sort_by',
-            'start',
-            'limit',
-            'filter'
+            'scope'
         ]
         _all_params.extend(
             [
@@ -1887,7 +1738,8 @@ class PoliciesApi:
                 '_request_timeout',
                 '_request_auth',
                 '_content_type',
-                '_headers'
+                '_headers',
+                'opts'
             ]
         )
 
@@ -1910,25 +1762,6 @@ class PoliciesApi:
         _query_params = []
         if _params.get('scope') is not None:  # noqa: E501
             _query_params.append(('scope', _params['scope']))
-
-        if _params.get('as_at') is not None:  # noqa: E501
-            if isinstance(_params['as_at'], datetime):
-                _query_params.append(('asAt', _params['as_at'].strftime(self.api_client.configuration.datetime_format)))
-            else:
-                _query_params.append(('asAt', _params['as_at']))
-
-        if _params.get('sort_by') is not None:  # noqa: E501
-            _query_params.append(('sortBy', _params['sort_by']))
-            _collection_formats['sortBy'] = 'multi'
-
-        if _params.get('start') is not None:  # noqa: E501
-            _query_params.append(('start', _params['start']))
-
-        if _params.get('limit') is not None:  # noqa: E501
-            _query_params.append(('limit', _params['limit']))
-
-        if _params.get('filter') is not None:  # noqa: E501
-            _query_params.append(('filter', _params['filter']))
 
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
@@ -1963,30 +1796,29 @@ class PoliciesApi:
             _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
+            opts=_params.get('opts'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @overload
-    async def page_policies(self, as_at : Annotated[Optional[datetime], Field(description="Optional. Not currently used. The AsAt date time of the data")] = None, sort_by : Annotated[Optional[constr(strict=True, max_length=16384, min_length=1)], Field(description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[conint(strict=True, le=5000, ge=1)], Field(description="Optional. 2000 if not provided. When paginating, limit the number of returned results to this many")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, page : Annotated[Optional[constr(strict=True, max_length=500, min_length=1)], Field(description="Optional. Paging token returned from a previous result")] = None, **kwargs) -> ResourceListOfPolicyResponse:  # noqa: E501
+    async def page_policies(self, sort_by : Annotated[Optional[constr(strict=True, max_length=16384, min_length=1)], Field(description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[conint(strict=True, le=5000, ge=1)], Field(description="Optional. 2000 if not provided. When paginating, limit the number of returned results to this many")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, page : Annotated[Optional[constr(strict=True, max_length=500, min_length=1)], Field(description="Optional. Paging token returned from a previous result")] = None, **kwargs) -> ResourceListOfPolicyResponse:  # noqa: E501
         ...
 
     @overload
-    def page_policies(self, as_at : Annotated[Optional[datetime], Field(description="Optional. Not currently used. The AsAt date time of the data")] = None, sort_by : Annotated[Optional[constr(strict=True, max_length=16384, min_length=1)], Field(description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[conint(strict=True, le=5000, ge=1)], Field(description="Optional. 2000 if not provided. When paginating, limit the number of returned results to this many")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, page : Annotated[Optional[constr(strict=True, max_length=500, min_length=1)], Field(description="Optional. Paging token returned from a previous result")] = None, async_req: Optional[bool]=True, **kwargs) -> ResourceListOfPolicyResponse:  # noqa: E501
+    def page_policies(self, sort_by : Annotated[Optional[constr(strict=True, max_length=16384, min_length=1)], Field(description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[conint(strict=True, le=5000, ge=1)], Field(description="Optional. 2000 if not provided. When paginating, limit the number of returned results to this many")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, page : Annotated[Optional[constr(strict=True, max_length=500, min_length=1)], Field(description="Optional. Paging token returned from a previous result")] = None, async_req: Optional[bool]=True, **kwargs) -> ResourceListOfPolicyResponse:  # noqa: E501
         ...
 
     @validate_arguments
-    def page_policies(self, as_at : Annotated[Optional[datetime], Field(description="Optional. Not currently used. The AsAt date time of the data")] = None, sort_by : Annotated[Optional[constr(strict=True, max_length=16384, min_length=1)], Field(description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[conint(strict=True, le=5000, ge=1)], Field(description="Optional. 2000 if not provided. When paginating, limit the number of returned results to this many")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, page : Annotated[Optional[constr(strict=True, max_length=500, min_length=1)], Field(description="Optional. Paging token returned from a previous result")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[ResourceListOfPolicyResponse, Awaitable[ResourceListOfPolicyResponse]]:  # noqa: E501
+    def page_policies(self, sort_by : Annotated[Optional[constr(strict=True, max_length=16384, min_length=1)], Field(description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[conint(strict=True, le=5000, ge=1)], Field(description="Optional. 2000 if not provided. When paginating, limit the number of returned results to this many")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, page : Annotated[Optional[constr(strict=True, max_length=500, min_length=1)], Field(description="Optional. Paging token returned from a previous result")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[ResourceListOfPolicyResponse, Awaitable[ResourceListOfPolicyResponse]]:  # noqa: E501
         """PagePolicies: Page Policies  # noqa: E501
 
         Gets all Policies with pagination support.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.page_policies(as_at, sort_by, limit, filter, page, async_req=True)
+        >>> thread = api.page_policies(sort_by, limit, filter, page, async_req=True)
         >>> result = thread.get()
 
-        :param as_at: Optional. Not currently used. The AsAt date time of the data
-        :type as_at: datetime
         :param sort_by: Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName
         :type sort_by: str
         :param limit: Optional. 2000 if not provided. When paginating, limit the number of returned results to this many
@@ -1997,10 +1829,9 @@ class PoliciesApi:
         :type page: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2012,21 +1843,19 @@ class PoliciesApi:
             raise ValueError(message)
         if async_req is not None:
             kwargs['async_req'] = async_req
-        return self.page_policies_with_http_info(as_at, sort_by, limit, filter, page, **kwargs)  # noqa: E501
+        return self.page_policies_with_http_info(sort_by, limit, filter, page, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def page_policies_with_http_info(self, as_at : Annotated[Optional[datetime], Field(description="Optional. Not currently used. The AsAt date time of the data")] = None, sort_by : Annotated[Optional[constr(strict=True, max_length=16384, min_length=1)], Field(description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[conint(strict=True, le=5000, ge=1)], Field(description="Optional. 2000 if not provided. When paginating, limit the number of returned results to this many")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, page : Annotated[Optional[constr(strict=True, max_length=500, min_length=1)], Field(description="Optional. Paging token returned from a previous result")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def page_policies_with_http_info(self, sort_by : Annotated[Optional[constr(strict=True, max_length=16384, min_length=1)], Field(description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[conint(strict=True, le=5000, ge=1)], Field(description="Optional. 2000 if not provided. When paginating, limit the number of returned results to this many")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, page : Annotated[Optional[constr(strict=True, max_length=500, min_length=1)], Field(description="Optional. Paging token returned from a previous result")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """PagePolicies: Page Policies  # noqa: E501
 
         Gets all Policies with pagination support.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.page_policies_with_http_info(as_at, sort_by, limit, filter, page, async_req=True)
+        >>> thread = api.page_policies_with_http_info(sort_by, limit, filter, page, async_req=True)
         >>> result = thread.get()
 
-        :param as_at: Optional. Not currently used. The AsAt date time of the data
-        :type as_at: datetime
         :param sort_by: Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName
         :type sort_by: str
         :param limit: Optional. 2000 if not provided. When paginating, limit the number of returned results to this many
@@ -2045,10 +1874,9 @@ class PoliciesApi:
         :param _return_http_data_only: response data instead of ApiResponse
                                        object with status code, headers, etc
         :type _return_http_data_only: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :param _request_auth: set to override the auth_settings for an a single
                               request; this effectively ignores the authentication
                               in the spec for a single request.
@@ -2063,7 +1891,6 @@ class PoliciesApi:
         _params = locals()
 
         _all_params = [
-            'as_at',
             'sort_by',
             'limit',
             'filter',
@@ -2077,7 +1904,8 @@ class PoliciesApi:
                 '_request_timeout',
                 '_request_auth',
                 '_content_type',
-                '_headers'
+                '_headers',
+                'opts'
             ]
         )
 
@@ -2098,12 +1926,6 @@ class PoliciesApi:
 
         # process the query parameters
         _query_params = []
-        if _params.get('as_at') is not None:  # noqa: E501
-            if isinstance(_params['as_at'], datetime):
-                _query_params.append(('asAt', _params['as_at'].strftime(self.api_client.configuration.datetime_format)))
-            else:
-                _query_params.append(('asAt', _params['as_at']))
-
         if _params.get('sort_by') is not None:  # noqa: E501
             _query_params.append(('sortBy', _params['sort_by']))
 
@@ -2149,30 +1971,29 @@ class PoliciesApi:
             _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
+            opts=_params.get('opts'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @overload
-    async def page_policy_collections(self, as_at : Annotated[Optional[datetime], Field(description="Optional. Not currently used. The AsAt date time of the data")] = None, sort_by : Annotated[Optional[constr(strict=True, max_length=16384, min_length=1)], Field(description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[conint(strict=True, le=5000, ge=1)], Field(description="Optional. 2000 if not provided. When paginating, limit the number of returned results to this many")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, page : Annotated[Optional[constr(strict=True, max_length=500, min_length=1)], Field(description="Optional. Paging token returned from a previous result")] = None, **kwargs) -> ResourceListOfPolicyCollectionResponse:  # noqa: E501
+    async def page_policy_collections(self, sort_by : Annotated[Optional[constr(strict=True, max_length=16384, min_length=1)], Field(description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[conint(strict=True, le=5000, ge=1)], Field(description="Optional. 2000 if not provided. When paginating, limit the number of returned results to this many")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, page : Annotated[Optional[constr(strict=True, max_length=500, min_length=1)], Field(description="Optional. Paging token returned from a previous result")] = None, **kwargs) -> ResourceListOfPolicyCollectionResponse:  # noqa: E501
         ...
 
     @overload
-    def page_policy_collections(self, as_at : Annotated[Optional[datetime], Field(description="Optional. Not currently used. The AsAt date time of the data")] = None, sort_by : Annotated[Optional[constr(strict=True, max_length=16384, min_length=1)], Field(description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[conint(strict=True, le=5000, ge=1)], Field(description="Optional. 2000 if not provided. When paginating, limit the number of returned results to this many")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, page : Annotated[Optional[constr(strict=True, max_length=500, min_length=1)], Field(description="Optional. Paging token returned from a previous result")] = None, async_req: Optional[bool]=True, **kwargs) -> ResourceListOfPolicyCollectionResponse:  # noqa: E501
+    def page_policy_collections(self, sort_by : Annotated[Optional[constr(strict=True, max_length=16384, min_length=1)], Field(description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[conint(strict=True, le=5000, ge=1)], Field(description="Optional. 2000 if not provided. When paginating, limit the number of returned results to this many")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, page : Annotated[Optional[constr(strict=True, max_length=500, min_length=1)], Field(description="Optional. Paging token returned from a previous result")] = None, async_req: Optional[bool]=True, **kwargs) -> ResourceListOfPolicyCollectionResponse:  # noqa: E501
         ...
 
     @validate_arguments
-    def page_policy_collections(self, as_at : Annotated[Optional[datetime], Field(description="Optional. Not currently used. The AsAt date time of the data")] = None, sort_by : Annotated[Optional[constr(strict=True, max_length=16384, min_length=1)], Field(description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[conint(strict=True, le=5000, ge=1)], Field(description="Optional. 2000 if not provided. When paginating, limit the number of returned results to this many")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, page : Annotated[Optional[constr(strict=True, max_length=500, min_length=1)], Field(description="Optional. Paging token returned from a previous result")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[ResourceListOfPolicyCollectionResponse, Awaitable[ResourceListOfPolicyCollectionResponse]]:  # noqa: E501
+    def page_policy_collections(self, sort_by : Annotated[Optional[constr(strict=True, max_length=16384, min_length=1)], Field(description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[conint(strict=True, le=5000, ge=1)], Field(description="Optional. 2000 if not provided. When paginating, limit the number of returned results to this many")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, page : Annotated[Optional[constr(strict=True, max_length=500, min_length=1)], Field(description="Optional. Paging token returned from a previous result")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[ResourceListOfPolicyCollectionResponse, Awaitable[ResourceListOfPolicyCollectionResponse]]:  # noqa: E501
         """PagePolicyCollections: Page PolicyCollections  # noqa: E501
 
         Gets all PolicyCollections with pagination support.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.page_policy_collections(as_at, sort_by, limit, filter, page, async_req=True)
+        >>> thread = api.page_policy_collections(sort_by, limit, filter, page, async_req=True)
         >>> result = thread.get()
 
-        :param as_at: Optional. Not currently used. The AsAt date time of the data
-        :type as_at: datetime
         :param sort_by: Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName
         :type sort_by: str
         :param limit: Optional. 2000 if not provided. When paginating, limit the number of returned results to this many
@@ -2183,10 +2004,9 @@ class PoliciesApi:
         :type page: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2198,21 +2018,19 @@ class PoliciesApi:
             raise ValueError(message)
         if async_req is not None:
             kwargs['async_req'] = async_req
-        return self.page_policy_collections_with_http_info(as_at, sort_by, limit, filter, page, **kwargs)  # noqa: E501
+        return self.page_policy_collections_with_http_info(sort_by, limit, filter, page, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def page_policy_collections_with_http_info(self, as_at : Annotated[Optional[datetime], Field(description="Optional. Not currently used. The AsAt date time of the data")] = None, sort_by : Annotated[Optional[constr(strict=True, max_length=16384, min_length=1)], Field(description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[conint(strict=True, le=5000, ge=1)], Field(description="Optional. 2000 if not provided. When paginating, limit the number of returned results to this many")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, page : Annotated[Optional[constr(strict=True, max_length=500, min_length=1)], Field(description="Optional. Paging token returned from a previous result")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def page_policy_collections_with_http_info(self, sort_by : Annotated[Optional[constr(strict=True, max_length=16384, min_length=1)], Field(description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[conint(strict=True, le=5000, ge=1)], Field(description="Optional. 2000 if not provided. When paginating, limit the number of returned results to this many")] = None, filter : Annotated[Optional[constr(strict=True, max_length=16384, min_length=0)], Field(description="Optional. Expression to filter the result set")] = None, page : Annotated[Optional[constr(strict=True, max_length=500, min_length=1)], Field(description="Optional. Paging token returned from a previous result")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """PagePolicyCollections: Page PolicyCollections  # noqa: E501
 
         Gets all PolicyCollections with pagination support.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.page_policy_collections_with_http_info(as_at, sort_by, limit, filter, page, async_req=True)
+        >>> thread = api.page_policy_collections_with_http_info(sort_by, limit, filter, page, async_req=True)
         >>> result = thread.get()
 
-        :param as_at: Optional. Not currently used. The AsAt date time of the data
-        :type as_at: datetime
         :param sort_by: Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName
         :type sort_by: str
         :param limit: Optional. 2000 if not provided. When paginating, limit the number of returned results to this many
@@ -2231,10 +2049,9 @@ class PoliciesApi:
         :param _return_http_data_only: response data instead of ApiResponse
                                        object with status code, headers, etc
         :type _return_http_data_only: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :param _request_auth: set to override the auth_settings for an a single
                               request; this effectively ignores the authentication
                               in the spec for a single request.
@@ -2249,7 +2066,6 @@ class PoliciesApi:
         _params = locals()
 
         _all_params = [
-            'as_at',
             'sort_by',
             'limit',
             'filter',
@@ -2263,7 +2079,8 @@ class PoliciesApi:
                 '_request_timeout',
                 '_request_auth',
                 '_content_type',
-                '_headers'
+                '_headers',
+                'opts'
             ]
         )
 
@@ -2284,12 +2101,6 @@ class PoliciesApi:
 
         # process the query parameters
         _query_params = []
-        if _params.get('as_at') is not None:  # noqa: E501
-            if isinstance(_params['as_at'], datetime):
-                _query_params.append(('asAt', _params['as_at'].strftime(self.api_client.configuration.datetime_format)))
-            else:
-                _query_params.append(('asAt', _params['as_at']))
-
         if _params.get('sort_by') is not None:  # noqa: E501
             _query_params.append(('sortBy', _params['sort_by']))
 
@@ -2335,6 +2146,7 @@ class PoliciesApi:
             _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
+            opts=_params.get('opts'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
@@ -2365,10 +2177,9 @@ class PoliciesApi:
         :type scope: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2409,10 +2220,9 @@ class PoliciesApi:
         :param _return_http_data_only: response data instead of ApiResponse
                                        object with status code, headers, etc
         :type _return_http_data_only: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :param _request_auth: set to override the auth_settings for an a single
                               request; this effectively ignores the authentication
                               in the spec for a single request.
@@ -2439,7 +2249,8 @@ class PoliciesApi:
                 '_request_timeout',
                 '_request_auth',
                 '_content_type',
-                '_headers'
+                '_headers',
+                'opts'
             ]
         )
 
@@ -2509,6 +2320,7 @@ class PoliciesApi:
             _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
+            opts=_params.get('opts'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
@@ -2539,10 +2351,9 @@ class PoliciesApi:
         :type scope: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2583,10 +2394,9 @@ class PoliciesApi:
         :param _return_http_data_only: response data instead of ApiResponse
                                        object with status code, headers, etc
         :type _return_http_data_only: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :param _request_auth: set to override the auth_settings for an a single
                               request; this effectively ignores the authentication
                               in the spec for a single request.
@@ -2613,7 +2423,8 @@ class PoliciesApi:
                 '_request_timeout',
                 '_request_auth',
                 '_content_type',
-                '_headers'
+                '_headers',
+                'opts'
             ]
         )
 
@@ -2683,6 +2494,7 @@ class PoliciesApi:
             _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
+            opts=_params.get('opts'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
@@ -2713,10 +2525,9 @@ class PoliciesApi:
         :type scope: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2757,10 +2568,9 @@ class PoliciesApi:
         :param _return_http_data_only: response data instead of ApiResponse
                                        object with status code, headers, etc
         :type _return_http_data_only: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
+        :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
+        :param opts: Configuration options for this request
+        :type opts: ConfigurationOptions, optional
         :param _request_auth: set to override the auth_settings for an a single
                               request; this effectively ignores the authentication
                               in the spec for a single request.
@@ -2787,7 +2597,8 @@ class PoliciesApi:
                 '_request_timeout',
                 '_request_auth',
                 '_content_type',
-                '_headers'
+                '_headers',
+                'opts'
             ]
         )
 
@@ -2857,5 +2668,6 @@ class PoliciesApi:
             _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
+            opts=_params.get('opts'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))

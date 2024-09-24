@@ -34,6 +34,7 @@ Add Policies and/or PolicyCollections to a PolicyCollection
 ```python
 import asyncio
 from finbourne_access.exceptions import ApiException
+from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
@@ -60,6 +61,14 @@ async def main():
     # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
+
+    # uncomment the below to use configuration overrides
+    # opts = ConfigurationOptions();
+    # opts.total_timeout_ms = 30_000
+
+    # uncomment the below to use an api client factory with overrides
+    # api_client_factory = ApiClientFactory(opts=opts)
+
     api_client_factory = ApiClientFactory()
 
     # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
@@ -76,6 +85,9 @@ async def main():
         scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the PolicyCollection (optional)
 
         try:
+            # uncomment the below to set overrides at the request level
+            # api_response = await api_instance.add_to_policy_collection(code, add_to_policy_collection_request, scope=scope, opts=opts)
+
             # AddToPolicyCollection: Add To PolicyCollection
             api_response = await api_instance.add_to_policy_collection(code, add_to_policy_collection_request, scope=scope)
             pprint(api_response)
@@ -123,6 +135,7 @@ Creates a Policy
 ```python
 import asyncio
 from finbourne_access.exceptions import ApiException
+from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
@@ -149,6 +162,14 @@ async def main():
     # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
+
+    # uncomment the below to use configuration overrides
+    # opts = ConfigurationOptions();
+    # opts.total_timeout_ms = 30_000
+
+    # uncomment the below to use an api client factory with overrides
+    # api_client_factory = ApiClientFactory(opts=opts)
+
     api_client_factory = ApiClientFactory()
 
     # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
@@ -163,6 +184,9 @@ async def main():
         policy_creation_request = PolicyCreationRequest.from_dict({"code":"example-policy","description":"Example policy demonstrating their creation","applications":["LUSID"],"grant":"Allow","selectors":[{"idSelectorDefinition":{"identifier":{"scope":"official"},"actions":[{"scope":"default","activity":"Read","entity":"Portfolio"},{"scope":"default","activity":"Aggregate","entity":"Portfolio"}],"name":"access-official-scope","description":"Allow readonly access to the 'official' scope"}}],"for":[{"effectiveRange":{"from":"2015-12-25T00:00:00.0000000+00:00","to":"2020-12-25T00:00:00.0000000+00:00"}},{"asAtRangeForSpec":{"from":{"dateTimeOffset":"2018-01-01T00:00:00.0000000+00:00"},"to":{"value":"AsAt=Latest"}}}],"if":[{"ifRequestHeaderExpression":{"headerName":"organisation.specific.group.header","operator":"EqualsCaseInsensitive","value":"special-group"}}],"when":{"activate":"2016-08-31T18:00:00.0000000+00:00","deactivate":"2020-08-31T18:00:00.0000000+00:00"}}) # PolicyCreationRequest | The definition of the Policy
 
         try:
+            # uncomment the below to set overrides at the request level
+            # api_response = await api_instance.create_policy(policy_creation_request, opts=opts)
+
             # CreatePolicy: Create Policy
             api_response = await api_instance.create_policy(policy_creation_request)
             pprint(api_response)
@@ -208,6 +232,7 @@ Creates a PolicyCollection
 ```python
 import asyncio
 from finbourne_access.exceptions import ApiException
+from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
@@ -234,6 +259,14 @@ async def main():
     # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
+
+    # uncomment the below to use configuration overrides
+    # opts = ConfigurationOptions();
+    # opts.total_timeout_ms = 30_000
+
+    # uncomment the below to use an api client factory with overrides
+    # api_client_factory = ApiClientFactory(opts=opts)
+
     api_client_factory = ApiClientFactory()
 
     # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
@@ -248,6 +281,9 @@ async def main():
         policy_collection_creation_request = PolicyCollectionCreationRequest.from_dict({"code":"example-policy-collection","policies":[{"scope":"default","code":"official-portfolios-read-only"},{"scope":"default","code":"desk-portfolios"}],"metadata":{},"policyCollections":[{"scope":"default","code":"CompanyEmployeeAccess"}],"description":"Example policy collection"}) # PolicyCollectionCreationRequest | The definition of the PolicyCollection
 
         try:
+            # uncomment the below to set overrides at the request level
+            # api_response = await api_instance.create_policy_collection(policy_collection_creation_request, opts=opts)
+
             # CreatePolicyCollection: Create PolicyCollection
             api_response = await api_instance.create_policy_collection(policy_collection_creation_request)
             pprint(api_response)
@@ -293,6 +329,7 @@ Deletes an identified Policy
 ```python
 import asyncio
 from finbourne_access.exceptions import ApiException
+from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
@@ -319,6 +356,14 @@ async def main():
     # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
+
+    # uncomment the below to use configuration overrides
+    # opts = ConfigurationOptions();
+    # opts.total_timeout_ms = 30_000
+
+    # uncomment the below to use an api client factory with overrides
+    # api_client_factory = ApiClientFactory(opts=opts)
+
     api_client_factory = ApiClientFactory()
 
     # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
@@ -329,6 +374,9 @@ async def main():
         scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the Policy (optional)
 
         try:
+            # uncomment the below to set overrides at the request level
+            # await api_instance.delete_policy(code, scope=scope, opts=opts)
+
             # DeletePolicy: Delete Policy
             await api_instance.delete_policy(code, scope=scope)        except ApiException as e:
             print("Exception when calling PoliciesApi->delete_policy: %s\n" % e)
@@ -373,6 +421,7 @@ Deletes an identified PolicyCollection
 ```python
 import asyncio
 from finbourne_access.exceptions import ApiException
+from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
@@ -399,6 +448,14 @@ async def main():
     # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
+
+    # uncomment the below to use configuration overrides
+    # opts = ConfigurationOptions();
+    # opts.total_timeout_ms = 30_000
+
+    # uncomment the below to use an api client factory with overrides
+    # api_client_factory = ApiClientFactory(opts=opts)
+
     api_client_factory = ApiClientFactory()
 
     # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
@@ -409,6 +466,9 @@ async def main():
         scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the PolicyCollection (optional)
 
         try:
+            # uncomment the below to set overrides at the request level
+            # await api_instance.delete_policy_collection(code, scope=scope, opts=opts)
+
             # DeletePolicyCollection: Delete PolicyCollection
             await api_instance.delete_policy_collection(code, scope=scope)        except ApiException as e:
             print("Exception when calling PoliciesApi->delete_policy_collection: %s\n" % e)
@@ -442,7 +502,7 @@ void (empty response body)
 [Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
 
 # **evaluate**
-> Dict[str, EvaluationResponse] evaluate(request_body, applications=applications, as_at=as_at)
+> Dict[str, EvaluationResponse] evaluate(request_body, applications=applications)
 
 Evaluate: Run one or more evaluations
 
@@ -453,6 +513,7 @@ Given a dictionary of evaluation requests (keyed by any arbitrary correlation id
 ```python
 import asyncio
 from finbourne_access.exceptions import ApiException
+from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
@@ -479,6 +540,14 @@ async def main():
     # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
+
+    # uncomment the below to use configuration overrides
+    # opts = ConfigurationOptions();
+    # opts.total_timeout_ms = 30_000
+
+    # uncomment the below to use an api client factory with overrides
+    # api_client_factory = ApiClientFactory(opts=opts)
+
     api_client_factory = ApiClientFactory()
 
     # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
@@ -487,11 +556,13 @@ async def main():
         api_instance = api_client_factory.build(PoliciesApi)
         request_body = {"data-access-page-evaluation":{"request":{"action":{"entityCode":"WebSitePage","scope":"FINBOURNE","activity":"SeeAdminControls"},"toEffectiveDate":"2018-12-08T13:30:00.0000000+00:00","toAsAt":"2018-12-31T11:00:00.0000000+00:00"},"resource":{"id":{"scope":"FINBOURNE","code":"DataAccessPage"},"metadata":{"RequiredLicence":[{"provider":"WebsiteAccess","value":"FINBOURNE"}]}}}} # Dict[str, EvaluationRequest] | A dictionary of evaluations, keyed using any arbitrary correlation id (it will be returned with the response for that evaluation).
         applications = ['applications_example'] # List[str] | Optional. The application type of the roles and policies to use when evaluating. (optional)
-        as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The requested AsAt date of the entitlements (optional)
 
         try:
+            # uncomment the below to set overrides at the request level
+            # api_response = await api_instance.evaluate(request_body, applications=applications, opts=opts)
+
             # Evaluate: Run one or more evaluations
-            api_response = await api_instance.evaluate(request_body, applications=applications, as_at=as_at)
+            api_response = await api_instance.evaluate(request_body, applications=applications)
             pprint(api_response)
         except ApiException as e:
             print("Exception when calling PoliciesApi->evaluate: %s\n" % e)
@@ -505,7 +576,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **request_body** | [**Dict[str, EvaluationRequest]**](EvaluationRequest.md)| A dictionary of evaluations, keyed using any arbitrary correlation id (it will be returned with the response for that evaluation). | 
  **applications** | [**List[str]**](str.md)| Optional. The application type of the roles and policies to use when evaluating. | [optional] 
- **as_at** | **datetime**| Optional. The requested AsAt date of the entitlements | [optional] 
 
 ### Return type
 
@@ -526,7 +596,7 @@ Name | Type | Description  | Notes
 [Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
 
 # **get_own_policies**
-> List[AttachedPolicyDefinitionResponse] get_own_policies(applications=applications, as_at=as_at, sort_by=sort_by, start=start, limit=limit, filter=filter)
+> List[AttachedPolicyDefinitionResponse] get_own_policies(applications=applications)
 
 GetOwnPolicies: Get policies of requesting user
 
@@ -537,6 +607,7 @@ Gets all Policies for the current user
 ```python
 import asyncio
 from finbourne_access.exceptions import ApiException
+from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
@@ -563,6 +634,14 @@ async def main():
     # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
+
+    # uncomment the below to use configuration overrides
+    # opts = ConfigurationOptions();
+    # opts.total_timeout_ms = 30_000
+
+    # uncomment the below to use an api client factory with overrides
+    # api_client_factory = ApiClientFactory(opts=opts)
+
     api_client_factory = ApiClientFactory()
 
     # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
@@ -570,15 +649,13 @@ async def main():
         # Create an instance of the API class
         api_instance = api_client_factory.build(PoliciesApi)
         applications = ['applications_example'] # List[str] | Optional. Filter on the applications that the policies apply to (optional)
-        as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The AsAt date time of the data (optional)
-        sort_by = ['sort_by_example'] # List[str] | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName (optional)
-        start = 56 # int | Optional. When paginating, skip this number of results (optional)
-        limit = 56 # int | Optional. When paginating, limit the number of returned results to this many. (optional)
-        filter = 'filter_example' # str | Optional. Expression to filter the result set (optional)
 
         try:
+            # uncomment the below to set overrides at the request level
+            # api_response = await api_instance.get_own_policies(applications=applications, opts=opts)
+
             # GetOwnPolicies: Get policies of requesting user
-            api_response = await api_instance.get_own_policies(applications=applications, as_at=as_at, sort_by=sort_by, start=start, limit=limit, filter=filter)
+            api_response = await api_instance.get_own_policies(applications=applications)
             pprint(api_response)
         except ApiException as e:
             print("Exception when calling PoliciesApi->get_own_policies: %s\n" % e)
@@ -591,11 +668,6 @@ asyncio.run(main())
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applications** | [**List[str]**](str.md)| Optional. Filter on the applications that the policies apply to | [optional] 
- **as_at** | **datetime**| Optional. The AsAt date time of the data | [optional] 
- **sort_by** | [**List[str]**](str.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional] 
- **start** | **int**| Optional. When paginating, skip this number of results | [optional] 
- **limit** | **int**| Optional. When paginating, limit the number of returned results to this many. | [optional] 
- **filter** | **str**| Optional. Expression to filter the result set | [optional] 
 
 ### Return type
 
@@ -616,7 +688,7 @@ Name | Type | Description  | Notes
 [Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
 
 # **get_policy**
-> PolicyResponse get_policy(code, as_at=as_at, scope=scope)
+> PolicyResponse get_policy(code, scope=scope)
 
 GetPolicy: Get Policy
 
@@ -627,6 +699,7 @@ Gets an identified Policy
 ```python
 import asyncio
 from finbourne_access.exceptions import ApiException
+from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
@@ -653,6 +726,14 @@ async def main():
     # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
+
+    # uncomment the below to use configuration overrides
+    # opts = ConfigurationOptions();
+    # opts.total_timeout_ms = 30_000
+
+    # uncomment the below to use an api client factory with overrides
+    # api_client_factory = ApiClientFactory(opts=opts)
+
     api_client_factory = ApiClientFactory()
 
     # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
@@ -660,12 +741,14 @@ async def main():
         # Create an instance of the API class
         api_instance = api_client_factory.build(PoliciesApi)
         code = 'code_example' # str | The code of the Policy
-        as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The AsAt date time of the data (optional)
         scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the Policy (optional)
 
         try:
+            # uncomment the below to set overrides at the request level
+            # api_response = await api_instance.get_policy(code, scope=scope, opts=opts)
+
             # GetPolicy: Get Policy
-            api_response = await api_instance.get_policy(code, as_at=as_at, scope=scope)
+            api_response = await api_instance.get_policy(code, scope=scope)
             pprint(api_response)
         except ApiException as e:
             print("Exception when calling PoliciesApi->get_policy: %s\n" % e)
@@ -678,7 +761,6 @@ asyncio.run(main())
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **code** | **str**| The code of the Policy | 
- **as_at** | **datetime**| Optional. The AsAt date time of the data | [optional] 
  **scope** | **str**| Optional. Will use the default scope if not provided. The scope of the Policy | [optional] 
 
 ### Return type
@@ -700,7 +782,7 @@ Name | Type | Description  | Notes
 [Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
 
 # **get_policy_collection**
-> PolicyCollectionResponse get_policy_collection(code, as_at=as_at, scope=scope)
+> PolicyCollectionResponse get_policy_collection(code, scope=scope)
 
 GetPolicyCollection: Get PolicyCollection
 
@@ -711,6 +793,7 @@ Gets an identified PolicyCollection
 ```python
 import asyncio
 from finbourne_access.exceptions import ApiException
+from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
@@ -737,6 +820,14 @@ async def main():
     # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
+
+    # uncomment the below to use configuration overrides
+    # opts = ConfigurationOptions();
+    # opts.total_timeout_ms = 30_000
+
+    # uncomment the below to use an api client factory with overrides
+    # api_client_factory = ApiClientFactory(opts=opts)
+
     api_client_factory = ApiClientFactory()
 
     # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
@@ -744,12 +835,14 @@ async def main():
         # Create an instance of the API class
         api_instance = api_client_factory.build(PoliciesApi)
         code = 'code_example' # str | The code of the PolicyCollection
-        as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The AsAt date time of the data (optional)
         scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the PolicyCollection (optional)
 
         try:
+            # uncomment the below to set overrides at the request level
+            # api_response = await api_instance.get_policy_collection(code, scope=scope, opts=opts)
+
             # GetPolicyCollection: Get PolicyCollection
-            api_response = await api_instance.get_policy_collection(code, as_at=as_at, scope=scope)
+            api_response = await api_instance.get_policy_collection(code, scope=scope)
             pprint(api_response)
         except ApiException as e:
             print("Exception when calling PoliciesApi->get_policy_collection: %s\n" % e)
@@ -762,7 +855,6 @@ asyncio.run(main())
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **code** | **str**| The code of the PolicyCollection | 
- **as_at** | **datetime**| Optional. The AsAt date time of the data | [optional] 
  **scope** | **str**| Optional. Will use the default scope if not provided. The scope of the PolicyCollection | [optional] 
 
 ### Return type
@@ -784,7 +876,7 @@ Name | Type | Description  | Notes
 [Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
 
 # **list_policies**
-> List[PolicyResponse] list_policies(scope=scope, as_at=as_at, sort_by=sort_by, start=start, limit=limit, filter=filter)
+> List[PolicyResponse] list_policies(scope=scope)
 
 ListPolicies: List Policies
 
@@ -795,6 +887,7 @@ Gets all Policies in a scope. For pagination support, use PagePolicies.
 ```python
 import asyncio
 from finbourne_access.exceptions import ApiException
+from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
@@ -821,6 +914,14 @@ async def main():
     # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
+
+    # uncomment the below to use configuration overrides
+    # opts = ConfigurationOptions();
+    # opts.total_timeout_ms = 30_000
+
+    # uncomment the below to use an api client factory with overrides
+    # api_client_factory = ApiClientFactory(opts=opts)
+
     api_client_factory = ApiClientFactory()
 
     # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
@@ -828,15 +929,13 @@ async def main():
         # Create an instance of the API class
         api_instance = api_client_factory.build(PoliciesApi)
         scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The requested scope (optional)
-        as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The AsAt date time of the data (optional)
-        sort_by = ['sort_by_example'] # List[str] | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName (optional)
-        start = 56 # int | Optional. When paginating, skip this number of results (optional)
-        limit = 56 # int | Optional. When paginating, limit the number of returned results to this many. (optional)
-        filter = 'filter_example' # str | Optional. Expression to filter the result set (optional)
 
         try:
+            # uncomment the below to set overrides at the request level
+            # api_response = await api_instance.list_policies(scope=scope, opts=opts)
+
             # ListPolicies: List Policies
-            api_response = await api_instance.list_policies(scope=scope, as_at=as_at, sort_by=sort_by, start=start, limit=limit, filter=filter)
+            api_response = await api_instance.list_policies(scope=scope)
             pprint(api_response)
         except ApiException as e:
             print("Exception when calling PoliciesApi->list_policies: %s\n" % e)
@@ -849,11 +948,6 @@ asyncio.run(main())
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **str**| Optional. Will use the default scope if not provided. The requested scope | [optional] 
- **as_at** | **datetime**| Optional. The AsAt date time of the data | [optional] 
- **sort_by** | [**List[str]**](str.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional] 
- **start** | **int**| Optional. When paginating, skip this number of results | [optional] 
- **limit** | **int**| Optional. When paginating, limit the number of returned results to this many. | [optional] 
- **filter** | **str**| Optional. Expression to filter the result set | [optional] 
 
 ### Return type
 
@@ -874,7 +968,7 @@ Name | Type | Description  | Notes
 [Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
 
 # **list_policy_collections**
-> List[PolicyCollectionResponse] list_policy_collections(scope=scope, as_at=as_at, sort_by=sort_by, start=start, limit=limit, filter=filter)
+> List[PolicyCollectionResponse] list_policy_collections(scope=scope)
 
 ListPolicyCollections: List PolicyCollections
 
@@ -885,6 +979,7 @@ Gets all PolicyCollections in a scope. For pagination support, use PagePolicyCol
 ```python
 import asyncio
 from finbourne_access.exceptions import ApiException
+from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
@@ -911,6 +1006,14 @@ async def main():
     # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
+
+    # uncomment the below to use configuration overrides
+    # opts = ConfigurationOptions();
+    # opts.total_timeout_ms = 30_000
+
+    # uncomment the below to use an api client factory with overrides
+    # api_client_factory = ApiClientFactory(opts=opts)
+
     api_client_factory = ApiClientFactory()
 
     # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
@@ -918,15 +1021,13 @@ async def main():
         # Create an instance of the API class
         api_instance = api_client_factory.build(PoliciesApi)
         scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The requested scope (optional)
-        as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The AsAt date time of the data (optional)
-        sort_by = ['sort_by_example'] # List[str] | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName (optional)
-        start = 56 # int | Optional. When paginating, skip this number of results (optional)
-        limit = 56 # int | Optional. 2000 if not provided. When paginating, limit the number of returned results to this many. (optional)
-        filter = 'filter_example' # str | Optional. Expression to filter the result set (optional)
 
         try:
+            # uncomment the below to set overrides at the request level
+            # api_response = await api_instance.list_policy_collections(scope=scope, opts=opts)
+
             # ListPolicyCollections: List PolicyCollections
-            api_response = await api_instance.list_policy_collections(scope=scope, as_at=as_at, sort_by=sort_by, start=start, limit=limit, filter=filter)
+            api_response = await api_instance.list_policy_collections(scope=scope)
             pprint(api_response)
         except ApiException as e:
             print("Exception when calling PoliciesApi->list_policy_collections: %s\n" % e)
@@ -939,11 +1040,6 @@ asyncio.run(main())
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **str**| Optional. Will use the default scope if not provided. The requested scope | [optional] 
- **as_at** | **datetime**| Optional. The AsAt date time of the data | [optional] 
- **sort_by** | [**List[str]**](str.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional] 
- **start** | **int**| Optional. When paginating, skip this number of results | [optional] 
- **limit** | **int**| Optional. 2000 if not provided. When paginating, limit the number of returned results to this many. | [optional] 
- **filter** | **str**| Optional. Expression to filter the result set | [optional] 
 
 ### Return type
 
@@ -964,7 +1060,7 @@ Name | Type | Description  | Notes
 [Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
 
 # **page_policies**
-> ResourceListOfPolicyResponse page_policies(as_at=as_at, sort_by=sort_by, limit=limit, filter=filter, page=page)
+> ResourceListOfPolicyResponse page_policies(sort_by=sort_by, limit=limit, filter=filter, page=page)
 
 PagePolicies: Page Policies
 
@@ -975,6 +1071,7 @@ Gets all Policies with pagination support.
 ```python
 import asyncio
 from finbourne_access.exceptions import ApiException
+from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
@@ -1001,21 +1098,31 @@ async def main():
     # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
+
+    # uncomment the below to use configuration overrides
+    # opts = ConfigurationOptions();
+    # opts.total_timeout_ms = 30_000
+
+    # uncomment the below to use an api client factory with overrides
+    # api_client_factory = ApiClientFactory(opts=opts)
+
     api_client_factory = ApiClientFactory()
 
     # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
     async with api_client_factory:
         # Create an instance of the API class
         api_instance = api_client_factory.build(PoliciesApi)
-        as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. Not currently used. The AsAt date time of the data (optional)
         sort_by = 'sort_by_example' # str | Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName (optional)
         limit = 56 # int | Optional. 2000 if not provided. When paginating, limit the number of returned results to this many (optional)
         filter = 'filter_example' # str | Optional. Expression to filter the result set (optional)
         page = 'page_example' # str | Optional. Paging token returned from a previous result (optional)
 
         try:
+            # uncomment the below to set overrides at the request level
+            # api_response = await api_instance.page_policies(sort_by=sort_by, limit=limit, filter=filter, page=page, opts=opts)
+
             # PagePolicies: Page Policies
-            api_response = await api_instance.page_policies(as_at=as_at, sort_by=sort_by, limit=limit, filter=filter, page=page)
+            api_response = await api_instance.page_policies(sort_by=sort_by, limit=limit, filter=filter, page=page)
             pprint(api_response)
         except ApiException as e:
             print("Exception when calling PoliciesApi->page_policies: %s\n" % e)
@@ -1027,7 +1134,6 @@ asyncio.run(main())
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **as_at** | **datetime**| Optional. Not currently used. The AsAt date time of the data | [optional] 
  **sort_by** | **str**| Optional. Order the results by these fields. Use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional] 
  **limit** | **int**| Optional. 2000 if not provided. When paginating, limit the number of returned results to this many | [optional] 
  **filter** | **str**| Optional. Expression to filter the result set | [optional] 
@@ -1052,7 +1158,7 @@ Name | Type | Description  | Notes
 [Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
 
 # **page_policy_collections**
-> ResourceListOfPolicyCollectionResponse page_policy_collections(as_at=as_at, sort_by=sort_by, limit=limit, filter=filter, page=page)
+> ResourceListOfPolicyCollectionResponse page_policy_collections(sort_by=sort_by, limit=limit, filter=filter, page=page)
 
 PagePolicyCollections: Page PolicyCollections
 
@@ -1063,6 +1169,7 @@ Gets all PolicyCollections with pagination support.
 ```python
 import asyncio
 from finbourne_access.exceptions import ApiException
+from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
@@ -1089,21 +1196,31 @@ async def main():
     # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
+
+    # uncomment the below to use configuration overrides
+    # opts = ConfigurationOptions();
+    # opts.total_timeout_ms = 30_000
+
+    # uncomment the below to use an api client factory with overrides
+    # api_client_factory = ApiClientFactory(opts=opts)
+
     api_client_factory = ApiClientFactory()
 
     # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
     async with api_client_factory:
         # Create an instance of the API class
         api_instance = api_client_factory.build(PoliciesApi)
-        as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. Not currently used. The AsAt date time of the data (optional)
         sort_by = 'sort_by_example' # str | Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName (optional)
         limit = 56 # int | Optional. 2000 if not provided. When paginating, limit the number of returned results to this many (optional)
         filter = 'filter_example' # str | Optional. Expression to filter the result set (optional)
         page = 'page_example' # str | Optional. Paging token returned from a previous result (optional)
 
         try:
+            # uncomment the below to set overrides at the request level
+            # api_response = await api_instance.page_policy_collections(sort_by=sort_by, limit=limit, filter=filter, page=page, opts=opts)
+
             # PagePolicyCollections: Page PolicyCollections
-            api_response = await api_instance.page_policy_collections(as_at=as_at, sort_by=sort_by, limit=limit, filter=filter, page=page)
+            api_response = await api_instance.page_policy_collections(sort_by=sort_by, limit=limit, filter=filter, page=page)
             pprint(api_response)
         except ApiException as e:
             print("Exception when calling PoliciesApi->page_policy_collections: %s\n" % e)
@@ -1115,7 +1232,6 @@ asyncio.run(main())
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **as_at** | **datetime**| Optional. Not currently used. The AsAt date time of the data | [optional] 
  **sort_by** | **str**| Optional. Order the results by these fields. Use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional] 
  **limit** | **int**| Optional. 2000 if not provided. When paginating, limit the number of returned results to this many | [optional] 
  **filter** | **str**| Optional. Expression to filter the result set | [optional] 
@@ -1151,6 +1267,7 @@ Remove Policies and/or PolicyCollections from a PolicyCollection
 ```python
 import asyncio
 from finbourne_access.exceptions import ApiException
+from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
@@ -1177,6 +1294,14 @@ async def main():
     # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
+
+    # uncomment the below to use configuration overrides
+    # opts = ConfigurationOptions();
+    # opts.total_timeout_ms = 30_000
+
+    # uncomment the below to use an api client factory with overrides
+    # api_client_factory = ApiClientFactory(opts=opts)
+
     api_client_factory = ApiClientFactory()
 
     # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
@@ -1193,6 +1318,9 @@ async def main():
         scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the PolicyCollection (optional)
 
         try:
+            # uncomment the below to set overrides at the request level
+            # api_response = await api_instance.remove_from_policy_collection(code, remove_from_policy_collection_request, scope=scope, opts=opts)
+
             # RemoveFromPolicyCollection: Remove From PolicyCollection
             api_response = await api_instance.remove_from_policy_collection(code, remove_from_policy_collection_request, scope=scope)
             pprint(api_response)
@@ -1240,6 +1368,7 @@ Updates a Policy
 ```python
 import asyncio
 from finbourne_access.exceptions import ApiException
+from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
@@ -1266,6 +1395,14 @@ async def main():
     # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
+
+    # uncomment the below to use configuration overrides
+    # opts = ConfigurationOptions();
+    # opts.total_timeout_ms = 30_000
+
+    # uncomment the below to use an api client factory with overrides
+    # api_client_factory = ApiClientFactory(opts=opts)
+
     api_client_factory = ApiClientFactory()
 
     # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
@@ -1282,6 +1419,9 @@ async def main():
         scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the Policy (optional)
 
         try:
+            # uncomment the below to set overrides at the request level
+            # api_response = await api_instance.update_policy(code, policy_update_request, scope=scope, opts=opts)
+
             # UpdatePolicy: Update Policy
             api_response = await api_instance.update_policy(code, policy_update_request, scope=scope)
             pprint(api_response)
@@ -1329,6 +1469,7 @@ Updates a PolicyCollection
 ```python
 import asyncio
 from finbourne_access.exceptions import ApiException
+from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
@@ -1355,6 +1496,14 @@ async def main():
     # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
+
+    # uncomment the below to use configuration overrides
+    # opts = ConfigurationOptions();
+    # opts.total_timeout_ms = 30_000
+
+    # uncomment the below to use an api client factory with overrides
+    # api_client_factory = ApiClientFactory(opts=opts)
+
     api_client_factory = ApiClientFactory()
 
     # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
@@ -1371,6 +1520,9 @@ async def main():
         scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the PolicyCollection (optional)
 
         try:
+            # uncomment the below to set overrides at the request level
+            # api_response = await api_instance.update_policy_collection(code, policy_collection_update_request, scope=scope, opts=opts)
+
             # UpdatePolicyCollection: Update PolicyCollection
             api_response = await api_instance.update_policy_collection(code, policy_collection_update_request, scope=scope)
             pprint(api_response)
