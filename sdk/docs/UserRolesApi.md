@@ -72,9 +72,9 @@ async def main():
 
         # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
         # Change the lines below to switch approach
-        # add_policy_collection_to_role_request = AddPolicyCollectionToRoleRequest()
         # add_policy_collection_to_role_request = AddPolicyCollectionToRoleRequest.from_json("")
-        add_policy_collection_to_role_request = AddPolicyCollectionToRoleRequest.from_dict({"policyCollections":[{"scope":"ExampleAddPolicyCollectionScope","code":"ExampleAddPolicyCollectionCode"}]}) # AddPolicyCollectionToRoleRequest | Dto of the policy collection to be added.
+        # add_policy_collection_to_role_request = AddPolicyCollectionToRoleRequest.from_dict({})
+        add_policy_collection_to_role_request = AddPolicyCollectionToRoleRequest()
 
         try:
             # uncomment the below to set overrides at the request level
@@ -171,9 +171,9 @@ async def main():
 
         # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
         # Change the lines below to switch approach
-        # add_policy_to_role_request = AddPolicyToRoleRequest()
         # add_policy_to_role_request = AddPolicyToRoleRequest.from_json("")
-        add_policy_to_role_request = AddPolicyToRoleRequest.from_dict({"policies":[{"scope":"ExampleAddPolicyScope","code":"ExampleAddPolicyCode"}]}) # AddPolicyToRoleRequest | Dto of the policy to be added.
+        # add_policy_to_role_request = AddPolicyToRoleRequest.from_dict({})
+        add_policy_to_role_request = AddPolicyToRoleRequest()
 
         try:
             # uncomment the below to set overrides at the request level
@@ -269,9 +269,9 @@ async def main():
 
         # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
         # Change the lines below to switch approach
-        # user_role_creation_request = UserRoleCreationRequest()
         # user_role_creation_request = UserRoleCreationRequest.from_json("")
-        user_role_creation_request = UserRoleCreationRequest.from_dict({"userId":"ExampleUserId","resource":{"policies":[{"scope":"ExamplePolicyId","code":"ExampleScope"}],"policyCollections":[{"scope":"ExamplePolicyCollectionId","code":"ExampleScope"}]}}) # UserRoleCreationRequest | Definition of the user-role to create.
+        # user_role_creation_request = UserRoleCreationRequest.from_dict({})
+        user_role_creation_request = UserRoleCreationRequest()
 
         try:
             # uncomment the below to set overrides at the request level
@@ -835,9 +835,9 @@ async def main():
 
         # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
         # Change the lines below to switch approach
-        # user_role_update_request = UserRoleUpdateRequest()
         # user_role_update_request = UserRoleUpdateRequest.from_json("")
-        user_role_update_request = UserRoleUpdateRequest.from_dict({"resource":{"policies":[{"scope":"ExamplePolicyId","code":"ExampleScope"}],"policyCollections":[{"scope":"ExamplePolicyCollectionId","code":"ExampleScope"}]}}) # UserRoleUpdateRequest | Definition of the update to apply to the user-role.
+        # user_role_update_request = UserRoleUpdateRequest.from_dict({})
+        user_role_update_request = UserRoleUpdateRequest()
 
         try:
             # uncomment the below to set overrides at the request level

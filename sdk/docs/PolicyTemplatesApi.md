@@ -68,9 +68,9 @@ async def main():
 
         # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
         # Change the lines below to switch approach
-        # policy_template_creation_request = PolicyTemplateCreationRequest()
         # policy_template_creation_request = PolicyTemplateCreationRequest.from_json("")
-        policy_template_creation_request = PolicyTemplateCreationRequest.from_dict({"code":"official-portfolios-read-only","displayName":"updated-policy-template","description":"Example policy template for a policy that grants access to some resource","templatedSelectors":[{"application":"LUSID","tag":"Data","selector":{"idSelectorDefinition":{"identifier":{"scope":"official"},"actions":[{"scope":"default","activity":"Read","entity":"Portfolio"},{"scope":"default","activity":"Aggregate","entity":"Portfolio"}],"name":"access-official-scope","description":"Allow readonly access to the 'official' scope"}}}]}) # PolicyTemplateCreationRequest | The definition of the policy template
+        # policy_template_creation_request = PolicyTemplateCreationRequest.from_dict({})
+        policy_template_creation_request = PolicyTemplateCreationRequest()
 
         try:
             # uncomment the below to set overrides at the request level
@@ -257,9 +257,9 @@ async def main():
 
         # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
         # Change the lines below to switch approach
-        # generate_policy_from_template_request = GeneratePolicyFromTemplateRequest()
         # generate_policy_from_template_request = GeneratePolicyFromTemplateRequest.from_json("")
-        generate_policy_from_template_request = GeneratePolicyFromTemplateRequest.from_dict({"templateSelection":[{"scope":"default","code":"example-policy-template","selectorTags":["Data","Api"]}]}) # GeneratePolicyFromTemplateRequest | Definition of the generate request
+        # generate_policy_from_template_request = GeneratePolicyFromTemplateRequest.from_dict({})
+        generate_policy_from_template_request = GeneratePolicyFromTemplateRequest()
         as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The AsAt date time of the data (optional)
 
         try:
@@ -553,9 +553,9 @@ async def main():
 
         # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
         # Change the lines below to switch approach
-        # policy_template_update_request = PolicyTemplateUpdateRequest()
         # policy_template_update_request = PolicyTemplateUpdateRequest.from_json("")
-        policy_template_update_request = PolicyTemplateUpdateRequest.from_dict(finbourne_access.PolicyTemplateUpdateRequest()) # PolicyTemplateUpdateRequest | Definition of the updated policy template (optional)
+        # policy_template_update_request = PolicyTemplateUpdateRequest.from_dict({})
+        policy_template_update_request = PolicyTemplateUpdateRequest()
 
         try:
             # uncomment the below to set overrides at the request level

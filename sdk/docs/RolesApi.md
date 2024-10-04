@@ -71,9 +71,9 @@ async def main():
 
         # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
         # Change the lines below to switch approach
-        # add_policy_collection_to_role_request = AddPolicyCollectionToRoleRequest()
         # add_policy_collection_to_role_request = AddPolicyCollectionToRoleRequest.from_json("")
-        add_policy_collection_to_role_request = AddPolicyCollectionToRoleRequest.from_dict({"policyCollections":[{"scope":"ScopeValue","code":"SomePolCollectionCode"},{"scope":"ScopeValue2","code":"AnotherPolicyCollection"}]}) # AddPolicyCollectionToRoleRequest | The policy collections to add
+        # add_policy_collection_to_role_request = AddPolicyCollectionToRoleRequest.from_dict({})
+        add_policy_collection_to_role_request = AddPolicyCollectionToRoleRequest()
 
         try:
             # uncomment the below to set overrides at the request level
@@ -170,9 +170,9 @@ async def main():
 
         # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
         # Change the lines below to switch approach
-        # role_creation_request = RoleCreationRequest()
         # role_creation_request = RoleCreationRequest.from_json("")
-        role_creation_request = RoleCreationRequest.from_dict({"code":"example-organisation-role-id","description":"This is an example role to demonstrate their creation","resource":{"policyIdRoleResource":{"policies":[{"scope":"default","code":"official-portfolios-read-only"},{"scope":"default","code":"desk-portfolios"}],"policyCollections":[{"scope":"default","code":"CompanyEmployeeAccess"}]}},"when":{"activate":"2016-08-31T18:00:00.0000000+00:00","deactivate":"2020-08-31T18:00:00.0000000+00:00"}}) # RoleCreationRequest | The definition of the Role
+        # role_creation_request = RoleCreationRequest.from_dict({})
+        role_creation_request = RoleCreationRequest()
 
         try:
             # uncomment the below to set overrides at the request level
@@ -644,9 +644,9 @@ async def main():
 
         # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
         # Change the lines below to switch approach
-        # role_update_request = RoleUpdateRequest()
         # role_update_request = RoleUpdateRequest.from_json("")
-        role_update_request = RoleUpdateRequest.from_dict({"description":"This is an example role to demonstrate their update","resource":{"policyIdRoleResource":{"policies":[{"scope":"default","code":"official-portfolios-read-only"},{"scope":"default","code":"desk-portfolios"}],"policyCollections":[{"scope":"default","code":"CompanyEmployeeAccess"}]}},"when":{"activate":"2016-08-31T18:00:00.0000000+00:00","deactivate":"2020-08-31T18:00:00.0000000+00:00"}}) # RoleUpdateRequest | The updated definition of the Role
+        # role_update_request = RoleUpdateRequest.from_dict({})
+        role_update_request = RoleUpdateRequest()
         scope = 'scope_example' # str | >Optional. Will use default scope if not supplied. The scope of the Role (optional)
         before_scope = 'before_scope_example' # str | Optional. The scope of the Role. Will use default scope if not supplied. (optional)
         before_code = 'before_code_example' # str | Optional. The code of the Role (optional)

@@ -79,9 +79,9 @@ async def main():
 
         # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
         # Change the lines below to switch approach
-        # add_to_policy_collection_request = AddToPolicyCollectionRequest()
         # add_to_policy_collection_request = AddToPolicyCollectionRequest.from_json("")
-        add_to_policy_collection_request = AddToPolicyCollectionRequest.from_dict({"policies":[{"scope":"default","code":"official-portfolios-read-only"},{"scope":"default","code":"desk-portfolios"}],"policyCollections":[{"scope":"default","code":"CompanyEmployeeAccess"}]}) # AddToPolicyCollectionRequest | Ids of the PolicyCollections and/or Policies to add to the PolicyCollection
+        # add_to_policy_collection_request = AddToPolicyCollectionRequest.from_dict({})
+        add_to_policy_collection_request = AddToPolicyCollectionRequest()
         scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the PolicyCollection (optional)
 
         try:
@@ -179,9 +179,9 @@ async def main():
 
         # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
         # Change the lines below to switch approach
-        # policy_creation_request = PolicyCreationRequest()
         # policy_creation_request = PolicyCreationRequest.from_json("")
-        policy_creation_request = PolicyCreationRequest.from_dict({"code":"example-policy","description":"Example policy demonstrating their creation","applications":["LUSID"],"grant":"Allow","selectors":[{"idSelectorDefinition":{"identifier":{"scope":"official"},"actions":[{"scope":"default","activity":"Read","entity":"Portfolio"},{"scope":"default","activity":"Aggregate","entity":"Portfolio"}],"name":"access-official-scope","description":"Allow readonly access to the 'official' scope"}}],"for":[{"effectiveRange":{"from":"2015-12-25T00:00:00.0000000+00:00","to":"2020-12-25T00:00:00.0000000+00:00"}},{"asAtRangeForSpec":{"from":{"dateTimeOffset":"2018-01-01T00:00:00.0000000+00:00"},"to":{"value":"AsAt=Latest"}}}],"if":[{"ifRequestHeaderExpression":{"headerName":"organisation.specific.group.header","operator":"EqualsCaseInsensitive","value":"special-group"}}],"when":{"activate":"2016-08-31T18:00:00.0000000+00:00","deactivate":"2020-08-31T18:00:00.0000000+00:00"}}) # PolicyCreationRequest | The definition of the Policy
+        # policy_creation_request = PolicyCreationRequest.from_dict({})
+        policy_creation_request = PolicyCreationRequest()
 
         try:
             # uncomment the below to set overrides at the request level
@@ -276,9 +276,9 @@ async def main():
 
         # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
         # Change the lines below to switch approach
-        # policy_collection_creation_request = PolicyCollectionCreationRequest()
         # policy_collection_creation_request = PolicyCollectionCreationRequest.from_json("")
-        policy_collection_creation_request = PolicyCollectionCreationRequest.from_dict({"code":"example-policy-collection","policies":[{"scope":"default","code":"official-portfolios-read-only"},{"scope":"default","code":"desk-portfolios"}],"metadata":{},"policyCollections":[{"scope":"default","code":"CompanyEmployeeAccess"}],"description":"Example policy collection"}) # PolicyCollectionCreationRequest | The definition of the PolicyCollection
+        # policy_collection_creation_request = PolicyCollectionCreationRequest.from_dict({})
+        policy_collection_creation_request = PolicyCollectionCreationRequest()
 
         try:
             # uncomment the below to set overrides at the request level
@@ -1312,9 +1312,9 @@ async def main():
 
         # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
         # Change the lines below to switch approach
-        # remove_from_policy_collection_request = RemoveFromPolicyCollectionRequest()
         # remove_from_policy_collection_request = RemoveFromPolicyCollectionRequest.from_json("")
-        remove_from_policy_collection_request = RemoveFromPolicyCollectionRequest.from_dict({"policies":[{"scope":"default","code":"official-portfolios-read-only"},{"scope":"default","code":"desk-portfolios"}],"policyCollections":[{"scope":"default","code":"CompanyEmployeeAccess"}]}) # RemoveFromPolicyCollectionRequest | Ids of the PolicyCollections and/or Policies to remove from the PolicyCollection
+        # remove_from_policy_collection_request = RemoveFromPolicyCollectionRequest.from_dict({})
+        remove_from_policy_collection_request = RemoveFromPolicyCollectionRequest()
         scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the PolicyCollection (optional)
 
         try:
@@ -1413,9 +1413,9 @@ async def main():
 
         # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
         # Change the lines below to switch approach
-        # policy_update_request = PolicyUpdateRequest()
         # policy_update_request = PolicyUpdateRequest.from_json("")
-        policy_update_request = PolicyUpdateRequest.from_dict({"description":"Example policy demonstrating their update","applications":["LUSID"],"grant":"Allow","selectors":[{"idSelectorDefinition":{"identifier":{"scope":"official"},"actions":[{"scope":"default","activity":"Read","entity":"Portfolio"},{"scope":"default","activity":"Aggregate","entity":"Portfolio"}],"name":"access-official-scope","description":"Allow readonly access to the 'official' scope"}}],"for":[{"effectiveRange":{"from":"2015-12-25T00:00:00.0000000+00:00","to":"2020-12-25T00:00:00.0000000+00:00"}},{"asAtRangeForSpec":{"from":{"dateTimeOffset":"2018-01-01T00:00:00.0000000+00:00"},"to":{"value":"AsAt=Latest"}}}],"if":[{"ifRequestHeaderExpression":{"headerName":"organisation.specific.group.header","operator":"EqualsCaseInsensitive","value":"special-group"}}],"when":{"activate":"2016-08-31T18:00:00.0000000+00:00","deactivate":"2020-08-31T18:00:00.0000000+00:00"}}) # PolicyUpdateRequest | The updated definition of the Policy
+        # policy_update_request = PolicyUpdateRequest.from_dict({})
+        policy_update_request = PolicyUpdateRequest()
         scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the Policy (optional)
 
         try:
@@ -1514,9 +1514,9 @@ async def main():
 
         # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
         # Change the lines below to switch approach
-        # policy_collection_update_request = PolicyCollectionUpdateRequest()
         # policy_collection_update_request = PolicyCollectionUpdateRequest.from_json("")
-        policy_collection_update_request = PolicyCollectionUpdateRequest.from_dict({"policies":[{"scope":"default","code":"official-portfolios-read-only"},{"scope":"default","code":"desk-portfolios"}],"metadata":{},"policyCollections":[{"scope":"default","code":"CompanyEmployeeAccess"}],"description":"Example policy collection"}) # PolicyCollectionUpdateRequest | The updated definition of the PolicyCollection
+        # policy_collection_update_request = PolicyCollectionUpdateRequest.from_dict({})
+        policy_collection_update_request = PolicyCollectionUpdateRequest()
         scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the PolicyCollection (optional)
 
         try:
