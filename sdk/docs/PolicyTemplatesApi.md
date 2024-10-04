@@ -440,7 +440,7 @@ with finbourne_access.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = finbourne_access.PolicyTemplatesApi(api_client)
     code = 'code_example' # str | Code of the policy template to update
-policy_template_update_request = finbourne_access.PolicyTemplateUpdateRequest() # PolicyTemplateUpdateRequest | Definition of the updated policy template (optional)
+policy_template_update_request = {"displayName":"updated-policy-template","description":"Example policy template for a policy that grants access to some resource","templatedSelectors":[{"application":"LUSID","tag":"Data","selector":{"idSelectorDefinition":{"identifier":{"scope":"official"},"actions":[{"scope":"default","activity":"Read","entity":"Portfolio"},{"scope":"default","activity":"Aggregate","entity":"Portfolio"}],"name":"access-official-scope","description":"Allow readonly access to the 'official' scope"}}}]} # PolicyTemplateUpdateRequest | Definition of the updated policy template (optional)
 
     try:
         # [EXPERIMENTAL] UpdatePolicyTemplate: Update a Policy Template
