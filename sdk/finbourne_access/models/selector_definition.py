@@ -88,3 +88,6 @@ class SelectorDefinition(BaseModel):
             "policy_selector_definition": PolicySelectorDefinition.from_dict(obj.get("policySelectorDefinition")) if obj.get("policySelectorDefinition") is not None else None
         })
         return _obj
+from finbourne_access.models.policy_selector_definition import PolicySelectorDefinition
+
+SelectorDefinition.update_forward_refs()

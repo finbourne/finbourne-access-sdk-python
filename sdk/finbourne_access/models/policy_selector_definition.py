@@ -110,3 +110,6 @@ class PolicySelectorDefinition(BaseModel):
             "description": obj.get("description")
         })
         return _obj
+from finbourne_access.models.selector_definition import SelectorDefinition
+
+PolicySelectorDefinition.update_forward_refs()
