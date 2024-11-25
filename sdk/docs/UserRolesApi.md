@@ -25,33 +25,32 @@ Adds a policy collection to a user-role.
 ### Example
 
 ```python
-import asyncio
 from finbourne_access.exceptions import ApiException
 from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
-    ApiClientFactory,
+    SyncApiClientFactory,
     UserRolesApi
 )
 
-async def main():
+def main():
 
     with open("secrets.json", "w") as file:
         file.write('''
-{
-    "api":
     {
-        "tokenUrl":"<your-token-url>",
-        "accessUrl":"https://<your-domain>.lusid.com/access",
-        "username":"<your-username>",
-        "password":"<your-password>",
-        "clientId":"<your-client-id>",
-        "clientSecret":"<your-client-secret>"
-    }
-}''')
+        "api":
+        {
+            "tokenUrl":"<your-token-url>",
+            "accessUrl":"https://<your-domain>.lusid.com/access",
+            "username":"<your-username>",
+            "password":"<your-password>",
+            "clientId":"<your-client-id>",
+            "clientSecret":"<your-client-secret>"
+        }
+    }''')
 
-    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # Use the finbourne_access SyncApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
 
@@ -60,33 +59,34 @@ async def main():
     # opts.total_timeout_ms = 30_000
 
     # uncomment the below to use an api client factory with overrides
-    # api_client_factory = ApiClientFactory(opts=opts)
+    # api_client_factory = SyncApiClientFactory(opts=opts)
 
-    api_client_factory = ApiClientFactory()
+    api_client_factory = SyncApiClientFactory()
 
-    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-    async with api_client_factory:
-        # Create an instance of the API class
-        api_instance = api_client_factory.build(UserRolesApi)
-        userid = 'userid_example' # str | Id of the User Role to get
+    # Enter a context with an instance of the SyncApiClientFactory to ensure the connection pool is closed after use
+    
+    # Create an instance of the API class
+    api_instance = api_client_factory.build(UserRolesApi)
+    userid = 'userid_example' # str | Id of the User Role to get
 
-        # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
-        # Change the lines below to switch approach
-        # add_policy_collection_to_role_request = AddPolicyCollectionToRoleRequest.from_json("")
-        # add_policy_collection_to_role_request = AddPolicyCollectionToRoleRequest.from_dict({})
-        add_policy_collection_to_role_request = AddPolicyCollectionToRoleRequest()
+    # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
+    # Change the lines below to switch approach
+    # add_policy_collection_to_role_request = AddPolicyCollectionToRoleRequest.from_json("")
+    # add_policy_collection_to_role_request = AddPolicyCollectionToRoleRequest.from_dict({})
+    add_policy_collection_to_role_request = AddPolicyCollectionToRoleRequest()
 
-        try:
-            # uncomment the below to set overrides at the request level
-            # api_response = await api_instance.add_policy_collection_to_user_role(userid, add_policy_collection_to_role_request, opts=opts)
+    try:
+        # uncomment the below to set overrides at the request level
+        # api_response =  api_instance.add_policy_collection_to_user_role(userid, add_policy_collection_to_role_request, opts=opts)
 
-            # AddPolicyCollectionToUserRole: Add a policy collection to a user-role
-            api_response = await api_instance.add_policy_collection_to_user_role(userid, add_policy_collection_to_role_request)
-            pprint(api_response)
-        except ApiException as e:
-            print("Exception when calling UserRolesApi->add_policy_collection_to_user_role: %s\n" % e)
+        # AddPolicyCollectionToUserRole: Add a policy collection to a user-role
+        api_response = api_instance.add_policy_collection_to_user_role(userid, add_policy_collection_to_role_request)
+        pprint(api_response)
 
-asyncio.run(main())
+    except ApiException as e:
+        print("Exception when calling UserRolesApi->add_policy_collection_to_user_role: %s\n" % e)
+
+main()
 ```
 
 ### Parameters
@@ -124,33 +124,32 @@ Adds a policy to a user-role.
 ### Example
 
 ```python
-import asyncio
 from finbourne_access.exceptions import ApiException
 from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
-    ApiClientFactory,
+    SyncApiClientFactory,
     UserRolesApi
 )
 
-async def main():
+def main():
 
     with open("secrets.json", "w") as file:
         file.write('''
-{
-    "api":
     {
-        "tokenUrl":"<your-token-url>",
-        "accessUrl":"https://<your-domain>.lusid.com/access",
-        "username":"<your-username>",
-        "password":"<your-password>",
-        "clientId":"<your-client-id>",
-        "clientSecret":"<your-client-secret>"
-    }
-}''')
+        "api":
+        {
+            "tokenUrl":"<your-token-url>",
+            "accessUrl":"https://<your-domain>.lusid.com/access",
+            "username":"<your-username>",
+            "password":"<your-password>",
+            "clientId":"<your-client-id>",
+            "clientSecret":"<your-client-secret>"
+        }
+    }''')
 
-    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # Use the finbourne_access SyncApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
 
@@ -159,33 +158,34 @@ async def main():
     # opts.total_timeout_ms = 30_000
 
     # uncomment the below to use an api client factory with overrides
-    # api_client_factory = ApiClientFactory(opts=opts)
+    # api_client_factory = SyncApiClientFactory(opts=opts)
 
-    api_client_factory = ApiClientFactory()
+    api_client_factory = SyncApiClientFactory()
 
-    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-    async with api_client_factory:
-        # Create an instance of the API class
-        api_instance = api_client_factory.build(UserRolesApi)
-        userid = 'userid_example' # str | Id of the User Role to get
+    # Enter a context with an instance of the SyncApiClientFactory to ensure the connection pool is closed after use
+    
+    # Create an instance of the API class
+    api_instance = api_client_factory.build(UserRolesApi)
+    userid = 'userid_example' # str | Id of the User Role to get
 
-        # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
-        # Change the lines below to switch approach
-        # add_policy_to_role_request = AddPolicyToRoleRequest.from_json("")
-        # add_policy_to_role_request = AddPolicyToRoleRequest.from_dict({})
-        add_policy_to_role_request = AddPolicyToRoleRequest()
+    # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
+    # Change the lines below to switch approach
+    # add_policy_to_role_request = AddPolicyToRoleRequest.from_json("")
+    # add_policy_to_role_request = AddPolicyToRoleRequest.from_dict({})
+    add_policy_to_role_request = AddPolicyToRoleRequest()
 
-        try:
-            # uncomment the below to set overrides at the request level
-            # api_response = await api_instance.add_policy_to_user_role(userid, add_policy_to_role_request, opts=opts)
+    try:
+        # uncomment the below to set overrides at the request level
+        # api_response =  api_instance.add_policy_to_user_role(userid, add_policy_to_role_request, opts=opts)
 
-            # AddPolicyToUserRole: Add a policy to a user-role
-            api_response = await api_instance.add_policy_to_user_role(userid, add_policy_to_role_request)
-            pprint(api_response)
-        except ApiException as e:
-            print("Exception when calling UserRolesApi->add_policy_to_user_role: %s\n" % e)
+        # AddPolicyToUserRole: Add a policy to a user-role
+        api_response = api_instance.add_policy_to_user_role(userid, add_policy_to_role_request)
+        pprint(api_response)
 
-asyncio.run(main())
+    except ApiException as e:
+        print("Exception when calling UserRolesApi->add_policy_to_user_role: %s\n" % e)
+
+main()
 ```
 
 ### Parameters
@@ -223,33 +223,32 @@ Creates a new user-role.
 ### Example
 
 ```python
-import asyncio
 from finbourne_access.exceptions import ApiException
 from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
-    ApiClientFactory,
+    SyncApiClientFactory,
     UserRolesApi
 )
 
-async def main():
+def main():
 
     with open("secrets.json", "w") as file:
         file.write('''
-{
-    "api":
     {
-        "tokenUrl":"<your-token-url>",
-        "accessUrl":"https://<your-domain>.lusid.com/access",
-        "username":"<your-username>",
-        "password":"<your-password>",
-        "clientId":"<your-client-id>",
-        "clientSecret":"<your-client-secret>"
-    }
-}''')
+        "api":
+        {
+            "tokenUrl":"<your-token-url>",
+            "accessUrl":"https://<your-domain>.lusid.com/access",
+            "username":"<your-username>",
+            "password":"<your-password>",
+            "clientId":"<your-client-id>",
+            "clientSecret":"<your-client-secret>"
+        }
+    }''')
 
-    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # Use the finbourne_access SyncApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
 
@@ -258,32 +257,33 @@ async def main():
     # opts.total_timeout_ms = 30_000
 
     # uncomment the below to use an api client factory with overrides
-    # api_client_factory = ApiClientFactory(opts=opts)
+    # api_client_factory = SyncApiClientFactory(opts=opts)
 
-    api_client_factory = ApiClientFactory()
+    api_client_factory = SyncApiClientFactory()
 
-    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-    async with api_client_factory:
-        # Create an instance of the API class
-        api_instance = api_client_factory.build(UserRolesApi)
+    # Enter a context with an instance of the SyncApiClientFactory to ensure the connection pool is closed after use
+    
+    # Create an instance of the API class
+    api_instance = api_client_factory.build(UserRolesApi)
 
-        # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
-        # Change the lines below to switch approach
-        # user_role_creation_request = UserRoleCreationRequest.from_json("")
-        # user_role_creation_request = UserRoleCreationRequest.from_dict({})
-        user_role_creation_request = UserRoleCreationRequest()
+    # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
+    # Change the lines below to switch approach
+    # user_role_creation_request = UserRoleCreationRequest.from_json("")
+    # user_role_creation_request = UserRoleCreationRequest.from_dict({})
+    user_role_creation_request = UserRoleCreationRequest()
 
-        try:
-            # uncomment the below to set overrides at the request level
-            # api_response = await api_instance.create_user_role(user_role_creation_request, opts=opts)
+    try:
+        # uncomment the below to set overrides at the request level
+        # api_response =  api_instance.create_user_role(user_role_creation_request, opts=opts)
 
-            # CreateUserRole: Create a user-role
-            api_response = await api_instance.create_user_role(user_role_creation_request)
-            pprint(api_response)
-        except ApiException as e:
-            print("Exception when calling UserRolesApi->create_user_role: %s\n" % e)
+        # CreateUserRole: Create a user-role
+        api_response = api_instance.create_user_role(user_role_creation_request)
+        pprint(api_response)
 
-asyncio.run(main())
+    except ApiException as e:
+        print("Exception when calling UserRolesApi->create_user_role: %s\n" % e)
+
+main()
 ```
 
 ### Parameters
@@ -320,33 +320,32 @@ Deletes an identified user-role.
 ### Example
 
 ```python
-import asyncio
 from finbourne_access.exceptions import ApiException
 from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
-    ApiClientFactory,
+    SyncApiClientFactory,
     UserRolesApi
 )
 
-async def main():
+def main():
 
     with open("secrets.json", "w") as file:
         file.write('''
-{
-    "api":
     {
-        "tokenUrl":"<your-token-url>",
-        "accessUrl":"https://<your-domain>.lusid.com/access",
-        "username":"<your-username>",
-        "password":"<your-password>",
-        "clientId":"<your-client-id>",
-        "clientSecret":"<your-client-secret>"
-    }
-}''')
+        "api":
+        {
+            "tokenUrl":"<your-token-url>",
+            "accessUrl":"https://<your-domain>.lusid.com/access",
+            "username":"<your-username>",
+            "password":"<your-password>",
+            "clientId":"<your-client-id>",
+            "clientSecret":"<your-client-secret>"
+        }
+    }''')
 
-    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # Use the finbourne_access SyncApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
 
@@ -355,25 +354,26 @@ async def main():
     # opts.total_timeout_ms = 30_000
 
     # uncomment the below to use an api client factory with overrides
-    # api_client_factory = ApiClientFactory(opts=opts)
+    # api_client_factory = SyncApiClientFactory(opts=opts)
 
-    api_client_factory = ApiClientFactory()
+    api_client_factory = SyncApiClientFactory()
 
-    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-    async with api_client_factory:
-        # Create an instance of the API class
-        api_instance = api_client_factory.build(UserRolesApi)
-        userid = 'userid_example' # str | Id of the user-role to delete.
+    # Enter a context with an instance of the SyncApiClientFactory to ensure the connection pool is closed after use
+    
+    # Create an instance of the API class
+    api_instance = api_client_factory.build(UserRolesApi)
+    userid = 'userid_example' # str | Id of the user-role to delete.
 
-        try:
-            # uncomment the below to set overrides at the request level
-            # await api_instance.delete_user_role(userid, opts=opts)
+    try:
+        # uncomment the below to set overrides at the request level
+        #  api_instance.delete_user_role(userid, opts=opts)
 
-            # DeleteUserRole: Delete a user-role
-            await api_instance.delete_user_role(userid)        except ApiException as e:
-            print("Exception when calling UserRolesApi->delete_user_role: %s\n" % e)
+        # DeleteUserRole: Delete a user-role
+        api_instance.delete_user_role(userid)
+    except ApiException as e:
+        print("Exception when calling UserRolesApi->delete_user_role: %s\n" % e)
 
-asyncio.run(main())
+main()
 ```
 
 ### Parameters
@@ -410,33 +410,32 @@ Get an identified user-role.
 ### Example
 
 ```python
-import asyncio
 from finbourne_access.exceptions import ApiException
 from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
-    ApiClientFactory,
+    SyncApiClientFactory,
     UserRolesApi
 )
 
-async def main():
+def main():
 
     with open("secrets.json", "w") as file:
         file.write('''
-{
-    "api":
     {
-        "tokenUrl":"<your-token-url>",
-        "accessUrl":"https://<your-domain>.lusid.com/access",
-        "username":"<your-username>",
-        "password":"<your-password>",
-        "clientId":"<your-client-id>",
-        "clientSecret":"<your-client-secret>"
-    }
-}''')
+        "api":
+        {
+            "tokenUrl":"<your-token-url>",
+            "accessUrl":"https://<your-domain>.lusid.com/access",
+            "username":"<your-username>",
+            "password":"<your-password>",
+            "clientId":"<your-client-id>",
+            "clientSecret":"<your-client-secret>"
+        }
+    }''')
 
-    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # Use the finbourne_access SyncApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
 
@@ -445,27 +444,28 @@ async def main():
     # opts.total_timeout_ms = 30_000
 
     # uncomment the below to use an api client factory with overrides
-    # api_client_factory = ApiClientFactory(opts=opts)
+    # api_client_factory = SyncApiClientFactory(opts=opts)
 
-    api_client_factory = ApiClientFactory()
+    api_client_factory = SyncApiClientFactory()
 
-    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-    async with api_client_factory:
-        # Create an instance of the API class
-        api_instance = api_client_factory.build(UserRolesApi)
-        userid = 'userid_example' # str | Id of the user-role to get.
+    # Enter a context with an instance of the SyncApiClientFactory to ensure the connection pool is closed after use
+    
+    # Create an instance of the API class
+    api_instance = api_client_factory.build(UserRolesApi)
+    userid = 'userid_example' # str | Id of the user-role to get.
 
-        try:
-            # uncomment the below to set overrides at the request level
-            # api_response = await api_instance.get_user_role(userid, opts=opts)
+    try:
+        # uncomment the below to set overrides at the request level
+        # api_response =  api_instance.get_user_role(userid, opts=opts)
 
-            # GetUserRole: Get a user-role
-            api_response = await api_instance.get_user_role(userid)
-            pprint(api_response)
-        except ApiException as e:
-            print("Exception when calling UserRolesApi->get_user_role: %s\n" % e)
+        # GetUserRole: Get a user-role
+        api_response = api_instance.get_user_role(userid)
+        pprint(api_response)
 
-asyncio.run(main())
+    except ApiException as e:
+        print("Exception when calling UserRolesApi->get_user_role: %s\n" % e)
+
+main()
 ```
 
 ### Parameters
@@ -502,33 +502,32 @@ Lists all user-roles and pages.
 ### Example
 
 ```python
-import asyncio
 from finbourne_access.exceptions import ApiException
 from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
-    ApiClientFactory,
+    SyncApiClientFactory,
     UserRolesApi
 )
 
-async def main():
+def main():
 
     with open("secrets.json", "w") as file:
         file.write('''
-{
-    "api":
     {
-        "tokenUrl":"<your-token-url>",
-        "accessUrl":"https://<your-domain>.lusid.com/access",
-        "username":"<your-username>",
-        "password":"<your-password>",
-        "clientId":"<your-client-id>",
-        "clientSecret":"<your-client-secret>"
-    }
-}''')
+        "api":
+        {
+            "tokenUrl":"<your-token-url>",
+            "accessUrl":"https://<your-domain>.lusid.com/access",
+            "username":"<your-username>",
+            "password":"<your-password>",
+            "clientId":"<your-client-id>",
+            "clientSecret":"<your-client-secret>"
+        }
+    }''')
 
-    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # Use the finbourne_access SyncApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
 
@@ -537,30 +536,31 @@ async def main():
     # opts.total_timeout_ms = 30_000
 
     # uncomment the below to use an api client factory with overrides
-    # api_client_factory = ApiClientFactory(opts=opts)
+    # api_client_factory = SyncApiClientFactory(opts=opts)
 
-    api_client_factory = ApiClientFactory()
+    api_client_factory = SyncApiClientFactory()
 
-    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-    async with api_client_factory:
-        # Create an instance of the API class
-        api_instance = api_client_factory.build(UserRolesApi)
-        filter = 'filter_example' # str | Optional. Expression to filter the result set (optional)
-        sort_by = 'sort_by_example' # str | Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName (optional)
-        limit = 56 # int | Optional. When paginating, limit the number of returned results to this many. (optional)
-        page = 'page_example' # str | Optional. Encoded page string returned from a previous search result that will retrieve              the next page of data. (optional)
+    # Enter a context with an instance of the SyncApiClientFactory to ensure the connection pool is closed after use
+    
+    # Create an instance of the API class
+    api_instance = api_client_factory.build(UserRolesApi)
+    filter = 'filter_example' # str | Optional. Expression to filter the result set (optional)
+    sort_by = 'sort_by_example' # str | Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName (optional)
+    limit = 56 # int | Optional. When paginating, limit the number of returned results to this many. (optional)
+    page = 'page_example' # str | Optional. Encoded page string returned from a previous search result that will retrieve              the next page of data. (optional)
 
-        try:
-            # uncomment the below to set overrides at the request level
-            # api_response = await api_instance.list_user_roles(filter=filter, sort_by=sort_by, limit=limit, page=page, opts=opts)
+    try:
+        # uncomment the below to set overrides at the request level
+        # api_response =  api_instance.list_user_roles(filter=filter, sort_by=sort_by, limit=limit, page=page, opts=opts)
 
-            # ListUserRoles: List user-roles
-            api_response = await api_instance.list_user_roles(filter=filter, sort_by=sort_by, limit=limit, page=page)
-            pprint(api_response)
-        except ApiException as e:
-            print("Exception when calling UserRolesApi->list_user_roles: %s\n" % e)
+        # ListUserRoles: List user-roles
+        api_response = api_instance.list_user_roles(filter=filter, sort_by=sort_by, limit=limit, page=page)
+        pprint(api_response)
 
-asyncio.run(main())
+    except ApiException as e:
+        print("Exception when calling UserRolesApi->list_user_roles: %s\n" % e)
+
+main()
 ```
 
 ### Parameters
@@ -600,33 +600,32 @@ Removes a policy collection from a user-role.
 ### Example
 
 ```python
-import asyncio
 from finbourne_access.exceptions import ApiException
 from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
-    ApiClientFactory,
+    SyncApiClientFactory,
     UserRolesApi
 )
 
-async def main():
+def main():
 
     with open("secrets.json", "w") as file:
         file.write('''
-{
-    "api":
     {
-        "tokenUrl":"<your-token-url>",
-        "accessUrl":"https://<your-domain>.lusid.com/access",
-        "username":"<your-username>",
-        "password":"<your-password>",
-        "clientId":"<your-client-id>",
-        "clientSecret":"<your-client-secret>"
-    }
-}''')
+        "api":
+        {
+            "tokenUrl":"<your-token-url>",
+            "accessUrl":"https://<your-domain>.lusid.com/access",
+            "username":"<your-username>",
+            "password":"<your-password>",
+            "clientId":"<your-client-id>",
+            "clientSecret":"<your-client-secret>"
+        }
+    }''')
 
-    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # Use the finbourne_access SyncApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
 
@@ -635,27 +634,28 @@ async def main():
     # opts.total_timeout_ms = 30_000
 
     # uncomment the below to use an api client factory with overrides
-    # api_client_factory = ApiClientFactory(opts=opts)
+    # api_client_factory = SyncApiClientFactory(opts=opts)
 
-    api_client_factory = ApiClientFactory()
+    api_client_factory = SyncApiClientFactory()
 
-    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-    async with api_client_factory:
-        # Create an instance of the API class
-        api_instance = api_client_factory.build(UserRolesApi)
-        userid = 'userid_example' # str | Id of the User Role to get
-        policy_collection_scope = 'policy_collection_scope_example' # str | The scope of policy collection to remove from the User Role
-        policy_collection_code = 'policy_collection_code_example' # str | The code of the policy collection to remove from the User Role
+    # Enter a context with an instance of the SyncApiClientFactory to ensure the connection pool is closed after use
+    
+    # Create an instance of the API class
+    api_instance = api_client_factory.build(UserRolesApi)
+    userid = 'userid_example' # str | Id of the User Role to get
+    policy_collection_scope = 'policy_collection_scope_example' # str | The scope of policy collection to remove from the User Role
+    policy_collection_code = 'policy_collection_code_example' # str | The code of the policy collection to remove from the User Role
 
-        try:
-            # uncomment the below to set overrides at the request level
-            # await api_instance.remove_policy_collection_from_user_role(userid, policy_collection_scope, policy_collection_code, opts=opts)
+    try:
+        # uncomment the below to set overrides at the request level
+        #  api_instance.remove_policy_collection_from_user_role(userid, policy_collection_scope, policy_collection_code, opts=opts)
 
-            # RemovePolicyCollectionFromUserRole: Remove a policy collection from a user-role
-            await api_instance.remove_policy_collection_from_user_role(userid, policy_collection_scope, policy_collection_code)        except ApiException as e:
-            print("Exception when calling UserRolesApi->remove_policy_collection_from_user_role: %s\n" % e)
+        # RemovePolicyCollectionFromUserRole: Remove a policy collection from a user-role
+        api_instance.remove_policy_collection_from_user_role(userid, policy_collection_scope, policy_collection_code)
+    except ApiException as e:
+        print("Exception when calling UserRolesApi->remove_policy_collection_from_user_role: %s\n" % e)
 
-asyncio.run(main())
+main()
 ```
 
 ### Parameters
@@ -694,33 +694,32 @@ Removes a policy from a user-role.
 ### Example
 
 ```python
-import asyncio
 from finbourne_access.exceptions import ApiException
 from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
-    ApiClientFactory,
+    SyncApiClientFactory,
     UserRolesApi
 )
 
-async def main():
+def main():
 
     with open("secrets.json", "w") as file:
         file.write('''
-{
-    "api":
     {
-        "tokenUrl":"<your-token-url>",
-        "accessUrl":"https://<your-domain>.lusid.com/access",
-        "username":"<your-username>",
-        "password":"<your-password>",
-        "clientId":"<your-client-id>",
-        "clientSecret":"<your-client-secret>"
-    }
-}''')
+        "api":
+        {
+            "tokenUrl":"<your-token-url>",
+            "accessUrl":"https://<your-domain>.lusid.com/access",
+            "username":"<your-username>",
+            "password":"<your-password>",
+            "clientId":"<your-client-id>",
+            "clientSecret":"<your-client-secret>"
+        }
+    }''')
 
-    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # Use the finbourne_access SyncApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
 
@@ -729,27 +728,28 @@ async def main():
     # opts.total_timeout_ms = 30_000
 
     # uncomment the below to use an api client factory with overrides
-    # api_client_factory = ApiClientFactory(opts=opts)
+    # api_client_factory = SyncApiClientFactory(opts=opts)
 
-    api_client_factory = ApiClientFactory()
+    api_client_factory = SyncApiClientFactory()
 
-    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-    async with api_client_factory:
-        # Create an instance of the API class
-        api_instance = api_client_factory.build(UserRolesApi)
-        userid = 'userid_example' # str | Id of the User Role to get
-        policy_scope = 'policy_scope_example' # str | The scope of the policy to remove from the User Role
-        policy_code = 'policy_code_example' # str | The code of the policy to remove from the User Role
+    # Enter a context with an instance of the SyncApiClientFactory to ensure the connection pool is closed after use
+    
+    # Create an instance of the API class
+    api_instance = api_client_factory.build(UserRolesApi)
+    userid = 'userid_example' # str | Id of the User Role to get
+    policy_scope = 'policy_scope_example' # str | The scope of the policy to remove from the User Role
+    policy_code = 'policy_code_example' # str | The code of the policy to remove from the User Role
 
-        try:
-            # uncomment the below to set overrides at the request level
-            # await api_instance.remove_policy_from_user_role(userid, policy_scope, policy_code, opts=opts)
+    try:
+        # uncomment the below to set overrides at the request level
+        #  api_instance.remove_policy_from_user_role(userid, policy_scope, policy_code, opts=opts)
 
-            # RemovePolicyFromUserRole: Remove a policy from a user-role
-            await api_instance.remove_policy_from_user_role(userid, policy_scope, policy_code)        except ApiException as e:
-            print("Exception when calling UserRolesApi->remove_policy_from_user_role: %s\n" % e)
+        # RemovePolicyFromUserRole: Remove a policy from a user-role
+        api_instance.remove_policy_from_user_role(userid, policy_scope, policy_code)
+    except ApiException as e:
+        print("Exception when calling UserRolesApi->remove_policy_from_user_role: %s\n" % e)
 
-asyncio.run(main())
+main()
 ```
 
 ### Parameters
@@ -788,33 +788,32 @@ Updates an identified user-role.
 ### Example
 
 ```python
-import asyncio
 from finbourne_access.exceptions import ApiException
 from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
-    ApiClientFactory,
+    SyncApiClientFactory,
     UserRolesApi
 )
 
-async def main():
+def main():
 
     with open("secrets.json", "w") as file:
         file.write('''
-{
-    "api":
     {
-        "tokenUrl":"<your-token-url>",
-        "accessUrl":"https://<your-domain>.lusid.com/access",
-        "username":"<your-username>",
-        "password":"<your-password>",
-        "clientId":"<your-client-id>",
-        "clientSecret":"<your-client-secret>"
-    }
-}''')
+        "api":
+        {
+            "tokenUrl":"<your-token-url>",
+            "accessUrl":"https://<your-domain>.lusid.com/access",
+            "username":"<your-username>",
+            "password":"<your-password>",
+            "clientId":"<your-client-id>",
+            "clientSecret":"<your-client-secret>"
+        }
+    }''')
 
-    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # Use the finbourne_access SyncApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
 
@@ -823,33 +822,34 @@ async def main():
     # opts.total_timeout_ms = 30_000
 
     # uncomment the below to use an api client factory with overrides
-    # api_client_factory = ApiClientFactory(opts=opts)
+    # api_client_factory = SyncApiClientFactory(opts=opts)
 
-    api_client_factory = ApiClientFactory()
+    api_client_factory = SyncApiClientFactory()
 
-    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-    async with api_client_factory:
-        # Create an instance of the API class
-        api_instance = api_client_factory.build(UserRolesApi)
-        userid = 'userid_example' # str | Id of the user-role to be updated.
+    # Enter a context with an instance of the SyncApiClientFactory to ensure the connection pool is closed after use
+    
+    # Create an instance of the API class
+    api_instance = api_client_factory.build(UserRolesApi)
+    userid = 'userid_example' # str | Id of the user-role to be updated.
 
-        # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
-        # Change the lines below to switch approach
-        # user_role_update_request = UserRoleUpdateRequest.from_json("")
-        # user_role_update_request = UserRoleUpdateRequest.from_dict({})
-        user_role_update_request = UserRoleUpdateRequest()
+    # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
+    # Change the lines below to switch approach
+    # user_role_update_request = UserRoleUpdateRequest.from_json("")
+    # user_role_update_request = UserRoleUpdateRequest.from_dict({})
+    user_role_update_request = UserRoleUpdateRequest()
 
-        try:
-            # uncomment the below to set overrides at the request level
-            # api_response = await api_instance.update_user_role(userid, user_role_update_request, opts=opts)
+    try:
+        # uncomment the below to set overrides at the request level
+        # api_response =  api_instance.update_user_role(userid, user_role_update_request, opts=opts)
 
-            # UpdateUserRole: Update a user-role
-            api_response = await api_instance.update_user_role(userid, user_role_update_request)
-            pprint(api_response)
-        except ApiException as e:
-            print("Exception when calling UserRolesApi->update_user_role: %s\n" % e)
+        # UpdateUserRole: Update a user-role
+        api_response = api_instance.update_user_role(userid, user_role_update_request)
+        pprint(api_response)
 
-asyncio.run(main())
+    except ApiException as e:
+        print("Exception when calling UserRolesApi->update_user_role: %s\n" % e)
+
+main()
 ```
 
 ### Parameters

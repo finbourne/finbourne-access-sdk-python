@@ -32,33 +32,32 @@ Add Policies and/or PolicyCollections to a PolicyCollection
 ### Example
 
 ```python
-import asyncio
 from finbourne_access.exceptions import ApiException
 from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
-    ApiClientFactory,
+    SyncApiClientFactory,
     PoliciesApi
 )
 
-async def main():
+def main():
 
     with open("secrets.json", "w") as file:
         file.write('''
-{
-    "api":
     {
-        "tokenUrl":"<your-token-url>",
-        "accessUrl":"https://<your-domain>.lusid.com/access",
-        "username":"<your-username>",
-        "password":"<your-password>",
-        "clientId":"<your-client-id>",
-        "clientSecret":"<your-client-secret>"
-    }
-}''')
+        "api":
+        {
+            "tokenUrl":"<your-token-url>",
+            "accessUrl":"https://<your-domain>.lusid.com/access",
+            "username":"<your-username>",
+            "password":"<your-password>",
+            "clientId":"<your-client-id>",
+            "clientSecret":"<your-client-secret>"
+        }
+    }''')
 
-    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # Use the finbourne_access SyncApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
 
@@ -67,34 +66,35 @@ async def main():
     # opts.total_timeout_ms = 30_000
 
     # uncomment the below to use an api client factory with overrides
-    # api_client_factory = ApiClientFactory(opts=opts)
+    # api_client_factory = SyncApiClientFactory(opts=opts)
 
-    api_client_factory = ApiClientFactory()
+    api_client_factory = SyncApiClientFactory()
 
-    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-    async with api_client_factory:
-        # Create an instance of the API class
-        api_instance = api_client_factory.build(PoliciesApi)
-        code = 'code_example' # str | The code of the PolicyCollection
+    # Enter a context with an instance of the SyncApiClientFactory to ensure the connection pool is closed after use
+    
+    # Create an instance of the API class
+    api_instance = api_client_factory.build(PoliciesApi)
+    code = 'code_example' # str | The code of the PolicyCollection
 
-        # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
-        # Change the lines below to switch approach
-        # add_to_policy_collection_request = AddToPolicyCollectionRequest.from_json("")
-        # add_to_policy_collection_request = AddToPolicyCollectionRequest.from_dict({})
-        add_to_policy_collection_request = AddToPolicyCollectionRequest()
-        scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the PolicyCollection (optional)
+    # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
+    # Change the lines below to switch approach
+    # add_to_policy_collection_request = AddToPolicyCollectionRequest.from_json("")
+    # add_to_policy_collection_request = AddToPolicyCollectionRequest.from_dict({})
+    add_to_policy_collection_request = AddToPolicyCollectionRequest()
+    scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the PolicyCollection (optional)
 
-        try:
-            # uncomment the below to set overrides at the request level
-            # api_response = await api_instance.add_to_policy_collection(code, add_to_policy_collection_request, scope=scope, opts=opts)
+    try:
+        # uncomment the below to set overrides at the request level
+        # api_response =  api_instance.add_to_policy_collection(code, add_to_policy_collection_request, scope=scope, opts=opts)
 
-            # AddToPolicyCollection: Add To PolicyCollection
-            api_response = await api_instance.add_to_policy_collection(code, add_to_policy_collection_request, scope=scope)
-            pprint(api_response)
-        except ApiException as e:
-            print("Exception when calling PoliciesApi->add_to_policy_collection: %s\n" % e)
+        # AddToPolicyCollection: Add To PolicyCollection
+        api_response = api_instance.add_to_policy_collection(code, add_to_policy_collection_request, scope=scope)
+        pprint(api_response)
 
-asyncio.run(main())
+    except ApiException as e:
+        print("Exception when calling PoliciesApi->add_to_policy_collection: %s\n" % e)
+
+main()
 ```
 
 ### Parameters
@@ -133,33 +133,32 @@ Creates a Policy
 ### Example
 
 ```python
-import asyncio
 from finbourne_access.exceptions import ApiException
 from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
-    ApiClientFactory,
+    SyncApiClientFactory,
     PoliciesApi
 )
 
-async def main():
+def main():
 
     with open("secrets.json", "w") as file:
         file.write('''
-{
-    "api":
     {
-        "tokenUrl":"<your-token-url>",
-        "accessUrl":"https://<your-domain>.lusid.com/access",
-        "username":"<your-username>",
-        "password":"<your-password>",
-        "clientId":"<your-client-id>",
-        "clientSecret":"<your-client-secret>"
-    }
-}''')
+        "api":
+        {
+            "tokenUrl":"<your-token-url>",
+            "accessUrl":"https://<your-domain>.lusid.com/access",
+            "username":"<your-username>",
+            "password":"<your-password>",
+            "clientId":"<your-client-id>",
+            "clientSecret":"<your-client-secret>"
+        }
+    }''')
 
-    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # Use the finbourne_access SyncApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
 
@@ -168,32 +167,33 @@ async def main():
     # opts.total_timeout_ms = 30_000
 
     # uncomment the below to use an api client factory with overrides
-    # api_client_factory = ApiClientFactory(opts=opts)
+    # api_client_factory = SyncApiClientFactory(opts=opts)
 
-    api_client_factory = ApiClientFactory()
+    api_client_factory = SyncApiClientFactory()
 
-    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-    async with api_client_factory:
-        # Create an instance of the API class
-        api_instance = api_client_factory.build(PoliciesApi)
+    # Enter a context with an instance of the SyncApiClientFactory to ensure the connection pool is closed after use
+    
+    # Create an instance of the API class
+    api_instance = api_client_factory.build(PoliciesApi)
 
-        # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
-        # Change the lines below to switch approach
-        # policy_creation_request = PolicyCreationRequest.from_json("")
-        # policy_creation_request = PolicyCreationRequest.from_dict({})
-        policy_creation_request = PolicyCreationRequest()
+    # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
+    # Change the lines below to switch approach
+    # policy_creation_request = PolicyCreationRequest.from_json("")
+    # policy_creation_request = PolicyCreationRequest.from_dict({})
+    policy_creation_request = PolicyCreationRequest()
 
-        try:
-            # uncomment the below to set overrides at the request level
-            # api_response = await api_instance.create_policy(policy_creation_request, opts=opts)
+    try:
+        # uncomment the below to set overrides at the request level
+        # api_response =  api_instance.create_policy(policy_creation_request, opts=opts)
 
-            # CreatePolicy: Create Policy
-            api_response = await api_instance.create_policy(policy_creation_request)
-            pprint(api_response)
-        except ApiException as e:
-            print("Exception when calling PoliciesApi->create_policy: %s\n" % e)
+        # CreatePolicy: Create Policy
+        api_response = api_instance.create_policy(policy_creation_request)
+        pprint(api_response)
 
-asyncio.run(main())
+    except ApiException as e:
+        print("Exception when calling PoliciesApi->create_policy: %s\n" % e)
+
+main()
 ```
 
 ### Parameters
@@ -230,33 +230,32 @@ Creates a PolicyCollection
 ### Example
 
 ```python
-import asyncio
 from finbourne_access.exceptions import ApiException
 from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
-    ApiClientFactory,
+    SyncApiClientFactory,
     PoliciesApi
 )
 
-async def main():
+def main():
 
     with open("secrets.json", "w") as file:
         file.write('''
-{
-    "api":
     {
-        "tokenUrl":"<your-token-url>",
-        "accessUrl":"https://<your-domain>.lusid.com/access",
-        "username":"<your-username>",
-        "password":"<your-password>",
-        "clientId":"<your-client-id>",
-        "clientSecret":"<your-client-secret>"
-    }
-}''')
+        "api":
+        {
+            "tokenUrl":"<your-token-url>",
+            "accessUrl":"https://<your-domain>.lusid.com/access",
+            "username":"<your-username>",
+            "password":"<your-password>",
+            "clientId":"<your-client-id>",
+            "clientSecret":"<your-client-secret>"
+        }
+    }''')
 
-    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # Use the finbourne_access SyncApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
 
@@ -265,32 +264,33 @@ async def main():
     # opts.total_timeout_ms = 30_000
 
     # uncomment the below to use an api client factory with overrides
-    # api_client_factory = ApiClientFactory(opts=opts)
+    # api_client_factory = SyncApiClientFactory(opts=opts)
 
-    api_client_factory = ApiClientFactory()
+    api_client_factory = SyncApiClientFactory()
 
-    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-    async with api_client_factory:
-        # Create an instance of the API class
-        api_instance = api_client_factory.build(PoliciesApi)
+    # Enter a context with an instance of the SyncApiClientFactory to ensure the connection pool is closed after use
+    
+    # Create an instance of the API class
+    api_instance = api_client_factory.build(PoliciesApi)
 
-        # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
-        # Change the lines below to switch approach
-        # policy_collection_creation_request = PolicyCollectionCreationRequest.from_json("")
-        # policy_collection_creation_request = PolicyCollectionCreationRequest.from_dict({})
-        policy_collection_creation_request = PolicyCollectionCreationRequest()
+    # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
+    # Change the lines below to switch approach
+    # policy_collection_creation_request = PolicyCollectionCreationRequest.from_json("")
+    # policy_collection_creation_request = PolicyCollectionCreationRequest.from_dict({})
+    policy_collection_creation_request = PolicyCollectionCreationRequest()
 
-        try:
-            # uncomment the below to set overrides at the request level
-            # api_response = await api_instance.create_policy_collection(policy_collection_creation_request, opts=opts)
+    try:
+        # uncomment the below to set overrides at the request level
+        # api_response =  api_instance.create_policy_collection(policy_collection_creation_request, opts=opts)
 
-            # CreatePolicyCollection: Create PolicyCollection
-            api_response = await api_instance.create_policy_collection(policy_collection_creation_request)
-            pprint(api_response)
-        except ApiException as e:
-            print("Exception when calling PoliciesApi->create_policy_collection: %s\n" % e)
+        # CreatePolicyCollection: Create PolicyCollection
+        api_response = api_instance.create_policy_collection(policy_collection_creation_request)
+        pprint(api_response)
 
-asyncio.run(main())
+    except ApiException as e:
+        print("Exception when calling PoliciesApi->create_policy_collection: %s\n" % e)
+
+main()
 ```
 
 ### Parameters
@@ -327,33 +327,32 @@ Deletes an identified Policy
 ### Example
 
 ```python
-import asyncio
 from finbourne_access.exceptions import ApiException
 from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
-    ApiClientFactory,
+    SyncApiClientFactory,
     PoliciesApi
 )
 
-async def main():
+def main():
 
     with open("secrets.json", "w") as file:
         file.write('''
-{
-    "api":
     {
-        "tokenUrl":"<your-token-url>",
-        "accessUrl":"https://<your-domain>.lusid.com/access",
-        "username":"<your-username>",
-        "password":"<your-password>",
-        "clientId":"<your-client-id>",
-        "clientSecret":"<your-client-secret>"
-    }
-}''')
+        "api":
+        {
+            "tokenUrl":"<your-token-url>",
+            "accessUrl":"https://<your-domain>.lusid.com/access",
+            "username":"<your-username>",
+            "password":"<your-password>",
+            "clientId":"<your-client-id>",
+            "clientSecret":"<your-client-secret>"
+        }
+    }''')
 
-    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # Use the finbourne_access SyncApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
 
@@ -362,26 +361,27 @@ async def main():
     # opts.total_timeout_ms = 30_000
 
     # uncomment the below to use an api client factory with overrides
-    # api_client_factory = ApiClientFactory(opts=opts)
+    # api_client_factory = SyncApiClientFactory(opts=opts)
 
-    api_client_factory = ApiClientFactory()
+    api_client_factory = SyncApiClientFactory()
 
-    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-    async with api_client_factory:
-        # Create an instance of the API class
-        api_instance = api_client_factory.build(PoliciesApi)
-        code = 'code_example' # str | The code of the Policy
-        scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the Policy (optional)
+    # Enter a context with an instance of the SyncApiClientFactory to ensure the connection pool is closed after use
+    
+    # Create an instance of the API class
+    api_instance = api_client_factory.build(PoliciesApi)
+    code = 'code_example' # str | The code of the Policy
+    scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the Policy (optional)
 
-        try:
-            # uncomment the below to set overrides at the request level
-            # await api_instance.delete_policy(code, scope=scope, opts=opts)
+    try:
+        # uncomment the below to set overrides at the request level
+        #  api_instance.delete_policy(code, scope=scope, opts=opts)
 
-            # DeletePolicy: Delete Policy
-            await api_instance.delete_policy(code, scope=scope)        except ApiException as e:
-            print("Exception when calling PoliciesApi->delete_policy: %s\n" % e)
+        # DeletePolicy: Delete Policy
+        api_instance.delete_policy(code, scope=scope)
+    except ApiException as e:
+        print("Exception when calling PoliciesApi->delete_policy: %s\n" % e)
 
-asyncio.run(main())
+main()
 ```
 
 ### Parameters
@@ -419,33 +419,32 @@ Deletes an identified PolicyCollection
 ### Example
 
 ```python
-import asyncio
 from finbourne_access.exceptions import ApiException
 from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
-    ApiClientFactory,
+    SyncApiClientFactory,
     PoliciesApi
 )
 
-async def main():
+def main():
 
     with open("secrets.json", "w") as file:
         file.write('''
-{
-    "api":
     {
-        "tokenUrl":"<your-token-url>",
-        "accessUrl":"https://<your-domain>.lusid.com/access",
-        "username":"<your-username>",
-        "password":"<your-password>",
-        "clientId":"<your-client-id>",
-        "clientSecret":"<your-client-secret>"
-    }
-}''')
+        "api":
+        {
+            "tokenUrl":"<your-token-url>",
+            "accessUrl":"https://<your-domain>.lusid.com/access",
+            "username":"<your-username>",
+            "password":"<your-password>",
+            "clientId":"<your-client-id>",
+            "clientSecret":"<your-client-secret>"
+        }
+    }''')
 
-    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # Use the finbourne_access SyncApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
 
@@ -454,26 +453,27 @@ async def main():
     # opts.total_timeout_ms = 30_000
 
     # uncomment the below to use an api client factory with overrides
-    # api_client_factory = ApiClientFactory(opts=opts)
+    # api_client_factory = SyncApiClientFactory(opts=opts)
 
-    api_client_factory = ApiClientFactory()
+    api_client_factory = SyncApiClientFactory()
 
-    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-    async with api_client_factory:
-        # Create an instance of the API class
-        api_instance = api_client_factory.build(PoliciesApi)
-        code = 'code_example' # str | The code of the PolicyCollection
-        scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the PolicyCollection (optional)
+    # Enter a context with an instance of the SyncApiClientFactory to ensure the connection pool is closed after use
+    
+    # Create an instance of the API class
+    api_instance = api_client_factory.build(PoliciesApi)
+    code = 'code_example' # str | The code of the PolicyCollection
+    scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the PolicyCollection (optional)
 
-        try:
-            # uncomment the below to set overrides at the request level
-            # await api_instance.delete_policy_collection(code, scope=scope, opts=opts)
+    try:
+        # uncomment the below to set overrides at the request level
+        #  api_instance.delete_policy_collection(code, scope=scope, opts=opts)
 
-            # DeletePolicyCollection: Delete PolicyCollection
-            await api_instance.delete_policy_collection(code, scope=scope)        except ApiException as e:
-            print("Exception when calling PoliciesApi->delete_policy_collection: %s\n" % e)
+        # DeletePolicyCollection: Delete PolicyCollection
+        api_instance.delete_policy_collection(code, scope=scope)
+    except ApiException as e:
+        print("Exception when calling PoliciesApi->delete_policy_collection: %s\n" % e)
 
-asyncio.run(main())
+main()
 ```
 
 ### Parameters
@@ -511,33 +511,32 @@ Given a dictionary of evaluation requests (keyed by any arbitrary correlation id
 ### Example
 
 ```python
-import asyncio
 from finbourne_access.exceptions import ApiException
 from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
-    ApiClientFactory,
+    SyncApiClientFactory,
     PoliciesApi
 )
 
-async def main():
+def main():
 
     with open("secrets.json", "w") as file:
         file.write('''
-{
-    "api":
     {
-        "tokenUrl":"<your-token-url>",
-        "accessUrl":"https://<your-domain>.lusid.com/access",
-        "username":"<your-username>",
-        "password":"<your-password>",
-        "clientId":"<your-client-id>",
-        "clientSecret":"<your-client-secret>"
-    }
-}''')
+        "api":
+        {
+            "tokenUrl":"<your-token-url>",
+            "accessUrl":"https://<your-domain>.lusid.com/access",
+            "username":"<your-username>",
+            "password":"<your-password>",
+            "clientId":"<your-client-id>",
+            "clientSecret":"<your-client-secret>"
+        }
+    }''')
 
-    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # Use the finbourne_access SyncApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
 
@@ -546,28 +545,29 @@ async def main():
     # opts.total_timeout_ms = 30_000
 
     # uncomment the below to use an api client factory with overrides
-    # api_client_factory = ApiClientFactory(opts=opts)
+    # api_client_factory = SyncApiClientFactory(opts=opts)
 
-    api_client_factory = ApiClientFactory()
+    api_client_factory = SyncApiClientFactory()
 
-    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-    async with api_client_factory:
-        # Create an instance of the API class
-        api_instance = api_client_factory.build(PoliciesApi)
-        request_body = {"data-access-page-evaluation":{"request":{"action":{"entityCode":"WebSitePage","scope":"FINBOURNE","activity":"SeeAdminControls"},"toEffectiveDate":"2018-12-08T13:30:00.0000000+00:00","toAsAt":"2018-12-31T11:00:00.0000000+00:00"},"resource":{"id":{"scope":"FINBOURNE","code":"DataAccessPage"},"metadata":{"RequiredLicence":[{"provider":"WebsiteAccess","value":"FINBOURNE"}]}}}} # Dict[str, EvaluationRequest] | A dictionary of evaluations, keyed using any arbitrary correlation id (it will be returned with the response for that evaluation).
-        applications = ['applications_example'] # List[str] | Optional. The application type of the roles and policies to use when evaluating. (optional)
+    # Enter a context with an instance of the SyncApiClientFactory to ensure the connection pool is closed after use
+    
+    # Create an instance of the API class
+    api_instance = api_client_factory.build(PoliciesApi)
+    request_body = {"data-access-page-evaluation":{"request":{"action":{"entityCode":"WebSitePage","scope":"FINBOURNE","activity":"SeeAdminControls"},"toEffectiveDate":"2018-12-08T13:30:00.0000000+00:00","toAsAt":"2018-12-31T11:00:00.0000000+00:00"},"resource":{"id":{"scope":"FINBOURNE","code":"DataAccessPage"},"metadata":{"RequiredLicence":[{"provider":"WebsiteAccess","value":"FINBOURNE"}]}}}} # Dict[str, EvaluationRequest] | A dictionary of evaluations, keyed using any arbitrary correlation id (it will be returned with the response for that evaluation).
+    applications = ['applications_example'] # List[str] | Optional. The application type of the roles and policies to use when evaluating. (optional)
 
-        try:
-            # uncomment the below to set overrides at the request level
-            # api_response = await api_instance.evaluate(request_body, applications=applications, opts=opts)
+    try:
+        # uncomment the below to set overrides at the request level
+        # api_response =  api_instance.evaluate(request_body, applications=applications, opts=opts)
 
-            # Evaluate: Run one or more evaluations
-            api_response = await api_instance.evaluate(request_body, applications=applications)
-            pprint(api_response)
-        except ApiException as e:
-            print("Exception when calling PoliciesApi->evaluate: %s\n" % e)
+        # Evaluate: Run one or more evaluations
+        api_response = api_instance.evaluate(request_body, applications=applications)
+        pprint(api_response)
 
-asyncio.run(main())
+    except ApiException as e:
+        print("Exception when calling PoliciesApi->evaluate: %s\n" % e)
+
+main()
 ```
 
 ### Parameters
@@ -605,33 +605,32 @@ Gets all Policies for the current user
 ### Example
 
 ```python
-import asyncio
 from finbourne_access.exceptions import ApiException
 from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
-    ApiClientFactory,
+    SyncApiClientFactory,
     PoliciesApi
 )
 
-async def main():
+def main():
 
     with open("secrets.json", "w") as file:
         file.write('''
-{
-    "api":
     {
-        "tokenUrl":"<your-token-url>",
-        "accessUrl":"https://<your-domain>.lusid.com/access",
-        "username":"<your-username>",
-        "password":"<your-password>",
-        "clientId":"<your-client-id>",
-        "clientSecret":"<your-client-secret>"
-    }
-}''')
+        "api":
+        {
+            "tokenUrl":"<your-token-url>",
+            "accessUrl":"https://<your-domain>.lusid.com/access",
+            "username":"<your-username>",
+            "password":"<your-password>",
+            "clientId":"<your-client-id>",
+            "clientSecret":"<your-client-secret>"
+        }
+    }''')
 
-    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # Use the finbourne_access SyncApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
 
@@ -640,27 +639,28 @@ async def main():
     # opts.total_timeout_ms = 30_000
 
     # uncomment the below to use an api client factory with overrides
-    # api_client_factory = ApiClientFactory(opts=opts)
+    # api_client_factory = SyncApiClientFactory(opts=opts)
 
-    api_client_factory = ApiClientFactory()
+    api_client_factory = SyncApiClientFactory()
 
-    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-    async with api_client_factory:
-        # Create an instance of the API class
-        api_instance = api_client_factory.build(PoliciesApi)
-        applications = ['applications_example'] # List[str] | Optional. Filter on the applications that the policies apply to (optional)
+    # Enter a context with an instance of the SyncApiClientFactory to ensure the connection pool is closed after use
+    
+    # Create an instance of the API class
+    api_instance = api_client_factory.build(PoliciesApi)
+    applications = ['applications_example'] # List[str] | Optional. Filter on the applications that the policies apply to (optional)
 
-        try:
-            # uncomment the below to set overrides at the request level
-            # api_response = await api_instance.get_own_policies(applications=applications, opts=opts)
+    try:
+        # uncomment the below to set overrides at the request level
+        # api_response =  api_instance.get_own_policies(applications=applications, opts=opts)
 
-            # GetOwnPolicies: Get policies of requesting user
-            api_response = await api_instance.get_own_policies(applications=applications)
-            pprint(api_response)
-        except ApiException as e:
-            print("Exception when calling PoliciesApi->get_own_policies: %s\n" % e)
+        # GetOwnPolicies: Get policies of requesting user
+        api_response = api_instance.get_own_policies(applications=applications)
+        pprint(api_response)
 
-asyncio.run(main())
+    except ApiException as e:
+        print("Exception when calling PoliciesApi->get_own_policies: %s\n" % e)
+
+main()
 ```
 
 ### Parameters
@@ -697,33 +697,32 @@ Gets an identified Policy
 ### Example
 
 ```python
-import asyncio
 from finbourne_access.exceptions import ApiException
 from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
-    ApiClientFactory,
+    SyncApiClientFactory,
     PoliciesApi
 )
 
-async def main():
+def main():
 
     with open("secrets.json", "w") as file:
         file.write('''
-{
-    "api":
     {
-        "tokenUrl":"<your-token-url>",
-        "accessUrl":"https://<your-domain>.lusid.com/access",
-        "username":"<your-username>",
-        "password":"<your-password>",
-        "clientId":"<your-client-id>",
-        "clientSecret":"<your-client-secret>"
-    }
-}''')
+        "api":
+        {
+            "tokenUrl":"<your-token-url>",
+            "accessUrl":"https://<your-domain>.lusid.com/access",
+            "username":"<your-username>",
+            "password":"<your-password>",
+            "clientId":"<your-client-id>",
+            "clientSecret":"<your-client-secret>"
+        }
+    }''')
 
-    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # Use the finbourne_access SyncApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
 
@@ -732,28 +731,29 @@ async def main():
     # opts.total_timeout_ms = 30_000
 
     # uncomment the below to use an api client factory with overrides
-    # api_client_factory = ApiClientFactory(opts=opts)
+    # api_client_factory = SyncApiClientFactory(opts=opts)
 
-    api_client_factory = ApiClientFactory()
+    api_client_factory = SyncApiClientFactory()
 
-    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-    async with api_client_factory:
-        # Create an instance of the API class
-        api_instance = api_client_factory.build(PoliciesApi)
-        code = 'code_example' # str | The code of the Policy
-        scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the Policy (optional)
+    # Enter a context with an instance of the SyncApiClientFactory to ensure the connection pool is closed after use
+    
+    # Create an instance of the API class
+    api_instance = api_client_factory.build(PoliciesApi)
+    code = 'code_example' # str | The code of the Policy
+    scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the Policy (optional)
 
-        try:
-            # uncomment the below to set overrides at the request level
-            # api_response = await api_instance.get_policy(code, scope=scope, opts=opts)
+    try:
+        # uncomment the below to set overrides at the request level
+        # api_response =  api_instance.get_policy(code, scope=scope, opts=opts)
 
-            # GetPolicy: Get Policy
-            api_response = await api_instance.get_policy(code, scope=scope)
-            pprint(api_response)
-        except ApiException as e:
-            print("Exception when calling PoliciesApi->get_policy: %s\n" % e)
+        # GetPolicy: Get Policy
+        api_response = api_instance.get_policy(code, scope=scope)
+        pprint(api_response)
 
-asyncio.run(main())
+    except ApiException as e:
+        print("Exception when calling PoliciesApi->get_policy: %s\n" % e)
+
+main()
 ```
 
 ### Parameters
@@ -791,33 +791,32 @@ Gets an identified PolicyCollection
 ### Example
 
 ```python
-import asyncio
 from finbourne_access.exceptions import ApiException
 from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
-    ApiClientFactory,
+    SyncApiClientFactory,
     PoliciesApi
 )
 
-async def main():
+def main():
 
     with open("secrets.json", "w") as file:
         file.write('''
-{
-    "api":
     {
-        "tokenUrl":"<your-token-url>",
-        "accessUrl":"https://<your-domain>.lusid.com/access",
-        "username":"<your-username>",
-        "password":"<your-password>",
-        "clientId":"<your-client-id>",
-        "clientSecret":"<your-client-secret>"
-    }
-}''')
+        "api":
+        {
+            "tokenUrl":"<your-token-url>",
+            "accessUrl":"https://<your-domain>.lusid.com/access",
+            "username":"<your-username>",
+            "password":"<your-password>",
+            "clientId":"<your-client-id>",
+            "clientSecret":"<your-client-secret>"
+        }
+    }''')
 
-    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # Use the finbourne_access SyncApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
 
@@ -826,28 +825,29 @@ async def main():
     # opts.total_timeout_ms = 30_000
 
     # uncomment the below to use an api client factory with overrides
-    # api_client_factory = ApiClientFactory(opts=opts)
+    # api_client_factory = SyncApiClientFactory(opts=opts)
 
-    api_client_factory = ApiClientFactory()
+    api_client_factory = SyncApiClientFactory()
 
-    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-    async with api_client_factory:
-        # Create an instance of the API class
-        api_instance = api_client_factory.build(PoliciesApi)
-        code = 'code_example' # str | The code of the PolicyCollection
-        scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the PolicyCollection (optional)
+    # Enter a context with an instance of the SyncApiClientFactory to ensure the connection pool is closed after use
+    
+    # Create an instance of the API class
+    api_instance = api_client_factory.build(PoliciesApi)
+    code = 'code_example' # str | The code of the PolicyCollection
+    scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the PolicyCollection (optional)
 
-        try:
-            # uncomment the below to set overrides at the request level
-            # api_response = await api_instance.get_policy_collection(code, scope=scope, opts=opts)
+    try:
+        # uncomment the below to set overrides at the request level
+        # api_response =  api_instance.get_policy_collection(code, scope=scope, opts=opts)
 
-            # GetPolicyCollection: Get PolicyCollection
-            api_response = await api_instance.get_policy_collection(code, scope=scope)
-            pprint(api_response)
-        except ApiException as e:
-            print("Exception when calling PoliciesApi->get_policy_collection: %s\n" % e)
+        # GetPolicyCollection: Get PolicyCollection
+        api_response = api_instance.get_policy_collection(code, scope=scope)
+        pprint(api_response)
 
-asyncio.run(main())
+    except ApiException as e:
+        print("Exception when calling PoliciesApi->get_policy_collection: %s\n" % e)
+
+main()
 ```
 
 ### Parameters
@@ -885,33 +885,32 @@ Gets all Policies in a scope. For pagination support, use PagePolicies.
 ### Example
 
 ```python
-import asyncio
 from finbourne_access.exceptions import ApiException
 from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
-    ApiClientFactory,
+    SyncApiClientFactory,
     PoliciesApi
 )
 
-async def main():
+def main():
 
     with open("secrets.json", "w") as file:
         file.write('''
-{
-    "api":
     {
-        "tokenUrl":"<your-token-url>",
-        "accessUrl":"https://<your-domain>.lusid.com/access",
-        "username":"<your-username>",
-        "password":"<your-password>",
-        "clientId":"<your-client-id>",
-        "clientSecret":"<your-client-secret>"
-    }
-}''')
+        "api":
+        {
+            "tokenUrl":"<your-token-url>",
+            "accessUrl":"https://<your-domain>.lusid.com/access",
+            "username":"<your-username>",
+            "password":"<your-password>",
+            "clientId":"<your-client-id>",
+            "clientSecret":"<your-client-secret>"
+        }
+    }''')
 
-    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # Use the finbourne_access SyncApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
 
@@ -920,27 +919,28 @@ async def main():
     # opts.total_timeout_ms = 30_000
 
     # uncomment the below to use an api client factory with overrides
-    # api_client_factory = ApiClientFactory(opts=opts)
+    # api_client_factory = SyncApiClientFactory(opts=opts)
 
-    api_client_factory = ApiClientFactory()
+    api_client_factory = SyncApiClientFactory()
 
-    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-    async with api_client_factory:
-        # Create an instance of the API class
-        api_instance = api_client_factory.build(PoliciesApi)
-        scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The requested scope (optional)
+    # Enter a context with an instance of the SyncApiClientFactory to ensure the connection pool is closed after use
+    
+    # Create an instance of the API class
+    api_instance = api_client_factory.build(PoliciesApi)
+    scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The requested scope (optional)
 
-        try:
-            # uncomment the below to set overrides at the request level
-            # api_response = await api_instance.list_policies(scope=scope, opts=opts)
+    try:
+        # uncomment the below to set overrides at the request level
+        # api_response =  api_instance.list_policies(scope=scope, opts=opts)
 
-            # ListPolicies: List Policies
-            api_response = await api_instance.list_policies(scope=scope)
-            pprint(api_response)
-        except ApiException as e:
-            print("Exception when calling PoliciesApi->list_policies: %s\n" % e)
+        # ListPolicies: List Policies
+        api_response = api_instance.list_policies(scope=scope)
+        pprint(api_response)
 
-asyncio.run(main())
+    except ApiException as e:
+        print("Exception when calling PoliciesApi->list_policies: %s\n" % e)
+
+main()
 ```
 
 ### Parameters
@@ -977,33 +977,32 @@ Gets all PolicyCollections in a scope. For pagination support, use PagePolicyCol
 ### Example
 
 ```python
-import asyncio
 from finbourne_access.exceptions import ApiException
 from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
-    ApiClientFactory,
+    SyncApiClientFactory,
     PoliciesApi
 )
 
-async def main():
+def main():
 
     with open("secrets.json", "w") as file:
         file.write('''
-{
-    "api":
     {
-        "tokenUrl":"<your-token-url>",
-        "accessUrl":"https://<your-domain>.lusid.com/access",
-        "username":"<your-username>",
-        "password":"<your-password>",
-        "clientId":"<your-client-id>",
-        "clientSecret":"<your-client-secret>"
-    }
-}''')
+        "api":
+        {
+            "tokenUrl":"<your-token-url>",
+            "accessUrl":"https://<your-domain>.lusid.com/access",
+            "username":"<your-username>",
+            "password":"<your-password>",
+            "clientId":"<your-client-id>",
+            "clientSecret":"<your-client-secret>"
+        }
+    }''')
 
-    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # Use the finbourne_access SyncApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
 
@@ -1012,27 +1011,28 @@ async def main():
     # opts.total_timeout_ms = 30_000
 
     # uncomment the below to use an api client factory with overrides
-    # api_client_factory = ApiClientFactory(opts=opts)
+    # api_client_factory = SyncApiClientFactory(opts=opts)
 
-    api_client_factory = ApiClientFactory()
+    api_client_factory = SyncApiClientFactory()
 
-    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-    async with api_client_factory:
-        # Create an instance of the API class
-        api_instance = api_client_factory.build(PoliciesApi)
-        scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The requested scope (optional)
+    # Enter a context with an instance of the SyncApiClientFactory to ensure the connection pool is closed after use
+    
+    # Create an instance of the API class
+    api_instance = api_client_factory.build(PoliciesApi)
+    scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The requested scope (optional)
 
-        try:
-            # uncomment the below to set overrides at the request level
-            # api_response = await api_instance.list_policy_collections(scope=scope, opts=opts)
+    try:
+        # uncomment the below to set overrides at the request level
+        # api_response =  api_instance.list_policy_collections(scope=scope, opts=opts)
 
-            # ListPolicyCollections: List PolicyCollections
-            api_response = await api_instance.list_policy_collections(scope=scope)
-            pprint(api_response)
-        except ApiException as e:
-            print("Exception when calling PoliciesApi->list_policy_collections: %s\n" % e)
+        # ListPolicyCollections: List PolicyCollections
+        api_response = api_instance.list_policy_collections(scope=scope)
+        pprint(api_response)
 
-asyncio.run(main())
+    except ApiException as e:
+        print("Exception when calling PoliciesApi->list_policy_collections: %s\n" % e)
+
+main()
 ```
 
 ### Parameters
@@ -1069,33 +1069,32 @@ Gets all Policies with pagination support.
 ### Example
 
 ```python
-import asyncio
 from finbourne_access.exceptions import ApiException
 from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
-    ApiClientFactory,
+    SyncApiClientFactory,
     PoliciesApi
 )
 
-async def main():
+def main():
 
     with open("secrets.json", "w") as file:
         file.write('''
-{
-    "api":
     {
-        "tokenUrl":"<your-token-url>",
-        "accessUrl":"https://<your-domain>.lusid.com/access",
-        "username":"<your-username>",
-        "password":"<your-password>",
-        "clientId":"<your-client-id>",
-        "clientSecret":"<your-client-secret>"
-    }
-}''')
+        "api":
+        {
+            "tokenUrl":"<your-token-url>",
+            "accessUrl":"https://<your-domain>.lusid.com/access",
+            "username":"<your-username>",
+            "password":"<your-password>",
+            "clientId":"<your-client-id>",
+            "clientSecret":"<your-client-secret>"
+        }
+    }''')
 
-    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # Use the finbourne_access SyncApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
 
@@ -1104,30 +1103,31 @@ async def main():
     # opts.total_timeout_ms = 30_000
 
     # uncomment the below to use an api client factory with overrides
-    # api_client_factory = ApiClientFactory(opts=opts)
+    # api_client_factory = SyncApiClientFactory(opts=opts)
 
-    api_client_factory = ApiClientFactory()
+    api_client_factory = SyncApiClientFactory()
 
-    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-    async with api_client_factory:
-        # Create an instance of the API class
-        api_instance = api_client_factory.build(PoliciesApi)
-        sort_by = 'sort_by_example' # str | Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName (optional)
-        limit = 56 # int | Optional. 2000 if not provided. When paginating, limit the number of returned results to this many (optional)
-        filter = 'filter_example' # str | Optional. Expression to filter the result set (optional)
-        page = 'page_example' # str | Optional. Paging token returned from a previous result (optional)
+    # Enter a context with an instance of the SyncApiClientFactory to ensure the connection pool is closed after use
+    
+    # Create an instance of the API class
+    api_instance = api_client_factory.build(PoliciesApi)
+    sort_by = 'sort_by_example' # str | Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName (optional)
+    limit = 56 # int | Optional. 2000 if not provided. When paginating, limit the number of returned results to this many (optional)
+    filter = 'filter_example' # str | Optional. Expression to filter the result set (optional)
+    page = 'page_example' # str | Optional. Paging token returned from a previous result (optional)
 
-        try:
-            # uncomment the below to set overrides at the request level
-            # api_response = await api_instance.page_policies(sort_by=sort_by, limit=limit, filter=filter, page=page, opts=opts)
+    try:
+        # uncomment the below to set overrides at the request level
+        # api_response =  api_instance.page_policies(sort_by=sort_by, limit=limit, filter=filter, page=page, opts=opts)
 
-            # PagePolicies: Page Policies
-            api_response = await api_instance.page_policies(sort_by=sort_by, limit=limit, filter=filter, page=page)
-            pprint(api_response)
-        except ApiException as e:
-            print("Exception when calling PoliciesApi->page_policies: %s\n" % e)
+        # PagePolicies: Page Policies
+        api_response = api_instance.page_policies(sort_by=sort_by, limit=limit, filter=filter, page=page)
+        pprint(api_response)
 
-asyncio.run(main())
+    except ApiException as e:
+        print("Exception when calling PoliciesApi->page_policies: %s\n" % e)
+
+main()
 ```
 
 ### Parameters
@@ -1167,33 +1167,32 @@ Gets all PolicyCollections with pagination support.
 ### Example
 
 ```python
-import asyncio
 from finbourne_access.exceptions import ApiException
 from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
-    ApiClientFactory,
+    SyncApiClientFactory,
     PoliciesApi
 )
 
-async def main():
+def main():
 
     with open("secrets.json", "w") as file:
         file.write('''
-{
-    "api":
     {
-        "tokenUrl":"<your-token-url>",
-        "accessUrl":"https://<your-domain>.lusid.com/access",
-        "username":"<your-username>",
-        "password":"<your-password>",
-        "clientId":"<your-client-id>",
-        "clientSecret":"<your-client-secret>"
-    }
-}''')
+        "api":
+        {
+            "tokenUrl":"<your-token-url>",
+            "accessUrl":"https://<your-domain>.lusid.com/access",
+            "username":"<your-username>",
+            "password":"<your-password>",
+            "clientId":"<your-client-id>",
+            "clientSecret":"<your-client-secret>"
+        }
+    }''')
 
-    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # Use the finbourne_access SyncApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
 
@@ -1202,30 +1201,31 @@ async def main():
     # opts.total_timeout_ms = 30_000
 
     # uncomment the below to use an api client factory with overrides
-    # api_client_factory = ApiClientFactory(opts=opts)
+    # api_client_factory = SyncApiClientFactory(opts=opts)
 
-    api_client_factory = ApiClientFactory()
+    api_client_factory = SyncApiClientFactory()
 
-    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-    async with api_client_factory:
-        # Create an instance of the API class
-        api_instance = api_client_factory.build(PoliciesApi)
-        sort_by = 'sort_by_example' # str | Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName (optional)
-        limit = 56 # int | Optional. 2000 if not provided. When paginating, limit the number of returned results to this many (optional)
-        filter = 'filter_example' # str | Optional. Expression to filter the result set (optional)
-        page = 'page_example' # str | Optional. Paging token returned from a previous result (optional)
+    # Enter a context with an instance of the SyncApiClientFactory to ensure the connection pool is closed after use
+    
+    # Create an instance of the API class
+    api_instance = api_client_factory.build(PoliciesApi)
+    sort_by = 'sort_by_example' # str | Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName (optional)
+    limit = 56 # int | Optional. 2000 if not provided. When paginating, limit the number of returned results to this many (optional)
+    filter = 'filter_example' # str | Optional. Expression to filter the result set (optional)
+    page = 'page_example' # str | Optional. Paging token returned from a previous result (optional)
 
-        try:
-            # uncomment the below to set overrides at the request level
-            # api_response = await api_instance.page_policy_collections(sort_by=sort_by, limit=limit, filter=filter, page=page, opts=opts)
+    try:
+        # uncomment the below to set overrides at the request level
+        # api_response =  api_instance.page_policy_collections(sort_by=sort_by, limit=limit, filter=filter, page=page, opts=opts)
 
-            # PagePolicyCollections: Page PolicyCollections
-            api_response = await api_instance.page_policy_collections(sort_by=sort_by, limit=limit, filter=filter, page=page)
-            pprint(api_response)
-        except ApiException as e:
-            print("Exception when calling PoliciesApi->page_policy_collections: %s\n" % e)
+        # PagePolicyCollections: Page PolicyCollections
+        api_response = api_instance.page_policy_collections(sort_by=sort_by, limit=limit, filter=filter, page=page)
+        pprint(api_response)
 
-asyncio.run(main())
+    except ApiException as e:
+        print("Exception when calling PoliciesApi->page_policy_collections: %s\n" % e)
+
+main()
 ```
 
 ### Parameters
@@ -1265,33 +1265,32 @@ Remove Policies and/or PolicyCollections from a PolicyCollection
 ### Example
 
 ```python
-import asyncio
 from finbourne_access.exceptions import ApiException
 from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
-    ApiClientFactory,
+    SyncApiClientFactory,
     PoliciesApi
 )
 
-async def main():
+def main():
 
     with open("secrets.json", "w") as file:
         file.write('''
-{
-    "api":
     {
-        "tokenUrl":"<your-token-url>",
-        "accessUrl":"https://<your-domain>.lusid.com/access",
-        "username":"<your-username>",
-        "password":"<your-password>",
-        "clientId":"<your-client-id>",
-        "clientSecret":"<your-client-secret>"
-    }
-}''')
+        "api":
+        {
+            "tokenUrl":"<your-token-url>",
+            "accessUrl":"https://<your-domain>.lusid.com/access",
+            "username":"<your-username>",
+            "password":"<your-password>",
+            "clientId":"<your-client-id>",
+            "clientSecret":"<your-client-secret>"
+        }
+    }''')
 
-    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # Use the finbourne_access SyncApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
 
@@ -1300,34 +1299,35 @@ async def main():
     # opts.total_timeout_ms = 30_000
 
     # uncomment the below to use an api client factory with overrides
-    # api_client_factory = ApiClientFactory(opts=opts)
+    # api_client_factory = SyncApiClientFactory(opts=opts)
 
-    api_client_factory = ApiClientFactory()
+    api_client_factory = SyncApiClientFactory()
 
-    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-    async with api_client_factory:
-        # Create an instance of the API class
-        api_instance = api_client_factory.build(PoliciesApi)
-        code = 'code_example' # str | The code of the PolicyCollection
+    # Enter a context with an instance of the SyncApiClientFactory to ensure the connection pool is closed after use
+    
+    # Create an instance of the API class
+    api_instance = api_client_factory.build(PoliciesApi)
+    code = 'code_example' # str | The code of the PolicyCollection
 
-        # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
-        # Change the lines below to switch approach
-        # remove_from_policy_collection_request = RemoveFromPolicyCollectionRequest.from_json("")
-        # remove_from_policy_collection_request = RemoveFromPolicyCollectionRequest.from_dict({})
-        remove_from_policy_collection_request = RemoveFromPolicyCollectionRequest()
-        scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the PolicyCollection (optional)
+    # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
+    # Change the lines below to switch approach
+    # remove_from_policy_collection_request = RemoveFromPolicyCollectionRequest.from_json("")
+    # remove_from_policy_collection_request = RemoveFromPolicyCollectionRequest.from_dict({})
+    remove_from_policy_collection_request = RemoveFromPolicyCollectionRequest()
+    scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the PolicyCollection (optional)
 
-        try:
-            # uncomment the below to set overrides at the request level
-            # api_response = await api_instance.remove_from_policy_collection(code, remove_from_policy_collection_request, scope=scope, opts=opts)
+    try:
+        # uncomment the below to set overrides at the request level
+        # api_response =  api_instance.remove_from_policy_collection(code, remove_from_policy_collection_request, scope=scope, opts=opts)
 
-            # RemoveFromPolicyCollection: Remove From PolicyCollection
-            api_response = await api_instance.remove_from_policy_collection(code, remove_from_policy_collection_request, scope=scope)
-            pprint(api_response)
-        except ApiException as e:
-            print("Exception when calling PoliciesApi->remove_from_policy_collection: %s\n" % e)
+        # RemoveFromPolicyCollection: Remove From PolicyCollection
+        api_response = api_instance.remove_from_policy_collection(code, remove_from_policy_collection_request, scope=scope)
+        pprint(api_response)
 
-asyncio.run(main())
+    except ApiException as e:
+        print("Exception when calling PoliciesApi->remove_from_policy_collection: %s\n" % e)
+
+main()
 ```
 
 ### Parameters
@@ -1366,33 +1366,32 @@ Updates a Policy
 ### Example
 
 ```python
-import asyncio
 from finbourne_access.exceptions import ApiException
 from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
-    ApiClientFactory,
+    SyncApiClientFactory,
     PoliciesApi
 )
 
-async def main():
+def main():
 
     with open("secrets.json", "w") as file:
         file.write('''
-{
-    "api":
     {
-        "tokenUrl":"<your-token-url>",
-        "accessUrl":"https://<your-domain>.lusid.com/access",
-        "username":"<your-username>",
-        "password":"<your-password>",
-        "clientId":"<your-client-id>",
-        "clientSecret":"<your-client-secret>"
-    }
-}''')
+        "api":
+        {
+            "tokenUrl":"<your-token-url>",
+            "accessUrl":"https://<your-domain>.lusid.com/access",
+            "username":"<your-username>",
+            "password":"<your-password>",
+            "clientId":"<your-client-id>",
+            "clientSecret":"<your-client-secret>"
+        }
+    }''')
 
-    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # Use the finbourne_access SyncApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
 
@@ -1401,34 +1400,35 @@ async def main():
     # opts.total_timeout_ms = 30_000
 
     # uncomment the below to use an api client factory with overrides
-    # api_client_factory = ApiClientFactory(opts=opts)
+    # api_client_factory = SyncApiClientFactory(opts=opts)
 
-    api_client_factory = ApiClientFactory()
+    api_client_factory = SyncApiClientFactory()
 
-    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-    async with api_client_factory:
-        # Create an instance of the API class
-        api_instance = api_client_factory.build(PoliciesApi)
-        code = 'code_example' # str | The code of the Policy
+    # Enter a context with an instance of the SyncApiClientFactory to ensure the connection pool is closed after use
+    
+    # Create an instance of the API class
+    api_instance = api_client_factory.build(PoliciesApi)
+    code = 'code_example' # str | The code of the Policy
 
-        # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
-        # Change the lines below to switch approach
-        # policy_update_request = PolicyUpdateRequest.from_json("")
-        # policy_update_request = PolicyUpdateRequest.from_dict({})
-        policy_update_request = PolicyUpdateRequest()
-        scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the Policy (optional)
+    # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
+    # Change the lines below to switch approach
+    # policy_update_request = PolicyUpdateRequest.from_json("")
+    # policy_update_request = PolicyUpdateRequest.from_dict({})
+    policy_update_request = PolicyUpdateRequest()
+    scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the Policy (optional)
 
-        try:
-            # uncomment the below to set overrides at the request level
-            # api_response = await api_instance.update_policy(code, policy_update_request, scope=scope, opts=opts)
+    try:
+        # uncomment the below to set overrides at the request level
+        # api_response =  api_instance.update_policy(code, policy_update_request, scope=scope, opts=opts)
 
-            # UpdatePolicy: Update Policy
-            api_response = await api_instance.update_policy(code, policy_update_request, scope=scope)
-            pprint(api_response)
-        except ApiException as e:
-            print("Exception when calling PoliciesApi->update_policy: %s\n" % e)
+        # UpdatePolicy: Update Policy
+        api_response = api_instance.update_policy(code, policy_update_request, scope=scope)
+        pprint(api_response)
 
-asyncio.run(main())
+    except ApiException as e:
+        print("Exception when calling PoliciesApi->update_policy: %s\n" % e)
+
+main()
 ```
 
 ### Parameters
@@ -1467,33 +1467,32 @@ Updates a PolicyCollection
 ### Example
 
 ```python
-import asyncio
 from finbourne_access.exceptions import ApiException
 from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
-    ApiClientFactory,
+    SyncApiClientFactory,
     PoliciesApi
 )
 
-async def main():
+def main():
 
     with open("secrets.json", "w") as file:
         file.write('''
-{
-    "api":
     {
-        "tokenUrl":"<your-token-url>",
-        "accessUrl":"https://<your-domain>.lusid.com/access",
-        "username":"<your-username>",
-        "password":"<your-password>",
-        "clientId":"<your-client-id>",
-        "clientSecret":"<your-client-secret>"
-    }
-}''')
+        "api":
+        {
+            "tokenUrl":"<your-token-url>",
+            "accessUrl":"https://<your-domain>.lusid.com/access",
+            "username":"<your-username>",
+            "password":"<your-password>",
+            "clientId":"<your-client-id>",
+            "clientSecret":"<your-client-secret>"
+        }
+    }''')
 
-    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # Use the finbourne_access SyncApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
 
@@ -1502,34 +1501,35 @@ async def main():
     # opts.total_timeout_ms = 30_000
 
     # uncomment the below to use an api client factory with overrides
-    # api_client_factory = ApiClientFactory(opts=opts)
+    # api_client_factory = SyncApiClientFactory(opts=opts)
 
-    api_client_factory = ApiClientFactory()
+    api_client_factory = SyncApiClientFactory()
 
-    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-    async with api_client_factory:
-        # Create an instance of the API class
-        api_instance = api_client_factory.build(PoliciesApi)
-        code = 'code_example' # str | The code of the PolicyCollection
+    # Enter a context with an instance of the SyncApiClientFactory to ensure the connection pool is closed after use
+    
+    # Create an instance of the API class
+    api_instance = api_client_factory.build(PoliciesApi)
+    code = 'code_example' # str | The code of the PolicyCollection
 
-        # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
-        # Change the lines below to switch approach
-        # policy_collection_update_request = PolicyCollectionUpdateRequest.from_json("")
-        # policy_collection_update_request = PolicyCollectionUpdateRequest.from_dict({})
-        policy_collection_update_request = PolicyCollectionUpdateRequest()
-        scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the PolicyCollection (optional)
+    # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
+    # Change the lines below to switch approach
+    # policy_collection_update_request = PolicyCollectionUpdateRequest.from_json("")
+    # policy_collection_update_request = PolicyCollectionUpdateRequest.from_dict({})
+    policy_collection_update_request = PolicyCollectionUpdateRequest()
+    scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the PolicyCollection (optional)
 
-        try:
-            # uncomment the below to set overrides at the request level
-            # api_response = await api_instance.update_policy_collection(code, policy_collection_update_request, scope=scope, opts=opts)
+    try:
+        # uncomment the below to set overrides at the request level
+        # api_response =  api_instance.update_policy_collection(code, policy_collection_update_request, scope=scope, opts=opts)
 
-            # UpdatePolicyCollection: Update PolicyCollection
-            api_response = await api_instance.update_policy_collection(code, policy_collection_update_request, scope=scope)
-            pprint(api_response)
-        except ApiException as e:
-            print("Exception when calling PoliciesApi->update_policy_collection: %s\n" % e)
+        # UpdatePolicyCollection: Update PolicyCollection
+        api_response = api_instance.update_policy_collection(code, policy_collection_update_request, scope=scope)
+        pprint(api_response)
 
-asyncio.run(main())
+    except ApiException as e:
+        print("Exception when calling PoliciesApi->update_policy_collection: %s\n" % e)
+
+main()
 ```
 
 ### Parameters

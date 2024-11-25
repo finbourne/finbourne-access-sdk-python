@@ -22,33 +22,32 @@ Creates a Policy Template
 ### Example
 
 ```python
-import asyncio
 from finbourne_access.exceptions import ApiException
 from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
-    ApiClientFactory,
+    SyncApiClientFactory,
     PolicyTemplatesApi
 )
 
-async def main():
+def main():
 
     with open("secrets.json", "w") as file:
         file.write('''
-{
-    "api":
     {
-        "tokenUrl":"<your-token-url>",
-        "accessUrl":"https://<your-domain>.lusid.com/access",
-        "username":"<your-username>",
-        "password":"<your-password>",
-        "clientId":"<your-client-id>",
-        "clientSecret":"<your-client-secret>"
-    }
-}''')
+        "api":
+        {
+            "tokenUrl":"<your-token-url>",
+            "accessUrl":"https://<your-domain>.lusid.com/access",
+            "username":"<your-username>",
+            "password":"<your-password>",
+            "clientId":"<your-client-id>",
+            "clientSecret":"<your-client-secret>"
+        }
+    }''')
 
-    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # Use the finbourne_access SyncApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
 
@@ -57,32 +56,33 @@ async def main():
     # opts.total_timeout_ms = 30_000
 
     # uncomment the below to use an api client factory with overrides
-    # api_client_factory = ApiClientFactory(opts=opts)
+    # api_client_factory = SyncApiClientFactory(opts=opts)
 
-    api_client_factory = ApiClientFactory()
+    api_client_factory = SyncApiClientFactory()
 
-    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-    async with api_client_factory:
-        # Create an instance of the API class
-        api_instance = api_client_factory.build(PolicyTemplatesApi)
+    # Enter a context with an instance of the SyncApiClientFactory to ensure the connection pool is closed after use
+    
+    # Create an instance of the API class
+    api_instance = api_client_factory.build(PolicyTemplatesApi)
 
-        # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
-        # Change the lines below to switch approach
-        # policy_template_creation_request = PolicyTemplateCreationRequest.from_json("")
-        # policy_template_creation_request = PolicyTemplateCreationRequest.from_dict({})
-        policy_template_creation_request = PolicyTemplateCreationRequest()
+    # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
+    # Change the lines below to switch approach
+    # policy_template_creation_request = PolicyTemplateCreationRequest.from_json("")
+    # policy_template_creation_request = PolicyTemplateCreationRequest.from_dict({})
+    policy_template_creation_request = PolicyTemplateCreationRequest()
 
-        try:
-            # uncomment the below to set overrides at the request level
-            # api_response = await api_instance.create_policy_template(policy_template_creation_request, opts=opts)
+    try:
+        # uncomment the below to set overrides at the request level
+        # api_response =  api_instance.create_policy_template(policy_template_creation_request, opts=opts)
 
-            # [EXPERIMENTAL] CreatePolicyTemplate: Create a Policy Template
-            api_response = await api_instance.create_policy_template(policy_template_creation_request)
-            pprint(api_response)
-        except ApiException as e:
-            print("Exception when calling PolicyTemplatesApi->create_policy_template: %s\n" % e)
+        # [EXPERIMENTAL] CreatePolicyTemplate: Create a Policy Template
+        api_response = api_instance.create_policy_template(policy_template_creation_request)
+        pprint(api_response)
 
-asyncio.run(main())
+    except ApiException as e:
+        print("Exception when calling PolicyTemplatesApi->create_policy_template: %s\n" % e)
+
+main()
 ```
 
 ### Parameters
@@ -119,33 +119,32 @@ Deletes an identified Policy Template
 ### Example
 
 ```python
-import asyncio
 from finbourne_access.exceptions import ApiException
 from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
-    ApiClientFactory,
+    SyncApiClientFactory,
     PolicyTemplatesApi
 )
 
-async def main():
+def main():
 
     with open("secrets.json", "w") as file:
         file.write('''
-{
-    "api":
     {
-        "tokenUrl":"<your-token-url>",
-        "accessUrl":"https://<your-domain>.lusid.com/access",
-        "username":"<your-username>",
-        "password":"<your-password>",
-        "clientId":"<your-client-id>",
-        "clientSecret":"<your-client-secret>"
-    }
-}''')
+        "api":
+        {
+            "tokenUrl":"<your-token-url>",
+            "accessUrl":"https://<your-domain>.lusid.com/access",
+            "username":"<your-username>",
+            "password":"<your-password>",
+            "clientId":"<your-client-id>",
+            "clientSecret":"<your-client-secret>"
+        }
+    }''')
 
-    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # Use the finbourne_access SyncApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
 
@@ -154,26 +153,27 @@ async def main():
     # opts.total_timeout_ms = 30_000
 
     # uncomment the below to use an api client factory with overrides
-    # api_client_factory = ApiClientFactory(opts=opts)
+    # api_client_factory = SyncApiClientFactory(opts=opts)
 
-    api_client_factory = ApiClientFactory()
+    api_client_factory = SyncApiClientFactory()
 
-    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-    async with api_client_factory:
-        # Create an instance of the API class
-        api_instance = api_client_factory.build(PolicyTemplatesApi)
-        code = 'code_example' # str | The code of the Policy Template
-        scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the Policy Template (optional)
+    # Enter a context with an instance of the SyncApiClientFactory to ensure the connection pool is closed after use
+    
+    # Create an instance of the API class
+    api_instance = api_client_factory.build(PolicyTemplatesApi)
+    code = 'code_example' # str | The code of the Policy Template
+    scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the Policy Template (optional)
 
-        try:
-            # uncomment the below to set overrides at the request level
-            # await api_instance.delete_policy_template(code, scope=scope, opts=opts)
+    try:
+        # uncomment the below to set overrides at the request level
+        #  api_instance.delete_policy_template(code, scope=scope, opts=opts)
 
-            # [EXPERIMENTAL] DeletePolicyTemplate: Deleting a policy template
-            await api_instance.delete_policy_template(code, scope=scope)        except ApiException as e:
-            print("Exception when calling PolicyTemplatesApi->delete_policy_template: %s\n" % e)
+        # [EXPERIMENTAL] DeletePolicyTemplate: Deleting a policy template
+        api_instance.delete_policy_template(code, scope=scope)
+    except ApiException as e:
+        print("Exception when calling PolicyTemplatesApi->delete_policy_template: %s\n" % e)
 
-asyncio.run(main())
+main()
 ```
 
 ### Parameters
@@ -211,33 +211,32 @@ Generates policies from templates
 ### Example
 
 ```python
-import asyncio
 from finbourne_access.exceptions import ApiException
 from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
-    ApiClientFactory,
+    SyncApiClientFactory,
     PolicyTemplatesApi
 )
 
-async def main():
+def main():
 
     with open("secrets.json", "w") as file:
         file.write('''
-{
-    "api":
     {
-        "tokenUrl":"<your-token-url>",
-        "accessUrl":"https://<your-domain>.lusid.com/access",
-        "username":"<your-username>",
-        "password":"<your-password>",
-        "clientId":"<your-client-id>",
-        "clientSecret":"<your-client-secret>"
-    }
-}''')
+        "api":
+        {
+            "tokenUrl":"<your-token-url>",
+            "accessUrl":"https://<your-domain>.lusid.com/access",
+            "username":"<your-username>",
+            "password":"<your-password>",
+            "clientId":"<your-client-id>",
+            "clientSecret":"<your-client-secret>"
+        }
+    }''')
 
-    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # Use the finbourne_access SyncApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
 
@@ -246,33 +245,34 @@ async def main():
     # opts.total_timeout_ms = 30_000
 
     # uncomment the below to use an api client factory with overrides
-    # api_client_factory = ApiClientFactory(opts=opts)
+    # api_client_factory = SyncApiClientFactory(opts=opts)
 
-    api_client_factory = ApiClientFactory()
+    api_client_factory = SyncApiClientFactory()
 
-    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-    async with api_client_factory:
-        # Create an instance of the API class
-        api_instance = api_client_factory.build(PolicyTemplatesApi)
+    # Enter a context with an instance of the SyncApiClientFactory to ensure the connection pool is closed after use
+    
+    # Create an instance of the API class
+    api_instance = api_client_factory.build(PolicyTemplatesApi)
 
-        # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
-        # Change the lines below to switch approach
-        # generate_policy_from_template_request = GeneratePolicyFromTemplateRequest.from_json("")
-        # generate_policy_from_template_request = GeneratePolicyFromTemplateRequest.from_dict({})
-        generate_policy_from_template_request = GeneratePolicyFromTemplateRequest()
-        as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The AsAt date time of the data (optional)
+    # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
+    # Change the lines below to switch approach
+    # generate_policy_from_template_request = GeneratePolicyFromTemplateRequest.from_json("")
+    # generate_policy_from_template_request = GeneratePolicyFromTemplateRequest.from_dict({})
+    generate_policy_from_template_request = GeneratePolicyFromTemplateRequest()
+    as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The AsAt date time of the data (optional)
 
-        try:
-            # uncomment the below to set overrides at the request level
-            # api_response = await api_instance.generate_policy_from_template(generate_policy_from_template_request, as_at=as_at, opts=opts)
+    try:
+        # uncomment the below to set overrides at the request level
+        # api_response =  api_instance.generate_policy_from_template(generate_policy_from_template_request, as_at=as_at, opts=opts)
 
-            # [EXPERIMENTAL] GeneratePolicyFromTemplate: Generate policy from template
-            api_response = await api_instance.generate_policy_from_template(generate_policy_from_template_request, as_at=as_at)
-            pprint(api_response)
-        except ApiException as e:
-            print("Exception when calling PolicyTemplatesApi->generate_policy_from_template: %s\n" % e)
+        # [EXPERIMENTAL] GeneratePolicyFromTemplate: Generate policy from template
+        api_response = api_instance.generate_policy_from_template(generate_policy_from_template_request, as_at=as_at)
+        pprint(api_response)
 
-asyncio.run(main())
+    except ApiException as e:
+        print("Exception when calling PolicyTemplatesApi->generate_policy_from_template: %s\n" % e)
+
+main()
 ```
 
 ### Parameters
@@ -310,33 +310,32 @@ Gets an identified Policy Template
 ### Example
 
 ```python
-import asyncio
 from finbourne_access.exceptions import ApiException
 from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
-    ApiClientFactory,
+    SyncApiClientFactory,
     PolicyTemplatesApi
 )
 
-async def main():
+def main():
 
     with open("secrets.json", "w") as file:
         file.write('''
-{
-    "api":
     {
-        "tokenUrl":"<your-token-url>",
-        "accessUrl":"https://<your-domain>.lusid.com/access",
-        "username":"<your-username>",
-        "password":"<your-password>",
-        "clientId":"<your-client-id>",
-        "clientSecret":"<your-client-secret>"
-    }
-}''')
+        "api":
+        {
+            "tokenUrl":"<your-token-url>",
+            "accessUrl":"https://<your-domain>.lusid.com/access",
+            "username":"<your-username>",
+            "password":"<your-password>",
+            "clientId":"<your-client-id>",
+            "clientSecret":"<your-client-secret>"
+        }
+    }''')
 
-    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # Use the finbourne_access SyncApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
 
@@ -345,29 +344,30 @@ async def main():
     # opts.total_timeout_ms = 30_000
 
     # uncomment the below to use an api client factory with overrides
-    # api_client_factory = ApiClientFactory(opts=opts)
+    # api_client_factory = SyncApiClientFactory(opts=opts)
 
-    api_client_factory = ApiClientFactory()
+    api_client_factory = SyncApiClientFactory()
 
-    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-    async with api_client_factory:
-        # Create an instance of the API class
-        api_instance = api_client_factory.build(PolicyTemplatesApi)
-        code = 'code_example' # str | The code of the Policy Template
-        as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The AsAt date time of the data. If not specified defaults to current time (optional)
-        scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the Policy Template (optional)
+    # Enter a context with an instance of the SyncApiClientFactory to ensure the connection pool is closed after use
+    
+    # Create an instance of the API class
+    api_instance = api_client_factory.build(PolicyTemplatesApi)
+    code = 'code_example' # str | The code of the Policy Template
+    as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The AsAt date time of the data. If not specified defaults to current time (optional)
+    scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the Policy Template (optional)
 
-        try:
-            # uncomment the below to set overrides at the request level
-            # api_response = await api_instance.get_policy_template(code, as_at=as_at, scope=scope, opts=opts)
+    try:
+        # uncomment the below to set overrides at the request level
+        # api_response =  api_instance.get_policy_template(code, as_at=as_at, scope=scope, opts=opts)
 
-            # [EXPERIMENTAL] GetPolicyTemplate: Retrieving one Policy Template
-            api_response = await api_instance.get_policy_template(code, as_at=as_at, scope=scope)
-            pprint(api_response)
-        except ApiException as e:
-            print("Exception when calling PolicyTemplatesApi->get_policy_template: %s\n" % e)
+        # [EXPERIMENTAL] GetPolicyTemplate: Retrieving one Policy Template
+        api_response = api_instance.get_policy_template(code, as_at=as_at, scope=scope)
+        pprint(api_response)
 
-asyncio.run(main())
+    except ApiException as e:
+        print("Exception when calling PolicyTemplatesApi->get_policy_template: %s\n" % e)
+
+main()
 ```
 
 ### Parameters
@@ -406,33 +406,32 @@ Gets all Policy Templates with pagination support.
 ### Example
 
 ```python
-import asyncio
 from finbourne_access.exceptions import ApiException
 from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
-    ApiClientFactory,
+    SyncApiClientFactory,
     PolicyTemplatesApi
 )
 
-async def main():
+def main():
 
     with open("secrets.json", "w") as file:
         file.write('''
-{
-    "api":
     {
-        "tokenUrl":"<your-token-url>",
-        "accessUrl":"https://<your-domain>.lusid.com/access",
-        "username":"<your-username>",
-        "password":"<your-password>",
-        "clientId":"<your-client-id>",
-        "clientSecret":"<your-client-secret>"
-    }
-}''')
+        "api":
+        {
+            "tokenUrl":"<your-token-url>",
+            "accessUrl":"https://<your-domain>.lusid.com/access",
+            "username":"<your-username>",
+            "password":"<your-password>",
+            "clientId":"<your-client-id>",
+            "clientSecret":"<your-client-secret>"
+        }
+    }''')
 
-    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # Use the finbourne_access SyncApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
 
@@ -441,31 +440,32 @@ async def main():
     # opts.total_timeout_ms = 30_000
 
     # uncomment the below to use an api client factory with overrides
-    # api_client_factory = ApiClientFactory(opts=opts)
+    # api_client_factory = SyncApiClientFactory(opts=opts)
 
-    api_client_factory = ApiClientFactory()
+    api_client_factory = SyncApiClientFactory()
 
-    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-    async with api_client_factory:
-        # Create an instance of the API class
-        api_instance = api_client_factory.build(PolicyTemplatesApi)
-        as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The AsAt date time of the data (optional)
-        sort_by = 'sort_by_example' # str | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName (optional)
-        limit = 56 # int | Optional. When paginating, limit the number of returned results to this many. (optional)
-        filter = 'filter_example' # str | Optional. Expression to filter the result set (optional)
-        page = 'page_example' # str | Optional. Paging token returned from a previous result (optional)
+    # Enter a context with an instance of the SyncApiClientFactory to ensure the connection pool is closed after use
+    
+    # Create an instance of the API class
+    api_instance = api_client_factory.build(PolicyTemplatesApi)
+    as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The AsAt date time of the data (optional)
+    sort_by = 'sort_by_example' # str | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName (optional)
+    limit = 56 # int | Optional. When paginating, limit the number of returned results to this many. (optional)
+    filter = 'filter_example' # str | Optional. Expression to filter the result set (optional)
+    page = 'page_example' # str | Optional. Paging token returned from a previous result (optional)
 
-        try:
-            # uncomment the below to set overrides at the request level
-            # api_response = await api_instance.list_policy_templates(as_at=as_at, sort_by=sort_by, limit=limit, filter=filter, page=page, opts=opts)
+    try:
+        # uncomment the below to set overrides at the request level
+        # api_response =  api_instance.list_policy_templates(as_at=as_at, sort_by=sort_by, limit=limit, filter=filter, page=page, opts=opts)
 
-            # [EXPERIMENTAL] ListPolicyTemplates: List Policy Templates
-            api_response = await api_instance.list_policy_templates(as_at=as_at, sort_by=sort_by, limit=limit, filter=filter, page=page)
-            pprint(api_response)
-        except ApiException as e:
-            print("Exception when calling PolicyTemplatesApi->list_policy_templates: %s\n" % e)
+        # [EXPERIMENTAL] ListPolicyTemplates: List Policy Templates
+        api_response = api_instance.list_policy_templates(as_at=as_at, sort_by=sort_by, limit=limit, filter=filter, page=page)
+        pprint(api_response)
 
-asyncio.run(main())
+    except ApiException as e:
+        print("Exception when calling PolicyTemplatesApi->list_policy_templates: %s\n" % e)
+
+main()
 ```
 
 ### Parameters
@@ -506,33 +506,32 @@ Updates an identified Policy Template
 ### Example
 
 ```python
-import asyncio
 from finbourne_access.exceptions import ApiException
 from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
-    ApiClientFactory,
+    SyncApiClientFactory,
     PolicyTemplatesApi
 )
 
-async def main():
+def main():
 
     with open("secrets.json", "w") as file:
         file.write('''
-{
-    "api":
     {
-        "tokenUrl":"<your-token-url>",
-        "accessUrl":"https://<your-domain>.lusid.com/access",
-        "username":"<your-username>",
-        "password":"<your-password>",
-        "clientId":"<your-client-id>",
-        "clientSecret":"<your-client-secret>"
-    }
-}''')
+        "api":
+        {
+            "tokenUrl":"<your-token-url>",
+            "accessUrl":"https://<your-domain>.lusid.com/access",
+            "username":"<your-username>",
+            "password":"<your-password>",
+            "clientId":"<your-client-id>",
+            "clientSecret":"<your-client-secret>"
+        }
+    }''')
 
-    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # Use the finbourne_access SyncApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
 
@@ -541,33 +540,34 @@ async def main():
     # opts.total_timeout_ms = 30_000
 
     # uncomment the below to use an api client factory with overrides
-    # api_client_factory = ApiClientFactory(opts=opts)
+    # api_client_factory = SyncApiClientFactory(opts=opts)
 
-    api_client_factory = ApiClientFactory()
+    api_client_factory = SyncApiClientFactory()
 
-    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-    async with api_client_factory:
-        # Create an instance of the API class
-        api_instance = api_client_factory.build(PolicyTemplatesApi)
-        code = 'code_example' # str | Code of the policy template to update
+    # Enter a context with an instance of the SyncApiClientFactory to ensure the connection pool is closed after use
+    
+    # Create an instance of the API class
+    api_instance = api_client_factory.build(PolicyTemplatesApi)
+    code = 'code_example' # str | Code of the policy template to update
 
-        # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
-        # Change the lines below to switch approach
-        # policy_template_update_request = PolicyTemplateUpdateRequest.from_json("")
-        # policy_template_update_request = PolicyTemplateUpdateRequest.from_dict({})
-        policy_template_update_request = PolicyTemplateUpdateRequest()
+    # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
+    # Change the lines below to switch approach
+    # policy_template_update_request = PolicyTemplateUpdateRequest.from_json("")
+    # policy_template_update_request = PolicyTemplateUpdateRequest.from_dict({})
+    policy_template_update_request = PolicyTemplateUpdateRequest()
 
-        try:
-            # uncomment the below to set overrides at the request level
-            # api_response = await api_instance.update_policy_template(code, policy_template_update_request=policy_template_update_request, opts=opts)
+    try:
+        # uncomment the below to set overrides at the request level
+        # api_response =  api_instance.update_policy_template(code, policy_template_update_request=policy_template_update_request, opts=opts)
 
-            # [EXPERIMENTAL] UpdatePolicyTemplate: Update a Policy Template
-            api_response = await api_instance.update_policy_template(code, policy_template_update_request=policy_template_update_request)
-            pprint(api_response)
-        except ApiException as e:
-            print("Exception when calling PolicyTemplatesApi->update_policy_template: %s\n" % e)
+        # [EXPERIMENTAL] UpdatePolicyTemplate: Update a Policy Template
+        api_response = api_instance.update_policy_template(code, policy_template_update_request=policy_template_update_request)
+        pprint(api_response)
 
-asyncio.run(main())
+    except ApiException as e:
+        print("Exception when calling PolicyTemplatesApi->update_policy_template: %s\n" % e)
+
+main()
 ```
 
 ### Parameters

@@ -23,33 +23,32 @@ Assigns policy collections to a role
 ### Example
 
 ```python
-import asyncio
 from finbourne_access.exceptions import ApiException
 from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
-    ApiClientFactory,
+    SyncApiClientFactory,
     RolesApi
 )
 
-async def main():
+def main():
 
     with open("secrets.json", "w") as file:
         file.write('''
-{
-    "api":
     {
-        "tokenUrl":"<your-token-url>",
-        "accessUrl":"https://<your-domain>.lusid.com/access",
-        "username":"<your-username>",
-        "password":"<your-password>",
-        "clientId":"<your-client-id>",
-        "clientSecret":"<your-client-secret>"
-    }
-}''')
+        "api":
+        {
+            "tokenUrl":"<your-token-url>",
+            "accessUrl":"https://<your-domain>.lusid.com/access",
+            "username":"<your-username>",
+            "password":"<your-password>",
+            "clientId":"<your-client-id>",
+            "clientSecret":"<your-client-secret>"
+        }
+    }''')
 
-    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # Use the finbourne_access SyncApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
 
@@ -58,34 +57,35 @@ async def main():
     # opts.total_timeout_ms = 30_000
 
     # uncomment the below to use an api client factory with overrides
-    # api_client_factory = ApiClientFactory(opts=opts)
+    # api_client_factory = SyncApiClientFactory(opts=opts)
 
-    api_client_factory = ApiClientFactory()
+    api_client_factory = SyncApiClientFactory()
 
-    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-    async with api_client_factory:
-        # Create an instance of the API class
-        api_instance = api_client_factory.build(RolesApi)
-        scope = 'scope_example' # str | The scope of the Role
-        code = 'code_example' # str | The code of the Role
+    # Enter a context with an instance of the SyncApiClientFactory to ensure the connection pool is closed after use
+    
+    # Create an instance of the API class
+    api_instance = api_client_factory.build(RolesApi)
+    scope = 'scope_example' # str | The scope of the Role
+    code = 'code_example' # str | The code of the Role
 
-        # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
-        # Change the lines below to switch approach
-        # add_policy_collection_to_role_request = AddPolicyCollectionToRoleRequest.from_json("")
-        # add_policy_collection_to_role_request = AddPolicyCollectionToRoleRequest.from_dict({})
-        add_policy_collection_to_role_request = AddPolicyCollectionToRoleRequest()
+    # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
+    # Change the lines below to switch approach
+    # add_policy_collection_to_role_request = AddPolicyCollectionToRoleRequest.from_json("")
+    # add_policy_collection_to_role_request = AddPolicyCollectionToRoleRequest.from_dict({})
+    add_policy_collection_to_role_request = AddPolicyCollectionToRoleRequest()
 
-        try:
-            # uncomment the below to set overrides at the request level
-            # api_response = await api_instance.add_policy_collection_to_role(scope, code, add_policy_collection_to_role_request, opts=opts)
+    try:
+        # uncomment the below to set overrides at the request level
+        # api_response =  api_instance.add_policy_collection_to_role(scope, code, add_policy_collection_to_role_request, opts=opts)
 
-            # AddPolicyCollectionToRole: Add policy collections to a role
-            api_response = await api_instance.add_policy_collection_to_role(scope, code, add_policy_collection_to_role_request)
-            pprint(api_response)
-        except ApiException as e:
-            print("Exception when calling RolesApi->add_policy_collection_to_role: %s\n" % e)
+        # AddPolicyCollectionToRole: Add policy collections to a role
+        api_response = api_instance.add_policy_collection_to_role(scope, code, add_policy_collection_to_role_request)
+        pprint(api_response)
 
-asyncio.run(main())
+    except ApiException as e:
+        print("Exception when calling RolesApi->add_policy_collection_to_role: %s\n" % e)
+
+main()
 ```
 
 ### Parameters
@@ -124,33 +124,32 @@ Creates a Role
 ### Example
 
 ```python
-import asyncio
 from finbourne_access.exceptions import ApiException
 from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
-    ApiClientFactory,
+    SyncApiClientFactory,
     RolesApi
 )
 
-async def main():
+def main():
 
     with open("secrets.json", "w") as file:
         file.write('''
-{
-    "api":
     {
-        "tokenUrl":"<your-token-url>",
-        "accessUrl":"https://<your-domain>.lusid.com/access",
-        "username":"<your-username>",
-        "password":"<your-password>",
-        "clientId":"<your-client-id>",
-        "clientSecret":"<your-client-secret>"
-    }
-}''')
+        "api":
+        {
+            "tokenUrl":"<your-token-url>",
+            "accessUrl":"https://<your-domain>.lusid.com/access",
+            "username":"<your-username>",
+            "password":"<your-password>",
+            "clientId":"<your-client-id>",
+            "clientSecret":"<your-client-secret>"
+        }
+    }''')
 
-    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # Use the finbourne_access SyncApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
 
@@ -159,32 +158,33 @@ async def main():
     # opts.total_timeout_ms = 30_000
 
     # uncomment the below to use an api client factory with overrides
-    # api_client_factory = ApiClientFactory(opts=opts)
+    # api_client_factory = SyncApiClientFactory(opts=opts)
 
-    api_client_factory = ApiClientFactory()
+    api_client_factory = SyncApiClientFactory()
 
-    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-    async with api_client_factory:
-        # Create an instance of the API class
-        api_instance = api_client_factory.build(RolesApi)
+    # Enter a context with an instance of the SyncApiClientFactory to ensure the connection pool is closed after use
+    
+    # Create an instance of the API class
+    api_instance = api_client_factory.build(RolesApi)
 
-        # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
-        # Change the lines below to switch approach
-        # role_creation_request = RoleCreationRequest.from_json("")
-        # role_creation_request = RoleCreationRequest.from_dict({})
-        role_creation_request = RoleCreationRequest()
+    # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
+    # Change the lines below to switch approach
+    # role_creation_request = RoleCreationRequest.from_json("")
+    # role_creation_request = RoleCreationRequest.from_dict({})
+    role_creation_request = RoleCreationRequest()
 
-        try:
-            # uncomment the below to set overrides at the request level
-            # api_response = await api_instance.create_role(role_creation_request, opts=opts)
+    try:
+        # uncomment the below to set overrides at the request level
+        # api_response =  api_instance.create_role(role_creation_request, opts=opts)
 
-            # CreateRole: Create Role
-            api_response = await api_instance.create_role(role_creation_request)
-            pprint(api_response)
-        except ApiException as e:
-            print("Exception when calling RolesApi->create_role: %s\n" % e)
+        # CreateRole: Create Role
+        api_response = api_instance.create_role(role_creation_request)
+        pprint(api_response)
 
-asyncio.run(main())
+    except ApiException as e:
+        print("Exception when calling RolesApi->create_role: %s\n" % e)
+
+main()
 ```
 
 ### Parameters
@@ -221,33 +221,32 @@ Deletes an identified Role
 ### Example
 
 ```python
-import asyncio
 from finbourne_access.exceptions import ApiException
 from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
-    ApiClientFactory,
+    SyncApiClientFactory,
     RolesApi
 )
 
-async def main():
+def main():
 
     with open("secrets.json", "w") as file:
         file.write('''
-{
-    "api":
     {
-        "tokenUrl":"<your-token-url>",
-        "accessUrl":"https://<your-domain>.lusid.com/access",
-        "username":"<your-username>",
-        "password":"<your-password>",
-        "clientId":"<your-client-id>",
-        "clientSecret":"<your-client-secret>"
-    }
-}''')
+        "api":
+        {
+            "tokenUrl":"<your-token-url>",
+            "accessUrl":"https://<your-domain>.lusid.com/access",
+            "username":"<your-username>",
+            "password":"<your-password>",
+            "clientId":"<your-client-id>",
+            "clientSecret":"<your-client-secret>"
+        }
+    }''')
 
-    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # Use the finbourne_access SyncApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
 
@@ -256,26 +255,27 @@ async def main():
     # opts.total_timeout_ms = 30_000
 
     # uncomment the below to use an api client factory with overrides
-    # api_client_factory = ApiClientFactory(opts=opts)
+    # api_client_factory = SyncApiClientFactory(opts=opts)
 
-    api_client_factory = ApiClientFactory()
+    api_client_factory = SyncApiClientFactory()
 
-    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-    async with api_client_factory:
-        # Create an instance of the API class
-        api_instance = api_client_factory.build(RolesApi)
-        code = 'code_example' # str | The code of the Role
-        scope = 'scope_example' # str | >Optional. Will use default scope if not supplied. The scope of the Role (optional)
+    # Enter a context with an instance of the SyncApiClientFactory to ensure the connection pool is closed after use
+    
+    # Create an instance of the API class
+    api_instance = api_client_factory.build(RolesApi)
+    code = 'code_example' # str | The code of the Role
+    scope = 'scope_example' # str | >Optional. Will use default scope if not supplied. The scope of the Role (optional)
 
-        try:
-            # uncomment the below to set overrides at the request level
-            # await api_instance.delete_role(code, scope=scope, opts=opts)
+    try:
+        # uncomment the below to set overrides at the request level
+        #  api_instance.delete_role(code, scope=scope, opts=opts)
 
-            # DeleteRole: Delete Role
-            await api_instance.delete_role(code, scope=scope)        except ApiException as e:
-            print("Exception when calling RolesApi->delete_role: %s\n" % e)
+        # DeleteRole: Delete Role
+        api_instance.delete_role(code, scope=scope)
+    except ApiException as e:
+        print("Exception when calling RolesApi->delete_role: %s\n" % e)
 
-asyncio.run(main())
+main()
 ```
 
 ### Parameters
@@ -313,33 +313,32 @@ Gets an identified Role
 ### Example
 
 ```python
-import asyncio
 from finbourne_access.exceptions import ApiException
 from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
-    ApiClientFactory,
+    SyncApiClientFactory,
     RolesApi
 )
 
-async def main():
+def main():
 
     with open("secrets.json", "w") as file:
         file.write('''
-{
-    "api":
     {
-        "tokenUrl":"<your-token-url>",
-        "accessUrl":"https://<your-domain>.lusid.com/access",
-        "username":"<your-username>",
-        "password":"<your-password>",
-        "clientId":"<your-client-id>",
-        "clientSecret":"<your-client-secret>"
-    }
-}''')
+        "api":
+        {
+            "tokenUrl":"<your-token-url>",
+            "accessUrl":"https://<your-domain>.lusid.com/access",
+            "username":"<your-username>",
+            "password":"<your-password>",
+            "clientId":"<your-client-id>",
+            "clientSecret":"<your-client-secret>"
+        }
+    }''')
 
-    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # Use the finbourne_access SyncApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
 
@@ -348,28 +347,29 @@ async def main():
     # opts.total_timeout_ms = 30_000
 
     # uncomment the below to use an api client factory with overrides
-    # api_client_factory = ApiClientFactory(opts=opts)
+    # api_client_factory = SyncApiClientFactory(opts=opts)
 
-    api_client_factory = ApiClientFactory()
+    api_client_factory = SyncApiClientFactory()
 
-    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-    async with api_client_factory:
-        # Create an instance of the API class
-        api_instance = api_client_factory.build(RolesApi)
-        code = 'code_example' # str | The code of the Role
-        scope = 'scope_example' # str | Optional. Will use default scope if not supplied. The scope of the Role (optional)
+    # Enter a context with an instance of the SyncApiClientFactory to ensure the connection pool is closed after use
+    
+    # Create an instance of the API class
+    api_instance = api_client_factory.build(RolesApi)
+    code = 'code_example' # str | The code of the Role
+    scope = 'scope_example' # str | Optional. Will use default scope if not supplied. The scope of the Role (optional)
 
-        try:
-            # uncomment the below to set overrides at the request level
-            # api_response = await api_instance.get_role(code, scope=scope, opts=opts)
+    try:
+        # uncomment the below to set overrides at the request level
+        # api_response =  api_instance.get_role(code, scope=scope, opts=opts)
 
-            # GetRole: Get Role
-            api_response = await api_instance.get_role(code, scope=scope)
-            pprint(api_response)
-        except ApiException as e:
-            print("Exception when calling RolesApi->get_role: %s\n" % e)
+        # GetRole: Get Role
+        api_response = api_instance.get_role(code, scope=scope)
+        pprint(api_response)
 
-asyncio.run(main())
+    except ApiException as e:
+        print("Exception when calling RolesApi->get_role: %s\n" % e)
+
+main()
 ```
 
 ### Parameters
@@ -407,33 +407,32 @@ Gets all Roles in a scope
 ### Example
 
 ```python
-import asyncio
 from finbourne_access.exceptions import ApiException
 from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
-    ApiClientFactory,
+    SyncApiClientFactory,
     RolesApi
 )
 
-async def main():
+def main():
 
     with open("secrets.json", "w") as file:
         file.write('''
-{
-    "api":
     {
-        "tokenUrl":"<your-token-url>",
-        "accessUrl":"https://<your-domain>.lusid.com/access",
-        "username":"<your-username>",
-        "password":"<your-password>",
-        "clientId":"<your-client-id>",
-        "clientSecret":"<your-client-secret>"
-    }
-}''')
+        "api":
+        {
+            "tokenUrl":"<your-token-url>",
+            "accessUrl":"https://<your-domain>.lusid.com/access",
+            "username":"<your-username>",
+            "password":"<your-password>",
+            "clientId":"<your-client-id>",
+            "clientSecret":"<your-client-secret>"
+        }
+    }''')
 
-    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # Use the finbourne_access SyncApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
 
@@ -442,27 +441,28 @@ async def main():
     # opts.total_timeout_ms = 30_000
 
     # uncomment the below to use an api client factory with overrides
-    # api_client_factory = ApiClientFactory(opts=opts)
+    # api_client_factory = SyncApiClientFactory(opts=opts)
 
-    api_client_factory = ApiClientFactory()
+    api_client_factory = SyncApiClientFactory()
 
-    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-    async with api_client_factory:
-        # Create an instance of the API class
-        api_instance = api_client_factory.build(RolesApi)
-        scope = 'scope_example' # str | Optional. Will use all scopes if not supplied. The requested scope (optional)
+    # Enter a context with an instance of the SyncApiClientFactory to ensure the connection pool is closed after use
+    
+    # Create an instance of the API class
+    api_instance = api_client_factory.build(RolesApi)
+    scope = 'scope_example' # str | Optional. Will use all scopes if not supplied. The requested scope (optional)
 
-        try:
-            # uncomment the below to set overrides at the request level
-            # api_response = await api_instance.list_roles(scope=scope, opts=opts)
+    try:
+        # uncomment the below to set overrides at the request level
+        # api_response =  api_instance.list_roles(scope=scope, opts=opts)
 
-            # ListRoles: List Roles
-            api_response = await api_instance.list_roles(scope=scope)
-            pprint(api_response)
-        except ApiException as e:
-            print("Exception when calling RolesApi->list_roles: %s\n" % e)
+        # ListRoles: List Roles
+        api_response = api_instance.list_roles(scope=scope)
+        pprint(api_response)
 
-asyncio.run(main())
+    except ApiException as e:
+        print("Exception when calling RolesApi->list_roles: %s\n" % e)
+
+main()
 ```
 
 ### Parameters
@@ -499,33 +499,32 @@ Removes a policy collection from a role
 ### Example
 
 ```python
-import asyncio
 from finbourne_access.exceptions import ApiException
 from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
-    ApiClientFactory,
+    SyncApiClientFactory,
     RolesApi
 )
 
-async def main():
+def main():
 
     with open("secrets.json", "w") as file:
         file.write('''
-{
-    "api":
     {
-        "tokenUrl":"<your-token-url>",
-        "accessUrl":"https://<your-domain>.lusid.com/access",
-        "username":"<your-username>",
-        "password":"<your-password>",
-        "clientId":"<your-client-id>",
-        "clientSecret":"<your-client-secret>"
-    }
-}''')
+        "api":
+        {
+            "tokenUrl":"<your-token-url>",
+            "accessUrl":"https://<your-domain>.lusid.com/access",
+            "username":"<your-username>",
+            "password":"<your-password>",
+            "clientId":"<your-client-id>",
+            "clientSecret":"<your-client-secret>"
+        }
+    }''')
 
-    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # Use the finbourne_access SyncApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
 
@@ -534,30 +533,31 @@ async def main():
     # opts.total_timeout_ms = 30_000
 
     # uncomment the below to use an api client factory with overrides
-    # api_client_factory = ApiClientFactory(opts=opts)
+    # api_client_factory = SyncApiClientFactory(opts=opts)
 
-    api_client_factory = ApiClientFactory()
+    api_client_factory = SyncApiClientFactory()
 
-    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-    async with api_client_factory:
-        # Create an instance of the API class
-        api_instance = api_client_factory.build(RolesApi)
-        scope = 'scope_example' # str | The scope of the Role
-        code = 'code_example' # str | The code of the Role
-        policycollectionscope = 'policycollectionscope_example' # str | The scope of policy collection to remove from the Role
-        policycollectioncode = 'policycollectioncode_example' # str | The code of the policy collection to remove from the Role
+    # Enter a context with an instance of the SyncApiClientFactory to ensure the connection pool is closed after use
+    
+    # Create an instance of the API class
+    api_instance = api_client_factory.build(RolesApi)
+    scope = 'scope_example' # str | The scope of the Role
+    code = 'code_example' # str | The code of the Role
+    policycollectionscope = 'policycollectionscope_example' # str | The scope of policy collection to remove from the Role
+    policycollectioncode = 'policycollectioncode_example' # str | The code of the policy collection to remove from the Role
 
-        try:
-            # uncomment the below to set overrides at the request level
-            # api_response = await api_instance.remove_policy_collection_from_role(scope, code, policycollectionscope, policycollectioncode, opts=opts)
+    try:
+        # uncomment the below to set overrides at the request level
+        # api_response =  api_instance.remove_policy_collection_from_role(scope, code, policycollectionscope, policycollectioncode, opts=opts)
 
-            # RemovePolicyCollectionFromRole: Remove policy collection from role
-            api_response = await api_instance.remove_policy_collection_from_role(scope, code, policycollectionscope, policycollectioncode)
-            pprint(api_response)
-        except ApiException as e:
-            print("Exception when calling RolesApi->remove_policy_collection_from_role: %s\n" % e)
+        # RemovePolicyCollectionFromRole: Remove policy collection from role
+        api_response = api_instance.remove_policy_collection_from_role(scope, code, policycollectionscope, policycollectioncode)
+        pprint(api_response)
 
-asyncio.run(main())
+    except ApiException as e:
+        print("Exception when calling RolesApi->remove_policy_collection_from_role: %s\n" % e)
+
+main()
 ```
 
 ### Parameters
@@ -597,33 +597,32 @@ Updates a Role
 ### Example
 
 ```python
-import asyncio
 from finbourne_access.exceptions import ApiException
 from finbourne_access.extensions.configuration_options import ConfigurationOptions
 from finbourne_access.models import *
 from pprint import pprint
 from finbourne_access import (
-    ApiClientFactory,
+    SyncApiClientFactory,
     RolesApi
 )
 
-async def main():
+def main():
 
     with open("secrets.json", "w") as file:
         file.write('''
-{
-    "api":
     {
-        "tokenUrl":"<your-token-url>",
-        "accessUrl":"https://<your-domain>.lusid.com/access",
-        "username":"<your-username>",
-        "password":"<your-password>",
-        "clientId":"<your-client-id>",
-        "clientSecret":"<your-client-secret>"
-    }
-}''')
+        "api":
+        {
+            "tokenUrl":"<your-token-url>",
+            "accessUrl":"https://<your-domain>.lusid.com/access",
+            "username":"<your-username>",
+            "password":"<your-password>",
+            "clientId":"<your-client-id>",
+            "clientSecret":"<your-client-secret>"
+        }
+    }''')
 
-    # Use the finbourne_access ApiClientFactory to build Api instances with a configured api client
+    # Use the finbourne_access SyncApiClientFactory to build Api instances with a configured api client
     # By default this will read config from environment variables
     # Then from a secrets.json file found in the current working directory
 
@@ -632,38 +631,39 @@ async def main():
     # opts.total_timeout_ms = 30_000
 
     # uncomment the below to use an api client factory with overrides
-    # api_client_factory = ApiClientFactory(opts=opts)
+    # api_client_factory = SyncApiClientFactory(opts=opts)
 
-    api_client_factory = ApiClientFactory()
+    api_client_factory = SyncApiClientFactory()
 
-    # Enter a context with an instance of the ApiClientFactory to ensure the connection pool is closed after use
-    async with api_client_factory:
-        # Create an instance of the API class
-        api_instance = api_client_factory.build(RolesApi)
-        code = 'code_example' # str | The code of the Role
+    # Enter a context with an instance of the SyncApiClientFactory to ensure the connection pool is closed after use
+    
+    # Create an instance of the API class
+    api_instance = api_client_factory.build(RolesApi)
+    code = 'code_example' # str | The code of the Role
 
-        # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
-        # Change the lines below to switch approach
-        # role_update_request = RoleUpdateRequest.from_json("")
-        # role_update_request = RoleUpdateRequest.from_dict({})
-        role_update_request = RoleUpdateRequest()
-        scope = 'scope_example' # str | >Optional. Will use default scope if not supplied. The scope of the Role (optional)
-        before_scope = 'before_scope_example' # str | Optional. The scope of the Role. Will use default scope if not supplied. (optional)
-        before_code = 'before_code_example' # str | Optional. The code of the Role (optional)
-        after_scope = 'after_scope_example' # str | Optional. The scope of the Role. Will use default scope if not supplied. (optional)
-        after_code = 'after_code_example' # str | Optional. The code of the Role (optional)
+    # Objects can be created either via the class constructor, or using the 'from_dict' or 'from_json' methods
+    # Change the lines below to switch approach
+    # role_update_request = RoleUpdateRequest.from_json("")
+    # role_update_request = RoleUpdateRequest.from_dict({})
+    role_update_request = RoleUpdateRequest()
+    scope = 'scope_example' # str | >Optional. Will use default scope if not supplied. The scope of the Role (optional)
+    before_scope = 'before_scope_example' # str | Optional. The scope of the Role. Will use default scope if not supplied. (optional)
+    before_code = 'before_code_example' # str | Optional. The code of the Role (optional)
+    after_scope = 'after_scope_example' # str | Optional. The scope of the Role. Will use default scope if not supplied. (optional)
+    after_code = 'after_code_example' # str | Optional. The code of the Role (optional)
 
-        try:
-            # uncomment the below to set overrides at the request level
-            # api_response = await api_instance.update_role(code, role_update_request, scope=scope, before_scope=before_scope, before_code=before_code, after_scope=after_scope, after_code=after_code, opts=opts)
+    try:
+        # uncomment the below to set overrides at the request level
+        # api_response =  api_instance.update_role(code, role_update_request, scope=scope, before_scope=before_scope, before_code=before_code, after_scope=after_scope, after_code=after_code, opts=opts)
 
-            # UpdateRole: Update Role
-            api_response = await api_instance.update_role(code, role_update_request, scope=scope, before_scope=before_scope, before_code=before_code, after_scope=after_scope, after_code=after_code)
-            pprint(api_response)
-        except ApiException as e:
-            print("Exception when calling RolesApi->update_role: %s\n" % e)
+        # UpdateRole: Update Role
+        api_response = api_instance.update_role(code, role_update_request, scope=scope, before_scope=before_scope, before_code=before_code, after_scope=after_scope, after_code=after_code)
+        pprint(api_response)
 
-asyncio.run(main())
+    except ApiException as e:
+        print("Exception when calling RolesApi->update_role: %s\n" % e)
+
+main()
 ```
 
 ### Parameters
