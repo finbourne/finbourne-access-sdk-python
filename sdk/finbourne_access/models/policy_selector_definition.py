@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, Dict, List, Optional
-from pydantic.v1 import BaseModel, Field, StrictStr, conlist, constr
+from pydantic.v1 import BaseModel, Field, StrictStr, conlist, constr, Field
 from finbourne_access.models.action_id import ActionId
 
 class PolicySelectorDefinition(BaseModel):
@@ -29,14 +29,22 @@ class PolicySelectorDefinition(BaseModel):
     identity_restriction: Optional[Dict[str, StrictStr]] = Field(None, alias="identityRestriction")
     restriction_selectors: Optional[conlist(SelectorDefinition)] = Field(None, alias="restrictionSelectors")
     actions: conlist(ActionId, min_items=1) = Field(...)
-    name: Optional[constr(strict=True, max_length=100, min_length=0)] = None
-    description: Optional[constr(strict=True, max_length=1024, min_length=0)] = None
+    name: constr(strict=True) = Field(None,alias="name") 
+    description: constr(strict=True) = Field(None,alias="description") 
     __properties = ["identityRestriction", "restrictionSelectors", "actions", "name", "description"]
 
     class Config:
         """Pydantic configuration"""
         allow_population_by_field_name = True
         validate_assignment = True
+
+    def __str__(self):
+        """For `print` and `pprint`"""
+        return pprint.pformat(self.dict(by_alias=False))
+
+    def __repr__(self):
+        """For `print` and `pprint`"""
+        return self.to_str()
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

@@ -19,37 +19,28 @@ import json
 
 
 from typing import Any, Dict, Optional
-from pydantic.v1 import BaseModel, Field, constr, validator
+from pydantic.v1 import BaseModel, Field, constr, validator, Field
 
 class PolicyCollectionId(BaseModel):
     """
     PolicyCollectionId
     """
-    scope: Optional[constr(strict=True, max_length=100, min_length=3)] = None
-    code: constr(strict=True, max_length=100, min_length=3) = Field(...)
+    scope: constr(strict=True) = Field(None,alias="scope") 
+    code: constr(strict=True) = Field(...,alias="code") 
     __properties = ["scope", "code"]
-
-    @validator('scope')
-    def scope_validate_regular_expression(cls, value):
-        """Validates the regular expression"""
-        if value is None:
-            return value
-
-        if not re.match(r"^(?=.*[a-zA-Z])[\w][\w +-]{2,100}$", value):
-            raise ValueError(r"must validate the regular expression /^(?=.*[a-zA-Z])[\w][\w +-]{2,100}$/")
-        return value
-
-    @validator('code')
-    def code_validate_regular_expression(cls, value):
-        """Validates the regular expression"""
-        if not re.match(r"^(?=.*[a-zA-Z])[\w][\w +-]{2,100}$", value):
-            raise ValueError(r"must validate the regular expression /^(?=.*[a-zA-Z])[\w][\w +-]{2,100}$/")
-        return value
 
     class Config:
         """Pydantic configuration"""
         allow_population_by_field_name = True
         validate_assignment = True
+
+    def __str__(self):
+        """For `print` and `pprint`"""
+        return pprint.pformat(self.dict(by_alias=False))
+
+    def __repr__(self):
+        """For `print` and `pprint`"""
+        return self.to_str()
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

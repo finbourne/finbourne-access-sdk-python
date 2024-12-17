@@ -19,13 +19,13 @@ import json
 
 from datetime import datetime
 from typing import Any, Dict, Optional
-from pydantic.v1 import BaseModel, Field, constr
+from pydantic.v1 import BaseModel, Field, constr, Field
 
 class AsAtPredicateContract(BaseModel):
     """
     AsAtPredicateContract
     """
-    value: Optional[constr(strict=True, max_length=25, min_length=5)] = None
+    value: constr(strict=True) = Field(None,alias="value") 
     date_time_offset: Optional[datetime] = Field(None, alias="dateTimeOffset")
     __properties = ["value", "dateTimeOffset"]
 
@@ -33,6 +33,14 @@ class AsAtPredicateContract(BaseModel):
         """Pydantic configuration"""
         allow_population_by_field_name = True
         validate_assignment = True
+
+    def __str__(self):
+        """For `print` and `pprint`"""
+        return pprint.pformat(self.dict(by_alias=False))
+
+    def __repr__(self):
+        """For `print` and `pprint`"""
+        return self.to_str()
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

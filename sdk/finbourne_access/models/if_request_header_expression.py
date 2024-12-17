@@ -19,22 +19,30 @@ import json
 
 
 from typing import Any, Dict, Optional
-from pydantic.v1 import BaseModel, Field, constr
+from pydantic.v1 import BaseModel, Field, constr, Field
 from finbourne_access.models.text_operator import TextOperator
 
 class IfRequestHeaderExpression(BaseModel):
     """
     IfRequestHeaderExpression
     """
-    header_name: constr(strict=True, max_length=1024, min_length=1) = Field(..., alias="headerName")
+    header_name: constr(strict=True) = Field(...,alias="headerName") 
     operator: TextOperator = Field(...)
-    value: Optional[constr(strict=True, max_length=4096, min_length=0)] = None
+    value: constr(strict=True) = Field(None,alias="value") 
     __properties = ["headerName", "operator", "value"]
 
     class Config:
         """Pydantic configuration"""
         allow_population_by_field_name = True
         validate_assignment = True
+
+    def __str__(self):
+        """For `print` and `pprint`"""
+        return pprint.pformat(self.dict(by_alias=False))
+
+    def __repr__(self):
+        """For `print` and `pprint`"""
+        return self.to_str()
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

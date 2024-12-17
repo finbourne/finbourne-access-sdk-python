@@ -19,25 +19,33 @@ import json
 
 
 from typing import Any, Dict, Optional
-from pydantic.v1 import BaseModel, Field, StrictStr, constr
+from pydantic.v1 import BaseModel, Field, StrictStr, constr, Field
 from finbourne_access.models.text_operator import TextOperator
 
 class IfIdentityClaimExpression(BaseModel):
     """
     IfIdentityClaimExpression
     """
-    claim_type: constr(strict=True, min_length=1) = Field(..., alias="claimType")
-    claim_value_type: Optional[StrictStr] = Field(None, alias="claimValueType")
-    claim_issuer: Optional[StrictStr] = Field(None, alias="claimIssuer")
-    claim_original_issuer: Optional[StrictStr] = Field(None, alias="claimOriginalIssuer")
+    claim_type: constr(strict=True) = Field(...,alias="claimType") 
+    claim_value_type: constr(strict=True) = Field(None,alias="claimValueType") 
+    claim_issuer: constr(strict=True) = Field(None,alias="claimIssuer") 
+    claim_original_issuer: constr(strict=True) = Field(None,alias="claimOriginalIssuer") 
     operator: TextOperator = Field(...)
-    value: Optional[StrictStr] = None
+    value: constr(strict=True) = Field(None,alias="value") 
     __properties = ["claimType", "claimValueType", "claimIssuer", "claimOriginalIssuer", "operator", "value"]
 
     class Config:
         """Pydantic configuration"""
         allow_population_by_field_name = True
         validate_assignment = True
+
+    def __str__(self):
+        """For `print` and `pprint`"""
+        return pprint.pformat(self.dict(by_alias=False))
+
+    def __repr__(self):
+        """For `print` and `pprint`"""
+        return self.to_str()
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

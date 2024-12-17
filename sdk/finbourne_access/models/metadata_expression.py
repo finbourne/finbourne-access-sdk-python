@@ -19,22 +19,30 @@ import json
 
 
 from typing import Any, Dict, Optional
-from pydantic.v1 import BaseModel, Field, StrictStr, constr
+from pydantic.v1 import BaseModel, Field, StrictStr, constr, Field
 from finbourne_access.models.operator import Operator
 
 class MetadataExpression(BaseModel):
     """
     MetadataExpression
     """
-    metadata_key: constr(strict=True, min_length=1) = Field(..., alias="metadataKey")
+    metadata_key: constr(strict=True) = Field(...,alias="metadataKey") 
     operator: Operator = Field(...)
-    text_value: Optional[StrictStr] = Field(None, alias="textValue")
+    text_value: constr(strict=True) = Field(None,alias="textValue") 
     __properties = ["metadataKey", "operator", "textValue"]
 
     class Config:
         """Pydantic configuration"""
         allow_population_by_field_name = True
         validate_assignment = True
+
+    def __str__(self):
+        """For `print` and `pprint`"""
+        return pprint.pformat(self.dict(by_alias=False))
+
+    def __repr__(self):
+        """For `print` and `pprint`"""
+        return self.to_str()
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

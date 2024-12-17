@@ -19,15 +19,15 @@ import json
 
 
 from typing import Any, Dict
-from pydantic.v1 import BaseModel, Field, constr
+from pydantic.v1 import BaseModel, Field, constr, Field
 from finbourne_access.models.selector_definition import SelectorDefinition
 
 class PolicyTemplatedSelector(BaseModel):
     """
     Templated selector for a policy template  # noqa: E501
     """
-    application: constr(strict=True, min_length=1) = Field(..., description="The application that this selector definition applies to")
-    tag: constr(strict=True, min_length=1) = Field(..., description="The type of policy that this selector definition applies to")
+    application: constr(strict=True) = Field(...,alias="application", description="The application that this selector definition applies to") 
+    tag: constr(strict=True) = Field(...,alias="tag", description="The type of policy that this selector definition applies to") 
     selector: SelectorDefinition = Field(...)
     __properties = ["application", "tag", "selector"]
 
@@ -35,6 +35,14 @@ class PolicyTemplatedSelector(BaseModel):
         """Pydantic configuration"""
         allow_population_by_field_name = True
         validate_assignment = True
+
+    def __str__(self):
+        """For `print` and `pprint`"""
+        return pprint.pformat(self.dict(by_alias=False))
+
+    def __repr__(self):
+        """For `print` and `pprint`"""
+        return self.to_str()
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

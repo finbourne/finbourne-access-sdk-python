@@ -19,30 +19,31 @@ import json
 
 
 from typing import Any, Dict, List
-from pydantic.v1 import BaseModel, Field, conlist, constr, validator
+from pydantic.v1 import BaseModel, Field, conlist, constr, validator, Field
 from finbourne_access.models.policy_templated_selector import PolicyTemplatedSelector
 
 class PolicyTemplateCreationRequest(BaseModel):
     """
     Request to create a policy template  # noqa: E501
     """
-    code: constr(strict=True, max_length=100, min_length=3) = Field(..., description="The Code of the policy template being created")
-    display_name: constr(strict=True, max_length=512, min_length=1) = Field(..., alias="displayName", description="The display name of the policy template being created")
-    description: constr(strict=True, max_length=1024, min_length=0) = Field(..., description="Description of the policy template being craeted")
+    code: constr(strict=True) = Field(...,alias="code", description="The Code of the policy template being created") 
+    display_name: constr(strict=True) = Field(...,alias="displayName", description="The display name of the policy template being created") 
+    description: constr(strict=True) = Field(...,alias="description", description="Description of the policy template being craeted") 
     templated_selectors: conlist(PolicyTemplatedSelector) = Field(..., alias="templatedSelectors", description="The selector definitions of policies included in this policy template")
     __properties = ["code", "displayName", "description", "templatedSelectors"]
-
-    @validator('code')
-    def code_validate_regular_expression(cls, value):
-        """Validates the regular expression"""
-        if not re.match(r"^(?=.*[a-zA-Z])[\w][\w +-]{2,100}$", value):
-            raise ValueError(r"must validate the regular expression /^(?=.*[a-zA-Z])[\w][\w +-]{2,100}$/")
-        return value
 
     class Config:
         """Pydantic configuration"""
         allow_population_by_field_name = True
         validate_assignment = True
+
+    def __str__(self):
+        """For `print` and `pprint`"""
+        return pprint.pformat(self.dict(by_alias=False))
+
+    def __repr__(self):
+        """For `print` and `pprint`"""
+        return self.to_str()
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

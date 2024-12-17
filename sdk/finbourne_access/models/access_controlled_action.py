@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, Dict, List, Optional
-from pydantic.v1 import BaseModel, Field, conlist, constr
+from pydantic.v1 import BaseModel, Field, conlist, constr, Field
 from finbourne_access.models.action_id import ActionId
 from finbourne_access.models.id_selector_definition import IdSelectorDefinition
 from finbourne_access.models.link import Link
@@ -28,7 +28,7 @@ class AccessControlledAction(BaseModel):
     """
     AccessControlledAction
     """
-    description: constr(strict=True, min_length=1) = Field(...)
+    description: constr(strict=True) = Field(...,alias="description") 
     action: ActionId = Field(...)
     limited_set: Optional[conlist(IdSelectorDefinition)] = Field(None, alias="limitedSet")
     links: Optional[conlist(Link)] = None
@@ -38,6 +38,14 @@ class AccessControlledAction(BaseModel):
         """Pydantic configuration"""
         allow_population_by_field_name = True
         validate_assignment = True
+
+    def __str__(self):
+        """For `print` and `pprint`"""
+        return pprint.pformat(self.dict(by_alias=False))
+
+    def __repr__(self):
+        """For `print` and `pprint`"""
+        return self.to_str()
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

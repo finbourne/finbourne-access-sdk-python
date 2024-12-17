@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, Dict, List, Optional
-from pydantic.v1 import BaseModel, Field, conlist, constr, validator
+from pydantic.v1 import BaseModel, Field, conlist, constr, validator, Field
 from finbourne_access.models.entitlement_metadata import EntitlementMetadata
 from finbourne_access.models.policy_collection_id import PolicyCollectionId
 from finbourne_access.models.policy_id import PolicyId
@@ -28,24 +28,25 @@ class PolicyCollectionCreationRequest(BaseModel):
     """
     Create a PolicyCollection, a logical group of Policies or other PolicyCollections  # noqa: E501
     """
-    code: constr(strict=True, max_length=100, min_length=3) = Field(..., description="The identifier for the PolicyCollection being created")
+    code: constr(strict=True) = Field(...,alias="code", description="The identifier for the PolicyCollection being created") 
     policies: Optional[conlist(PolicyId)] = Field(None, description="The identifiers of the Policies in this collection")
     metadata: Optional[Dict[str, conlist(EntitlementMetadata)]] = Field(None, description="Any relevant metadata associated with this resource for controlling access to this resource")
     policy_collections: Optional[conlist(PolicyCollectionId)] = Field(None, alias="policyCollections", description="The identifiers of the PolicyCollections in this collection")
-    description: Optional[constr(strict=True, max_length=1024, min_length=0)] = Field(None, description="A description of this policy collection")
+    description: constr(strict=True) = Field(None,alias="description", description="A description of this policy collection") 
     __properties = ["code", "policies", "metadata", "policyCollections", "description"]
-
-    @validator('code')
-    def code_validate_regular_expression(cls, value):
-        """Validates the regular expression"""
-        if not re.match(r"^(?=.*[a-zA-Z])[\w][\w +-]{2,100}$", value):
-            raise ValueError(r"must validate the regular expression /^(?=.*[a-zA-Z])[\w][\w +-]{2,100}$/")
-        return value
 
     class Config:
         """Pydantic configuration"""
         allow_population_by_field_name = True
         validate_assignment = True
+
+    def __str__(self):
+        """For `print` and `pprint`"""
+        return pprint.pformat(self.dict(by_alias=False))
+
+    def __repr__(self):
+        """For `print` and `pprint`"""
+        return self.to_str()
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

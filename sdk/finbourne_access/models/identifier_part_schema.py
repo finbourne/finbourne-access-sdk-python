@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, Dict, List, Optional
-from pydantic.v1 import BaseModel, Field, StrictBool, StrictInt, conlist, constr
+from pydantic.v1 import BaseModel, Field, StrictBool, StrictInt, conlist, constr, Field
 from finbourne_access.models.link import Link
 
 class IdentifierPartSchema(BaseModel):
@@ -27,9 +27,9 @@ class IdentifierPartSchema(BaseModel):
     IdentifierPartSchema
     """
     index: StrictInt = Field(...)
-    name: constr(strict=True, min_length=1) = Field(...)
-    display_name: constr(strict=True, min_length=1) = Field(..., alias="displayName")
-    description: constr(strict=True, min_length=1) = Field(...)
+    name: constr(strict=True) = Field(...,alias="name") 
+    display_name: constr(strict=True) = Field(...,alias="displayName") 
+    description: constr(strict=True) = Field(...,alias="description") 
     required: StrictBool = Field(...)
     links: Optional[conlist(Link)] = None
     __properties = ["index", "name", "displayName", "description", "required", "links"]
@@ -38,6 +38,14 @@ class IdentifierPartSchema(BaseModel):
         """Pydantic configuration"""
         allow_population_by_field_name = True
         validate_assignment = True
+
+    def __str__(self):
+        """For `print` and `pprint`"""
+        return pprint.pformat(self.dict(by_alias=False))
+
+    def __repr__(self):
+        """For `print` and `pprint`"""
+        return self.to_str()
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

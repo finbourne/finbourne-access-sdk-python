@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, Dict, List, Optional
-from pydantic.v1 import BaseModel, Field, StrictStr, conlist
+from pydantic.v1 import BaseModel, Field, StrictStr, conlist, Field
 from finbourne_access.models.for_spec import ForSpec
 from finbourne_access.models.grant import Grant
 from finbourne_access.models.how_spec import HowSpec
@@ -35,7 +35,7 @@ class PolicyResponse(BaseModel):
     Response object from the policy API  # noqa: E501
     """
     id: Optional[PolicyId] = None
-    description: Optional[StrictStr] = Field(None, description="Description of what the policy is entitling")
+    description: constr(strict=True) = Field(None,alias="description", description="Description of what the policy is entitling") 
     applications: Optional[conlist(StrictStr)] = Field(None, description="Applications to which the policy applies")
     grant: Optional[Grant] = None
     selectors: Optional[conlist(SelectorDefinition)] = Field(None, description="Selectors that this policy will be applied to")
@@ -51,6 +51,14 @@ class PolicyResponse(BaseModel):
         """Pydantic configuration"""
         allow_population_by_field_name = True
         validate_assignment = True
+
+    def __str__(self):
+        """For `print` and `pprint`"""
+        return pprint.pformat(self.dict(by_alias=False))
+
+    def __repr__(self):
+        """For `print` and `pprint`"""
+        return self.to_str()
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

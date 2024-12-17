@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, Dict, List, Optional
-from pydantic.v1 import BaseModel, Field, StrictInt, StrictStr, conlist
+from pydantic.v1 import BaseModel, Field, StrictInt, StrictStr, conlist, Field
 from finbourne_access.models.for_spec import ForSpec
 from finbourne_access.models.grant import Grant
 from finbourne_access.models.how_spec import HowSpec
@@ -36,7 +36,7 @@ class AttachedPolicyDefinitionResponse(BaseModel):
     """
     source_role: Optional[RoleId] = Field(None, alias="sourceRole")
     role_hierarchy_index: Optional[StrictInt] = Field(None, alias="roleHierarchyIndex")
-    description: Optional[StrictStr] = None
+    description: constr(strict=True) = Field(None,alias="description") 
     applications: Optional[conlist(StrictStr)] = None
     policy_type: Optional[PolicyType] = Field(None, alias="policyType")
     id: Optional[PolicyId] = None
@@ -52,6 +52,14 @@ class AttachedPolicyDefinitionResponse(BaseModel):
         """Pydantic configuration"""
         allow_population_by_field_name = True
         validate_assignment = True
+
+    def __str__(self):
+        """For `print` and `pprint`"""
+        return pprint.pformat(self.dict(by_alias=False))
+
+    def __repr__(self):
+        """For `print` and `pprint`"""
+        return self.to_str()
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

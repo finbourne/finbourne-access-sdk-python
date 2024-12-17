@@ -19,15 +19,15 @@ import json
 
 
 from typing import Any, Dict, List
-from pydantic.v1 import BaseModel, Field, conlist, constr
+from pydantic.v1 import BaseModel, Field, conlist, constr, Field
 from finbourne_access.models.policy_templated_selector import PolicyTemplatedSelector
 
 class PolicyTemplateUpdateRequest(BaseModel):
     """
     Update policy template request  # noqa: E501
     """
-    display_name: constr(strict=True, max_length=512, min_length=1) = Field(..., alias="displayName", description="The display name of the policy template being created")
-    description: constr(strict=True, max_length=1024, min_length=0) = Field(..., description="Description of the policy template being craeted")
+    display_name: constr(strict=True) = Field(...,alias="displayName", description="The display name of the policy template being created") 
+    description: constr(strict=True) = Field(...,alias="description", description="Description of the policy template being craeted") 
     templated_selectors: conlist(PolicyTemplatedSelector) = Field(..., alias="templatedSelectors", description="The selector definitions of policies included in this policy template")
     __properties = ["displayName", "description", "templatedSelectors"]
 
@@ -35,6 +35,14 @@ class PolicyTemplateUpdateRequest(BaseModel):
         """Pydantic configuration"""
         allow_population_by_field_name = True
         validate_assignment = True
+
+    def __str__(self):
+        """For `print` and `pprint`"""
+        return pprint.pformat(self.dict(by_alias=False))
+
+    def __repr__(self):
+        """For `print` and `pprint`"""
+        return self.to_str()
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

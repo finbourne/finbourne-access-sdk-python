@@ -19,17 +19,17 @@ import json
 
 
 from typing import Any, Dict, List, Optional
-from pydantic.v1 import BaseModel, Field, StrictStr, conlist
+from pydantic.v1 import BaseModel, Field, StrictStr, conlist, Field
 from finbourne_access.models.policy_templated_selector import PolicyTemplatedSelector
 
 class PolicyTemplateResponse(BaseModel):
     """
     Response object for a policy template  # noqa: E501
     """
-    display_name: Optional[StrictStr] = Field(None, alias="displayName", description="Display name of the policy template being created")
-    scope: Optional[StrictStr] = Field(None, description="The Scope of the policy template being created")
-    code: Optional[StrictStr] = Field(None, description="The Code of the policy template being created")
-    description: Optional[StrictStr] = Field(None, description="Description of the policy template being created")
+    display_name: constr(strict=True) = Field(None,alias="displayName", description="Display name of the policy template being created") 
+    scope: constr(strict=True) = Field(None,alias="scope", description="The Scope of the policy template being created") 
+    code: constr(strict=True) = Field(None,alias="code", description="The Code of the policy template being created") 
+    description: constr(strict=True) = Field(None,alias="description", description="Description of the policy template being created") 
     applications: Optional[conlist(StrictStr)] = Field(None, description="List of applications that this policy template covers")
     tags: Optional[conlist(StrictStr)] = Field(None, description="List of policy types that this policy template covers")
     templated_selectors: Optional[conlist(PolicyTemplatedSelector)] = Field(None, alias="templatedSelectors", description="The selector definitions of policies included in this policy template")
@@ -39,6 +39,14 @@ class PolicyTemplateResponse(BaseModel):
         """Pydantic configuration"""
         allow_population_by_field_name = True
         validate_assignment = True
+
+    def __str__(self):
+        """For `print` and `pprint`"""
+        return pprint.pformat(self.dict(by_alias=False))
+
+    def __repr__(self):
+        """For `print` and `pprint`"""
+        return self.to_str()
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

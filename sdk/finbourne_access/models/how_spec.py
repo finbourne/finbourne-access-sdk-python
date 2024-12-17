@@ -19,14 +19,14 @@ import json
 
 
 from typing import Any, Dict, List, Optional
-from pydantic.v1 import BaseModel, StrictStr, conlist
+from pydantic.v1 import BaseModel, StrictStr, conlist, Field
 from finbourne_access.models.key_value_pair_of_string_to_string import KeyValuePairOfStringToString
 
 class HowSpec(BaseModel):
     """
     HowSpec
     """
-    type: Optional[StrictStr] = None
+    type: constr(strict=True) = Field(None,alias="type") 
     parameters: Optional[conlist(KeyValuePairOfStringToString)] = None
     __properties = ["type", "parameters"]
 
@@ -34,6 +34,14 @@ class HowSpec(BaseModel):
         """Pydantic configuration"""
         allow_population_by_field_name = True
         validate_assignment = True
+
+    def __str__(self):
+        """For `print` and `pprint`"""
+        return pprint.pformat(self.dict(by_alias=False))
+
+    def __repr__(self):
+        """For `print` and `pprint`"""
+        return self.to_str()
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
