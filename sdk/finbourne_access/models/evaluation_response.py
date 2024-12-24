@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, Dict, Optional
-from pydantic.v1 import BaseModel, Field, StrictStr, Field
+from pydantic.v1 import BaseModel, Field, StrictStr
 from finbourne_access.models.evaluation_result import EvaluationResult
 
 class EvaluationResponse(BaseModel):
@@ -27,7 +27,7 @@ class EvaluationResponse(BaseModel):
     The result of an evaluation request  # noqa: E501
     """
     result: EvaluationResult = Field(...)
-    detailed_message: constr(strict=True) = Field(None,alias="detailedMessage", description="In the case of the evaluation being denied a message may be returned") 
+    detailed_message: Optional[StrictStr] = Field(None, alias="detailedMessage", description="In the case of the evaluation being denied a message may be returned")
     __properties = ["result", "detailedMessage"]
 
     class Config:

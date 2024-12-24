@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, Dict, List, Optional
-from pydantic.v1 import BaseModel, Field, conlist, constr, Field
+from pydantic.v1 import BaseModel, Field, conlist, constr
 from finbourne_access.models.action_id import ActionId
 from finbourne_access.models.id_selector_definition import IdSelectorDefinition
 from finbourne_access.models.link import Link
@@ -28,7 +28,7 @@ class AccessControlledAction(BaseModel):
     """
     AccessControlledAction
     """
-    description: constr(strict=True) = Field(...,alias="description") 
+    description: constr(strict=True, min_length=1) = Field(...)
     action: ActionId = Field(...)
     limited_set: Optional[conlist(IdSelectorDefinition)] = Field(None, alias="limitedSet")
     links: Optional[conlist(Link)] = None

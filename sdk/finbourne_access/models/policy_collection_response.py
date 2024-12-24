@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, Dict, List, Optional
-from pydantic.v1 import BaseModel, Field, StrictStr, conlist, Field
+from pydantic.v1 import BaseModel, Field, StrictStr, conlist
 from finbourne_access.models.link import Link
 from finbourne_access.models.policy_collection_id import PolicyCollectionId
 from finbourne_access.models.policy_id import PolicyId
@@ -31,7 +31,7 @@ class PolicyCollectionResponse(BaseModel):
     id: Optional[PolicyCollectionId] = None
     policies: Optional[conlist(PolicyId)] = Field(None, description="The identifiers of the Policies in this collection")
     policy_collections: Optional[conlist(PolicyCollectionId)] = Field(None, alias="policyCollections", description="The identifiers of the PolicyCollections in this collection")
-    description: constr(strict=True) = Field(None,alias="description", description="A description of this policy collection") 
+    description: Optional[StrictStr] = Field(None, description="A description of this policy collection")
     links: Optional[conlist(Link)] = None
     __properties = ["id", "policies", "policyCollections", "description", "links"]
 

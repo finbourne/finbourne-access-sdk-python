@@ -19,20 +19,20 @@ import json
 
 
 from typing import Any, Dict, List, Optional
-from pydantic.v1 import BaseModel, Field, StrictInt, StrictStr, conlist, constr, Field
+from pydantic.v1 import BaseModel, Field, StrictInt, StrictStr, conlist, constr
 
 class LusidProblemDetails(BaseModel):
     """
     LusidProblemDetails
     """
-    name: constr(strict=True) = Field(...,alias="name") 
+    name: constr(strict=True, min_length=1) = Field(...)
     error_details: Optional[conlist(Dict[str, StrictStr])] = Field(None, alias="errorDetails")
     code: StrictInt = Field(...)
-    type: constr(strict=True) = Field(None,alias="type") 
-    title: constr(strict=True) = Field(None,alias="title") 
+    type: Optional[StrictStr] = None
+    title: Optional[StrictStr] = None
     status: Optional[StrictInt] = None
-    detail: constr(strict=True) = Field(None,alias="detail") 
-    instance: constr(strict=True) = Field(None,alias="instance") 
+    detail: Optional[StrictStr] = None
+    instance: Optional[StrictStr] = None
     __properties = ["name", "errorDetails", "code", "type", "title", "status", "detail", "instance"]
 
     class Config:

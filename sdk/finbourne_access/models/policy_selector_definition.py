@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, Dict, List, Optional
-from pydantic.v1 import BaseModel, Field, StrictStr, conlist, constr, Field
+from pydantic.v1 import BaseModel, Field, StrictStr, conlist, constr
 from finbourne_access.models.action_id import ActionId
 
 class PolicySelectorDefinition(BaseModel):
@@ -29,8 +29,8 @@ class PolicySelectorDefinition(BaseModel):
     identity_restriction: Optional[Dict[str, StrictStr]] = Field(None, alias="identityRestriction")
     restriction_selectors: Optional[conlist(SelectorDefinition)] = Field(None, alias="restrictionSelectors")
     actions: conlist(ActionId, min_items=1) = Field(...)
-    name: constr(strict=True) = Field(None,alias="name") 
-    description: constr(strict=True) = Field(None,alias="description") 
+    name: Optional[constr(strict=True, max_length=100, min_length=0)] = None
+    description: Optional[constr(strict=True, max_length=1024, min_length=0)] = None
     __properties = ["identityRestriction", "restrictionSelectors", "actions", "name", "description"]
 
     class Config:

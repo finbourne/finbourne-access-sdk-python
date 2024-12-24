@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, Dict, List, Optional
-from pydantic.v1 import BaseModel, Field, StrictStr, conlist, constr, Field
+from pydantic.v1 import BaseModel, Field, StrictStr, conlist, constr
 from finbourne_access.models.access_controlled_action import AccessControlledAction
 from finbourne_access.models.identifier_part_schema import IdentifierPartSchema
 from finbourne_access.models.link import Link
@@ -28,9 +28,9 @@ class AccessControlledResource(BaseModel):
     """
     AccessControlledResource
     """
-    application: constr(strict=True) = Field(None,alias="application") 
-    name: constr(strict=True) = Field(None,alias="name") 
-    description: constr(strict=True) = Field(...,alias="description") 
+    application: Optional[StrictStr] = None
+    name: Optional[StrictStr] = None
+    description: constr(strict=True, min_length=1) = Field(...)
     actions: conlist(AccessControlledAction) = Field(...)
     identifier_parts: Optional[conlist(IdentifierPartSchema)] = Field(None, alias="identifierParts")
     links: Optional[conlist(Link)] = None

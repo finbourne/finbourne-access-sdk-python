@@ -19,16 +19,23 @@ import json
 
 
 from typing import Any, Dict
-from pydantic.v1 import BaseModel, Field, constr, validator, Field
+from pydantic.v1 import BaseModel, Field, constr, validator
 from finbourne_access.models.policy_id_role_resource import PolicyIdRoleResource
 
 class UserRoleCreationRequest(BaseModel):
     """
     Dto used to request creating a user's role  # noqa: E501
     """
-    user_id: constr(strict=True) = Field(...,alias="userId", description="The Id of the user for whom to create the role.") 
+    user_id: constr(strict=True, min_length=1) = Field(..., alias="userId", description="The Id of the user for whom to create the role.")
     resource: PolicyIdRoleResource = Field(...)
     __properties = ["userId", "resource"]
+
+    @validator('user_id')
+    def user_id_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if not re.match(r"^(?=.*[a-zA-Z])[\w][\w +-]{2,100}$", value):
+            raise ValueError(r"must validate the regular expression /^(?=.*[a-zA-Z])[\w][\w +-]{2,100}$/")
+        return value
 
     class Config:
         """Pydantic configuration"""

@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, Dict, List, Optional
-from pydantic.v1 import BaseModel, Field, StrictStr, conlist, Field
+from pydantic.v1 import BaseModel, Field, StrictStr, conlist
 from finbourne_access.models.link import Link
 from finbourne_access.models.policy_response import PolicyResponse
 
@@ -28,10 +28,10 @@ class ResourceListOfPolicyResponse(BaseModel):
     ResourceListOfPolicyResponse
     """
     values: conlist(PolicyResponse) = Field(...)
-    href: constr(strict=True) = Field(None,alias="href") 
+    href: Optional[StrictStr] = None
     links: Optional[conlist(Link)] = None
-    next_page: constr(strict=True) = Field(None,alias="nextPage") 
-    previous_page: constr(strict=True) = Field(None,alias="previousPage") 
+    next_page: Optional[StrictStr] = Field(None, alias="nextPage")
+    previous_page: Optional[StrictStr] = Field(None, alias="previousPage")
     __properties = ["values", "href", "links", "nextPage", "previousPage"]
 
     class Config:

@@ -19,14 +19,14 @@ import json
 
 
 from typing import Any, Dict, List, Optional
-from pydantic.v1 import BaseModel, StrictStr, conlist, Field
+from pydantic.v1 import BaseModel, StrictStr, conlist
 from finbourne_access.models.key_value_pair_of_string_to_string import KeyValuePairOfStringToString
 
 class HowSpec(BaseModel):
     """
     HowSpec
     """
-    type: constr(strict=True) = Field(None,alias="type") 
+    type: Optional[StrictStr] = None
     parameters: Optional[conlist(KeyValuePairOfStringToString)] = None
     __properties = ["type", "parameters"]
 

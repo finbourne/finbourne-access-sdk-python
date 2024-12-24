@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, Dict, List, Optional
-from pydantic.v1 import BaseModel, Field, StrictStr, conlist, constr, validator, Field
+from pydantic.v1 import BaseModel, Field, StrictStr, conlist, constr, validator
 from finbourne_access.models.for_spec import ForSpec
 from finbourne_access.models.grant import Grant
 from finbourne_access.models.how_spec import HowSpec
@@ -32,8 +32,8 @@ class PolicyCreationRequest(BaseModel):
     """
     Request to create a policy  # noqa: E501
     """
-    code: constr(strict=True) = Field(...,alias="code", description="Code of the policy being created") 
-    description: constr(strict=True) = Field(None,alias="description", description="Description of what the policy will be used for") 
+    code: constr(strict=True, max_length=100, min_length=3) = Field(..., description="Code of the policy being created")
+    description: Optional[constr(strict=True, max_length=1024, min_length=0)] = Field(None, description="Description of what the policy will be used for")
     applications: Optional[conlist(StrictStr)] = Field(None, description="Applications this policy is used with")
     grant: Grant = Field(...)
     selectors: conlist(SelectorDefinition) = Field(..., description="Selectors that identify what resources this policy qualifies for")
@@ -43,6 +43,13 @@ class PolicyCreationRequest(BaseModel):
     how: Optional[HowSpec] = None
     template_metadata: Optional[TemplateMetadata] = Field(None, alias="templateMetadata")
     __properties = ["code", "description", "applications", "grant", "selectors", "for", "if", "when", "how", "templateMetadata"]
+
+    @validator('code')
+    def code_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if not re.match(r"^(?=.*[a-zA-Z])[\w][\w +-]{2,100}$", value):
+            raise ValueError(r"must validate the regular expression /^(?=.*[a-zA-Z])[\w][\w +-]{2,100}$/")
+        return value
 
     class Config:
         """Pydantic configuration"""

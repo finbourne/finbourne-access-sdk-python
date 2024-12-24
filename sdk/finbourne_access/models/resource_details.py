@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, Dict, List, Optional
-from pydantic.v1 import BaseModel, Field, StrictStr, conlist, Field
+from pydantic.v1 import BaseModel, Field, StrictStr, conlist
 from finbourne_access.models.entitlement_metadata import EntitlementMetadata
 
 class ResourceDetails(BaseModel):

@@ -19,15 +19,32 @@ import json
 
 
 from typing import Any, Dict, Optional
-from pydantic.v1 import BaseModel, Field, constr, validator, Field
+from pydantic.v1 import BaseModel, Field, constr, validator
 
 class PolicyCollectionId(BaseModel):
     """
     PolicyCollectionId
     """
-    scope: constr(strict=True) = Field(None,alias="scope") 
-    code: constr(strict=True) = Field(...,alias="code") 
+    scope: Optional[constr(strict=True, max_length=100, min_length=3)] = None
+    code: constr(strict=True, max_length=100, min_length=3) = Field(...)
     __properties = ["scope", "code"]
+
+    @validator('scope')
+    def scope_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if value is None:
+            return value
+
+        if not re.match(r"^(?=.*[a-zA-Z])[\w][\w +-]{2,100}$", value):
+            raise ValueError(r"must validate the regular expression /^(?=.*[a-zA-Z])[\w][\w +-]{2,100}$/")
+        return value
+
+    @validator('code')
+    def code_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if not re.match(r"^(?=.*[a-zA-Z])[\w][\w +-]{2,100}$", value):
+            raise ValueError(r"must validate the regular expression /^(?=.*[a-zA-Z])[\w][\w +-]{2,100}$/")
+        return value
 
     class Config:
         """Pydantic configuration"""

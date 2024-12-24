@@ -19,16 +19,16 @@ import json
 
 
 from typing import Any, Dict, Optional
-from pydantic.v1 import BaseModel, Field, constr, Field
+from pydantic.v1 import BaseModel, Field, constr
 from finbourne_access.models.text_operator import TextOperator
 
 class IfRequestHeaderExpression(BaseModel):
     """
     IfRequestHeaderExpression
     """
-    header_name: constr(strict=True) = Field(...,alias="headerName") 
+    header_name: constr(strict=True, max_length=1024, min_length=1) = Field(..., alias="headerName")
     operator: TextOperator = Field(...)
-    value: constr(strict=True) = Field(None,alias="value") 
+    value: Optional[constr(strict=True, max_length=4096, min_length=0)] = None
     __properties = ["headerName", "operator", "value"]
 
     class Config:

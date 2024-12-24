@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, Dict, List, Optional
-from pydantic.v1 import BaseModel, Field, StrictInt, StrictStr, conlist, constr, Field
+from pydantic.v1 import BaseModel, Field, StrictInt, StrictStr, conlist, constr
 from finbourne_access.models.link import Link
 from finbourne_access.models.role_id import RoleId
 from finbourne_access.models.role_resource_request import RoleResourceRequest
@@ -31,10 +31,10 @@ class RoleResponse(BaseModel):
     """
     id: RoleId = Field(...)
     role_hierarchy_index: StrictInt = Field(..., alias="roleHierarchyIndex", description="The hierarchical index of the role")
-    description: constr(strict=True) = Field(None,alias="description", description="The description of the role") 
+    description: Optional[StrictStr] = Field(None, description="The description of the role")
     resource: RoleResourceRequest = Field(...)
     when: WhenSpec = Field(...)
-    permission: constr(strict=True) = Field(...,alias="permission", description="The action key of the role") 
+    permission: constr(strict=True, min_length=1) = Field(..., description="The action key of the role")
     limit: Optional[Dict[str, StrictStr]] = Field(None, description="The identifiers of the role with the maximum privileges that this role can have")
     links: Optional[conlist(Link)] = None
     __properties = ["id", "roleHierarchyIndex", "description", "resource", "when", "permission", "limit", "links"]

@@ -19,13 +19,13 @@ import json
 
 from datetime import datetime
 from typing import Any, Dict, Optional
-from pydantic.v1 import BaseModel, Field, constr, Field
+from pydantic.v1 import BaseModel, Field, constr
 
 class AsAtPredicateContract(BaseModel):
     """
     AsAtPredicateContract
     """
-    value: constr(strict=True) = Field(None,alias="value") 
+    value: Optional[constr(strict=True, max_length=25, min_length=5)] = None
     date_time_offset: Optional[datetime] = Field(None, alias="dateTimeOffset")
     __properties = ["value", "dateTimeOffset"]
 

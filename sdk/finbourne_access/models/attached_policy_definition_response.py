@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, Dict, List, Optional
-from pydantic.v1 import BaseModel, Field, StrictInt, StrictStr, conlist, Field
+from pydantic.v1 import BaseModel, Field, StrictInt, StrictStr, conlist
 from finbourne_access.models.for_spec import ForSpec
 from finbourne_access.models.grant import Grant
 from finbourne_access.models.how_spec import HowSpec
@@ -36,7 +36,7 @@ class AttachedPolicyDefinitionResponse(BaseModel):
     """
     source_role: Optional[RoleId] = Field(None, alias="sourceRole")
     role_hierarchy_index: Optional[StrictInt] = Field(None, alias="roleHierarchyIndex")
-    description: constr(strict=True) = Field(None,alias="description") 
+    description: Optional[StrictStr] = None
     applications: Optional[conlist(StrictStr)] = None
     policy_type: Optional[PolicyType] = Field(None, alias="policyType")
     id: Optional[PolicyId] = None

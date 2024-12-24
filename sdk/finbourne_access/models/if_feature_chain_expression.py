@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, Dict, List
-from pydantic.v1 import BaseModel, Field, conlist, Field
+from pydantic.v1 import BaseModel, Field, conlist
 from finbourne_access.models.selector_definition import SelectorDefinition
 
 class IfFeatureChainExpression(BaseModel):
