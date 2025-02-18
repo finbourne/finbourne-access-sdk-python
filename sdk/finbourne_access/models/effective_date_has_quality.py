@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, Dict, Optional
-from pydantic.v1 import BaseModel
+from pydantic.v1 import StrictStr, Field, BaseModel 
 from finbourne_access.models.date_quality import DateQuality
 
 class EffectiveDateHasQuality(BaseModel):

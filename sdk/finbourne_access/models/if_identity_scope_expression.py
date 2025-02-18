@@ -19,21 +19,14 @@ import json
 
 
 from typing import Any, Dict
-from pydantic.v1 import BaseModel, Field, constr, validator
+from pydantic.v1 import StrictStr, Field, BaseModel, Field, constr, validator 
 
 class IfIdentityScopeExpression(BaseModel):
     """
     IfIdentityScopeExpression
     """
-    scope_name: constr(strict=True, min_length=1) = Field(..., alias="scopeName")
+    scope_name:  StrictStr = Field(...,alias="scopeName") 
     __properties = ["scopeName"]
-
-    @validator('scope_name')
-    def scope_name_validate_regular_expression(cls, value):
-        """Validates the regular expression"""
-        if not re.match(r"^(?=.*[a-zA-Z])[\w][\w +-]{2,100}$", value):
-            raise ValueError(r"must validate the regular expression /^(?=.*[a-zA-Z])[\w][\w +-]{2,100}$/")
-        return value
 
     class Config:
         """Pydantic configuration"""

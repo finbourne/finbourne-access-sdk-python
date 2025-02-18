@@ -19,14 +19,14 @@ import json
 
 
 from typing import Any, Dict, Optional
-from pydantic.v1 import BaseModel, StrictStr
+from pydantic.v1 import StrictStr, Field, BaseModel, StrictStr 
 
 class EntitlementMetadata(BaseModel):
     """
     EntitlementMetadata
     """
-    provider: Optional[StrictStr] = None
-    value: Optional[StrictStr] = None
+    provider:  Optional[StrictStr] = Field(None,alias="provider") 
+    value:  Optional[StrictStr] = Field(None,alias="value") 
     __properties = ["provider", "value"]
 
     class Config:

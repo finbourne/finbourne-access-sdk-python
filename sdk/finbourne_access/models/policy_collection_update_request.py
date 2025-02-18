@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, Dict, List, Optional
-from pydantic.v1 import BaseModel, Field, conlist, constr
+from pydantic.v1 import StrictStr, Field, BaseModel, Field, conlist, constr 
 from finbourne_access.models.entitlement_metadata import EntitlementMetadata
 from finbourne_access.models.policy_collection_id import PolicyCollectionId
 from finbourne_access.models.policy_id import PolicyId
@@ -31,7 +31,7 @@ class PolicyCollectionUpdateRequest(BaseModel):
     policies: Optional[conlist(PolicyId)] = Field(None, description="The identifiers of the Policies in this collection")
     metadata: Optional[Dict[str, conlist(EntitlementMetadata)]] = Field(None, description="Any relevant metadata associated with this resource for controlling access to this resource")
     policy_collections: Optional[conlist(PolicyCollectionId)] = Field(None, alias="policyCollections", description="The identifiers of the PolicyCollections in this collection")
-    description: Optional[constr(strict=True, max_length=1024, min_length=0)] = Field(None, description="A description of this policy collection")
+    description:  Optional[StrictStr] = Field(None,alias="description", description="A description of this policy collection") 
     __properties = ["policies", "metadata", "policyCollections", "description"]
 
     class Config:

@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, Dict, List, Optional
-from pydantic.v1 import BaseModel, Field, StrictStr, conlist
+from pydantic.v1 import StrictStr, Field, BaseModel, Field, StrictStr, conlist 
 from finbourne_access.models.selector_definition import SelectorDefinition
 from finbourne_access.models.template_metadata import TemplateMetadata
 

@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, Dict, Optional
-from pydantic.v1 import BaseModel, Field, StrictInt
+from pydantic.v1 import StrictStr, Field, BaseModel, Field, StrictInt 
 from finbourne_access.models.date_unit import DateUnit
 from finbourne_access.models.point_in_time_specification import PointInTimeSpecification
 from finbourne_access.models.relative_to_date_time import RelativeToDateTime

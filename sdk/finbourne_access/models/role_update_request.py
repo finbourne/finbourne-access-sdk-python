@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, Dict, Optional
-from pydantic.v1 import BaseModel, Field, constr
+from pydantic.v1 import StrictStr, Field, BaseModel, Field, constr 
 from finbourne_access.models.role_resource_request import RoleResourceRequest
 from finbourne_access.models.when_spec import WhenSpec
 
@@ -27,7 +27,7 @@ class RoleUpdateRequest(BaseModel):
     """
     Role update does not allow the changing of the id  # noqa: E501
     """
-    description: Optional[constr(strict=True, max_length=1024, min_length=0)] = Field(None, description="The description of the role")
+    description:  Optional[StrictStr] = Field(None,alias="description", description="The description of the role") 
     resource: RoleResourceRequest = Field(...)
     when: WhenSpec = Field(...)
     __properties = ["description", "resource", "when"]

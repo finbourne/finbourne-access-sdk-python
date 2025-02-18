@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, Dict, Optional
-from pydantic.v1 import BaseModel, Field
+from pydantic.v1 import StrictStr, Field, BaseModel, Field 
 from finbourne_access.models.id_selector_definition import IdSelectorDefinition
 from finbourne_access.models.match_all_selector_definition import MatchAllSelectorDefinition
 from finbourne_access.models.metadata_selector_definition import MetadataSelectorDefinition

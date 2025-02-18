@@ -19,16 +19,16 @@ import json
 
 
 from typing import Any, Dict, Optional
-from pydantic.v1 import BaseModel, Field, StrictStr, constr
+from pydantic.v1 import StrictStr, Field, BaseModel, Field, StrictStr, constr 
 from finbourne_access.models.operator import Operator
 
 class MetadataExpression(BaseModel):
     """
     MetadataExpression
     """
-    metadata_key: constr(strict=True, min_length=1) = Field(..., alias="metadataKey")
+    metadata_key:  StrictStr = Field(...,alias="metadataKey") 
     operator: Operator = Field(...)
-    text_value: Optional[StrictStr] = Field(None, alias="textValue")
+    text_value:  Optional[StrictStr] = Field(None,alias="textValue") 
     __properties = ["metadataKey", "operator", "textValue"]
 
     class Config:

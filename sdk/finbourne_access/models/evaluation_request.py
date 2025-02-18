@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, Dict
-from pydantic.v1 import BaseModel, Field
+from pydantic.v1 import StrictStr, Field, BaseModel, Field 
 from finbourne_access.models.request_details import RequestDetails
 from finbourne_access.models.resource_details import ResourceDetails
 

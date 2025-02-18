@@ -19,15 +19,15 @@ import json
 
 
 from typing import Any, Dict
-from pydantic.v1 import BaseModel, Field, constr
+from pydantic.v1 import StrictStr, Field, BaseModel, Field, constr 
 from finbourne_access.models.selector_definition import SelectorDefinition
 
 class PolicyTemplatedSelector(BaseModel):
     """
     Templated selector for a policy template  # noqa: E501
     """
-    application: constr(strict=True, min_length=1) = Field(..., description="The application that this selector definition applies to")
-    tag: constr(strict=True, min_length=1) = Field(..., description="The type of policy that this selector definition applies to")
+    application:  StrictStr = Field(...,alias="application", description="The application that this selector definition applies to") 
+    tag:  StrictStr = Field(...,alias="tag", description="The type of policy that this selector definition applies to") 
     selector: SelectorDefinition = Field(...)
     __properties = ["application", "tag", "selector"]
 

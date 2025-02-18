@@ -19,14 +19,14 @@ import json
 
 
 from typing import Any, Dict, Optional
-from pydantic.v1 import BaseModel, StrictStr
+from pydantic.v1 import StrictStr, Field, BaseModel, StrictStr 
 
 class KeyValuePairOfStringToString(BaseModel):
     """
     KeyValuePairOfStringToString
     """
-    key: Optional[StrictStr] = None
-    value: Optional[StrictStr] = None
+    key:  Optional[StrictStr] = Field(None,alias="key") 
+    value:  Optional[StrictStr] = Field(None,alias="value") 
     __properties = ["key", "value"]
 
     class Config:

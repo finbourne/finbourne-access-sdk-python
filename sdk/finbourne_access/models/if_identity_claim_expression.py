@@ -19,19 +19,19 @@ import json
 
 
 from typing import Any, Dict, Optional
-from pydantic.v1 import BaseModel, Field, StrictStr, constr
+from pydantic.v1 import StrictStr, Field, BaseModel, Field, StrictStr, constr 
 from finbourne_access.models.text_operator import TextOperator
 
 class IfIdentityClaimExpression(BaseModel):
     """
     IfIdentityClaimExpression
     """
-    claim_type: constr(strict=True, min_length=1) = Field(..., alias="claimType")
-    claim_value_type: Optional[StrictStr] = Field(None, alias="claimValueType")
-    claim_issuer: Optional[StrictStr] = Field(None, alias="claimIssuer")
-    claim_original_issuer: Optional[StrictStr] = Field(None, alias="claimOriginalIssuer")
+    claim_type:  StrictStr = Field(...,alias="claimType") 
+    claim_value_type:  Optional[StrictStr] = Field(None,alias="claimValueType") 
+    claim_issuer:  Optional[StrictStr] = Field(None,alias="claimIssuer") 
+    claim_original_issuer:  Optional[StrictStr] = Field(None,alias="claimOriginalIssuer") 
     operator: TextOperator = Field(...)
-    value: Optional[StrictStr] = None
+    value:  Optional[StrictStr] = Field(None,alias="value") 
     __properties = ["claimType", "claimValueType", "claimIssuer", "claimOriginalIssuer", "operator", "value"]
 
     class Config:

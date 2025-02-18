@@ -19,30 +19,16 @@ import json
 
 
 from typing import Any, Dict
-from pydantic.v1 import BaseModel, Field, constr, validator
+from pydantic.v1 import StrictStr, Field, BaseModel, Field, constr, validator 
 
 class RequestedActionKey(BaseModel):
     """
     A fully qualified action identifier  # noqa: E501
     """
-    entity_code: constr(strict=True, max_length=100, min_length=3) = Field(..., alias="entityCode", description="The type of the resource on which the activity would be performed")
-    scope: constr(strict=True, max_length=100, min_length=3) = Field(..., description="The scope/provider/vendor of the activity")
-    activity: constr(strict=True, max_length=100, min_length=3) = Field(..., description="The identifier of the action to be performed on the resource")
+    entity_code:  StrictStr = Field(...,alias="entityCode", description="The type of the resource on which the activity would be performed") 
+    scope:  StrictStr = Field(...,alias="scope", description="The scope/provider/vendor of the activity") 
+    activity:  StrictStr = Field(...,alias="activity", description="The identifier of the action to be performed on the resource") 
     __properties = ["entityCode", "scope", "activity"]
-
-    @validator('entity_code')
-    def entity_code_validate_regular_expression(cls, value):
-        """Validates the regular expression"""
-        if not re.match(r"^(?=.*[a-zA-Z])[\w][\w +-]{2,100}$", value):
-            raise ValueError(r"must validate the regular expression /^(?=.*[a-zA-Z])[\w][\w +-]{2,100}$/")
-        return value
-
-    @validator('scope')
-    def scope_validate_regular_expression(cls, value):
-        """Validates the regular expression"""
-        if not re.match(r"^(?=.*[a-zA-Z])[\w][\w +-]{2,100}$", value):
-            raise ValueError(r"must validate the regular expression /^(?=.*[a-zA-Z])[\w][\w +-]{2,100}$/")
-        return value
 
     class Config:
         """Pydantic configuration"""

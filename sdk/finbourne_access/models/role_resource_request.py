@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, Dict, Optional
-from pydantic.v1 import BaseModel, Field
+from pydantic.v1 import StrictStr, Field, BaseModel, Field 
 from finbourne_access.models.non_transitive_supervisor_role_resource import NonTransitiveSupervisorRoleResource
 from finbourne_access.models.policy_id_role_resource import PolicyIdRoleResource
 

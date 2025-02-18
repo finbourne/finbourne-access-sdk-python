@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, Dict, List, Optional
-from pydantic.v1 import BaseModel, Field, conlist, constr
+from pydantic.v1 import StrictStr, Field, BaseModel, Field, conlist, constr 
 from finbourne_access.models.action_id import ActionId
 
 class MatchAllSelectorDefinition(BaseModel):
@@ -27,8 +27,8 @@ class MatchAllSelectorDefinition(BaseModel):
     MatchAllSelectorDefinition
     """
     actions: conlist(ActionId, min_items=1) = Field(...)
-    name: Optional[constr(strict=True, max_length=100, min_length=0)] = None
-    description: Optional[constr(strict=True, max_length=1024, min_length=0)] = None
+    name:  Optional[StrictStr] = Field(None,alias="name") 
+    description:  Optional[StrictStr] = Field(None,alias="description") 
     __properties = ["actions", "name", "description"]
 
     class Config:

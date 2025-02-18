@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, Dict, Optional
-from pydantic.v1 import BaseModel, Field, constr, validator
+from pydantic.v1 import StrictStr, Field, BaseModel, Field, constr, validator 
 from finbourne_access.models.role_resource_request import RoleResourceRequest
 from finbourne_access.models.when_spec import WhenSpec
 
@@ -27,18 +27,11 @@ class RoleCreationRequest(BaseModel):
     """
     Request to create a role  # noqa: E501
     """
-    code: constr(strict=True, min_length=1) = Field(..., description="The code of the role")
-    description: Optional[constr(strict=True, max_length=1024, min_length=0)] = Field(None, description="The description of the role")
+    code:  StrictStr = Field(...,alias="code", description="The code of the role") 
+    description:  Optional[StrictStr] = Field(None,alias="description", description="The description of the role") 
     resource: RoleResourceRequest = Field(...)
     when: WhenSpec = Field(...)
     __properties = ["code", "description", "resource", "when"]
-
-    @validator('code')
-    def code_validate_regular_expression(cls, value):
-        """Validates the regular expression"""
-        if not re.match(r"^(?=.*[a-zA-Z])[\w][\w +-]{2,100}$", value):
-            raise ValueError(r"must validate the regular expression /^(?=.*[a-zA-Z])[\w][\w +-]{2,100}$/")
-        return value
 
     class Config:
         """Pydantic configuration"""
