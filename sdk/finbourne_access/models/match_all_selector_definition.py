@@ -26,7 +26,7 @@ class MatchAllSelectorDefinition(BaseModel):
     """
     MatchAllSelectorDefinition
     """
-    actions: conlist(ActionId, min_items=1) = Field(...)
+    actions: conlist(ActionId) = Field(...)
     name:  Optional[StrictStr] = Field(None,alias="name") 
     description:  Optional[StrictStr] = Field(None,alias="description") 
     __properties = ["actions", "name", "description"]

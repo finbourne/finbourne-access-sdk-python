@@ -27,8 +27,8 @@ class GeneratePolicyFromTemplateRequest(BaseModel):
     """
     Generate policy from template  # noqa: E501
     """
-    template_selection: conlist(TemplateSelection, max_items=100) = Field(..., alias="templateSelection", description="List of template selection, identifying policy templates to use for generation")
-    selectors: Optional[conlist(SelectorDefinition, max_items=100)] = Field(None, description="List of additional selectors to be included in the policy")
+    template_selection: conlist(TemplateSelection) = Field(..., alias="templateSelection", description="List of template selection, identifying policy templates to use for generation")
+    selectors: Optional[conlist(SelectorDefinition)] = Field(None, description="List of additional selectors to be included in the policy")
     __properties = ["templateSelection", "selectors"]
 
     class Config:

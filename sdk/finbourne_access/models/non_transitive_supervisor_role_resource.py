@@ -25,7 +25,7 @@ class NonTransitiveSupervisorRoleResource(BaseModel):
     """
     NonTransitiveSupervisorRoleResource
     """
-    roles: conlist(Dict[str, StrictStr], min_items=1) = Field(...)
+    roles: conlist(Dict[str, StrictStr]) = Field(...)
     __properties = ["roles"]
 
     class Config:

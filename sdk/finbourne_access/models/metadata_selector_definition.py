@@ -27,8 +27,8 @@ class MetadataSelectorDefinition(BaseModel):
     """
     MetadataSelectorDefinition
     """
-    expressions: conlist(MetadataExpression, min_items=1) = Field(...)
-    actions: conlist(ActionId, min_items=1) = Field(...)
+    expressions: conlist(MetadataExpression) = Field(...)
+    actions: conlist(ActionId) = Field(...)
     name:  Optional[StrictStr] = Field(None,alias="name") 
     description:  Optional[StrictStr] = Field(None,alias="description") 
     __properties = ["expressions", "actions", "name", "description"]

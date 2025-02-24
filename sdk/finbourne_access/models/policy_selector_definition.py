@@ -28,7 +28,7 @@ class PolicySelectorDefinition(BaseModel):
     """
     identity_restriction: Optional[Dict[str, StrictStr]] = Field(None, alias="identityRestriction")
     restriction_selectors: Optional[conlist(SelectorDefinition)] = Field(None, alias="restrictionSelectors")
-    actions: conlist(ActionId, min_items=1) = Field(...)
+    actions: conlist(ActionId) = Field(...)
     name:  Optional[StrictStr] = Field(None,alias="name") 
     description:  Optional[StrictStr] = Field(None,alias="description") 
     __properties = ["identityRestriction", "restrictionSelectors", "actions", "name", "description"]
