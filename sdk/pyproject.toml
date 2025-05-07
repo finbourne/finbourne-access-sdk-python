@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "finbourne-access-sdk"
-version = "2.1.271"
+version = "2.1.272"
 description = "FINBOURNE Access Management API"
 authors = ["FINBOURNE Technology <info@finbourne.com>"]
 license = "MIT"
