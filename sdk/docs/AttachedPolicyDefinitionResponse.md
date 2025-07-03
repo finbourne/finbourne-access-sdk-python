@@ -1,6 +1,5 @@
 # AttachedPolicyDefinitionResponse
 
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -16,24 +15,29 @@ Name | Type | Description | Notes
 **var_if** | [**List[IfExpression]**](IfExpression.md) |  | [optional] 
 **when** | [**WhenSpec**](WhenSpec.md) |  | [optional] 
 **how** | [**HowSpec**](HowSpec.md) |  | [optional] 
-
 ## Example
 
 ```python
 from finbourne_access.models.attached_policy_definition_response import AttachedPolicyDefinitionResponse
+from typing import Any, Dict, List, Optional
+from pydantic.v1 import BaseModel, Field, StrictInt, StrictStr, conlist
 
-# TODO update the JSON string below
-json = "{}"
-# create an instance of AttachedPolicyDefinitionResponse from a JSON string
-attached_policy_definition_response_instance = AttachedPolicyDefinitionResponse.from_json(json)
-# print the JSON string representation of the object
-print AttachedPolicyDefinitionResponse.to_json()
+source_role: Optional[RoleId] = # Replace with your value
+role_hierarchy_index: Optional[StrictInt] = # Replace with your value
+role_hierarchy_index: Optional[StrictInt] = None
+description: Optional[StrictStr] = "example_description"
+applications: Optional[conlist(StrictStr)] = None
+policy_type: Optional[PolicyType] = # Replace with your value
+id: Optional[PolicyId] = None
+grant: Optional[Grant] = None
+selectors: Optional[conlist(SelectorDefinition)] = None
+var_for: Optional[conlist(ForSpec)] = # Replace with your value
+var_if: Optional[conlist(IfExpression)] = # Replace with your value
+when: Optional[WhenSpec] = None
+how: Optional[HowSpec] = None
+attached_policy_definition_response_instance = AttachedPolicyDefinitionResponse(source_role=source_role, role_hierarchy_index=role_hierarchy_index, description=description, applications=applications, policy_type=policy_type, id=id, grant=grant, selectors=selectors, var_for=var_for, var_if=var_if, when=when, how=how)
 
-# convert the object into a dict
-attached_policy_definition_response_dict = attached_policy_definition_response_instance.to_dict()
-# create an instance of AttachedPolicyDefinitionResponse from a dict
-attached_policy_definition_response_form_dict = attached_policy_definition_response.from_dict(attached_policy_definition_response_dict)
 ```
-[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 
+[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 

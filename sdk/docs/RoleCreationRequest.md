@@ -1,7 +1,6 @@
 # RoleCreationRequest
 
 Request to create a role
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -9,24 +8,20 @@ Name | Type | Description | Notes
 **description** | **str** | The description of the role | [optional] 
 **resource** | [**RoleResourceRequest**](RoleResourceRequest.md) |  | 
 **when** | [**WhenSpec**](WhenSpec.md) |  | 
-
 ## Example
 
 ```python
 from finbourne_access.models.role_creation_request import RoleCreationRequest
+from typing import Any, Dict, Optional
+from pydantic.v1 import BaseModel, Field, constr, validator
 
-# TODO update the JSON string below
-json = "{}"
-# create an instance of RoleCreationRequest from a JSON string
-role_creation_request_instance = RoleCreationRequest.from_json(json)
-# print the JSON string representation of the object
-print RoleCreationRequest.to_json()
+code: StrictStr = "example_code"
+description: Optional[StrictStr] = "example_description"
+resource: RoleResourceRequest = # Replace with your value
+when: WhenSpec = # Replace with your value
+role_creation_request_instance = RoleCreationRequest(code=code, description=description, resource=resource, when=when)
 
-# convert the object into a dict
-role_creation_request_dict = role_creation_request_instance.to_dict()
-# create an instance of RoleCreationRequest from a dict
-role_creation_request_form_dict = role_creation_request.from_dict(role_creation_request_dict)
 ```
-[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 
+[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 

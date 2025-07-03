@@ -1,7 +1,6 @@
 # PolicyTemplateResponse
 
 Response object for a policy template
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -12,24 +11,23 @@ Name | Type | Description | Notes
 **applications** | **List[str]** | List of applications that this policy template covers | [optional] 
 **tags** | **List[str]** | List of policy types that this policy template covers | [optional] 
 **templated_selectors** | [**List[PolicyTemplatedSelector]**](PolicyTemplatedSelector.md) | The selector definitions of policies included in this policy template | [optional] 
-
 ## Example
 
 ```python
 from finbourne_access.models.policy_template_response import PolicyTemplateResponse
+from typing import Any, Dict, List, Optional
+from pydantic.v1 import BaseModel, Field, StrictStr, conlist
 
-# TODO update the JSON string below
-json = "{}"
-# create an instance of PolicyTemplateResponse from a JSON string
-policy_template_response_instance = PolicyTemplateResponse.from_json(json)
-# print the JSON string representation of the object
-print PolicyTemplateResponse.to_json()
+display_name: Optional[StrictStr] = "example_display_name"
+scope: Optional[StrictStr] = "example_scope"
+code: Optional[StrictStr] = "example_code"
+description: Optional[StrictStr] = "example_description"
+applications: Optional[conlist(StrictStr)] = # Replace with your value
+tags: Optional[conlist(StrictStr)] = # Replace with your value
+templated_selectors: Optional[conlist(PolicyTemplatedSelector)] = # Replace with your value
+policy_template_response_instance = PolicyTemplateResponse(display_name=display_name, scope=scope, code=code, description=description, applications=applications, tags=tags, templated_selectors=templated_selectors)
 
-# convert the object into a dict
-policy_template_response_dict = policy_template_response_instance.to_dict()
-# create an instance of PolicyTemplateResponse from a dict
-policy_template_response_form_dict = policy_template_response.from_dict(policy_template_response_dict)
 ```
-[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 
+[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 

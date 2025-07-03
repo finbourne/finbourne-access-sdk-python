@@ -1,28 +1,20 @@
 # IfFeatureChainExpression
 
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **selectors** | [**List[SelectorDefinition]**](SelectorDefinition.md) |  | 
-
 ## Example
 
 ```python
 from finbourne_access.models.if_feature_chain_expression import IfFeatureChainExpression
+from typing import Any, Dict, List
+from pydantic.v1 import BaseModel, Field, conlist
 
-# TODO update the JSON string below
-json = "{}"
-# create an instance of IfFeatureChainExpression from a JSON string
-if_feature_chain_expression_instance = IfFeatureChainExpression.from_json(json)
-# print the JSON string representation of the object
-print IfFeatureChainExpression.to_json()
+selectors: conlist(SelectorDefinition) = # Replace with your value
+if_feature_chain_expression_instance = IfFeatureChainExpression(selectors=selectors)
 
-# convert the object into a dict
-if_feature_chain_expression_dict = if_feature_chain_expression_instance.to_dict()
-# create an instance of IfFeatureChainExpression from a dict
-if_feature_chain_expression_form_dict = if_feature_chain_expression.from_dict(if_feature_chain_expression_dict)
 ```
-[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 
+[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 

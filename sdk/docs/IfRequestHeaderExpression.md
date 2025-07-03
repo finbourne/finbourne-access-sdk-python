@@ -1,30 +1,24 @@
 # IfRequestHeaderExpression
 
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **header_name** | **str** |  | 
 **operator** | [**TextOperator**](TextOperator.md) |  | 
 **value** | **str** |  | [optional] 
-
 ## Example
 
 ```python
 from finbourne_access.models.if_request_header_expression import IfRequestHeaderExpression
+from typing import Any, Dict, Optional
+from pydantic.v1 import BaseModel, Field, constr
 
-# TODO update the JSON string below
-json = "{}"
-# create an instance of IfRequestHeaderExpression from a JSON string
-if_request_header_expression_instance = IfRequestHeaderExpression.from_json(json)
-# print the JSON string representation of the object
-print IfRequestHeaderExpression.to_json()
+header_name: StrictStr = "example_header_name"
+operator: TextOperator = # Replace with your value
+value: Optional[StrictStr] = "example_value"
+if_request_header_expression_instance = IfRequestHeaderExpression(header_name=header_name, operator=operator, value=value)
 
-# convert the object into a dict
-if_request_header_expression_dict = if_request_header_expression_instance.to_dict()
-# create an instance of IfRequestHeaderExpression from a dict
-if_request_header_expression_form_dict = if_request_header_expression.from_dict(if_request_header_expression_dict)
 ```
-[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 
+[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 

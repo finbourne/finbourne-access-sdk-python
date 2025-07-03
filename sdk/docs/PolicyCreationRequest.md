@@ -1,7 +1,6 @@
 # PolicyCreationRequest
 
 Request to create a policy
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -15,24 +14,26 @@ Name | Type | Description | Notes
 **when** | [**WhenSpec**](WhenSpec.md) |  | 
 **how** | [**HowSpec**](HowSpec.md) |  | [optional] 
 **template_metadata** | [**TemplateMetadata**](TemplateMetadata.md) |  | [optional] 
-
 ## Example
 
 ```python
 from finbourne_access.models.policy_creation_request import PolicyCreationRequest
+from typing import Any, Dict, List, Optional
+from pydantic.v1 import BaseModel, Field, StrictStr, conlist, constr, validator
 
-# TODO update the JSON string below
-json = "{}"
-# create an instance of PolicyCreationRequest from a JSON string
-policy_creation_request_instance = PolicyCreationRequest.from_json(json)
-# print the JSON string representation of the object
-print PolicyCreationRequest.to_json()
+code: StrictStr = "example_code"
+description: Optional[StrictStr] = "example_description"
+applications: Optional[conlist(StrictStr)] = # Replace with your value
+grant: Grant = # Replace with your value
+selectors: conlist(SelectorDefinition) = # Replace with your value
+var_for: Optional[conlist(ForSpec)] = # Replace with your value
+var_if: Optional[conlist(IfExpression)] = # Replace with your value
+when: WhenSpec = # Replace with your value
+how: Optional[HowSpec] = None
+template_metadata: Optional[TemplateMetadata] = # Replace with your value
+policy_creation_request_instance = PolicyCreationRequest(code=code, description=description, applications=applications, grant=grant, selectors=selectors, var_for=var_for, var_if=var_if, when=when, how=how, template_metadata=template_metadata)
 
-# convert the object into a dict
-policy_creation_request_dict = policy_creation_request_instance.to_dict()
-# create an instance of PolicyCreationRequest from a dict
-policy_creation_request_form_dict = policy_creation_request.from_dict(policy_creation_request_dict)
 ```
-[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 
+[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 

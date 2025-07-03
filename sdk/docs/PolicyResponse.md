@@ -1,7 +1,6 @@
 # PolicyResponse
 
 Response object from the policy API
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -16,24 +15,27 @@ Name | Type | Description | Notes
 **how** | [**HowSpec**](HowSpec.md) |  | [optional] 
 **template_metadata** | [**TemplateMetadata**](TemplateMetadata.md) |  | [optional] 
 **links** | [**List[Link]**](Link.md) |  | [optional] 
-
 ## Example
 
 ```python
 from finbourne_access.models.policy_response import PolicyResponse
+from typing import Any, Dict, List, Optional
+from pydantic.v1 import BaseModel, Field, StrictStr, conlist
 
-# TODO update the JSON string below
-json = "{}"
-# create an instance of PolicyResponse from a JSON string
-policy_response_instance = PolicyResponse.from_json(json)
-# print the JSON string representation of the object
-print PolicyResponse.to_json()
+id: Optional[PolicyId] = None
+description: Optional[StrictStr] = "example_description"
+applications: Optional[conlist(StrictStr)] = # Replace with your value
+grant: Optional[Grant] = None
+selectors: Optional[conlist(SelectorDefinition)] = # Replace with your value
+var_for: Optional[conlist(ForSpec)] = # Replace with your value
+var_if: Optional[conlist(IfExpression)] = # Replace with your value
+when: Optional[WhenSpec] = None
+how: Optional[HowSpec] = None
+template_metadata: Optional[TemplateMetadata] = # Replace with your value
+links: Optional[conlist(Link)] = None
+policy_response_instance = PolicyResponse(id=id, description=description, applications=applications, grant=grant, selectors=selectors, var_for=var_for, var_if=var_if, when=when, how=how, template_metadata=template_metadata, links=links)
 
-# convert the object into a dict
-policy_response_dict = policy_response_instance.to_dict()
-# create an instance of PolicyResponse from a dict
-policy_response_form_dict = policy_response.from_dict(policy_response_dict)
 ```
-[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 
+[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 

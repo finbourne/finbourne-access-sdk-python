@@ -1,29 +1,22 @@
 # EntitlementMetadata
 
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **provider** | **str** |  | [optional] 
 **value** | **str** |  | [optional] 
-
 ## Example
 
 ```python
 from finbourne_access.models.entitlement_metadata import EntitlementMetadata
+from typing import Any, Dict, Optional
+from pydantic.v1 import BaseModel, StrictStr
 
-# TODO update the JSON string below
-json = "{}"
-# create an instance of EntitlementMetadata from a JSON string
-entitlement_metadata_instance = EntitlementMetadata.from_json(json)
-# print the JSON string representation of the object
-print EntitlementMetadata.to_json()
+provider: Optional[StrictStr] = "example_provider"
+value: Optional[StrictStr] = "example_value"
+entitlement_metadata_instance = EntitlementMetadata(provider=provider, value=value)
 
-# convert the object into a dict
-entitlement_metadata_dict = entitlement_metadata_instance.to_dict()
-# create an instance of EntitlementMetadata from a dict
-entitlement_metadata_form_dict = entitlement_metadata.from_dict(entitlement_metadata_dict)
 ```
-[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 
+[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 

@@ -1,6 +1,5 @@
 # PolicySelectorDefinition
 
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -9,24 +8,21 @@ Name | Type | Description | Notes
 **actions** | [**List[ActionId]**](ActionId.md) |  | 
 **name** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 
-
 ## Example
 
 ```python
 from finbourne_access.models.policy_selector_definition import PolicySelectorDefinition
+from typing import Any, Dict, List, Optional
+from pydantic.v1 import BaseModel, Field, StrictStr, conlist, constr
 
-# TODO update the JSON string below
-json = "{}"
-# create an instance of PolicySelectorDefinition from a JSON string
-policy_selector_definition_instance = PolicySelectorDefinition.from_json(json)
-# print the JSON string representation of the object
-print PolicySelectorDefinition.to_json()
+identity_restriction: Optional[Dict[str, StrictStr]] = # Replace with your value
+restriction_selectors: Optional[conlist(SelectorDefinition)] = # Replace with your value
+actions: conlist(ActionId, min_items=1) = Field(...)
+name: Optional[StrictStr] = "example_name"
+description: Optional[StrictStr] = "example_description"
+policy_selector_definition_instance = PolicySelectorDefinition(identity_restriction=identity_restriction, restriction_selectors=restriction_selectors, actions=actions, name=name, description=description)
 
-# convert the object into a dict
-policy_selector_definition_dict = policy_selector_definition_instance.to_dict()
-# create an instance of PolicySelectorDefinition from a dict
-policy_selector_definition_form_dict = policy_selector_definition.from_dict(policy_selector_definition_dict)
 ```
-[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 
+[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 

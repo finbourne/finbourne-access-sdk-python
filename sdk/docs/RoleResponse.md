@@ -1,7 +1,6 @@
 # RoleResponse
 
 Response object from the role API
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -13,24 +12,25 @@ Name | Type | Description | Notes
 **permission** | **str** | The action key of the role | 
 **limit** | **Dict[str, str]** | The identifiers of the role with the maximum privileges that this role can have | [optional] 
 **links** | [**List[Link]**](Link.md) |  | [optional] 
-
 ## Example
 
 ```python
 from finbourne_access.models.role_response import RoleResponse
+from typing import Any, Dict, List, Optional
+from pydantic.v1 import BaseModel, Field, StrictInt, StrictStr, conlist, constr
 
-# TODO update the JSON string below
-json = "{}"
-# create an instance of RoleResponse from a JSON string
-role_response_instance = RoleResponse.from_json(json)
-# print the JSON string representation of the object
-print RoleResponse.to_json()
+id: RoleId = # Replace with your value
+role_hierarchy_index: StrictInt = # Replace with your value
+role_hierarchy_index: StrictInt = 42
+description: Optional[StrictStr] = "example_description"
+resource: RoleResourceRequest = # Replace with your value
+when: WhenSpec = # Replace with your value
+permission: StrictStr = "example_permission"
+limit: Optional[Dict[str, StrictStr]] = # Replace with your value
+links: Optional[conlist(Link)] = None
+role_response_instance = RoleResponse(id=id, role_hierarchy_index=role_hierarchy_index, description=description, resource=resource, when=when, permission=permission, limit=limit, links=links)
 
-# convert the object into a dict
-role_response_dict = role_response_instance.to_dict()
-# create an instance of RoleResponse from a dict
-role_response_form_dict = role_response.from_dict(role_response_dict)
 ```
-[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 
+[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 

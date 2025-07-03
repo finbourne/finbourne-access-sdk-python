@@ -1,6 +1,5 @@
 # IfExpression
 
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -8,24 +7,20 @@ Name | Type | Description | Notes
 **if_identity_claim_expression** | [**IfIdentityClaimExpression**](IfIdentityClaimExpression.md) |  | [optional] 
 **if_identity_scope_expression** | [**IfIdentityScopeExpression**](IfIdentityScopeExpression.md) |  | [optional] 
 **if_feature_chain_expression** | [**IfFeatureChainExpression**](IfFeatureChainExpression.md) |  | [optional] 
-
 ## Example
 
 ```python
 from finbourne_access.models.if_expression import IfExpression
+from typing import Any, Dict, Optional
+from pydantic.v1 import BaseModel, Field
 
-# TODO update the JSON string below
-json = "{}"
-# create an instance of IfExpression from a JSON string
-if_expression_instance = IfExpression.from_json(json)
-# print the JSON string representation of the object
-print IfExpression.to_json()
+if_request_header_expression: Optional[IfRequestHeaderExpression] = # Replace with your value
+if_identity_claim_expression: Optional[IfIdentityClaimExpression] = # Replace with your value
+if_identity_scope_expression: Optional[IfIdentityScopeExpression] = # Replace with your value
+if_feature_chain_expression: Optional[IfFeatureChainExpression] = # Replace with your value
+if_expression_instance = IfExpression(if_request_header_expression=if_request_header_expression, if_identity_claim_expression=if_identity_claim_expression, if_identity_scope_expression=if_identity_scope_expression, if_feature_chain_expression=if_feature_chain_expression)
 
-# convert the object into a dict
-if_expression_dict = if_expression_instance.to_dict()
-# create an instance of IfExpression from a dict
-if_expression_form_dict = if_expression.from_dict(if_expression_dict)
 ```
-[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 
+[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 

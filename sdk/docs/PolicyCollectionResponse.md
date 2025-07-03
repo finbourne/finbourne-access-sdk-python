@@ -1,7 +1,6 @@
 # PolicyCollectionResponse
 
 A PolicyCollection encapsulating one or more Policies and PolicyCollections
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -10,24 +9,21 @@ Name | Type | Description | Notes
 **policy_collections** | [**List[PolicyCollectionId]**](PolicyCollectionId.md) | The identifiers of the PolicyCollections in this collection | [optional] 
 **description** | **str** | A description of this policy collection | [optional] 
 **links** | [**List[Link]**](Link.md) |  | [optional] 
-
 ## Example
 
 ```python
 from finbourne_access.models.policy_collection_response import PolicyCollectionResponse
+from typing import Any, Dict, List, Optional
+from pydantic.v1 import BaseModel, Field, StrictStr, conlist
 
-# TODO update the JSON string below
-json = "{}"
-# create an instance of PolicyCollectionResponse from a JSON string
-policy_collection_response_instance = PolicyCollectionResponse.from_json(json)
-# print the JSON string representation of the object
-print PolicyCollectionResponse.to_json()
+id: Optional[PolicyCollectionId] = None
+policies: Optional[conlist(PolicyId)] = # Replace with your value
+policy_collections: Optional[conlist(PolicyCollectionId)] = # Replace with your value
+description: Optional[StrictStr] = "example_description"
+links: Optional[conlist(Link)] = None
+policy_collection_response_instance = PolicyCollectionResponse(id=id, policies=policies, policy_collections=policy_collections, description=description, links=links)
 
-# convert the object into a dict
-policy_collection_response_dict = policy_collection_response_instance.to_dict()
-# create an instance of PolicyCollectionResponse from a dict
-policy_collection_response_form_dict = policy_collection_response.from_dict(policy_collection_response_dict)
 ```
-[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 
+[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 

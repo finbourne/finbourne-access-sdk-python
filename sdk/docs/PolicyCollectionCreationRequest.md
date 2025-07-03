@@ -1,7 +1,6 @@
 # PolicyCollectionCreationRequest
 
 Create a PolicyCollection, a logical group of Policies or other PolicyCollections
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -10,24 +9,21 @@ Name | Type | Description | Notes
 **metadata** | **Dict[str, List[EntitlementMetadata]]** | Any relevant metadata associated with this resource for controlling access to this resource | [optional] 
 **policy_collections** | [**List[PolicyCollectionId]**](PolicyCollectionId.md) | The identifiers of the PolicyCollections in this collection | [optional] 
 **description** | **str** | A description of this policy collection | [optional] 
-
 ## Example
 
 ```python
 from finbourne_access.models.policy_collection_creation_request import PolicyCollectionCreationRequest
+from typing import Any, Dict, List, Optional
+from pydantic.v1 import BaseModel, Field, conlist, constr, validator
 
-# TODO update the JSON string below
-json = "{}"
-# create an instance of PolicyCollectionCreationRequest from a JSON string
-policy_collection_creation_request_instance = PolicyCollectionCreationRequest.from_json(json)
-# print the JSON string representation of the object
-print PolicyCollectionCreationRequest.to_json()
+code: StrictStr = "example_code"
+policies: Optional[conlist(PolicyId)] = # Replace with your value
+metadata: Optional[Dict[str, conlist(EntitlementMetadata)]] = # Replace with your value
+policy_collections: Optional[conlist(PolicyCollectionId)] = # Replace with your value
+description: Optional[StrictStr] = "example_description"
+policy_collection_creation_request_instance = PolicyCollectionCreationRequest(code=code, policies=policies, metadata=metadata, policy_collections=policy_collections, description=description)
 
-# convert the object into a dict
-policy_collection_creation_request_dict = policy_collection_creation_request_instance.to_dict()
-# create an instance of PolicyCollectionCreationRequest from a dict
-policy_collection_creation_request_form_dict = policy_collection_creation_request.from_dict(policy_collection_creation_request_dict)
 ```
-[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 
+[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 

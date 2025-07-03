@@ -1,29 +1,22 @@
 # PolicyIdRoleResource
 
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **policies** | [**List[PolicyId]**](PolicyId.md) |  | [optional] 
 **policy_collections** | [**List[PolicyCollectionId]**](PolicyCollectionId.md) |  | [optional] 
-
 ## Example
 
 ```python
 from finbourne_access.models.policy_id_role_resource import PolicyIdRoleResource
+from typing import Any, Dict, List, Optional
+from pydantic.v1 import BaseModel, Field, conlist
 
-# TODO update the JSON string below
-json = "{}"
-# create an instance of PolicyIdRoleResource from a JSON string
-policy_id_role_resource_instance = PolicyIdRoleResource.from_json(json)
-# print the JSON string representation of the object
-print PolicyIdRoleResource.to_json()
+policies: Optional[conlist(PolicyId)] = None
+policy_collections: Optional[conlist(PolicyCollectionId)] = # Replace with your value
+policy_id_role_resource_instance = PolicyIdRoleResource(policies=policies, policy_collections=policy_collections)
 
-# convert the object into a dict
-policy_id_role_resource_dict = policy_id_role_resource_instance.to_dict()
-# create an instance of PolicyIdRoleResource from a dict
-policy_id_role_resource_form_dict = policy_id_role_resource.from_dict(policy_id_role_resource_dict)
 ```
-[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 
+[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
 
