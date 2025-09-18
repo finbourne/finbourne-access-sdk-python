@@ -547,7 +547,7 @@ def main():
     filter = 'filter_example' # str | Optional. Expression to filter the result set (optional)
     sort_by = 'sort_by_example' # str | Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName (optional)
     limit = 56 # int | Optional. When paginating, limit the number of returned results to this many. (optional)
-    page = 'page_example' # str | Optional. Encoded page string returned from a previous search result that will retrieve              the next page of data. (optional)
+    page = 'page_example' # str | Optional. Encoded page string returned from a previous search result that will retrieve             the next page of data. (optional)
 
     try:
         # uncomment the below to set overrides at the request level
@@ -570,7 +570,7 @@ Name | Type | Description  | Notes
  **filter** | **str**| Optional. Expression to filter the result set | [optional] 
  **sort_by** | **str**| Optional. Order the results by these fields. Use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional] 
  **limit** | **int**| Optional. When paginating, limit the number of returned results to this many. | [optional] 
- **page** | **str**| Optional. Encoded page string returned from a previous search result that will retrieve              the next page of data. | [optional] 
+ **page** | **str**| Optional. Encoded page string returned from a previous search result that will retrieve             the next page of data. | [optional] 
 
 ### Return type
 

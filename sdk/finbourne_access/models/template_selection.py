@@ -27,7 +27,7 @@ class TemplateSelection(BaseModel):
     """
     scope:  StrictStr = Field(...,alias="scope", description="Scope identifying policy template to use for generation") 
     code:  StrictStr = Field(...,alias="code", description="Code identifying policy template to use for generation") 
-    selector_tags: Optional[conlist(StrictStr)] = Field(None, alias="selectorTags", description="List of selector tags to optionally filter in the template generation   (Eg: Feature, Data, etc)")
+    selector_tags: Optional[conlist(StrictStr)] = Field(None, alias="selectorTags", description="List of selector tags to optionally filter in the template generation  (Eg: Feature, Data, etc)")
     __properties = ["scope", "code", "selectorTags"]
 
     class Config:
