@@ -12,8 +12,10 @@ Name | Type | Description | Notes
 
 ```python
 from finbourne_access.models.for_spec import ForSpec
-from typing import Any, Dict, Optional
-from pydantic.v1 import BaseModel, Field
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 
 as_at_range_for_spec: Optional[AsAtRangeForSpec] = # Replace with your value
 as_at_relative: Optional[AsAtRelative] = # Replace with your value

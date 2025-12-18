@@ -18,15 +18,17 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List
-from pydantic.v1 import StrictStr, Field, BaseModel, Field, conlist 
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 from finbourne_access.models.selector_definition import SelectorDefinition
 
 class IfFeatureChainExpression(BaseModel):
     """
     IfFeatureChainExpression
     """
-    selectors: conlist(SelectorDefinition) = Field(...)
+    selectors: List[SelectorDefinition]
     __properties = ["selectors"]
 
     class Config:
@@ -83,3 +85,5 @@ class IfFeatureChainExpression(BaseModel):
             "selectors": [SelectorDefinition.from_dict(_item) for _item in obj.get("selectors")] if obj.get("selectors") is not None else None
         })
         return _obj
+
+IfFeatureChainExpression.update_forward_refs()

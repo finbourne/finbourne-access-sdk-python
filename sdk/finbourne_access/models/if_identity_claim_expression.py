@@ -18,8 +18,10 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, Optional
-from pydantic.v1 import StrictStr, Field, BaseModel, Field, StrictStr, constr 
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 from finbourne_access.models.text_operator import TextOperator
 
 class IfIdentityClaimExpression(BaseModel):
@@ -30,7 +32,7 @@ class IfIdentityClaimExpression(BaseModel):
     claim_value_type:  Optional[StrictStr] = Field(None,alias="claimValueType") 
     claim_issuer:  Optional[StrictStr] = Field(None,alias="claimIssuer") 
     claim_original_issuer:  Optional[StrictStr] = Field(None,alias="claimOriginalIssuer") 
-    operator: TextOperator = Field(...)
+    operator: TextOperator
     value:  Optional[StrictStr] = Field(None,alias="value") 
     __properties = ["claimType", "claimValueType", "claimIssuer", "claimOriginalIssuer", "operator", "value"]
 
@@ -106,3 +108,5 @@ class IfIdentityClaimExpression(BaseModel):
             "value": obj.get("value")
         })
         return _obj
+
+IfIdentityClaimExpression.update_forward_refs()

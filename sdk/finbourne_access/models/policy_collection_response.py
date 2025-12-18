@@ -18,8 +18,10 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List, Optional
-from pydantic.v1 import StrictStr, Field, BaseModel, Field, StrictStr, conlist 
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 from finbourne_access.models.link import Link
 from finbourne_access.models.policy_collection_id import PolicyCollectionId
 from finbourne_access.models.policy_id import PolicyId
@@ -29,10 +31,10 @@ class PolicyCollectionResponse(BaseModel):
     A PolicyCollection encapsulating one or more Policies and PolicyCollections  # noqa: E501
     """
     id: Optional[PolicyCollectionId] = None
-    policies: Optional[conlist(PolicyId)] = Field(None, description="The identifiers of the Policies in this collection")
-    policy_collections: Optional[conlist(PolicyCollectionId)] = Field(None, alias="policyCollections", description="The identifiers of the PolicyCollections in this collection")
+    policies: Optional[List[PolicyId]] = Field(default=None, description="The identifiers of the Policies in this collection")
+    policy_collections: Optional[List[PolicyCollectionId]] = Field(default=None, description="The identifiers of the PolicyCollections in this collection", alias="policyCollections")
     description:  Optional[StrictStr] = Field(None,alias="description", description="A description of this policy collection") 
-    links: Optional[conlist(Link)] = None
+    links: Optional[List[Link]] = None
     __properties = ["id", "policies", "policyCollections", "description", "links"]
 
     class Config:
@@ -130,3 +132,5 @@ class PolicyCollectionResponse(BaseModel):
             "links": [Link.from_dict(_item) for _item in obj.get("links")] if obj.get("links") is not None else None
         })
         return _obj
+
+PolicyCollectionResponse.update_forward_refs()

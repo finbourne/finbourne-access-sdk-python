@@ -15,16 +15,18 @@ Name | Type | Description | Notes
 
 ```python
 from finbourne_access.models.policy_template_response import PolicyTemplateResponse
-from typing import Any, Dict, List, Optional
-from pydantic.v1 import BaseModel, Field, StrictStr, conlist
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 
 display_name: Optional[StrictStr] = "example_display_name"
 scope: Optional[StrictStr] = "example_scope"
 code: Optional[StrictStr] = "example_code"
 description: Optional[StrictStr] = "example_description"
-applications: Optional[conlist(StrictStr)] = # Replace with your value
-tags: Optional[conlist(StrictStr)] = # Replace with your value
-templated_selectors: Optional[conlist(PolicyTemplatedSelector)] = # Replace with your value
+applications: Optional[List[StrictStr]] = # Replace with your value
+tags: Optional[List[StrictStr]] = # Replace with your value
+templated_selectors: Optional[List[PolicyTemplatedSelector]] = # Replace with your value
 policy_template_response_instance = PolicyTemplateResponse(display_name=display_name, scope=scope, code=code, description=description, applications=applications, tags=tags, templated_selectors=templated_selectors)
 
 ```

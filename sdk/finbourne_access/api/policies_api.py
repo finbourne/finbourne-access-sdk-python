@@ -19,11 +19,9 @@ import warnings
 from pydantic.v1 import validate_arguments, ValidationError
 from typing import overload, Optional, Union, Awaitable
 
-from typing_extensions import Annotated
-from pydantic.v1 import Field, StrictStr, conint, conlist, constr, validator
-
+from pydantic.v1 import Field, StrictInt, StrictStr
 from typing import Dict, List, Optional
-
+from typing_extensions import Annotated
 from finbourne_access.models.add_to_policy_collection_request import AddToPolicyCollectionRequest
 from finbourne_access.models.attached_policy_definition_response import AttachedPolicyDefinitionResponse
 from finbourne_access.models.evaluation_request import EvaluationRequest
@@ -65,15 +63,15 @@ class PoliciesApi:
 
 
     @overload
-    async def add_to_policy_collection(self, code : Annotated[StrictStr, Field(..., description="The code of the PolicyCollection")], add_to_policy_collection_request : Annotated[AddToPolicyCollectionRequest, Field(..., description="Ids of the PolicyCollections and/or Policies to add to the PolicyCollection")], scope : Annotated[Optional[StrictStr], Field( description="Optional. Will use the default scope if not provided. The scope of the PolicyCollection")] = None, **kwargs) -> PolicyCollectionResponse:  # noqa: E501
+    async def add_to_policy_collection(self, code : Annotated[StrictStr, Field(..., description="The code of the PolicyCollection")], add_to_policy_collection_request : Annotated[AddToPolicyCollectionRequest, Field(description="Ids of the PolicyCollections and/or Policies to add to the PolicyCollection")], scope : Annotated[Optional[StrictStr], Field( description="Optional. Will use the default scope if not provided. The scope of the PolicyCollection")] = None, **kwargs) -> PolicyCollectionResponse:  # noqa: E501
         ...
 
     @overload
-    def add_to_policy_collection(self, code : Annotated[StrictStr, Field(..., description="The code of the PolicyCollection")], add_to_policy_collection_request : Annotated[AddToPolicyCollectionRequest, Field(..., description="Ids of the PolicyCollections and/or Policies to add to the PolicyCollection")], scope : Annotated[Optional[StrictStr], Field( description="Optional. Will use the default scope if not provided. The scope of the PolicyCollection")] = None, async_req: Optional[bool]=True, **kwargs) -> PolicyCollectionResponse:  # noqa: E501
+    def add_to_policy_collection(self, code : Annotated[StrictStr, Field(..., description="The code of the PolicyCollection")], add_to_policy_collection_request : Annotated[AddToPolicyCollectionRequest, Field(description="Ids of the PolicyCollections and/or Policies to add to the PolicyCollection")], scope : Annotated[Optional[StrictStr], Field( description="Optional. Will use the default scope if not provided. The scope of the PolicyCollection")] = None, async_req: Optional[bool]=True, **kwargs) -> PolicyCollectionResponse:  # noqa: E501
         ...
 
     @validate_arguments
-    def add_to_policy_collection(self, code : Annotated[StrictStr, Field(..., description="The code of the PolicyCollection")], add_to_policy_collection_request : Annotated[AddToPolicyCollectionRequest, Field(..., description="Ids of the PolicyCollections and/or Policies to add to the PolicyCollection")], scope : Annotated[Optional[StrictStr], Field( description="Optional. Will use the default scope if not provided. The scope of the PolicyCollection")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[PolicyCollectionResponse, Awaitable[PolicyCollectionResponse]]:  # noqa: E501
+    def add_to_policy_collection(self, code : Annotated[StrictStr, Field(..., description="The code of the PolicyCollection")], add_to_policy_collection_request : Annotated[AddToPolicyCollectionRequest, Field(description="Ids of the PolicyCollections and/or Policies to add to the PolicyCollection")], scope : Annotated[Optional[StrictStr], Field( description="Optional. Will use the default scope if not provided. The scope of the PolicyCollection")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[PolicyCollectionResponse, Awaitable[PolicyCollectionResponse]]:  # noqa: E501
         """AddToPolicyCollection: Add To PolicyCollection  # noqa: E501
 
         Add Policies and/or PolicyCollections to a PolicyCollection  # noqa: E501
@@ -108,7 +106,7 @@ class PoliciesApi:
         return self.add_to_policy_collection_with_http_info(code, add_to_policy_collection_request, scope, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def add_to_policy_collection_with_http_info(self, code : Annotated[StrictStr, Field(..., description="The code of the PolicyCollection")], add_to_policy_collection_request : Annotated[AddToPolicyCollectionRequest, Field(..., description="Ids of the PolicyCollections and/or Policies to add to the PolicyCollection")], scope : Annotated[Optional[StrictStr], Field( description="Optional. Will use the default scope if not provided. The scope of the PolicyCollection")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def add_to_policy_collection_with_http_info(self, code : Annotated[StrictStr, Field(..., description="The code of the PolicyCollection")], add_to_policy_collection_request : Annotated[AddToPolicyCollectionRequest, Field(description="Ids of the PolicyCollections and/or Policies to add to the PolicyCollection")], scope : Annotated[Optional[StrictStr], Field( description="Optional. Will use the default scope if not provided. The scope of the PolicyCollection")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """AddToPolicyCollection: Add To PolicyCollection  # noqa: E501
 
         Add Policies and/or PolicyCollections to a PolicyCollection  # noqa: E501
@@ -240,15 +238,15 @@ class PoliciesApi:
 
 
     @overload
-    async def create_policy(self, policy_creation_request : Annotated[PolicyCreationRequest, Field(..., description="The definition of the Policy")], **kwargs) -> PolicyResponse:  # noqa: E501
+    async def create_policy(self, policy_creation_request : Annotated[PolicyCreationRequest, Field(description="The definition of the Policy")], **kwargs) -> PolicyResponse:  # noqa: E501
         ...
 
     @overload
-    def create_policy(self, policy_creation_request : Annotated[PolicyCreationRequest, Field(..., description="The definition of the Policy")], async_req: Optional[bool]=True, **kwargs) -> PolicyResponse:  # noqa: E501
+    def create_policy(self, policy_creation_request : Annotated[PolicyCreationRequest, Field(description="The definition of the Policy")], async_req: Optional[bool]=True, **kwargs) -> PolicyResponse:  # noqa: E501
         ...
 
     @validate_arguments
-    def create_policy(self, policy_creation_request : Annotated[PolicyCreationRequest, Field(..., description="The definition of the Policy")], async_req: Optional[bool]=None, **kwargs) -> Union[PolicyResponse, Awaitable[PolicyResponse]]:  # noqa: E501
+    def create_policy(self, policy_creation_request : Annotated[PolicyCreationRequest, Field(description="The definition of the Policy")], async_req: Optional[bool]=None, **kwargs) -> Union[PolicyResponse, Awaitable[PolicyResponse]]:  # noqa: E501
         """CreatePolicy: Create Policy  # noqa: E501
 
         Creates a Policy  # noqa: E501
@@ -279,7 +277,7 @@ class PoliciesApi:
         return self.create_policy_with_http_info(policy_creation_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_policy_with_http_info(self, policy_creation_request : Annotated[PolicyCreationRequest, Field(..., description="The definition of the Policy")], **kwargs) -> ApiResponse:  # noqa: E501
+    def create_policy_with_http_info(self, policy_creation_request : Annotated[PolicyCreationRequest, Field(description="The definition of the Policy")], **kwargs) -> ApiResponse:  # noqa: E501
         """CreatePolicy: Create Policy  # noqa: E501
 
         Creates a Policy  # noqa: E501
@@ -399,15 +397,15 @@ class PoliciesApi:
 
 
     @overload
-    async def create_policy_collection(self, policy_collection_creation_request : Annotated[PolicyCollectionCreationRequest, Field(..., description="The definition of the PolicyCollection")], **kwargs) -> PolicyCollectionResponse:  # noqa: E501
+    async def create_policy_collection(self, policy_collection_creation_request : Annotated[PolicyCollectionCreationRequest, Field(description="The definition of the PolicyCollection")], **kwargs) -> PolicyCollectionResponse:  # noqa: E501
         ...
 
     @overload
-    def create_policy_collection(self, policy_collection_creation_request : Annotated[PolicyCollectionCreationRequest, Field(..., description="The definition of the PolicyCollection")], async_req: Optional[bool]=True, **kwargs) -> PolicyCollectionResponse:  # noqa: E501
+    def create_policy_collection(self, policy_collection_creation_request : Annotated[PolicyCollectionCreationRequest, Field(description="The definition of the PolicyCollection")], async_req: Optional[bool]=True, **kwargs) -> PolicyCollectionResponse:  # noqa: E501
         ...
 
     @validate_arguments
-    def create_policy_collection(self, policy_collection_creation_request : Annotated[PolicyCollectionCreationRequest, Field(..., description="The definition of the PolicyCollection")], async_req: Optional[bool]=None, **kwargs) -> Union[PolicyCollectionResponse, Awaitable[PolicyCollectionResponse]]:  # noqa: E501
+    def create_policy_collection(self, policy_collection_creation_request : Annotated[PolicyCollectionCreationRequest, Field(description="The definition of the PolicyCollection")], async_req: Optional[bool]=None, **kwargs) -> Union[PolicyCollectionResponse, Awaitable[PolicyCollectionResponse]]:  # noqa: E501
         """CreatePolicyCollection: Create PolicyCollection  # noqa: E501
 
         Creates a PolicyCollection  # noqa: E501
@@ -438,7 +436,7 @@ class PoliciesApi:
         return self.create_policy_collection_with_http_info(policy_collection_creation_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_policy_collection_with_http_info(self, policy_collection_creation_request : Annotated[PolicyCollectionCreationRequest, Field(..., description="The definition of the PolicyCollection")], **kwargs) -> ApiResponse:  # noqa: E501
+    def create_policy_collection_with_http_info(self, policy_collection_creation_request : Annotated[PolicyCollectionCreationRequest, Field(description="The definition of the PolicyCollection")], **kwargs) -> ApiResponse:  # noqa: E501
         """CreatePolicyCollection: Create PolicyCollection  # noqa: E501
 
         Creates a PolicyCollection  # noqa: E501
@@ -872,15 +870,15 @@ class PoliciesApi:
 
 
     @overload
-    async def evaluate(self, request_body : Annotated[Dict[str, EvaluationRequest], Field(..., description="A dictionary of evaluations, keyed using any arbitrary correlation id (it will be returned with the response for that evaluation).")], applications : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. The application type of the roles and policies to use when evaluating.")] = None, **kwargs) -> Dict[str, EvaluationResponse]:  # noqa: E501
+    async def evaluate(self, request_body : Annotated[Dict[str, EvaluationRequest], Field(description="A dictionary of evaluations, keyed using any arbitrary correlation id (it will be returned with the response for that evaluation).")], applications : Annotated[Optional[List[StrictStr]], Field(description="Optional. The application type of the roles and policies to use when evaluating.")] = None, **kwargs) -> Dict[str, EvaluationResponse]:  # noqa: E501
         ...
 
     @overload
-    def evaluate(self, request_body : Annotated[Dict[str, EvaluationRequest], Field(..., description="A dictionary of evaluations, keyed using any arbitrary correlation id (it will be returned with the response for that evaluation).")], applications : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. The application type of the roles and policies to use when evaluating.")] = None, async_req: Optional[bool]=True, **kwargs) -> Dict[str, EvaluationResponse]:  # noqa: E501
+    def evaluate(self, request_body : Annotated[Dict[str, EvaluationRequest], Field(description="A dictionary of evaluations, keyed using any arbitrary correlation id (it will be returned with the response for that evaluation).")], applications : Annotated[Optional[List[StrictStr]], Field(description="Optional. The application type of the roles and policies to use when evaluating.")] = None, async_req: Optional[bool]=True, **kwargs) -> Dict[str, EvaluationResponse]:  # noqa: E501
         ...
 
     @validate_arguments
-    def evaluate(self, request_body : Annotated[Dict[str, EvaluationRequest], Field(..., description="A dictionary of evaluations, keyed using any arbitrary correlation id (it will be returned with the response for that evaluation).")], applications : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. The application type of the roles and policies to use when evaluating.")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[Dict[str, EvaluationResponse], Awaitable[Dict[str, EvaluationResponse]]]:  # noqa: E501
+    def evaluate(self, request_body : Annotated[Dict[str, EvaluationRequest], Field(description="A dictionary of evaluations, keyed using any arbitrary correlation id (it will be returned with the response for that evaluation).")], applications : Annotated[Optional[List[StrictStr]], Field(description="Optional. The application type of the roles and policies to use when evaluating.")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[Dict[str, EvaluationResponse], Awaitable[Dict[str, EvaluationResponse]]]:  # noqa: E501
         """Evaluate: Run one or more evaluations  # noqa: E501
 
         Given a dictionary of evaluation requests (keyed by any arbitrary correlation identifier), each will be evaluated according to the current user's policies (deduced from the provided OAuth token).  # noqa: E501
@@ -913,7 +911,7 @@ class PoliciesApi:
         return self.evaluate_with_http_info(request_body, applications, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def evaluate_with_http_info(self, request_body : Annotated[Dict[str, EvaluationRequest], Field(..., description="A dictionary of evaluations, keyed using any arbitrary correlation id (it will be returned with the response for that evaluation).")], applications : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. The application type of the roles and policies to use when evaluating.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def evaluate_with_http_info(self, request_body : Annotated[Dict[str, EvaluationRequest], Field(description="A dictionary of evaluations, keyed using any arbitrary correlation id (it will be returned with the response for that evaluation).")], applications : Annotated[Optional[List[StrictStr]], Field(description="Optional. The application type of the roles and policies to use when evaluating.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Evaluate: Run one or more evaluations  # noqa: E501
 
         Given a dictionary of evaluation requests (keyed by any arbitrary correlation identifier), each will be evaluated according to the current user's policies (deduced from the provided OAuth token).  # noqa: E501
@@ -1040,15 +1038,15 @@ class PoliciesApi:
 
 
     @overload
-    async def get_own_policies(self, applications : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. Filter on the applications that the policies apply to")] = None, **kwargs) -> List[AttachedPolicyDefinitionResponse]:  # noqa: E501
+    async def get_own_policies(self, applications : Annotated[Optional[List[StrictStr]], Field(description="Optional. Filter on the applications that the policies apply to")] = None, **kwargs) -> List[AttachedPolicyDefinitionResponse]:  # noqa: E501
         ...
 
     @overload
-    def get_own_policies(self, applications : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. Filter on the applications that the policies apply to")] = None, async_req: Optional[bool]=True, **kwargs) -> List[AttachedPolicyDefinitionResponse]:  # noqa: E501
+    def get_own_policies(self, applications : Annotated[Optional[List[StrictStr]], Field(description="Optional. Filter on the applications that the policies apply to")] = None, async_req: Optional[bool]=True, **kwargs) -> List[AttachedPolicyDefinitionResponse]:  # noqa: E501
         ...
 
     @validate_arguments
-    def get_own_policies(self, applications : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. Filter on the applications that the policies apply to")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[List[AttachedPolicyDefinitionResponse], Awaitable[List[AttachedPolicyDefinitionResponse]]]:  # noqa: E501
+    def get_own_policies(self, applications : Annotated[Optional[List[StrictStr]], Field(description="Optional. Filter on the applications that the policies apply to")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[List[AttachedPolicyDefinitionResponse], Awaitable[List[AttachedPolicyDefinitionResponse]]]:  # noqa: E501
         """GetOwnPolicies: Get policies of requesting user  # noqa: E501
 
         Gets all Policies for the current user  # noqa: E501
@@ -1079,7 +1077,7 @@ class PoliciesApi:
         return self.get_own_policies_with_http_info(applications, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_own_policies_with_http_info(self, applications : Annotated[Optional[conlist(StrictStr)], Field(description="Optional. Filter on the applications that the policies apply to")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_own_policies_with_http_info(self, applications : Annotated[Optional[List[StrictStr]], Field(description="Optional. Filter on the applications that the policies apply to")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """GetOwnPolicies: Get policies of requesting user  # noqa: E501
 
         Gets all Policies for the current user  # noqa: E501
@@ -1817,15 +1815,15 @@ class PoliciesApi:
 
 
     @overload
-    async def page_policies(self, sort_by : Annotated[Optional[StrictStr], Field( description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[conint(strict=True)], Field(description="Optional. 2000 if not provided. When paginating, limit the number of returned results to this many")] = None, filter : Annotated[Optional[StrictStr], Field( description="Optional. Expression to filter the result set")] = None, page : Annotated[Optional[StrictStr], Field( description="Optional. Paging token returned from a previous result")] = None, **kwargs) -> ResourceListOfPolicyResponse:  # noqa: E501
+    async def page_policies(self, sort_by : Annotated[Optional[StrictStr], Field( description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[StrictInt], Field(description="Optional. 2000 if not provided. When paginating, limit the number of returned results to this many")] = None, filter : Annotated[Optional[StrictStr], Field( description="Optional. Expression to filter the result set")] = None, page : Annotated[Optional[StrictStr], Field( description="Optional. Paging token returned from a previous result")] = None, **kwargs) -> ResourceListOfPolicyResponse:  # noqa: E501
         ...
 
     @overload
-    def page_policies(self, sort_by : Annotated[Optional[StrictStr], Field( description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[conint(strict=True)], Field(description="Optional. 2000 if not provided. When paginating, limit the number of returned results to this many")] = None, filter : Annotated[Optional[StrictStr], Field( description="Optional. Expression to filter the result set")] = None, page : Annotated[Optional[StrictStr], Field( description="Optional. Paging token returned from a previous result")] = None, async_req: Optional[bool]=True, **kwargs) -> ResourceListOfPolicyResponse:  # noqa: E501
+    def page_policies(self, sort_by : Annotated[Optional[StrictStr], Field( description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[StrictInt], Field(description="Optional. 2000 if not provided. When paginating, limit the number of returned results to this many")] = None, filter : Annotated[Optional[StrictStr], Field( description="Optional. Expression to filter the result set")] = None, page : Annotated[Optional[StrictStr], Field( description="Optional. Paging token returned from a previous result")] = None, async_req: Optional[bool]=True, **kwargs) -> ResourceListOfPolicyResponse:  # noqa: E501
         ...
 
     @validate_arguments
-    def page_policies(self, sort_by : Annotated[Optional[StrictStr], Field( description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[conint(strict=True)], Field(description="Optional. 2000 if not provided. When paginating, limit the number of returned results to this many")] = None, filter : Annotated[Optional[StrictStr], Field( description="Optional. Expression to filter the result set")] = None, page : Annotated[Optional[StrictStr], Field( description="Optional. Paging token returned from a previous result")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[ResourceListOfPolicyResponse, Awaitable[ResourceListOfPolicyResponse]]:  # noqa: E501
+    def page_policies(self, sort_by : Annotated[Optional[StrictStr], Field( description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[StrictInt], Field(description="Optional. 2000 if not provided. When paginating, limit the number of returned results to this many")] = None, filter : Annotated[Optional[StrictStr], Field( description="Optional. Expression to filter the result set")] = None, page : Annotated[Optional[StrictStr], Field( description="Optional. Paging token returned from a previous result")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[ResourceListOfPolicyResponse, Awaitable[ResourceListOfPolicyResponse]]:  # noqa: E501
         """PagePolicies: Page Policies  # noqa: E501
 
         Gets all Policies with pagination support.  # noqa: E501
@@ -1862,7 +1860,7 @@ class PoliciesApi:
         return self.page_policies_with_http_info(sort_by, limit, filter, page, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def page_policies_with_http_info(self, sort_by : Annotated[Optional[StrictStr], Field( description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[conint(strict=True)], Field(description="Optional. 2000 if not provided. When paginating, limit the number of returned results to this many")] = None, filter : Annotated[Optional[StrictStr], Field( description="Optional. Expression to filter the result set")] = None, page : Annotated[Optional[StrictStr], Field( description="Optional. Paging token returned from a previous result")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def page_policies_with_http_info(self, sort_by : Annotated[Optional[StrictStr], Field( description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[StrictInt], Field(description="Optional. 2000 if not provided. When paginating, limit the number of returned results to this many")] = None, filter : Annotated[Optional[StrictStr], Field( description="Optional. Expression to filter the result set")] = None, page : Annotated[Optional[StrictStr], Field( description="Optional. Paging token returned from a previous result")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """PagePolicies: Page Policies  # noqa: E501
 
         Gets all Policies with pagination support.  # noqa: E501
@@ -1993,15 +1991,15 @@ class PoliciesApi:
 
 
     @overload
-    async def page_policy_collections(self, sort_by : Annotated[Optional[StrictStr], Field( description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[conint(strict=True)], Field(description="Optional. 2000 if not provided. When paginating, limit the number of returned results to this many")] = None, filter : Annotated[Optional[StrictStr], Field( description="Optional. Expression to filter the result set")] = None, page : Annotated[Optional[StrictStr], Field( description="Optional. Paging token returned from a previous result")] = None, **kwargs) -> ResourceListOfPolicyCollectionResponse:  # noqa: E501
+    async def page_policy_collections(self, sort_by : Annotated[Optional[StrictStr], Field( description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[StrictInt], Field(description="Optional. 2000 if not provided. When paginating, limit the number of returned results to this many")] = None, filter : Annotated[Optional[StrictStr], Field( description="Optional. Expression to filter the result set")] = None, page : Annotated[Optional[StrictStr], Field( description="Optional. Paging token returned from a previous result")] = None, **kwargs) -> ResourceListOfPolicyCollectionResponse:  # noqa: E501
         ...
 
     @overload
-    def page_policy_collections(self, sort_by : Annotated[Optional[StrictStr], Field( description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[conint(strict=True)], Field(description="Optional. 2000 if not provided. When paginating, limit the number of returned results to this many")] = None, filter : Annotated[Optional[StrictStr], Field( description="Optional. Expression to filter the result set")] = None, page : Annotated[Optional[StrictStr], Field( description="Optional. Paging token returned from a previous result")] = None, async_req: Optional[bool]=True, **kwargs) -> ResourceListOfPolicyCollectionResponse:  # noqa: E501
+    def page_policy_collections(self, sort_by : Annotated[Optional[StrictStr], Field( description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[StrictInt], Field(description="Optional. 2000 if not provided. When paginating, limit the number of returned results to this many")] = None, filter : Annotated[Optional[StrictStr], Field( description="Optional. Expression to filter the result set")] = None, page : Annotated[Optional[StrictStr], Field( description="Optional. Paging token returned from a previous result")] = None, async_req: Optional[bool]=True, **kwargs) -> ResourceListOfPolicyCollectionResponse:  # noqa: E501
         ...
 
     @validate_arguments
-    def page_policy_collections(self, sort_by : Annotated[Optional[StrictStr], Field( description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[conint(strict=True)], Field(description="Optional. 2000 if not provided. When paginating, limit the number of returned results to this many")] = None, filter : Annotated[Optional[StrictStr], Field( description="Optional. Expression to filter the result set")] = None, page : Annotated[Optional[StrictStr], Field( description="Optional. Paging token returned from a previous result")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[ResourceListOfPolicyCollectionResponse, Awaitable[ResourceListOfPolicyCollectionResponse]]:  # noqa: E501
+    def page_policy_collections(self, sort_by : Annotated[Optional[StrictStr], Field( description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[StrictInt], Field(description="Optional. 2000 if not provided. When paginating, limit the number of returned results to this many")] = None, filter : Annotated[Optional[StrictStr], Field( description="Optional. Expression to filter the result set")] = None, page : Annotated[Optional[StrictStr], Field( description="Optional. Paging token returned from a previous result")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[ResourceListOfPolicyCollectionResponse, Awaitable[ResourceListOfPolicyCollectionResponse]]:  # noqa: E501
         """PagePolicyCollections: Page PolicyCollections  # noqa: E501
 
         Gets all PolicyCollections with pagination support.  # noqa: E501
@@ -2038,7 +2036,7 @@ class PoliciesApi:
         return self.page_policy_collections_with_http_info(sort_by, limit, filter, page, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def page_policy_collections_with_http_info(self, sort_by : Annotated[Optional[StrictStr], Field( description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[conint(strict=True)], Field(description="Optional. 2000 if not provided. When paginating, limit the number of returned results to this many")] = None, filter : Annotated[Optional[StrictStr], Field( description="Optional. Expression to filter the result set")] = None, page : Annotated[Optional[StrictStr], Field( description="Optional. Paging token returned from a previous result")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def page_policy_collections_with_http_info(self, sort_by : Annotated[Optional[StrictStr], Field( description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[StrictInt], Field(description="Optional. 2000 if not provided. When paginating, limit the number of returned results to this many")] = None, filter : Annotated[Optional[StrictStr], Field( description="Optional. Expression to filter the result set")] = None, page : Annotated[Optional[StrictStr], Field( description="Optional. Paging token returned from a previous result")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """PagePolicyCollections: Page PolicyCollections  # noqa: E501
 
         Gets all PolicyCollections with pagination support.  # noqa: E501
@@ -2169,15 +2167,15 @@ class PoliciesApi:
 
 
     @overload
-    async def remove_from_policy_collection(self, code : Annotated[StrictStr, Field(..., description="The code of the PolicyCollection")], remove_from_policy_collection_request : Annotated[RemoveFromPolicyCollectionRequest, Field(..., description="Ids of the PolicyCollections and/or Policies to remove from the PolicyCollection")], scope : Annotated[Optional[StrictStr], Field( description="Optional. Will use the default scope if not provided. The scope of the PolicyCollection")] = None, **kwargs) -> PolicyCollectionResponse:  # noqa: E501
+    async def remove_from_policy_collection(self, code : Annotated[StrictStr, Field(..., description="The code of the PolicyCollection")], remove_from_policy_collection_request : Annotated[RemoveFromPolicyCollectionRequest, Field(description="Ids of the PolicyCollections and/or Policies to remove from the PolicyCollection")], scope : Annotated[Optional[StrictStr], Field( description="Optional. Will use the default scope if not provided. The scope of the PolicyCollection")] = None, **kwargs) -> PolicyCollectionResponse:  # noqa: E501
         ...
 
     @overload
-    def remove_from_policy_collection(self, code : Annotated[StrictStr, Field(..., description="The code of the PolicyCollection")], remove_from_policy_collection_request : Annotated[RemoveFromPolicyCollectionRequest, Field(..., description="Ids of the PolicyCollections and/or Policies to remove from the PolicyCollection")], scope : Annotated[Optional[StrictStr], Field( description="Optional. Will use the default scope if not provided. The scope of the PolicyCollection")] = None, async_req: Optional[bool]=True, **kwargs) -> PolicyCollectionResponse:  # noqa: E501
+    def remove_from_policy_collection(self, code : Annotated[StrictStr, Field(..., description="The code of the PolicyCollection")], remove_from_policy_collection_request : Annotated[RemoveFromPolicyCollectionRequest, Field(description="Ids of the PolicyCollections and/or Policies to remove from the PolicyCollection")], scope : Annotated[Optional[StrictStr], Field( description="Optional. Will use the default scope if not provided. The scope of the PolicyCollection")] = None, async_req: Optional[bool]=True, **kwargs) -> PolicyCollectionResponse:  # noqa: E501
         ...
 
     @validate_arguments
-    def remove_from_policy_collection(self, code : Annotated[StrictStr, Field(..., description="The code of the PolicyCollection")], remove_from_policy_collection_request : Annotated[RemoveFromPolicyCollectionRequest, Field(..., description="Ids of the PolicyCollections and/or Policies to remove from the PolicyCollection")], scope : Annotated[Optional[StrictStr], Field( description="Optional. Will use the default scope if not provided. The scope of the PolicyCollection")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[PolicyCollectionResponse, Awaitable[PolicyCollectionResponse]]:  # noqa: E501
+    def remove_from_policy_collection(self, code : Annotated[StrictStr, Field(..., description="The code of the PolicyCollection")], remove_from_policy_collection_request : Annotated[RemoveFromPolicyCollectionRequest, Field(description="Ids of the PolicyCollections and/or Policies to remove from the PolicyCollection")], scope : Annotated[Optional[StrictStr], Field( description="Optional. Will use the default scope if not provided. The scope of the PolicyCollection")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[PolicyCollectionResponse, Awaitable[PolicyCollectionResponse]]:  # noqa: E501
         """RemoveFromPolicyCollection: Remove From PolicyCollection  # noqa: E501
 
         Remove Policies and/or PolicyCollections from a PolicyCollection  # noqa: E501
@@ -2212,7 +2210,7 @@ class PoliciesApi:
         return self.remove_from_policy_collection_with_http_info(code, remove_from_policy_collection_request, scope, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def remove_from_policy_collection_with_http_info(self, code : Annotated[StrictStr, Field(..., description="The code of the PolicyCollection")], remove_from_policy_collection_request : Annotated[RemoveFromPolicyCollectionRequest, Field(..., description="Ids of the PolicyCollections and/or Policies to remove from the PolicyCollection")], scope : Annotated[Optional[StrictStr], Field( description="Optional. Will use the default scope if not provided. The scope of the PolicyCollection")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def remove_from_policy_collection_with_http_info(self, code : Annotated[StrictStr, Field(..., description="The code of the PolicyCollection")], remove_from_policy_collection_request : Annotated[RemoveFromPolicyCollectionRequest, Field(description="Ids of the PolicyCollections and/or Policies to remove from the PolicyCollection")], scope : Annotated[Optional[StrictStr], Field( description="Optional. Will use the default scope if not provided. The scope of the PolicyCollection")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """RemoveFromPolicyCollection: Remove From PolicyCollection  # noqa: E501
 
         Remove Policies and/or PolicyCollections from a PolicyCollection  # noqa: E501
@@ -2344,15 +2342,15 @@ class PoliciesApi:
 
 
     @overload
-    async def update_policy(self, code : Annotated[StrictStr, Field(..., description="The code of the Policy")], policy_update_request : Annotated[PolicyUpdateRequest, Field(..., description="The updated definition of the Policy")], scope : Annotated[Optional[StrictStr], Field( description="Optional. Will use the default scope if not provided. The scope of the Policy")] = None, **kwargs) -> PolicyResponse:  # noqa: E501
+    async def update_policy(self, code : Annotated[StrictStr, Field(..., description="The code of the Policy")], policy_update_request : Annotated[PolicyUpdateRequest, Field(description="The updated definition of the Policy")], scope : Annotated[Optional[StrictStr], Field( description="Optional. Will use the default scope if not provided. The scope of the Policy")] = None, **kwargs) -> PolicyResponse:  # noqa: E501
         ...
 
     @overload
-    def update_policy(self, code : Annotated[StrictStr, Field(..., description="The code of the Policy")], policy_update_request : Annotated[PolicyUpdateRequest, Field(..., description="The updated definition of the Policy")], scope : Annotated[Optional[StrictStr], Field( description="Optional. Will use the default scope if not provided. The scope of the Policy")] = None, async_req: Optional[bool]=True, **kwargs) -> PolicyResponse:  # noqa: E501
+    def update_policy(self, code : Annotated[StrictStr, Field(..., description="The code of the Policy")], policy_update_request : Annotated[PolicyUpdateRequest, Field(description="The updated definition of the Policy")], scope : Annotated[Optional[StrictStr], Field( description="Optional. Will use the default scope if not provided. The scope of the Policy")] = None, async_req: Optional[bool]=True, **kwargs) -> PolicyResponse:  # noqa: E501
         ...
 
     @validate_arguments
-    def update_policy(self, code : Annotated[StrictStr, Field(..., description="The code of the Policy")], policy_update_request : Annotated[PolicyUpdateRequest, Field(..., description="The updated definition of the Policy")], scope : Annotated[Optional[StrictStr], Field( description="Optional. Will use the default scope if not provided. The scope of the Policy")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[PolicyResponse, Awaitable[PolicyResponse]]:  # noqa: E501
+    def update_policy(self, code : Annotated[StrictStr, Field(..., description="The code of the Policy")], policy_update_request : Annotated[PolicyUpdateRequest, Field(description="The updated definition of the Policy")], scope : Annotated[Optional[StrictStr], Field( description="Optional. Will use the default scope if not provided. The scope of the Policy")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[PolicyResponse, Awaitable[PolicyResponse]]:  # noqa: E501
         """UpdatePolicy: Update Policy  # noqa: E501
 
         Updates a Policy  # noqa: E501
@@ -2387,7 +2385,7 @@ class PoliciesApi:
         return self.update_policy_with_http_info(code, policy_update_request, scope, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def update_policy_with_http_info(self, code : Annotated[StrictStr, Field(..., description="The code of the Policy")], policy_update_request : Annotated[PolicyUpdateRequest, Field(..., description="The updated definition of the Policy")], scope : Annotated[Optional[StrictStr], Field( description="Optional. Will use the default scope if not provided. The scope of the Policy")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def update_policy_with_http_info(self, code : Annotated[StrictStr, Field(..., description="The code of the Policy")], policy_update_request : Annotated[PolicyUpdateRequest, Field(description="The updated definition of the Policy")], scope : Annotated[Optional[StrictStr], Field( description="Optional. Will use the default scope if not provided. The scope of the Policy")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """UpdatePolicy: Update Policy  # noqa: E501
 
         Updates a Policy  # noqa: E501
@@ -2519,15 +2517,15 @@ class PoliciesApi:
 
 
     @overload
-    async def update_policy_collection(self, code : Annotated[StrictStr, Field(..., description="The code of the PolicyCollection")], policy_collection_update_request : Annotated[PolicyCollectionUpdateRequest, Field(..., description="The updated definition of the PolicyCollection")], scope : Annotated[Optional[StrictStr], Field( description="Optional. Will use the default scope if not provided. The scope of the PolicyCollection")] = None, **kwargs) -> PolicyCollectionResponse:  # noqa: E501
+    async def update_policy_collection(self, code : Annotated[StrictStr, Field(..., description="The code of the PolicyCollection")], policy_collection_update_request : Annotated[PolicyCollectionUpdateRequest, Field(description="The updated definition of the PolicyCollection")], scope : Annotated[Optional[StrictStr], Field( description="Optional. Will use the default scope if not provided. The scope of the PolicyCollection")] = None, **kwargs) -> PolicyCollectionResponse:  # noqa: E501
         ...
 
     @overload
-    def update_policy_collection(self, code : Annotated[StrictStr, Field(..., description="The code of the PolicyCollection")], policy_collection_update_request : Annotated[PolicyCollectionUpdateRequest, Field(..., description="The updated definition of the PolicyCollection")], scope : Annotated[Optional[StrictStr], Field( description="Optional. Will use the default scope if not provided. The scope of the PolicyCollection")] = None, async_req: Optional[bool]=True, **kwargs) -> PolicyCollectionResponse:  # noqa: E501
+    def update_policy_collection(self, code : Annotated[StrictStr, Field(..., description="The code of the PolicyCollection")], policy_collection_update_request : Annotated[PolicyCollectionUpdateRequest, Field(description="The updated definition of the PolicyCollection")], scope : Annotated[Optional[StrictStr], Field( description="Optional. Will use the default scope if not provided. The scope of the PolicyCollection")] = None, async_req: Optional[bool]=True, **kwargs) -> PolicyCollectionResponse:  # noqa: E501
         ...
 
     @validate_arguments
-    def update_policy_collection(self, code : Annotated[StrictStr, Field(..., description="The code of the PolicyCollection")], policy_collection_update_request : Annotated[PolicyCollectionUpdateRequest, Field(..., description="The updated definition of the PolicyCollection")], scope : Annotated[Optional[StrictStr], Field( description="Optional. Will use the default scope if not provided. The scope of the PolicyCollection")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[PolicyCollectionResponse, Awaitable[PolicyCollectionResponse]]:  # noqa: E501
+    def update_policy_collection(self, code : Annotated[StrictStr, Field(..., description="The code of the PolicyCollection")], policy_collection_update_request : Annotated[PolicyCollectionUpdateRequest, Field(description="The updated definition of the PolicyCollection")], scope : Annotated[Optional[StrictStr], Field( description="Optional. Will use the default scope if not provided. The scope of the PolicyCollection")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[PolicyCollectionResponse, Awaitable[PolicyCollectionResponse]]:  # noqa: E501
         """UpdatePolicyCollection: Update PolicyCollection  # noqa: E501
 
         Updates a PolicyCollection  # noqa: E501
@@ -2562,7 +2560,7 @@ class PoliciesApi:
         return self.update_policy_collection_with_http_info(code, policy_collection_update_request, scope, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def update_policy_collection_with_http_info(self, code : Annotated[StrictStr, Field(..., description="The code of the PolicyCollection")], policy_collection_update_request : Annotated[PolicyCollectionUpdateRequest, Field(..., description="The updated definition of the PolicyCollection")], scope : Annotated[Optional[StrictStr], Field( description="Optional. Will use the default scope if not provided. The scope of the PolicyCollection")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def update_policy_collection_with_http_info(self, code : Annotated[StrictStr, Field(..., description="The code of the PolicyCollection")], policy_collection_update_request : Annotated[PolicyCollectionUpdateRequest, Field(description="The updated definition of the PolicyCollection")], scope : Annotated[Optional[StrictStr], Field( description="Optional. Will use the default scope if not provided. The scope of the PolicyCollection")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """UpdatePolicyCollection: Update PolicyCollection  # noqa: E501
 
         Updates a PolicyCollection  # noqa: E501

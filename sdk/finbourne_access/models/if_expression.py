@@ -18,8 +18,10 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, Optional
-from pydantic.v1 import StrictStr, Field, BaseModel, Field 
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 from finbourne_access.models.if_feature_chain_expression import IfFeatureChainExpression
 from finbourne_access.models.if_identity_claim_expression import IfIdentityClaimExpression
 from finbourne_access.models.if_identity_scope_expression import IfIdentityScopeExpression
@@ -29,10 +31,10 @@ class IfExpression(BaseModel):
     """
     IfExpression
     """
-    if_request_header_expression: Optional[IfRequestHeaderExpression] = Field(None, alias="ifRequestHeaderExpression")
-    if_identity_claim_expression: Optional[IfIdentityClaimExpression] = Field(None, alias="ifIdentityClaimExpression")
-    if_identity_scope_expression: Optional[IfIdentityScopeExpression] = Field(None, alias="ifIdentityScopeExpression")
-    if_feature_chain_expression: Optional[IfFeatureChainExpression] = Field(None, alias="ifFeatureChainExpression")
+    if_request_header_expression: Optional[IfRequestHeaderExpression] = Field(default=None, alias="ifRequestHeaderExpression")
+    if_identity_claim_expression: Optional[IfIdentityClaimExpression] = Field(default=None, alias="ifIdentityClaimExpression")
+    if_identity_scope_expression: Optional[IfIdentityScopeExpression] = Field(default=None, alias="ifIdentityScopeExpression")
+    if_feature_chain_expression: Optional[IfFeatureChainExpression] = Field(default=None, alias="ifFeatureChainExpression")
     __properties = ["ifRequestHeaderExpression", "ifIdentityClaimExpression", "ifIdentityScopeExpression", "ifFeatureChainExpression"]
 
     class Config:
@@ -97,3 +99,5 @@ class IfExpression(BaseModel):
             "if_feature_chain_expression": IfFeatureChainExpression.from_dict(obj.get("ifFeatureChainExpression")) if obj.get("ifFeatureChainExpression") is not None else None
         })
         return _obj
+
+IfExpression.update_forward_refs()

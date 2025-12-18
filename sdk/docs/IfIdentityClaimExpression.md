@@ -13,14 +13,16 @@ Name | Type | Description | Notes
 
 ```python
 from finbourne_access.models.if_identity_claim_expression import IfIdentityClaimExpression
-from typing import Any, Dict, Optional
-from pydantic.v1 import BaseModel, Field, StrictStr, constr
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 
 claim_type: StrictStr = "example_claim_type"
 claim_value_type: Optional[StrictStr] = "example_claim_value_type"
 claim_issuer: Optional[StrictStr] = "example_claim_issuer"
 claim_original_issuer: Optional[StrictStr] = "example_claim_original_issuer"
-operator: TextOperator = # Replace with your value
+operator: TextOperator
 value: Optional[StrictStr] = "example_value"
 if_identity_claim_expression_instance = IfIdentityClaimExpression(claim_type=claim_type, claim_value_type=claim_value_type, claim_issuer=claim_issuer, claim_original_issuer=claim_original_issuer, operator=operator, value=value)
 

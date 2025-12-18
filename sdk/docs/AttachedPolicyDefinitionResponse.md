@@ -19,20 +19,22 @@ Name | Type | Description | Notes
 
 ```python
 from finbourne_access.models.attached_policy_definition_response import AttachedPolicyDefinitionResponse
-from typing import Any, Dict, List, Optional
-from pydantic.v1 import BaseModel, Field, StrictInt, StrictStr, conlist
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 
 source_role: Optional[RoleId] = # Replace with your value
 role_hierarchy_index: Optional[StrictInt] = # Replace with your value
 role_hierarchy_index: Optional[StrictInt] = None
 description: Optional[StrictStr] = "example_description"
-applications: Optional[conlist(StrictStr)] = None
+applications: Optional[List[StrictStr]] = None
 policy_type: Optional[PolicyType] = # Replace with your value
 id: Optional[PolicyId] = None
 grant: Optional[Grant] = None
-selectors: Optional[conlist(SelectorDefinition)] = None
-var_for: Optional[conlist(ForSpec)] = # Replace with your value
-var_if: Optional[conlist(IfExpression)] = # Replace with your value
+selectors: Optional[List[SelectorDefinition]] = None
+var_for: Optional[List[ForSpec]] = # Replace with your value
+var_if: Optional[List[IfExpression]] = # Replace with your value
 when: Optional[WhenSpec] = None
 how: Optional[HowSpec] = None
 attached_policy_definition_response_instance = AttachedPolicyDefinitionResponse(source_role=source_role, role_hierarchy_index=role_hierarchy_index, description=description, applications=applications, policy_type=policy_type, id=id, grant=grant, selectors=selectors, var_for=var_for, var_if=var_if, when=when, how=how)

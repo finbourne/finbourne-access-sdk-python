@@ -18,15 +18,17 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List
-from pydantic.v1 import StrictStr, Field, BaseModel, Field, conlist 
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 from finbourne_access.models.policy_collection_id import PolicyCollectionId
 
 class AddPolicyCollectionToRoleRequest(BaseModel):
     """
     Request body used to add Policy Collections to a Role  # noqa: E501
     """
-    policy_collections: conlist(PolicyCollectionId) = Field(..., alias="policyCollections", description="Identifiers of policy collections to add to a role")
+    policy_collections: List[PolicyCollectionId] = Field(description="Identifiers of policy collections to add to a role", alias="policyCollections")
     __properties = ["policyCollections"]
 
     class Config:
@@ -83,3 +85,5 @@ class AddPolicyCollectionToRoleRequest(BaseModel):
             "policy_collections": [PolicyCollectionId.from_dict(_item) for _item in obj.get("policyCollections")] if obj.get("policyCollections") is not None else None
         })
         return _obj
+
+AddPolicyCollectionToRoleRequest.update_forward_refs()

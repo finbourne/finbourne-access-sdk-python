@@ -18,8 +18,10 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, Optional
-from pydantic.v1 import StrictStr, Field, BaseModel, Field 
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 from finbourne_access.models.non_transitive_supervisor_role_resource import NonTransitiveSupervisorRoleResource
 from finbourne_access.models.policy_id_role_resource import PolicyIdRoleResource
 
@@ -27,8 +29,8 @@ class RoleResourceRequest(BaseModel):
     """
     RoleResourceRequest  # noqa: E501
     """
-    non_transitive_supervisor_role_resource: Optional[NonTransitiveSupervisorRoleResource] = Field(None, alias="nonTransitiveSupervisorRoleResource")
-    policy_id_role_resource: Optional[PolicyIdRoleResource] = Field(None, alias="policyIdRoleResource")
+    non_transitive_supervisor_role_resource: Optional[NonTransitiveSupervisorRoleResource] = Field(default=None, alias="nonTransitiveSupervisorRoleResource")
+    policy_id_role_resource: Optional[PolicyIdRoleResource] = Field(default=None, alias="policyIdRoleResource")
     __properties = ["nonTransitiveSupervisorRoleResource", "policyIdRoleResource"]
 
     class Config:
@@ -85,3 +87,5 @@ class RoleResourceRequest(BaseModel):
             "policy_id_role_resource": PolicyIdRoleResource.from_dict(obj.get("policyIdRoleResource")) if obj.get("policyIdRoleResource") is not None else None
         })
         return _obj
+
+RoleResourceRequest.update_forward_refs()

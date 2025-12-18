@@ -18,15 +18,17 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict
-from pydantic.v1 import StrictStr, Field, BaseModel, Field 
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 from finbourne_access.models.policy_id_role_resource import PolicyIdRoleResource
 
 class UserRoleUpdateRequest(BaseModel):
     """
     Dto used to request updating a user's role  # noqa: E501
     """
-    resource: PolicyIdRoleResource = Field(...)
+    resource: PolicyIdRoleResource
     __properties = ["resource"]
 
     class Config:
@@ -79,3 +81,5 @@ class UserRoleUpdateRequest(BaseModel):
             "resource": PolicyIdRoleResource.from_dict(obj.get("resource")) if obj.get("resource") is not None else None
         })
         return _obj
+
+UserRoleUpdateRequest.update_forward_refs()

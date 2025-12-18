@@ -10,11 +10,13 @@ Name | Type | Description | Notes
 
 ```python
 from finbourne_access.models.user_role_creation_request import UserRoleCreationRequest
-from typing import Any, Dict
-from pydantic.v1 import BaseModel, Field, constr, validator
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 
 user_id: StrictStr = "example_user_id"
-resource: PolicyIdRoleResource = # Replace with your value
+resource: PolicyIdRoleResource
 user_role_creation_request_instance = UserRoleCreationRequest(user_id=user_id, resource=resource)
 
 ```

@@ -10,10 +10,12 @@ Name | Type | Description | Notes
 
 ```python
 from finbourne_access.models.evaluation_response import EvaluationResponse
-from typing import Any, Dict, Optional
-from pydantic.v1 import BaseModel, Field, StrictStr
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 
-result: EvaluationResult = # Replace with your value
+result: EvaluationResult
 detailed_message: Optional[StrictStr] = "example_detailed_message"
 evaluation_response_instance = EvaluationResponse(result=result, detailed_message=detailed_message)
 

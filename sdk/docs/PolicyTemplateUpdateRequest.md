@@ -11,12 +11,14 @@ Name | Type | Description | Notes
 
 ```python
 from finbourne_access.models.policy_template_update_request import PolicyTemplateUpdateRequest
-from typing import Any, Dict, List
-from pydantic.v1 import BaseModel, Field, conlist, constr
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 
 display_name: StrictStr = "example_display_name"
 description: StrictStr = "example_description"
-templated_selectors: conlist(PolicyTemplatedSelector) = # Replace with your value
+templated_selectors: List[PolicyTemplatedSelector] = # Replace with your value
 policy_template_update_request_instance = PolicyTemplateUpdateRequest(display_name=display_name, description=description, templated_selectors=templated_selectors)
 
 ```

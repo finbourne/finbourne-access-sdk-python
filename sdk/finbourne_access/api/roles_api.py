@@ -19,11 +19,9 @@ import warnings
 from pydantic.v1 import validate_arguments, ValidationError
 from typing import overload, Optional, Union, Awaitable
 
-from typing_extensions import Annotated
-from pydantic.v1 import Field, constr, validator
-
+from pydantic.v1 import Field
 from typing import List, Optional
-
+from typing_extensions import Annotated
 from finbourne_access.models.add_policy_collection_to_role_request import AddPolicyCollectionToRoleRequest
 from finbourne_access.models.role_creation_request import RoleCreationRequest
 from finbourne_access.models.role_response import RoleResponse
@@ -56,15 +54,15 @@ class RolesApi:
 
 
     @overload
-    async def add_policy_collection_to_role(self, scope : Annotated[StrictStr, Field(..., description="The scope of the Role")], code : Annotated[StrictStr, Field(..., description="The code of the Role")], add_policy_collection_to_role_request : Annotated[AddPolicyCollectionToRoleRequest, Field(..., description="The policy collections to add")], **kwargs) -> RoleResponse:  # noqa: E501
+    async def add_policy_collection_to_role(self, scope : Annotated[StrictStr, Field(..., description="The scope of the Role")], code : Annotated[StrictStr, Field(..., description="The code of the Role")], add_policy_collection_to_role_request : Annotated[AddPolicyCollectionToRoleRequest, Field(description="The policy collections to add")], **kwargs) -> RoleResponse:  # noqa: E501
         ...
 
     @overload
-    def add_policy_collection_to_role(self, scope : Annotated[StrictStr, Field(..., description="The scope of the Role")], code : Annotated[StrictStr, Field(..., description="The code of the Role")], add_policy_collection_to_role_request : Annotated[AddPolicyCollectionToRoleRequest, Field(..., description="The policy collections to add")], async_req: Optional[bool]=True, **kwargs) -> RoleResponse:  # noqa: E501
+    def add_policy_collection_to_role(self, scope : Annotated[StrictStr, Field(..., description="The scope of the Role")], code : Annotated[StrictStr, Field(..., description="The code of the Role")], add_policy_collection_to_role_request : Annotated[AddPolicyCollectionToRoleRequest, Field(description="The policy collections to add")], async_req: Optional[bool]=True, **kwargs) -> RoleResponse:  # noqa: E501
         ...
 
     @validate_arguments
-    def add_policy_collection_to_role(self, scope : Annotated[StrictStr, Field(..., description="The scope of the Role")], code : Annotated[StrictStr, Field(..., description="The code of the Role")], add_policy_collection_to_role_request : Annotated[AddPolicyCollectionToRoleRequest, Field(..., description="The policy collections to add")], async_req: Optional[bool]=None, **kwargs) -> Union[RoleResponse, Awaitable[RoleResponse]]:  # noqa: E501
+    def add_policy_collection_to_role(self, scope : Annotated[StrictStr, Field(..., description="The scope of the Role")], code : Annotated[StrictStr, Field(..., description="The code of the Role")], add_policy_collection_to_role_request : Annotated[AddPolicyCollectionToRoleRequest, Field(description="The policy collections to add")], async_req: Optional[bool]=None, **kwargs) -> Union[RoleResponse, Awaitable[RoleResponse]]:  # noqa: E501
         """AddPolicyCollectionToRole: Add policy collections to a role  # noqa: E501
 
         Assigns policy collections to a role  # noqa: E501
@@ -99,7 +97,7 @@ class RolesApi:
         return self.add_policy_collection_to_role_with_http_info(scope, code, add_policy_collection_to_role_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def add_policy_collection_to_role_with_http_info(self, scope : Annotated[StrictStr, Field(..., description="The scope of the Role")], code : Annotated[StrictStr, Field(..., description="The code of the Role")], add_policy_collection_to_role_request : Annotated[AddPolicyCollectionToRoleRequest, Field(..., description="The policy collections to add")], **kwargs) -> ApiResponse:  # noqa: E501
+    def add_policy_collection_to_role_with_http_info(self, scope : Annotated[StrictStr, Field(..., description="The scope of the Role")], code : Annotated[StrictStr, Field(..., description="The code of the Role")], add_policy_collection_to_role_request : Annotated[AddPolicyCollectionToRoleRequest, Field(description="The policy collections to add")], **kwargs) -> ApiResponse:  # noqa: E501
         """AddPolicyCollectionToRole: Add policy collections to a role  # noqa: E501
 
         Assigns policy collections to a role  # noqa: E501
@@ -231,15 +229,15 @@ class RolesApi:
 
 
     @overload
-    async def create_role(self, role_creation_request : Annotated[RoleCreationRequest, Field(..., description="The definition of the Role")], **kwargs) -> RoleResponse:  # noqa: E501
+    async def create_role(self, role_creation_request : Annotated[RoleCreationRequest, Field(description="The definition of the Role")], **kwargs) -> RoleResponse:  # noqa: E501
         ...
 
     @overload
-    def create_role(self, role_creation_request : Annotated[RoleCreationRequest, Field(..., description="The definition of the Role")], async_req: Optional[bool]=True, **kwargs) -> RoleResponse:  # noqa: E501
+    def create_role(self, role_creation_request : Annotated[RoleCreationRequest, Field(description="The definition of the Role")], async_req: Optional[bool]=True, **kwargs) -> RoleResponse:  # noqa: E501
         ...
 
     @validate_arguments
-    def create_role(self, role_creation_request : Annotated[RoleCreationRequest, Field(..., description="The definition of the Role")], async_req: Optional[bool]=None, **kwargs) -> Union[RoleResponse, Awaitable[RoleResponse]]:  # noqa: E501
+    def create_role(self, role_creation_request : Annotated[RoleCreationRequest, Field(description="The definition of the Role")], async_req: Optional[bool]=None, **kwargs) -> Union[RoleResponse, Awaitable[RoleResponse]]:  # noqa: E501
         """CreateRole: Create Role  # noqa: E501
 
         Creates a Role  # noqa: E501
@@ -270,7 +268,7 @@ class RolesApi:
         return self.create_role_with_http_info(role_creation_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_role_with_http_info(self, role_creation_request : Annotated[RoleCreationRequest, Field(..., description="The definition of the Role")], **kwargs) -> ApiResponse:  # noqa: E501
+    def create_role_with_http_info(self, role_creation_request : Annotated[RoleCreationRequest, Field(description="The definition of the Role")], **kwargs) -> ApiResponse:  # noqa: E501
         """CreateRole: Create Role  # noqa: E501
 
         Creates a Role  # noqa: E501
@@ -1035,15 +1033,15 @@ class RolesApi:
 
 
     @overload
-    async def update_role(self, code : Annotated[StrictStr, Field(..., description="The code of the Role")], role_update_request : Annotated[RoleUpdateRequest, Field(..., description="The updated definition of the Role")], scope : Annotated[Optional[StrictStr], Field( description=">Optional. Will use default scope if not supplied. The scope of the Role")] = None, before_scope : Annotated[Optional[StrictStr], Field( description="Optional. The scope of the Role. Will use default scope if not supplied.")] = None, before_code : Annotated[Optional[StrictStr], Field( description="Optional. The code of the Role")] = None, after_scope : Annotated[Optional[StrictStr], Field( description="Optional. The scope of the Role. Will use default scope if not supplied.")] = None, after_code : Annotated[Optional[StrictStr], Field( description="Optional. The code of the Role")] = None, **kwargs) -> RoleResponse:  # noqa: E501
+    async def update_role(self, code : Annotated[StrictStr, Field(..., description="The code of the Role")], role_update_request : Annotated[RoleUpdateRequest, Field(description="The updated definition of the Role")], scope : Annotated[Optional[StrictStr], Field( description=">Optional. Will use default scope if not supplied. The scope of the Role")] = None, before_scope : Annotated[Optional[StrictStr], Field( description="Optional. The scope of the Role. Will use default scope if not supplied.")] = None, before_code : Annotated[Optional[StrictStr], Field( description="Optional. The code of the Role")] = None, after_scope : Annotated[Optional[StrictStr], Field( description="Optional. The scope of the Role. Will use default scope if not supplied.")] = None, after_code : Annotated[Optional[StrictStr], Field( description="Optional. The code of the Role")] = None, **kwargs) -> RoleResponse:  # noqa: E501
         ...
 
     @overload
-    def update_role(self, code : Annotated[StrictStr, Field(..., description="The code of the Role")], role_update_request : Annotated[RoleUpdateRequest, Field(..., description="The updated definition of the Role")], scope : Annotated[Optional[StrictStr], Field( description=">Optional. Will use default scope if not supplied. The scope of the Role")] = None, before_scope : Annotated[Optional[StrictStr], Field( description="Optional. The scope of the Role. Will use default scope if not supplied.")] = None, before_code : Annotated[Optional[StrictStr], Field( description="Optional. The code of the Role")] = None, after_scope : Annotated[Optional[StrictStr], Field( description="Optional. The scope of the Role. Will use default scope if not supplied.")] = None, after_code : Annotated[Optional[StrictStr], Field( description="Optional. The code of the Role")] = None, async_req: Optional[bool]=True, **kwargs) -> RoleResponse:  # noqa: E501
+    def update_role(self, code : Annotated[StrictStr, Field(..., description="The code of the Role")], role_update_request : Annotated[RoleUpdateRequest, Field(description="The updated definition of the Role")], scope : Annotated[Optional[StrictStr], Field( description=">Optional. Will use default scope if not supplied. The scope of the Role")] = None, before_scope : Annotated[Optional[StrictStr], Field( description="Optional. The scope of the Role. Will use default scope if not supplied.")] = None, before_code : Annotated[Optional[StrictStr], Field( description="Optional. The code of the Role")] = None, after_scope : Annotated[Optional[StrictStr], Field( description="Optional. The scope of the Role. Will use default scope if not supplied.")] = None, after_code : Annotated[Optional[StrictStr], Field( description="Optional. The code of the Role")] = None, async_req: Optional[bool]=True, **kwargs) -> RoleResponse:  # noqa: E501
         ...
 
     @validate_arguments
-    def update_role(self, code : Annotated[StrictStr, Field(..., description="The code of the Role")], role_update_request : Annotated[RoleUpdateRequest, Field(..., description="The updated definition of the Role")], scope : Annotated[Optional[StrictStr], Field( description=">Optional. Will use default scope if not supplied. The scope of the Role")] = None, before_scope : Annotated[Optional[StrictStr], Field( description="Optional. The scope of the Role. Will use default scope if not supplied.")] = None, before_code : Annotated[Optional[StrictStr], Field( description="Optional. The code of the Role")] = None, after_scope : Annotated[Optional[StrictStr], Field( description="Optional. The scope of the Role. Will use default scope if not supplied.")] = None, after_code : Annotated[Optional[StrictStr], Field( description="Optional. The code of the Role")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[RoleResponse, Awaitable[RoleResponse]]:  # noqa: E501
+    def update_role(self, code : Annotated[StrictStr, Field(..., description="The code of the Role")], role_update_request : Annotated[RoleUpdateRequest, Field(description="The updated definition of the Role")], scope : Annotated[Optional[StrictStr], Field( description=">Optional. Will use default scope if not supplied. The scope of the Role")] = None, before_scope : Annotated[Optional[StrictStr], Field( description="Optional. The scope of the Role. Will use default scope if not supplied.")] = None, before_code : Annotated[Optional[StrictStr], Field( description="Optional. The code of the Role")] = None, after_scope : Annotated[Optional[StrictStr], Field( description="Optional. The scope of the Role. Will use default scope if not supplied.")] = None, after_code : Annotated[Optional[StrictStr], Field( description="Optional. The code of the Role")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[RoleResponse, Awaitable[RoleResponse]]:  # noqa: E501
         """UpdateRole: Update Role  # noqa: E501
 
         Updates a Role  # noqa: E501
@@ -1086,7 +1084,7 @@ class RolesApi:
         return self.update_role_with_http_info(code, role_update_request, scope, before_scope, before_code, after_scope, after_code, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def update_role_with_http_info(self, code : Annotated[StrictStr, Field(..., description="The code of the Role")], role_update_request : Annotated[RoleUpdateRequest, Field(..., description="The updated definition of the Role")], scope : Annotated[Optional[StrictStr], Field( description=">Optional. Will use default scope if not supplied. The scope of the Role")] = None, before_scope : Annotated[Optional[StrictStr], Field( description="Optional. The scope of the Role. Will use default scope if not supplied.")] = None, before_code : Annotated[Optional[StrictStr], Field( description="Optional. The code of the Role")] = None, after_scope : Annotated[Optional[StrictStr], Field( description="Optional. The scope of the Role. Will use default scope if not supplied.")] = None, after_code : Annotated[Optional[StrictStr], Field( description="Optional. The code of the Role")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def update_role_with_http_info(self, code : Annotated[StrictStr, Field(..., description="The code of the Role")], role_update_request : Annotated[RoleUpdateRequest, Field(description="The updated definition of the Role")], scope : Annotated[Optional[StrictStr], Field( description=">Optional. Will use default scope if not supplied. The scope of the Role")] = None, before_scope : Annotated[Optional[StrictStr], Field( description="Optional. The scope of the Role. Will use default scope if not supplied.")] = None, before_code : Annotated[Optional[StrictStr], Field( description="Optional. The code of the Role")] = None, after_scope : Annotated[Optional[StrictStr], Field( description="Optional. The scope of the Role. Will use default scope if not supplied.")] = None, after_code : Annotated[Optional[StrictStr], Field( description="Optional. The code of the Role")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """UpdateRole: Update Role  # noqa: E501
 
         Updates a Role  # noqa: E501

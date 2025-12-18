@@ -18,8 +18,10 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List, Optional
-from pydantic.v1 import StrictStr, Field, BaseModel, Field, StrictStr, conlist 
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 from finbourne_access.models.selector_definition import SelectorDefinition
 from finbourne_access.models.template_metadata import TemplateMetadata
 
@@ -27,9 +29,9 @@ class GeneratedPolicyComponents(BaseModel):
     """
     Response object for policy generated from template  # noqa: E501
     """
-    applications: Optional[conlist(StrictStr)] = Field(None, description="Applications to which the policy applies")
-    template_metadata: Optional[TemplateMetadata] = Field(None, alias="templateMetadata")
-    selectors: Optional[conlist(SelectorDefinition)] = Field(None, description="Selectors that this policy will be applied to")
+    applications: Optional[List[StrictStr]] = Field(default=None, description="Applications to which the policy applies")
+    template_metadata: Optional[TemplateMetadata] = Field(default=None, alias="templateMetadata")
+    selectors: Optional[List[SelectorDefinition]] = Field(default=None, description="Selectors that this policy will be applied to")
     __properties = ["applications", "templateMetadata", "selectors"]
 
     class Config:
@@ -101,3 +103,5 @@ class GeneratedPolicyComponents(BaseModel):
             "selectors": [SelectorDefinition.from_dict(_item) for _item in obj.get("selectors")] if obj.get("selectors") is not None else None
         })
         return _obj
+
+GeneratedPolicyComponents.update_forward_refs()

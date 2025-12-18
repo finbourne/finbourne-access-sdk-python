@@ -19,13 +19,10 @@ import warnings
 from pydantic.v1 import validate_arguments, ValidationError
 from typing import overload, Optional, Union, Awaitable
 
-from typing_extensions import Annotated
 from datetime import datetime
-
-from pydantic.v1 import Field, StrictInt, constr, validator
-
+from pydantic.v1 import Field, StrictInt
 from typing import Optional
-
+from typing_extensions import Annotated
 from finbourne_access.models.generate_policy_from_template_request import GeneratePolicyFromTemplateRequest
 from finbourne_access.models.generated_policy_components import GeneratedPolicyComponents
 from finbourne_access.models.policy_template_creation_request import PolicyTemplateCreationRequest
@@ -60,15 +57,15 @@ class PolicyTemplatesApi:
 
 
     @overload
-    async def create_policy_template(self, policy_template_creation_request : Annotated[PolicyTemplateCreationRequest, Field(..., description="The definition of the policy template")], **kwargs) -> PolicyTemplateResponse:  # noqa: E501
+    async def create_policy_template(self, policy_template_creation_request : Annotated[PolicyTemplateCreationRequest, Field(description="The definition of the policy template")], **kwargs) -> PolicyTemplateResponse:  # noqa: E501
         ...
 
     @overload
-    def create_policy_template(self, policy_template_creation_request : Annotated[PolicyTemplateCreationRequest, Field(..., description="The definition of the policy template")], async_req: Optional[bool]=True, **kwargs) -> PolicyTemplateResponse:  # noqa: E501
+    def create_policy_template(self, policy_template_creation_request : Annotated[PolicyTemplateCreationRequest, Field(description="The definition of the policy template")], async_req: Optional[bool]=True, **kwargs) -> PolicyTemplateResponse:  # noqa: E501
         ...
 
     @validate_arguments
-    def create_policy_template(self, policy_template_creation_request : Annotated[PolicyTemplateCreationRequest, Field(..., description="The definition of the policy template")], async_req: Optional[bool]=None, **kwargs) -> Union[PolicyTemplateResponse, Awaitable[PolicyTemplateResponse]]:  # noqa: E501
+    def create_policy_template(self, policy_template_creation_request : Annotated[PolicyTemplateCreationRequest, Field(description="The definition of the policy template")], async_req: Optional[bool]=None, **kwargs) -> Union[PolicyTemplateResponse, Awaitable[PolicyTemplateResponse]]:  # noqa: E501
         """[EXPERIMENTAL] CreatePolicyTemplate: Create a Policy Template  # noqa: E501
 
         Creates a Policy Template  # noqa: E501
@@ -99,7 +96,7 @@ class PolicyTemplatesApi:
         return self.create_policy_template_with_http_info(policy_template_creation_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_policy_template_with_http_info(self, policy_template_creation_request : Annotated[PolicyTemplateCreationRequest, Field(..., description="The definition of the policy template")], **kwargs) -> ApiResponse:  # noqa: E501
+    def create_policy_template_with_http_info(self, policy_template_creation_request : Annotated[PolicyTemplateCreationRequest, Field(description="The definition of the policy template")], **kwargs) -> ApiResponse:  # noqa: E501
         """[EXPERIMENTAL] CreatePolicyTemplate: Create a Policy Template  # noqa: E501
 
         Creates a Policy Template  # noqa: E501
@@ -376,15 +373,15 @@ class PolicyTemplatesApi:
 
 
     @overload
-    async def generate_policy_from_template(self, generate_policy_from_template_request : Annotated[GeneratePolicyFromTemplateRequest, Field(..., description="Definition of the generate request")], as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, **kwargs) -> GeneratedPolicyComponents:  # noqa: E501
+    async def generate_policy_from_template(self, generate_policy_from_template_request : Annotated[GeneratePolicyFromTemplateRequest, Field(description="Definition of the generate request")], as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, **kwargs) -> GeneratedPolicyComponents:  # noqa: E501
         ...
 
     @overload
-    def generate_policy_from_template(self, generate_policy_from_template_request : Annotated[GeneratePolicyFromTemplateRequest, Field(..., description="Definition of the generate request")], as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, async_req: Optional[bool]=True, **kwargs) -> GeneratedPolicyComponents:  # noqa: E501
+    def generate_policy_from_template(self, generate_policy_from_template_request : Annotated[GeneratePolicyFromTemplateRequest, Field(description="Definition of the generate request")], as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, async_req: Optional[bool]=True, **kwargs) -> GeneratedPolicyComponents:  # noqa: E501
         ...
 
     @validate_arguments
-    def generate_policy_from_template(self, generate_policy_from_template_request : Annotated[GeneratePolicyFromTemplateRequest, Field(..., description="Definition of the generate request")], as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[GeneratedPolicyComponents, Awaitable[GeneratedPolicyComponents]]:  # noqa: E501
+    def generate_policy_from_template(self, generate_policy_from_template_request : Annotated[GeneratePolicyFromTemplateRequest, Field(description="Definition of the generate request")], as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[GeneratedPolicyComponents, Awaitable[GeneratedPolicyComponents]]:  # noqa: E501
         """[EXPERIMENTAL] GeneratePolicyFromTemplate: Generate policy from template  # noqa: E501
 
         Generates policies from templates  # noqa: E501
@@ -417,7 +414,7 @@ class PolicyTemplatesApi:
         return self.generate_policy_from_template_with_http_info(generate_policy_from_template_request, as_at, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def generate_policy_from_template_with_http_info(self, generate_policy_from_template_request : Annotated[GeneratePolicyFromTemplateRequest, Field(..., description="Definition of the generate request")], as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def generate_policy_from_template_with_http_info(self, generate_policy_from_template_request : Annotated[GeneratePolicyFromTemplateRequest, Field(description="Definition of the generate request")], as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date time of the data")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """[EXPERIMENTAL] GeneratePolicyFromTemplate: Generate policy from template  # noqa: E501
 
         Generates policies from templates  # noqa: E501

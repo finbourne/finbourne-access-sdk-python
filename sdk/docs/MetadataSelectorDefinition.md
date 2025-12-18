@@ -11,11 +11,13 @@ Name | Type | Description | Notes
 
 ```python
 from finbourne_access.models.metadata_selector_definition import MetadataSelectorDefinition
-from typing import Any, Dict, List, Optional
-from pydantic.v1 import BaseModel, Field, conlist, constr
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 
-expressions: conlist(MetadataExpression, min_items=1) = Field(...)
-actions: conlist(ActionId, min_items=1) = Field(...)
+expressions: List[MetadataExpression]
+actions: List[ActionId]
 name: Optional[StrictStr] = "example_name"
 description: Optional[StrictStr] = "example_description"
 metadata_selector_definition_instance = MetadataSelectorDefinition(expressions=expressions, actions=actions, name=name, description=description)

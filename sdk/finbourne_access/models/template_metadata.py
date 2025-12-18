@@ -17,17 +17,19 @@ import pprint
 import re  # noqa: F401
 import json
 
+
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
 from datetime import datetime
-from typing import Any, Dict, List, Optional
-from pydantic.v1 import StrictStr, Field, BaseModel, Field, conlist 
 from finbourne_access.models.template_selection import TemplateSelection
 
 class TemplateMetadata(BaseModel):
     """
     Extra policy template metadata information, used during a generation request  # noqa: E501
     """
-    template_selection: Optional[conlist(TemplateSelection)] = Field(None, alias="templateSelection", description="List of policy templates used for a generation request")
-    build_as_at: Optional[datetime] = Field(None, alias="buildAsAt", description="Policy template build AsAt time used for a generation request")
+    template_selection: Optional[List[TemplateSelection]] = Field(default=None, description="List of policy templates used for a generation request", alias="templateSelection")
+    build_as_at: Optional[datetime] = Field(default=None, description="Policy template build AsAt time used for a generation request", alias="buildAsAt")
     __properties = ["templateSelection", "buildAsAt"]
 
     class Config:
@@ -90,3 +92,5 @@ class TemplateMetadata(BaseModel):
             "build_as_at": obj.get("buildAsAt")
         })
         return _obj
+
+TemplateMetadata.update_forward_refs()

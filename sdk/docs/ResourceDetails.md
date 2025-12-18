@@ -5,16 +5,18 @@ Details about the resource being requested that may be pertinent to the entitlem
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **Dict[str, str]** | The identifier of the resource being evaluated | 
-**metadata** | **Dict[str, List[EntitlementMetadata]]** | Any metadata associated with the resource being requested | [optional] 
+**metadata** | **Dict[str, Optional[List[EntitlementMetadata]]]** | Any metadata associated with the resource being requested | [optional] 
 ## Example
 
 ```python
 from finbourne_access.models.resource_details import ResourceDetails
-from typing import Any, Dict, List, Optional
-from pydantic.v1 import BaseModel, Field, StrictStr, conlist
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 
 id: Dict[str, StrictStr] = # Replace with your value
-metadata: Optional[Dict[str, conlist(EntitlementMetadata)]] = # Replace with your value
+metadata: Optional[Dict[str, Optional[List[EntitlementMetadata]]]] = # Replace with your value
 resource_details_instance = ResourceDetails(id=id, metadata=metadata)
 
 ```

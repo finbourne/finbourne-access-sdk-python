@@ -18,8 +18,10 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List, Optional
-from pydantic.v1 import StrictStr, Field, BaseModel, Field, StrictStr, conlist 
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 from finbourne_access.models.for_spec import ForSpec
 from finbourne_access.models.grant import Grant
 from finbourne_access.models.how_spec import HowSpec
@@ -36,15 +38,15 @@ class PolicyResponse(BaseModel):
     """
     id: Optional[PolicyId] = None
     description:  Optional[StrictStr] = Field(None,alias="description", description="Description of what the policy is entitling") 
-    applications: Optional[conlist(StrictStr)] = Field(None, description="Applications to which the policy applies")
+    applications: Optional[List[StrictStr]] = Field(default=None, description="Applications to which the policy applies")
     grant: Optional[Grant] = None
-    selectors: Optional[conlist(SelectorDefinition)] = Field(None, description="Selectors that this policy will be applied to")
-    var_for: Optional[conlist(ForSpec)] = Field(None, alias="for", description="\"For Specification\" for when the policy is to be applied")
-    var_if: Optional[conlist(IfExpression)] = Field(None, alias="if", description="\"If Specification\" for when the policy is to be applied")
+    selectors: Optional[List[SelectorDefinition]] = Field(default=None, description="Selectors that this policy will be applied to")
+    var_for: Optional[List[ForSpec]] = Field(default=None, description="\"For Specification\" for when the policy is to be applied", alias="for")
+    var_if: Optional[List[IfExpression]] = Field(default=None, description="\"If Specification\" for when the policy is to be applied", alias="if")
     when: Optional[WhenSpec] = None
     how: Optional[HowSpec] = None
-    template_metadata: Optional[TemplateMetadata] = Field(None, alias="templateMetadata")
-    links: Optional[conlist(Link)] = None
+    template_metadata: Optional[TemplateMetadata] = Field(default=None, alias="templateMetadata")
+    links: Optional[List[Link]] = None
     __properties = ["id", "description", "applications", "grant", "selectors", "for", "if", "when", "how", "templateMetadata", "links"]
 
     class Config:
@@ -174,3 +176,5 @@ class PolicyResponse(BaseModel):
             "links": [Link.from_dict(_item) for _item in obj.get("links")] if obj.get("links") is not None else None
         })
         return _obj
+
+PolicyResponse.update_forward_refs()

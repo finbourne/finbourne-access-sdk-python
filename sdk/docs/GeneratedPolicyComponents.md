@@ -11,12 +11,14 @@ Name | Type | Description | Notes
 
 ```python
 from finbourne_access.models.generated_policy_components import GeneratedPolicyComponents
-from typing import Any, Dict, List, Optional
-from pydantic.v1 import BaseModel, Field, StrictStr, conlist
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 
-applications: Optional[conlist(StrictStr)] = # Replace with your value
+applications: Optional[List[StrictStr]] = # Replace with your value
 template_metadata: Optional[TemplateMetadata] = # Replace with your value
-selectors: Optional[conlist(SelectorDefinition)] = # Replace with your value
+selectors: Optional[List[SelectorDefinition]] = # Replace with your value
 generated_policy_components_instance = GeneratedPolicyComponents(applications=applications, template_metadata=template_metadata, selectors=selectors)
 
 ```

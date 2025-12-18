@@ -13,14 +13,16 @@ Name | Type | Description | Notes
 
 ```python
 from finbourne_access.models.policy_collection_response import PolicyCollectionResponse
-from typing import Any, Dict, List, Optional
-from pydantic.v1 import BaseModel, Field, StrictStr, conlist
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 
 id: Optional[PolicyCollectionId] = None
-policies: Optional[conlist(PolicyId)] = # Replace with your value
-policy_collections: Optional[conlist(PolicyCollectionId)] = # Replace with your value
+policies: Optional[List[PolicyId]] = # Replace with your value
+policy_collections: Optional[List[PolicyCollectionId]] = # Replace with your value
 description: Optional[StrictStr] = "example_description"
-links: Optional[conlist(Link)] = None
+links: Optional[List[Link]] = None
 policy_collection_response_instance = PolicyCollectionResponse(id=id, policies=policies, policy_collections=policy_collections, description=description, links=links)
 
 ```

@@ -11,12 +11,14 @@ Name | Type | Description | Notes
 
 ```python
 from finbourne_access.models.policy_templated_selector import PolicyTemplatedSelector
-from typing import Any, Dict
-from pydantic.v1 import BaseModel, Field, constr
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 
 application: StrictStr = "example_application"
 tag: StrictStr = "example_tag"
-selector: SelectorDefinition = # Replace with your value
+selector: SelectorDefinition
 policy_templated_selector_instance = PolicyTemplatedSelector(application=application, tag=tag, selector=selector)
 
 ```

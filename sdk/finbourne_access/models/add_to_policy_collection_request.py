@@ -18,8 +18,10 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List, Optional
-from pydantic.v1 import StrictStr, Field, BaseModel, Field, conlist 
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 from finbourne_access.models.policy_collection_id import PolicyCollectionId
 from finbourne_access.models.policy_id import PolicyId
 
@@ -27,8 +29,8 @@ class AddToPolicyCollectionRequest(BaseModel):
     """
     Base properties to create or update a policy collection  # noqa: E501
     """
-    policies: Optional[conlist(PolicyId)] = Field(None, description="The identifiers of the Policies to be added to the collection.")
-    policy_collections: Optional[conlist(PolicyCollectionId)] = Field(None, alias="policyCollections", description="The identifiers of the PolicyCollections to be added to the collection.")
+    policies: Optional[List[PolicyId]] = Field(default=None, description="The identifiers of the Policies to be added to the collection.")
+    policy_collections: Optional[List[PolicyCollectionId]] = Field(default=None, description="The identifiers of the PolicyCollections to be added to the collection.", alias="policyCollections")
     __properties = ["policies", "policyCollections"]
 
     class Config:
@@ -103,3 +105,5 @@ class AddToPolicyCollectionRequest(BaseModel):
             "policy_collections": [PolicyCollectionId.from_dict(_item) for _item in obj.get("policyCollections")] if obj.get("policyCollections") is not None else None
         })
         return _obj
+
+AddToPolicyCollectionRequest.update_forward_refs()

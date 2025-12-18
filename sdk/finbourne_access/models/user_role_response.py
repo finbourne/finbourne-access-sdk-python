@@ -18,8 +18,10 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List, Optional
-from pydantic.v1 import StrictStr, Field, BaseModel, Field, conlist 
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 from finbourne_access.models.link import Link
 from finbourne_access.models.role_id import RoleId
 from finbourne_access.models.role_resource_request import RoleResourceRequest
@@ -28,9 +30,9 @@ class UserRoleResponse(BaseModel):
     """
     Response object from the user role API  # noqa: E501
     """
-    resource: RoleResourceRequest = Field(...)
-    id: RoleId = Field(...)
-    links: Optional[conlist(Link)] = None
+    resource: RoleResourceRequest
+    id: RoleId
+    links: Optional[List[Link]] = None
     __properties = ["resource", "id", "links"]
 
     class Config:
@@ -100,3 +102,5 @@ class UserRoleResponse(BaseModel):
             "links": [Link.from_dict(_item) for _item in obj.get("links")] if obj.get("links") is not None else None
         })
         return _obj
+
+UserRoleResponse.update_forward_refs()

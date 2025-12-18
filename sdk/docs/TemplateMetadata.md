@@ -10,10 +10,12 @@ Name | Type | Description | Notes
 
 ```python
 from finbourne_access.models.template_metadata import TemplateMetadata
-from typing import Any, Dict, List, Optional
-from pydantic.v1 import BaseModel, Field, conlist
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
 from datetime import datetime
-template_selection: Optional[conlist(TemplateSelection)] = # Replace with your value
+
+template_selection: Optional[List[TemplateSelection]] = # Replace with your value
 build_as_at: Optional[datetime] = # Replace with your value
 template_metadata_instance = TemplateMetadata(template_selection=template_selection, build_as_at=build_as_at)
 

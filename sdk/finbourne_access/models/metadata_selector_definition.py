@@ -18,8 +18,10 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List, Optional
-from pydantic.v1 import StrictStr, Field, BaseModel, Field, conlist, constr 
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 from finbourne_access.models.action_id import ActionId
 from finbourne_access.models.metadata_expression import MetadataExpression
 
@@ -27,8 +29,8 @@ class MetadataSelectorDefinition(BaseModel):
     """
     MetadataSelectorDefinition
     """
-    expressions: conlist(MetadataExpression) = Field(...)
-    actions: conlist(ActionId) = Field(...)
+    expressions: List[MetadataExpression]
+    actions: List[ActionId]
     name:  Optional[StrictStr] = Field(None,alias="name") 
     description:  Optional[StrictStr] = Field(None,alias="description") 
     __properties = ["expressions", "actions", "name", "description"]
@@ -107,3 +109,5 @@ class MetadataSelectorDefinition(BaseModel):
             "description": obj.get("description")
         })
         return _obj
+
+MetadataSelectorDefinition.update_forward_refs()

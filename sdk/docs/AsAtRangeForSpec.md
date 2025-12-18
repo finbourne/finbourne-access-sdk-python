@@ -9,11 +9,13 @@ Name | Type | Description | Notes
 
 ```python
 from finbourne_access.models.as_at_range_for_spec import AsAtRangeForSpec
-from typing import Any, Dict
-from pydantic.v1 import BaseModel, Field
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 
 var_from: AsAtPredicateContract = # Replace with your value
-to: AsAtPredicateContract = # Replace with your value
+to: AsAtPredicateContract
 as_at_range_for_spec_instance = AsAtRangeForSpec(var_from=var_from, to=to)
 
 ```

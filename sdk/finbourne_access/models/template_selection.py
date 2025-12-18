@@ -18,8 +18,10 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List, Optional
-from pydantic.v1 import StrictStr, Field, BaseModel, Field, StrictStr, conlist, constr, validator 
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 
 class TemplateSelection(BaseModel):
     """
@@ -27,7 +29,7 @@ class TemplateSelection(BaseModel):
     """
     scope:  StrictStr = Field(...,alias="scope", description="Scope identifying policy template to use for generation") 
     code:  StrictStr = Field(...,alias="code", description="Code identifying policy template to use for generation") 
-    selector_tags: Optional[conlist(StrictStr)] = Field(None, alias="selectorTags", description="List of selector tags to optionally filter in the template generation  (Eg: Feature, Data, etc)")
+    selector_tags: Optional[List[StrictStr]] = Field(default=None, description="List of selector tags to optionally filter in the template generation  (Eg: Feature, Data, etc)", alias="selectorTags")
     __properties = ["scope", "code", "selectorTags"]
 
     class Config:
@@ -84,3 +86,5 @@ class TemplateSelection(BaseModel):
             "selector_tags": obj.get("selectorTags")
         })
         return _obj
+
+TemplateSelection.update_forward_refs()

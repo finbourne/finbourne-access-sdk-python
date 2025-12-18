@@ -19,20 +19,22 @@ Name | Type | Description | Notes
 
 ```python
 from finbourne_access.models.policy_response import PolicyResponse
-from typing import Any, Dict, List, Optional
-from pydantic.v1 import BaseModel, Field, StrictStr, conlist
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 
 id: Optional[PolicyId] = None
 description: Optional[StrictStr] = "example_description"
-applications: Optional[conlist(StrictStr)] = # Replace with your value
+applications: Optional[List[StrictStr]] = # Replace with your value
 grant: Optional[Grant] = None
-selectors: Optional[conlist(SelectorDefinition)] = # Replace with your value
-var_for: Optional[conlist(ForSpec)] = # Replace with your value
-var_if: Optional[conlist(IfExpression)] = # Replace with your value
+selectors: Optional[List[SelectorDefinition]] = # Replace with your value
+var_for: Optional[List[ForSpec]] = # Replace with your value
+var_if: Optional[List[IfExpression]] = # Replace with your value
 when: Optional[WhenSpec] = None
 how: Optional[HowSpec] = None
 template_metadata: Optional[TemplateMetadata] = # Replace with your value
-links: Optional[conlist(Link)] = None
+links: Optional[List[Link]] = None
 policy_response_instance = PolicyResponse(id=id, description=description, applications=applications, grant=grant, selectors=selectors, var_for=var_for, var_if=var_if, when=when, how=how, template_metadata=template_metadata, links=links)
 
 ```

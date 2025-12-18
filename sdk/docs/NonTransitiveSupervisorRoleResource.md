@@ -8,10 +8,12 @@ Name | Type | Description | Notes
 
 ```python
 from finbourne_access.models.non_transitive_supervisor_role_resource import NonTransitiveSupervisorRoleResource
-from typing import Any, Dict, List
-from pydantic.v1 import BaseModel, Field, StrictStr, conlist
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 
-roles: conlist(Dict[str, StrictStr], min_items=1) = Field(...)
+roles: List[Dict[str, StrictStr]]
 non_transitive_supervisor_role_resource_instance = NonTransitiveSupervisorRoleResource(roles=roles)
 
 ```

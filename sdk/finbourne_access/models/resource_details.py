@@ -18,16 +18,18 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List, Optional
-from pydantic.v1 import StrictStr, Field, BaseModel, Field, StrictStr, conlist 
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 from finbourne_access.models.entitlement_metadata import EntitlementMetadata
 
 class ResourceDetails(BaseModel):
     """
     Details about the resource being requested that may be pertinent to the entitlement evaluation  # noqa: E501
     """
-    id: Dict[str, StrictStr] = Field(..., description="The identifier of the resource being evaluated")
-    metadata: Optional[Dict[str, conlist(EntitlementMetadata)]] = Field(None, description="Any metadata associated with the resource being requested")
+    id: Dict[str, StrictStr] = Field(description="The identifier of the resource being evaluated")
+    metadata: Optional[Dict[str, Optional[List[EntitlementMetadata]]]] = Field(default=None, description="Any metadata associated with the resource being requested")
     __properties = ["id", "metadata"]
 
     class Config:
@@ -99,3 +101,5 @@ class ResourceDetails(BaseModel):
             )
         })
         return _obj
+
+ResourceDetails.update_forward_refs()

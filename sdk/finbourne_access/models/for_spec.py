@@ -18,8 +18,10 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, Optional
-from pydantic.v1 import StrictStr, Field, BaseModel, Field 
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 from finbourne_access.models.as_at_range_for_spec import AsAtRangeForSpec
 from finbourne_access.models.as_at_relative import AsAtRelative
 from finbourne_access.models.effective_date_has_quality import EffectiveDateHasQuality
@@ -30,11 +32,11 @@ class ForSpec(BaseModel):
     """
     ForSpec
     """
-    as_at_range_for_spec: Optional[AsAtRangeForSpec] = Field(None, alias="asAtRangeForSpec")
-    as_at_relative: Optional[AsAtRelative] = Field(None, alias="asAtRelative")
-    effective_date_has_quality: Optional[EffectiveDateHasQuality] = Field(None, alias="effectiveDateHasQuality")
-    effective_date_relative: Optional[EffectiveDateRelative] = Field(None, alias="effectiveDateRelative")
-    effective_range: Optional[EffectiveRange] = Field(None, alias="effectiveRange")
+    as_at_range_for_spec: Optional[AsAtRangeForSpec] = Field(default=None, alias="asAtRangeForSpec")
+    as_at_relative: Optional[AsAtRelative] = Field(default=None, alias="asAtRelative")
+    effective_date_has_quality: Optional[EffectiveDateHasQuality] = Field(default=None, alias="effectiveDateHasQuality")
+    effective_date_relative: Optional[EffectiveDateRelative] = Field(default=None, alias="effectiveDateRelative")
+    effective_range: Optional[EffectiveRange] = Field(default=None, alias="effectiveRange")
     __properties = ["asAtRangeForSpec", "asAtRelative", "effectiveDateHasQuality", "effectiveDateRelative", "effectiveRange"]
 
     class Config:
@@ -103,3 +105,5 @@ class ForSpec(BaseModel):
             "effective_range": EffectiveRange.from_dict(obj.get("effectiveRange")) if obj.get("effectiveRange") is not None else None
         })
         return _obj
+
+ForSpec.update_forward_refs()

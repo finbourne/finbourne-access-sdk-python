@@ -18,15 +18,17 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, Optional
-from pydantic.v1 import StrictStr, Field, BaseModel, Field, StrictStr 
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 from finbourne_access.models.evaluation_result import EvaluationResult
 
 class EvaluationResponse(BaseModel):
     """
     The result of an evaluation request  # noqa: E501
     """
-    result: EvaluationResult = Field(...)
+    result: EvaluationResult
     detailed_message:  Optional[StrictStr] = Field(None,alias="detailedMessage", description="In the case of the evaluation being denied a message may be returned") 
     __properties = ["result", "detailedMessage"]
 
@@ -83,3 +85,5 @@ class EvaluationResponse(BaseModel):
             "detailed_message": obj.get("detailedMessage")
         })
         return _obj
+
+EvaluationResponse.update_forward_refs()

@@ -9,8 +9,10 @@ Name | Type | Description | Notes
 
 ```python
 from finbourne_access.models.entitlement_metadata import EntitlementMetadata
-from typing import Any, Dict, Optional
-from pydantic.v1 import BaseModel, StrictStr
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 
 provider: Optional[StrictStr] = "example_provider"
 value: Optional[StrictStr] = "example_value"

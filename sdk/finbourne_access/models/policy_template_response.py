@@ -18,8 +18,10 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List, Optional
-from pydantic.v1 import StrictStr, Field, BaseModel, Field, StrictStr, conlist 
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 from finbourne_access.models.policy_templated_selector import PolicyTemplatedSelector
 
 class PolicyTemplateResponse(BaseModel):
@@ -30,9 +32,9 @@ class PolicyTemplateResponse(BaseModel):
     scope:  Optional[StrictStr] = Field(None,alias="scope", description="The Scope of the policy template being created") 
     code:  Optional[StrictStr] = Field(None,alias="code", description="The Code of the policy template being created") 
     description:  Optional[StrictStr] = Field(None,alias="description", description="Description of the policy template being created") 
-    applications: Optional[conlist(StrictStr)] = Field(None, description="List of applications that this policy template covers")
-    tags: Optional[conlist(StrictStr)] = Field(None, description="List of policy types that this policy template covers")
-    templated_selectors: Optional[conlist(PolicyTemplatedSelector)] = Field(None, alias="templatedSelectors", description="The selector definitions of policies included in this policy template")
+    applications: Optional[List[StrictStr]] = Field(default=None, description="List of applications that this policy template covers")
+    tags: Optional[List[StrictStr]] = Field(default=None, description="List of policy types that this policy template covers")
+    templated_selectors: Optional[List[PolicyTemplatedSelector]] = Field(default=None, description="The selector definitions of policies included in this policy template", alias="templatedSelectors")
     __properties = ["displayName", "scope", "code", "description", "applications", "tags", "templatedSelectors"]
 
     class Config:
@@ -130,3 +132,5 @@ class PolicyTemplateResponse(BaseModel):
             "templated_selectors": [PolicyTemplatedSelector.from_dict(_item) for _item in obj.get("templatedSelectors")] if obj.get("templatedSelectors") is not None else None
         })
         return _obj
+
+PolicyTemplateResponse.update_forward_refs()

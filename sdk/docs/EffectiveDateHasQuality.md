@@ -8,8 +8,10 @@ Name | Type | Description | Notes
 
 ```python
 from finbourne_access.models.effective_date_has_quality import EffectiveDateHasQuality
-from typing import Any, Dict, Optional
-from pydantic.v1 import BaseModel
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 
 quality: Optional[DateQuality] = None
 effective_date_has_quality_instance = EffectiveDateHasQuality(quality=quality)

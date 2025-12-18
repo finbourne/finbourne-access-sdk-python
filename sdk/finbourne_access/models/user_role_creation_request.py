@@ -18,8 +18,10 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict
-from pydantic.v1 import StrictStr, Field, BaseModel, Field, constr, validator 
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 from finbourne_access.models.policy_id_role_resource import PolicyIdRoleResource
 
 class UserRoleCreationRequest(BaseModel):
@@ -27,7 +29,7 @@ class UserRoleCreationRequest(BaseModel):
     Dto used to request creating a user's role  # noqa: E501
     """
     user_id:  StrictStr = Field(...,alias="userId", description="The Id of the user for whom to create the role.") 
-    resource: PolicyIdRoleResource = Field(...)
+    resource: PolicyIdRoleResource
     __properties = ["userId", "resource"]
 
     class Config:
@@ -81,3 +83,5 @@ class UserRoleCreationRequest(BaseModel):
             "resource": PolicyIdRoleResource.from_dict(obj.get("resource")) if obj.get("resource") is not None else None
         })
         return _obj
+
+UserRoleCreationRequest.update_forward_refs()

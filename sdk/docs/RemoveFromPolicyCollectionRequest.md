@@ -10,11 +10,13 @@ Name | Type | Description | Notes
 
 ```python
 from finbourne_access.models.remove_from_policy_collection_request import RemoveFromPolicyCollectionRequest
-from typing import Any, Dict, List, Optional
-from pydantic.v1 import BaseModel, Field, conlist
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 
-policies: Optional[conlist(PolicyId)] = # Replace with your value
-policy_collections: Optional[conlist(PolicyCollectionId)] = # Replace with your value
+policies: Optional[List[PolicyId]] = # Replace with your value
+policy_collections: Optional[List[PolicyCollectionId]] = # Replace with your value
 remove_from_policy_collection_request_instance = RemoveFromPolicyCollectionRequest(policies=policies, policy_collections=policy_collections)
 
 ```

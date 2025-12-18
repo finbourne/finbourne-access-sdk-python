@@ -19,11 +19,9 @@ import warnings
 from pydantic.v1 import validate_arguments, ValidationError
 from typing import overload, Optional, Union, Awaitable
 
-from typing_extensions import Annotated
-from pydantic.v1 import Field, StrictStr, conint, constr, validator
-
+from pydantic.v1 import Field, StrictInt, StrictStr
 from typing import Optional
-
+from typing_extensions import Annotated
 from finbourne_access.models.add_policy_collection_to_role_request import AddPolicyCollectionToRoleRequest
 from finbourne_access.models.add_policy_to_role_request import AddPolicyToRoleRequest
 from finbourne_access.models.resource_list_of_user_role_response import ResourceListOfUserRoleResponse
@@ -58,15 +56,15 @@ class UserRolesApi:
 
 
     @overload
-    async def add_policy_collection_to_user_role(self, userid : Annotated[StrictStr, Field(..., description="Id of the User Role to get")], add_policy_collection_to_role_request : Annotated[AddPolicyCollectionToRoleRequest, Field(..., description="Dto of the policy collection to be added.")], **kwargs) -> UserRoleResponse:  # noqa: E501
+    async def add_policy_collection_to_user_role(self, userid : Annotated[StrictStr, Field(..., description="Id of the User Role to get")], add_policy_collection_to_role_request : Annotated[AddPolicyCollectionToRoleRequest, Field(description="Dto of the policy collection to be added.")], **kwargs) -> UserRoleResponse:  # noqa: E501
         ...
 
     @overload
-    def add_policy_collection_to_user_role(self, userid : Annotated[StrictStr, Field(..., description="Id of the User Role to get")], add_policy_collection_to_role_request : Annotated[AddPolicyCollectionToRoleRequest, Field(..., description="Dto of the policy collection to be added.")], async_req: Optional[bool]=True, **kwargs) -> UserRoleResponse:  # noqa: E501
+    def add_policy_collection_to_user_role(self, userid : Annotated[StrictStr, Field(..., description="Id of the User Role to get")], add_policy_collection_to_role_request : Annotated[AddPolicyCollectionToRoleRequest, Field(description="Dto of the policy collection to be added.")], async_req: Optional[bool]=True, **kwargs) -> UserRoleResponse:  # noqa: E501
         ...
 
     @validate_arguments
-    def add_policy_collection_to_user_role(self, userid : Annotated[StrictStr, Field(..., description="Id of the User Role to get")], add_policy_collection_to_role_request : Annotated[AddPolicyCollectionToRoleRequest, Field(..., description="Dto of the policy collection to be added.")], async_req: Optional[bool]=None, **kwargs) -> Union[UserRoleResponse, Awaitable[UserRoleResponse]]:  # noqa: E501
+    def add_policy_collection_to_user_role(self, userid : Annotated[StrictStr, Field(..., description="Id of the User Role to get")], add_policy_collection_to_role_request : Annotated[AddPolicyCollectionToRoleRequest, Field(description="Dto of the policy collection to be added.")], async_req: Optional[bool]=None, **kwargs) -> Union[UserRoleResponse, Awaitable[UserRoleResponse]]:  # noqa: E501
         """AddPolicyCollectionToUserRole: Add a policy collection to a user-role  # noqa: E501
 
         Adds a policy collection to a user-role.  # noqa: E501
@@ -99,7 +97,7 @@ class UserRolesApi:
         return self.add_policy_collection_to_user_role_with_http_info(userid, add_policy_collection_to_role_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def add_policy_collection_to_user_role_with_http_info(self, userid : Annotated[StrictStr, Field(..., description="Id of the User Role to get")], add_policy_collection_to_role_request : Annotated[AddPolicyCollectionToRoleRequest, Field(..., description="Dto of the policy collection to be added.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def add_policy_collection_to_user_role_with_http_info(self, userid : Annotated[StrictStr, Field(..., description="Id of the User Role to get")], add_policy_collection_to_role_request : Annotated[AddPolicyCollectionToRoleRequest, Field(description="Dto of the policy collection to be added.")], **kwargs) -> ApiResponse:  # noqa: E501
         """AddPolicyCollectionToUserRole: Add a policy collection to a user-role  # noqa: E501
 
         Adds a policy collection to a user-role.  # noqa: E501
@@ -225,15 +223,15 @@ class UserRolesApi:
 
 
     @overload
-    async def add_policy_to_user_role(self, userid : Annotated[StrictStr, Field(..., description="Id of the User Role to get")], add_policy_to_role_request : Annotated[AddPolicyToRoleRequest, Field(..., description="Dto of the policy to be added.")], **kwargs) -> UserRoleResponse:  # noqa: E501
+    async def add_policy_to_user_role(self, userid : Annotated[StrictStr, Field(..., description="Id of the User Role to get")], add_policy_to_role_request : Annotated[AddPolicyToRoleRequest, Field(description="Dto of the policy to be added.")], **kwargs) -> UserRoleResponse:  # noqa: E501
         ...
 
     @overload
-    def add_policy_to_user_role(self, userid : Annotated[StrictStr, Field(..., description="Id of the User Role to get")], add_policy_to_role_request : Annotated[AddPolicyToRoleRequest, Field(..., description="Dto of the policy to be added.")], async_req: Optional[bool]=True, **kwargs) -> UserRoleResponse:  # noqa: E501
+    def add_policy_to_user_role(self, userid : Annotated[StrictStr, Field(..., description="Id of the User Role to get")], add_policy_to_role_request : Annotated[AddPolicyToRoleRequest, Field(description="Dto of the policy to be added.")], async_req: Optional[bool]=True, **kwargs) -> UserRoleResponse:  # noqa: E501
         ...
 
     @validate_arguments
-    def add_policy_to_user_role(self, userid : Annotated[StrictStr, Field(..., description="Id of the User Role to get")], add_policy_to_role_request : Annotated[AddPolicyToRoleRequest, Field(..., description="Dto of the policy to be added.")], async_req: Optional[bool]=None, **kwargs) -> Union[UserRoleResponse, Awaitable[UserRoleResponse]]:  # noqa: E501
+    def add_policy_to_user_role(self, userid : Annotated[StrictStr, Field(..., description="Id of the User Role to get")], add_policy_to_role_request : Annotated[AddPolicyToRoleRequest, Field(description="Dto of the policy to be added.")], async_req: Optional[bool]=None, **kwargs) -> Union[UserRoleResponse, Awaitable[UserRoleResponse]]:  # noqa: E501
         """AddPolicyToUserRole: Add a policy to a user-role  # noqa: E501
 
         Adds a policy to a user-role.  # noqa: E501
@@ -266,7 +264,7 @@ class UserRolesApi:
         return self.add_policy_to_user_role_with_http_info(userid, add_policy_to_role_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def add_policy_to_user_role_with_http_info(self, userid : Annotated[StrictStr, Field(..., description="Id of the User Role to get")], add_policy_to_role_request : Annotated[AddPolicyToRoleRequest, Field(..., description="Dto of the policy to be added.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def add_policy_to_user_role_with_http_info(self, userid : Annotated[StrictStr, Field(..., description="Id of the User Role to get")], add_policy_to_role_request : Annotated[AddPolicyToRoleRequest, Field(description="Dto of the policy to be added.")], **kwargs) -> ApiResponse:  # noqa: E501
         """AddPolicyToUserRole: Add a policy to a user-role  # noqa: E501
 
         Adds a policy to a user-role.  # noqa: E501
@@ -392,15 +390,15 @@ class UserRolesApi:
 
 
     @overload
-    async def create_user_role(self, user_role_creation_request : Annotated[UserRoleCreationRequest, Field(..., description="Definition of the user-role to create.")], **kwargs) -> UserRoleResponse:  # noqa: E501
+    async def create_user_role(self, user_role_creation_request : Annotated[UserRoleCreationRequest, Field(description="Definition of the user-role to create.")], **kwargs) -> UserRoleResponse:  # noqa: E501
         ...
 
     @overload
-    def create_user_role(self, user_role_creation_request : Annotated[UserRoleCreationRequest, Field(..., description="Definition of the user-role to create.")], async_req: Optional[bool]=True, **kwargs) -> UserRoleResponse:  # noqa: E501
+    def create_user_role(self, user_role_creation_request : Annotated[UserRoleCreationRequest, Field(description="Definition of the user-role to create.")], async_req: Optional[bool]=True, **kwargs) -> UserRoleResponse:  # noqa: E501
         ...
 
     @validate_arguments
-    def create_user_role(self, user_role_creation_request : Annotated[UserRoleCreationRequest, Field(..., description="Definition of the user-role to create.")], async_req: Optional[bool]=None, **kwargs) -> Union[UserRoleResponse, Awaitable[UserRoleResponse]]:  # noqa: E501
+    def create_user_role(self, user_role_creation_request : Annotated[UserRoleCreationRequest, Field(description="Definition of the user-role to create.")], async_req: Optional[bool]=None, **kwargs) -> Union[UserRoleResponse, Awaitable[UserRoleResponse]]:  # noqa: E501
         """CreateUserRole: Create a user-role  # noqa: E501
 
         Creates a new user-role.  # noqa: E501
@@ -431,7 +429,7 @@ class UserRolesApi:
         return self.create_user_role_with_http_info(user_role_creation_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_user_role_with_http_info(self, user_role_creation_request : Annotated[UserRoleCreationRequest, Field(..., description="Definition of the user-role to create.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def create_user_role_with_http_info(self, user_role_creation_request : Annotated[UserRoleCreationRequest, Field(description="Definition of the user-role to create.")], **kwargs) -> ApiResponse:  # noqa: E501
         """CreateUserRole: Create a user-role  # noqa: E501
 
         Creates a new user-role.  # noqa: E501
@@ -852,15 +850,15 @@ class UserRolesApi:
 
 
     @overload
-    async def list_user_roles(self, filter : Annotated[Optional[StrictStr], Field( description="Optional. Expression to filter the result set")] = None, sort_by : Annotated[Optional[StrictStr], Field( description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[conint(strict=True)], Field(description="Optional. When paginating, limit the number of returned results to this many.")] = None, page : Annotated[Optional[StrictStr], Field( description="Optional. Encoded page string returned from a previous search result that will retrieve             the next page of data.")] = None, **kwargs) -> ResourceListOfUserRoleResponse:  # noqa: E501
+    async def list_user_roles(self, filter : Annotated[Optional[StrictStr], Field( description="Optional. Expression to filter the result set")] = None, sort_by : Annotated[Optional[StrictStr], Field( description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[StrictInt], Field(description="Optional. When paginating, limit the number of returned results to this many.")] = None, page : Annotated[Optional[StrictStr], Field( description="Optional. Encoded page string returned from a previous search result that will retrieve             the next page of data.")] = None, **kwargs) -> ResourceListOfUserRoleResponse:  # noqa: E501
         ...
 
     @overload
-    def list_user_roles(self, filter : Annotated[Optional[StrictStr], Field( description="Optional. Expression to filter the result set")] = None, sort_by : Annotated[Optional[StrictStr], Field( description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[conint(strict=True)], Field(description="Optional. When paginating, limit the number of returned results to this many.")] = None, page : Annotated[Optional[StrictStr], Field( description="Optional. Encoded page string returned from a previous search result that will retrieve             the next page of data.")] = None, async_req: Optional[bool]=True, **kwargs) -> ResourceListOfUserRoleResponse:  # noqa: E501
+    def list_user_roles(self, filter : Annotated[Optional[StrictStr], Field( description="Optional. Expression to filter the result set")] = None, sort_by : Annotated[Optional[StrictStr], Field( description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[StrictInt], Field(description="Optional. When paginating, limit the number of returned results to this many.")] = None, page : Annotated[Optional[StrictStr], Field( description="Optional. Encoded page string returned from a previous search result that will retrieve             the next page of data.")] = None, async_req: Optional[bool]=True, **kwargs) -> ResourceListOfUserRoleResponse:  # noqa: E501
         ...
 
     @validate_arguments
-    def list_user_roles(self, filter : Annotated[Optional[StrictStr], Field( description="Optional. Expression to filter the result set")] = None, sort_by : Annotated[Optional[StrictStr], Field( description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[conint(strict=True)], Field(description="Optional. When paginating, limit the number of returned results to this many.")] = None, page : Annotated[Optional[StrictStr], Field( description="Optional. Encoded page string returned from a previous search result that will retrieve             the next page of data.")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[ResourceListOfUserRoleResponse, Awaitable[ResourceListOfUserRoleResponse]]:  # noqa: E501
+    def list_user_roles(self, filter : Annotated[Optional[StrictStr], Field( description="Optional. Expression to filter the result set")] = None, sort_by : Annotated[Optional[StrictStr], Field( description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[StrictInt], Field(description="Optional. When paginating, limit the number of returned results to this many.")] = None, page : Annotated[Optional[StrictStr], Field( description="Optional. Encoded page string returned from a previous search result that will retrieve             the next page of data.")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[ResourceListOfUserRoleResponse, Awaitable[ResourceListOfUserRoleResponse]]:  # noqa: E501
         """ListUserRoles: List user-roles  # noqa: E501
 
         Lists all user-roles and pages.  # noqa: E501
@@ -897,7 +895,7 @@ class UserRolesApi:
         return self.list_user_roles_with_http_info(filter, sort_by, limit, page, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_user_roles_with_http_info(self, filter : Annotated[Optional[StrictStr], Field( description="Optional. Expression to filter the result set")] = None, sort_by : Annotated[Optional[StrictStr], Field( description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[conint(strict=True)], Field(description="Optional. When paginating, limit the number of returned results to this many.")] = None, page : Annotated[Optional[StrictStr], Field( description="Optional. Encoded page string returned from a previous search result that will retrieve             the next page of data.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_user_roles_with_http_info(self, filter : Annotated[Optional[StrictStr], Field( description="Optional. Expression to filter the result set")] = None, sort_by : Annotated[Optional[StrictStr], Field( description="Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName")] = None, limit : Annotated[Optional[StrictInt], Field(description="Optional. When paginating, limit the number of returned results to this many.")] = None, page : Annotated[Optional[StrictStr], Field( description="Optional. Encoded page string returned from a previous search result that will retrieve             the next page of data.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """ListUserRoles: List user-roles  # noqa: E501
 
         Lists all user-roles and pages.  # noqa: E501
@@ -1358,15 +1356,15 @@ class UserRolesApi:
 
 
     @overload
-    async def update_user_role(self, userid : Annotated[StrictStr, Field(..., description="Id of the user-role to be updated.")], user_role_update_request : Annotated[UserRoleUpdateRequest, Field(..., description="Definition of the update to apply to the user-role.")], **kwargs) -> UserRoleResponse:  # noqa: E501
+    async def update_user_role(self, userid : Annotated[StrictStr, Field(..., description="Id of the user-role to be updated.")], user_role_update_request : Annotated[UserRoleUpdateRequest, Field(description="Definition of the update to apply to the user-role.")], **kwargs) -> UserRoleResponse:  # noqa: E501
         ...
 
     @overload
-    def update_user_role(self, userid : Annotated[StrictStr, Field(..., description="Id of the user-role to be updated.")], user_role_update_request : Annotated[UserRoleUpdateRequest, Field(..., description="Definition of the update to apply to the user-role.")], async_req: Optional[bool]=True, **kwargs) -> UserRoleResponse:  # noqa: E501
+    def update_user_role(self, userid : Annotated[StrictStr, Field(..., description="Id of the user-role to be updated.")], user_role_update_request : Annotated[UserRoleUpdateRequest, Field(description="Definition of the update to apply to the user-role.")], async_req: Optional[bool]=True, **kwargs) -> UserRoleResponse:  # noqa: E501
         ...
 
     @validate_arguments
-    def update_user_role(self, userid : Annotated[StrictStr, Field(..., description="Id of the user-role to be updated.")], user_role_update_request : Annotated[UserRoleUpdateRequest, Field(..., description="Definition of the update to apply to the user-role.")], async_req: Optional[bool]=None, **kwargs) -> Union[UserRoleResponse, Awaitable[UserRoleResponse]]:  # noqa: E501
+    def update_user_role(self, userid : Annotated[StrictStr, Field(..., description="Id of the user-role to be updated.")], user_role_update_request : Annotated[UserRoleUpdateRequest, Field(description="Definition of the update to apply to the user-role.")], async_req: Optional[bool]=None, **kwargs) -> Union[UserRoleResponse, Awaitable[UserRoleResponse]]:  # noqa: E501
         """UpdateUserRole: Update a user-role  # noqa: E501
 
         Updates an identified user-role.  # noqa: E501
@@ -1399,7 +1397,7 @@ class UserRolesApi:
         return self.update_user_role_with_http_info(userid, user_role_update_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def update_user_role_with_http_info(self, userid : Annotated[StrictStr, Field(..., description="Id of the user-role to be updated.")], user_role_update_request : Annotated[UserRoleUpdateRequest, Field(..., description="Definition of the update to apply to the user-role.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def update_user_role_with_http_info(self, userid : Annotated[StrictStr, Field(..., description="Id of the user-role to be updated.")], user_role_update_request : Annotated[UserRoleUpdateRequest, Field(description="Definition of the update to apply to the user-role.")], **kwargs) -> ApiResponse:  # noqa: E501
         """UpdateUserRole: Update a user-role  # noqa: E501
 
         Updates an identified user-role.  # noqa: E501

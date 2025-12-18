@@ -9,8 +9,10 @@ Name | Type | Description | Notes
 
 ```python
 from finbourne_access.models.policy_collection_id import PolicyCollectionId
-from typing import Any, Dict, Optional
-from pydantic.v1 import BaseModel, Field, constr, validator
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 
 scope: Optional[StrictStr] = "example_scope"
 code: StrictStr = "example_code"

@@ -18,8 +18,10 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, Optional
-from pydantic.v1 import StrictStr, Field, BaseModel, Field, StrictStr, constr 
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 from finbourne_access.models.operator import Operator
 
 class MetadataExpression(BaseModel):
@@ -27,7 +29,7 @@ class MetadataExpression(BaseModel):
     MetadataExpression
     """
     metadata_key:  StrictStr = Field(...,alias="metadataKey") 
-    operator: Operator = Field(...)
+    operator: Operator
     text_value:  Optional[StrictStr] = Field(None,alias="textValue") 
     __properties = ["metadataKey", "operator", "textValue"]
 
@@ -85,3 +87,5 @@ class MetadataExpression(BaseModel):
             "text_value": obj.get("textValue")
         })
         return _obj
+
+MetadataExpression.update_forward_refs()

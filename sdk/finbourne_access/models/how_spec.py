@@ -18,8 +18,10 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List, Optional
-from pydantic.v1 import StrictStr, Field, BaseModel, StrictStr, conlist 
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 from finbourne_access.models.key_value_pair_of_string_to_string import KeyValuePairOfStringToString
 
 class HowSpec(BaseModel):
@@ -27,7 +29,7 @@ class HowSpec(BaseModel):
     HowSpec
     """
     type:  Optional[StrictStr] = Field(None,alias="type") 
-    parameters: Optional[conlist(KeyValuePairOfStringToString)] = None
+    parameters: Optional[List[KeyValuePairOfStringToString]] = None
     __properties = ["type", "parameters"]
 
     class Config:
@@ -95,3 +97,5 @@ class HowSpec(BaseModel):
             "parameters": [KeyValuePairOfStringToString.from_dict(_item) for _item in obj.get("parameters")] if obj.get("parameters") is not None else None
         })
         return _obj
+
+HowSpec.update_forward_refs()

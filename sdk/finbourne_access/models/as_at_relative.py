@@ -18,8 +18,10 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, Optional
-from pydantic.v1 import StrictStr, Field, BaseModel, Field, StrictInt 
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 from finbourne_access.models.date_unit import DateUnit
 from finbourne_access.models.point_in_time_specification import PointInTimeSpecification
 from finbourne_access.models.relative_to_date_time import RelativeToDateTime
@@ -28,10 +30,10 @@ class AsAtRelative(BaseModel):
     """
     AsAtRelative
     """
-    var_date: Optional[PointInTimeSpecification] = Field(None, alias="date")
+    var_date: Optional[PointInTimeSpecification] = Field(default=None, alias="date")
     adjustment: Optional[StrictInt] = None
     unit: Optional[DateUnit] = None
-    relative_to_date_time: Optional[RelativeToDateTime] = Field(None, alias="relativeToDateTime")
+    relative_to_date_time: Optional[RelativeToDateTime] = Field(default=None, alias="relativeToDateTime")
     __properties = ["date", "adjustment", "unit", "relativeToDateTime"]
 
     class Config:
@@ -84,3 +86,5 @@ class AsAtRelative(BaseModel):
             "relative_to_date_time": obj.get("relativeToDateTime")
         })
         return _obj
+
+AsAtRelative.update_forward_refs()

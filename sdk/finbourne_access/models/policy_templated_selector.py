@@ -18,8 +18,10 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict
-from pydantic.v1 import StrictStr, Field, BaseModel, Field, constr 
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 from finbourne_access.models.selector_definition import SelectorDefinition
 
 class PolicyTemplatedSelector(BaseModel):
@@ -28,7 +30,7 @@ class PolicyTemplatedSelector(BaseModel):
     """
     application:  StrictStr = Field(...,alias="application", description="The application that this selector definition applies to") 
     tag:  StrictStr = Field(...,alias="tag", description="The type of policy that this selector definition applies to") 
-    selector: SelectorDefinition = Field(...)
+    selector: SelectorDefinition
     __properties = ["application", "tag", "selector"]
 
     class Config:
@@ -83,3 +85,5 @@ class PolicyTemplatedSelector(BaseModel):
             "selector": SelectorDefinition.from_dict(obj.get("selector")) if obj.get("selector") is not None else None
         })
         return _obj
+
+PolicyTemplatedSelector.update_forward_refs()

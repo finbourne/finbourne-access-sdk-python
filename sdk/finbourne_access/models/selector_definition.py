@@ -18,8 +18,10 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, Optional
-from pydantic.v1 import StrictStr, Field, BaseModel, Field 
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 from finbourne_access.models.id_selector_definition import IdSelectorDefinition
 from finbourne_access.models.match_all_selector_definition import MatchAllSelectorDefinition
 from finbourne_access.models.metadata_selector_definition import MetadataSelectorDefinition
@@ -28,10 +30,10 @@ class SelectorDefinition(BaseModel):
     """
     SelectorDefinition
     """
-    metadata_selector_definition: Optional[MetadataSelectorDefinition] = Field(None, alias="metadataSelectorDefinition")
-    id_selector_definition: Optional[IdSelectorDefinition] = Field(None, alias="idSelectorDefinition")
-    match_all_selector_definition: Optional[MatchAllSelectorDefinition] = Field(None, alias="matchAllSelectorDefinition")
-    policy_selector_definition: Optional[PolicySelectorDefinition] = Field(None, alias="policySelectorDefinition")
+    metadata_selector_definition: Optional[MetadataSelectorDefinition] = Field(default=None, alias="metadataSelectorDefinition")
+    id_selector_definition: Optional[IdSelectorDefinition] = Field(default=None, alias="idSelectorDefinition")
+    match_all_selector_definition: Optional[MatchAllSelectorDefinition] = Field(default=None, alias="matchAllSelectorDefinition")
+    policy_selector_definition: Optional[PolicySelectorDefinition] = Field(default=None, alias="policySelectorDefinition")
     __properties = ["metadataSelectorDefinition", "idSelectorDefinition", "matchAllSelectorDefinition", "policySelectorDefinition"]
 
     class Config:
@@ -96,6 +98,6 @@ class SelectorDefinition(BaseModel):
             "policy_selector_definition": PolicySelectorDefinition.from_dict(obj.get("policySelectorDefinition")) if obj.get("policySelectorDefinition") is not None else None
         })
         return _obj
-from finbourne_access.models.policy_selector_definition import PolicySelectorDefinition
 
+from finbourne_access.models.policy_selector_definition import PolicySelectorDefinition
 SelectorDefinition.update_forward_refs()

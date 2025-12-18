@@ -9,10 +9,12 @@ Name | Type | Description | Notes
 
 ```python
 from finbourne_access.models.add_policy_to_role_request import AddPolicyToRoleRequest
-from typing import Any, Dict, List
-from pydantic.v1 import BaseModel, Field, conlist
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 
-policies: conlist(PolicyId) = # Replace with your value
+policies: List[PolicyId] = # Replace with your value
 add_policy_to_role_request_instance = AddPolicyToRoleRequest(policies=policies)
 
 ```

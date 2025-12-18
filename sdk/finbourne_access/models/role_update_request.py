@@ -18,8 +18,10 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, Optional
-from pydantic.v1 import StrictStr, Field, BaseModel, Field, constr 
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 from finbourne_access.models.role_resource_request import RoleResourceRequest
 from finbourne_access.models.when_spec import WhenSpec
 
@@ -28,8 +30,8 @@ class RoleUpdateRequest(BaseModel):
     Role update does not allow the changing of the id  # noqa: E501
     """
     description:  Optional[StrictStr] = Field(None,alias="description", description="The description of the role") 
-    resource: RoleResourceRequest = Field(...)
-    when: WhenSpec = Field(...)
+    resource: RoleResourceRequest
+    when: WhenSpec
     __properties = ["description", "resource", "when"]
 
     class Config:
@@ -92,3 +94,5 @@ class RoleUpdateRequest(BaseModel):
             "when": WhenSpec.from_dict(obj.get("when")) if obj.get("when") is not None else None
         })
         return _obj
+
+RoleUpdateRequest.update_forward_refs()

@@ -18,8 +18,10 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List, Optional
-from pydantic.v1 import StrictStr, Field, BaseModel, Field, StrictInt, StrictStr, conlist 
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 from finbourne_access.models.for_spec import ForSpec
 from finbourne_access.models.grant import Grant
 from finbourne_access.models.how_spec import HowSpec
@@ -34,16 +36,16 @@ class AttachedPolicyDefinitionResponse(BaseModel):
     """
     AttachedPolicyDefinitionResponse
     """
-    source_role: Optional[RoleId] = Field(None, alias="sourceRole")
-    role_hierarchy_index: Optional[StrictInt] = Field(None, alias="roleHierarchyIndex")
+    source_role: Optional[RoleId] = Field(default=None, alias="sourceRole")
+    role_hierarchy_index: Optional[StrictInt] = Field(default=None, alias="roleHierarchyIndex")
     description:  Optional[StrictStr] = Field(None,alias="description") 
-    applications: Optional[conlist(StrictStr)] = None
-    policy_type: Optional[PolicyType] = Field(None, alias="policyType")
+    applications: Optional[List[StrictStr]] = None
+    policy_type: Optional[PolicyType] = Field(default=None, alias="policyType")
     id: Optional[PolicyId] = None
     grant: Optional[Grant] = None
-    selectors: Optional[conlist(SelectorDefinition)] = None
-    var_for: Optional[conlist(ForSpec)] = Field(None, alias="for")
-    var_if: Optional[conlist(IfExpression)] = Field(None, alias="if")
+    selectors: Optional[List[SelectorDefinition]] = None
+    var_for: Optional[List[ForSpec]] = Field(default=None, alias="for")
+    var_if: Optional[List[IfExpression]] = Field(default=None, alias="if")
     when: Optional[WhenSpec] = None
     how: Optional[HowSpec] = None
     __properties = ["sourceRole", "roleHierarchyIndex", "description", "applications", "policyType", "id", "grant", "selectors", "for", "if", "when", "how"]
@@ -164,3 +166,5 @@ class AttachedPolicyDefinitionResponse(BaseModel):
             "how": HowSpec.from_dict(obj.get("how")) if obj.get("how") is not None else None
         })
         return _obj
+
+AttachedPolicyDefinitionResponse.update_forward_refs()

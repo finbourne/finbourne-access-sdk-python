@@ -18,8 +18,10 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List, Optional
-from pydantic.v1 import StrictStr, Field, BaseModel, Field, StrictInt, StrictStr, conlist, constr 
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 from finbourne_access.models.link import Link
 from finbourne_access.models.role_id import RoleId
 from finbourne_access.models.role_resource_request import RoleResourceRequest
@@ -29,14 +31,14 @@ class RoleResponse(BaseModel):
     """
     Response object from the role API  # noqa: E501
     """
-    id: RoleId = Field(...)
-    role_hierarchy_index: StrictInt = Field(..., alias="roleHierarchyIndex", description="The hierarchical index of the role")
+    id: RoleId
+    role_hierarchy_index: StrictInt = Field(description="The hierarchical index of the role", alias="roleHierarchyIndex")
     description:  Optional[StrictStr] = Field(None,alias="description", description="The description of the role") 
-    resource: RoleResourceRequest = Field(...)
-    when: WhenSpec = Field(...)
+    resource: RoleResourceRequest
+    when: WhenSpec
     permission:  StrictStr = Field(...,alias="permission", description="The action key of the role") 
-    limit: Optional[Dict[str, StrictStr]] = Field(None, description="The identifiers of the role with the maximum privileges that this role can have")
-    links: Optional[conlist(Link)] = None
+    limit: Optional[Dict[str, StrictStr]] = Field(default=None, description="The identifiers of the role with the maximum privileges that this role can have")
+    links: Optional[List[Link]] = None
     __properties = ["id", "roleHierarchyIndex", "description", "resource", "when", "permission", "limit", "links"]
 
     class Config:
@@ -124,3 +126,5 @@ class RoleResponse(BaseModel):
             "links": [Link.from_dict(_item) for _item in obj.get("links")] if obj.get("links") is not None else None
         })
         return _obj
+
+RoleResponse.update_forward_refs()

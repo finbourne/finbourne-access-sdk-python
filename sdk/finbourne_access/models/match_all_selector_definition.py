@@ -18,15 +18,17 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List, Optional
-from pydantic.v1 import StrictStr, Field, BaseModel, Field, conlist, constr 
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 from finbourne_access.models.action_id import ActionId
 
 class MatchAllSelectorDefinition(BaseModel):
     """
     MatchAllSelectorDefinition
     """
-    actions: conlist(ActionId) = Field(...)
+    actions: List[ActionId]
     name:  Optional[StrictStr] = Field(None,alias="name") 
     description:  Optional[StrictStr] = Field(None,alias="description") 
     __properties = ["actions", "name", "description"]
@@ -97,3 +99,5 @@ class MatchAllSelectorDefinition(BaseModel):
             "description": obj.get("description")
         })
         return _obj
+
+MatchAllSelectorDefinition.update_forward_refs()

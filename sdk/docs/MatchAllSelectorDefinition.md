@@ -10,10 +10,12 @@ Name | Type | Description | Notes
 
 ```python
 from finbourne_access.models.match_all_selector_definition import MatchAllSelectorDefinition
-from typing import Any, Dict, List, Optional
-from pydantic.v1 import BaseModel, Field, conlist, constr
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 
-actions: conlist(ActionId, min_items=1) = Field(...)
+actions: List[ActionId]
 name: Optional[StrictStr] = "example_name"
 description: Optional[StrictStr] = "example_description"
 match_all_selector_definition_instance = MatchAllSelectorDefinition(actions=actions, name=name, description=description)

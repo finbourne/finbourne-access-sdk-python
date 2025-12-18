@@ -11,8 +11,10 @@ Name | Type | Description | Notes
 
 ```python
 from finbourne_access.models.if_expression import IfExpression
-from typing import Any, Dict, Optional
-from pydantic.v1 import BaseModel, Field
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 
 if_request_header_expression: Optional[IfRequestHeaderExpression] = # Replace with your value
 if_identity_claim_expression: Optional[IfIdentityClaimExpression] = # Replace with your value

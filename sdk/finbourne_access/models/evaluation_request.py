@@ -18,8 +18,10 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict
-from pydantic.v1 import StrictStr, Field, BaseModel, Field 
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 from finbourne_access.models.request_details import RequestDetails
 from finbourne_access.models.resource_details import ResourceDetails
 
@@ -27,8 +29,8 @@ class EvaluationRequest(BaseModel):
     """
     Specification for a server side evaluation of entitlement.  # noqa: E501
     """
-    request: RequestDetails = Field(...)
-    resource: ResourceDetails = Field(...)
+    request: RequestDetails
+    resource: ResourceDetails
     __properties = ["request", "resource"]
 
     class Config:
@@ -85,3 +87,5 @@ class EvaluationRequest(BaseModel):
             "resource": ResourceDetails.from_dict(obj.get("resource")) if obj.get("resource") is not None else None
         })
         return _obj
+
+EvaluationRequest.update_forward_refs()

@@ -10,11 +10,13 @@ Name | Type | Description | Notes
 
 ```python
 from finbourne_access.models.evaluation_request import EvaluationRequest
-from typing import Any, Dict
-from pydantic.v1 import BaseModel, Field
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 
-request: RequestDetails = # Replace with your value
-resource: ResourceDetails = # Replace with your value
+request: RequestDetails
+resource: ResourceDetails
 evaluation_request_instance = EvaluationRequest(request=request, resource=resource)
 
 ```

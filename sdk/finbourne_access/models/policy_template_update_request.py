@@ -18,8 +18,10 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List
-from pydantic.v1 import StrictStr, Field, BaseModel, Field, conlist, constr 
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 from finbourne_access.models.policy_templated_selector import PolicyTemplatedSelector
 
 class PolicyTemplateUpdateRequest(BaseModel):
@@ -28,7 +30,7 @@ class PolicyTemplateUpdateRequest(BaseModel):
     """
     display_name:  StrictStr = Field(...,alias="displayName", description="The display name of the policy template being created") 
     description:  StrictStr = Field(...,alias="description", description="Description of the policy template being craeted") 
-    templated_selectors: conlist(PolicyTemplatedSelector) = Field(..., alias="templatedSelectors", description="The selector definitions of policies included in this policy template")
+    templated_selectors: List[PolicyTemplatedSelector] = Field(description="The selector definitions of policies included in this policy template", alias="templatedSelectors")
     __properties = ["displayName", "description", "templatedSelectors"]
 
     class Config:
@@ -87,3 +89,5 @@ class PolicyTemplateUpdateRequest(BaseModel):
             "templated_selectors": [PolicyTemplatedSelector.from_dict(_item) for _item in obj.get("templatedSelectors")] if obj.get("templatedSelectors") is not None else None
         })
         return _obj
+
+PolicyTemplateUpdateRequest.update_forward_refs()

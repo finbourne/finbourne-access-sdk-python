@@ -18,17 +18,19 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List, Optional
-from pydantic.v1 import StrictStr, Field, BaseModel, Field, StrictStr, conlist, constr 
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 from finbourne_access.models.action_id import ActionId
 
 class PolicySelectorDefinition(BaseModel):
     """
     PolicySelectorDefinition
     """
-    identity_restriction: Optional[Dict[str, StrictStr]] = Field(None, alias="identityRestriction")
-    restriction_selectors: Optional[conlist(SelectorDefinition)] = Field(None, alias="restrictionSelectors")
-    actions: conlist(ActionId) = Field(...)
+    identity_restriction: Optional[Dict[str, Optional[StrictStr]]] = Field(default=None, alias="identityRestriction")
+    restriction_selectors: Optional[List[SelectorDefinition]] = Field(default=None, alias="restrictionSelectors")
+    actions: List[ActionId]
     name:  Optional[StrictStr] = Field(None,alias="name") 
     description:  Optional[StrictStr] = Field(None,alias="description") 
     __properties = ["identityRestriction", "restrictionSelectors", "actions", "name", "description"]
@@ -118,6 +120,6 @@ class PolicySelectorDefinition(BaseModel):
             "description": obj.get("description")
         })
         return _obj
-from finbourne_access.models.selector_definition import SelectorDefinition
 
+from finbourne_access.models.selector_definition import SelectorDefinition
 PolicySelectorDefinition.update_forward_refs()

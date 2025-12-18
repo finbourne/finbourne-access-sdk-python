@@ -18,8 +18,10 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List, Optional
-from pydantic.v1 import StrictStr, Field, BaseModel, Field, conlist, constr, validator 
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 from finbourne_access.models.entitlement_metadata import EntitlementMetadata
 from finbourne_access.models.policy_collection_id import PolicyCollectionId
 from finbourne_access.models.policy_id import PolicyId
@@ -29,9 +31,9 @@ class PolicyCollectionCreationRequest(BaseModel):
     Create a PolicyCollection, a logical group of Policies or other PolicyCollections  # noqa: E501
     """
     code:  StrictStr = Field(...,alias="code", description="The identifier for the PolicyCollection being created") 
-    policies: Optional[conlist(PolicyId)] = Field(None, description="The identifiers of the Policies in this collection")
-    metadata: Optional[Dict[str, conlist(EntitlementMetadata)]] = Field(None, description="Any relevant metadata associated with this resource for controlling access to this resource")
-    policy_collections: Optional[conlist(PolicyCollectionId)] = Field(None, alias="policyCollections", description="The identifiers of the PolicyCollections in this collection")
+    policies: Optional[List[PolicyId]] = Field(default=None, description="The identifiers of the Policies in this collection")
+    metadata: Optional[Dict[str, Optional[List[EntitlementMetadata]]]] = Field(default=None, description="Any relevant metadata associated with this resource for controlling access to this resource")
+    policy_collections: Optional[List[PolicyCollectionId]] = Field(default=None, description="The identifiers of the PolicyCollections in this collection", alias="policyCollections")
     description:  Optional[StrictStr] = Field(None,alias="description", description="A description of this policy collection") 
     __properties = ["code", "policies", "metadata", "policyCollections", "description"]
 
@@ -136,3 +138,5 @@ class PolicyCollectionCreationRequest(BaseModel):
             "description": obj.get("description")
         })
         return _obj
+
+PolicyCollectionCreationRequest.update_forward_refs()

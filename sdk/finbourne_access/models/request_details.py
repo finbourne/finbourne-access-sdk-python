@@ -17,20 +17,22 @@ import pprint
 import re  # noqa: F401
 import json
 
+
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
 from datetime import datetime
-from typing import Any, Dict, Optional
-from pydantic.v1 import StrictStr, Field, BaseModel, Field 
 from finbourne_access.models.requested_action_key import RequestedActionKey
 
 class RequestDetails(BaseModel):
     """
     The details of the requested evaluation  # noqa: E501
     """
-    action: RequestedActionKey = Field(...)
-    from_effective_date: Optional[datetime] = Field(None, alias="fromEffectiveDate", description="The start date for the requested effective date range for the resource (if null, UtcNow)")
-    to_effective_date: Optional[datetime] = Field(None, alias="toEffectiveDate", description="The end date for the requested effective date range for the resource (if null, same as from date)")
-    from_as_at: Optional[datetime] = Field(None, alias="fromAsAt", description="The requested AsAt date for the resource (if null, Latest). If specifying a range of AsAt dates, this is the lower bounds.")
-    to_as_at: Optional[datetime] = Field(None, alias="toAsAt", description="Upper bound if specifying a request that requires a range of AsAt dates. This is used if specifying the desire to grant access for a user between an AsAt range.")
+    action: RequestedActionKey
+    from_effective_date: Optional[datetime] = Field(default=None, description="The start date for the requested effective date range for the resource (if null, UtcNow)", alias="fromEffectiveDate")
+    to_effective_date: Optional[datetime] = Field(default=None, description="The end date for the requested effective date range for the resource (if null, same as from date)", alias="toEffectiveDate")
+    from_as_at: Optional[datetime] = Field(default=None, description="The requested AsAt date for the resource (if null, Latest). If specifying a range of AsAt dates, this is the lower bounds.", alias="fromAsAt")
+    to_as_at: Optional[datetime] = Field(default=None, description="Upper bound if specifying a request that requires a range of AsAt dates. This is used if specifying the desire to grant access for a user between an AsAt range.", alias="toAsAt")
     __properties = ["action", "fromEffectiveDate", "toEffectiveDate", "fromAsAt", "toAsAt"]
 
     class Config:
@@ -107,3 +109,5 @@ class RequestDetails(BaseModel):
             "to_as_at": obj.get("toAsAt")
         })
         return _obj
+
+RequestDetails.update_forward_refs()

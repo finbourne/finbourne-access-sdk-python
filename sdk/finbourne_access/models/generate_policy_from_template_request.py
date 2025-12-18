@@ -18,8 +18,10 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List, Optional
-from pydantic.v1 import StrictStr, Field, BaseModel, Field, conlist 
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 from finbourne_access.models.selector_definition import SelectorDefinition
 from finbourne_access.models.template_selection import TemplateSelection
 
@@ -27,8 +29,8 @@ class GeneratePolicyFromTemplateRequest(BaseModel):
     """
     Generate policy from template  # noqa: E501
     """
-    template_selection: conlist(TemplateSelection) = Field(..., alias="templateSelection", description="List of template selection, identifying policy templates to use for generation")
-    selectors: Optional[conlist(SelectorDefinition)] = Field(None, description="List of additional selectors to be included in the policy")
+    template_selection: List[TemplateSelection] = Field(description="List of template selection, identifying policy templates to use for generation", alias="templateSelection")
+    selectors: Optional[List[SelectorDefinition]] = Field(default=None, description="List of additional selectors to be included in the policy")
     __properties = ["templateSelection", "selectors"]
 
     class Config:
@@ -98,3 +100,5 @@ class GeneratePolicyFromTemplateRequest(BaseModel):
             "selectors": [SelectorDefinition.from_dict(_item) for _item in obj.get("selectors")] if obj.get("selectors") is not None else None
         })
         return _obj
+
+GeneratePolicyFromTemplateRequest.update_forward_refs()

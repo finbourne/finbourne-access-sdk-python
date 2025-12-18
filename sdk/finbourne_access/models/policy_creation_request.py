@@ -18,8 +18,10 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List, Optional
-from pydantic.v1 import StrictStr, Field, BaseModel, Field, StrictStr, conlist, constr, validator 
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 from finbourne_access.models.for_spec import ForSpec
 from finbourne_access.models.grant import Grant
 from finbourne_access.models.how_spec import HowSpec
@@ -34,14 +36,14 @@ class PolicyCreationRequest(BaseModel):
     """
     code:  StrictStr = Field(...,alias="code", description="Code of the policy being created") 
     description:  Optional[StrictStr] = Field(None,alias="description", description="Description of what the policy will be used for") 
-    applications: Optional[conlist(StrictStr)] = Field(None, description="Applications this policy is used with")
-    grant: Grant = Field(...)
-    selectors: conlist(SelectorDefinition) = Field(..., description="Selectors that identify what resources this policy qualifies for")
-    var_for: Optional[conlist(ForSpec)] = Field(None, alias="for", description="\"For Specification\" for when the policy is to be applied")
-    var_if: Optional[conlist(IfExpression)] = Field(None, alias="if", description="\"If Specification\" for when the policy is to be applied")
-    when: WhenSpec = Field(...)
+    applications: Optional[List[StrictStr]] = Field(default=None, description="Applications this policy is used with")
+    grant: Grant
+    selectors: List[SelectorDefinition] = Field(description="Selectors that identify what resources this policy qualifies for")
+    var_for: Optional[List[ForSpec]] = Field(default=None, description="\"For Specification\" for when the policy is to be applied", alias="for")
+    var_if: Optional[List[IfExpression]] = Field(default=None, description="\"If Specification\" for when the policy is to be applied", alias="if")
+    when: WhenSpec
     how: Optional[HowSpec] = None
-    template_metadata: Optional[TemplateMetadata] = Field(None, alias="templateMetadata")
+    template_metadata: Optional[TemplateMetadata] = Field(default=None, alias="templateMetadata")
     __properties = ["code", "description", "applications", "grant", "selectors", "for", "if", "when", "how", "templateMetadata"]
 
     class Config:
@@ -150,3 +152,5 @@ class PolicyCreationRequest(BaseModel):
             "template_metadata": TemplateMetadata.from_dict(obj.get("templateMetadata")) if obj.get("templateMetadata") is not None else None
         })
         return _obj
+
+PolicyCreationRequest.update_forward_refs()

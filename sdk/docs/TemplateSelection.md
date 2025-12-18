@@ -11,12 +11,14 @@ Name | Type | Description | Notes
 
 ```python
 from finbourne_access.models.template_selection import TemplateSelection
-from typing import Any, Dict, List, Optional
-from pydantic.v1 import BaseModel, Field, StrictStr, conlist, constr, validator
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 
 scope: StrictStr = "example_scope"
 code: StrictStr = "example_code"
-selector_tags: Optional[conlist(StrictStr)] = # Replace with your value
+selector_tags: Optional[List[StrictStr]] = # Replace with your value
 template_selection_instance = TemplateSelection(scope=scope, code=code, selector_tags=selector_tags)
 
 ```

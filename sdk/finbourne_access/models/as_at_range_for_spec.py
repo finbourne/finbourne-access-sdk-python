@@ -18,16 +18,18 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict
-from pydantic.v1 import StrictStr, Field, BaseModel, Field 
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 from finbourne_access.models.as_at_predicate_contract import AsAtPredicateContract
 
 class AsAtRangeForSpec(BaseModel):
     """
     AsAtRangeForSpec
     """
-    var_from: AsAtPredicateContract = Field(..., alias="from")
-    to: AsAtPredicateContract = Field(...)
+    var_from: AsAtPredicateContract = Field(alias="from")
+    to: AsAtPredicateContract
     __properties = ["from", "to"]
 
     class Config:
@@ -84,3 +86,5 @@ class AsAtRangeForSpec(BaseModel):
             "to": AsAtPredicateContract.from_dict(obj.get("to")) if obj.get("to") is not None else None
         })
         return _obj
+
+AsAtRangeForSpec.update_forward_refs()

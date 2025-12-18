@@ -9,10 +9,12 @@ Name | Type | Description | Notes
 
 ```python
 from finbourne_access.models.user_role_update_request import UserRoleUpdateRequest
-from typing import Any, Dict
-from pydantic.v1 import BaseModel, Field
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 
-resource: PolicyIdRoleResource = # Replace with your value
+resource: PolicyIdRoleResource
 user_role_update_request_instance = UserRoleUpdateRequest(resource=resource)
 
 ```

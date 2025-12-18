@@ -11,12 +11,14 @@ Name | Type | Description | Notes
 
 ```python
 from finbourne_access.models.role_update_request import RoleUpdateRequest
-from typing import Any, Dict, Optional
-from pydantic.v1 import BaseModel, Field, constr
+from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
+from typing_extensions import Annotated
+from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
+from datetime import datetime
 
 description: Optional[StrictStr] = "example_description"
-resource: RoleResourceRequest = # Replace with your value
-when: WhenSpec = # Replace with your value
+resource: RoleResourceRequest
+when: WhenSpec
 role_update_request_instance = RoleUpdateRequest(description=description, resource=resource, when=when)
 
 ```
