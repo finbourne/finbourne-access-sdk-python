@@ -22,14 +22,13 @@ from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
 from typing_extensions import Annotated
 from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
 from datetime import datetime
-from finbourne_access.models.selector_definition import SelectorDefinition
 
-class IfFeatureChainExpression(BaseModel):
+class IfViaApiExpression(BaseModel):
     """
-    IfFeatureChainExpression
+    IfViaApiExpression
     """
-    selectors: List[SelectorDefinition]
-    __properties = ["selectors"]
+    api_feature_codes: List[StrictStr] = Field(alias="apiFeatureCodes")
+    __properties = ["apiFeatureCodes"]
 
     class Config:
         """Pydantic configuration"""
@@ -53,8 +52,8 @@ class IfFeatureChainExpression(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> IfFeatureChainExpression:
-        """Create an instance of IfFeatureChainExpression from a JSON string"""
+    def from_json(cls, json_str: str) -> IfViaApiExpression:
+        """Create an instance of IfViaApiExpression from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
@@ -63,27 +62,20 @@ class IfFeatureChainExpression(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of each item in selectors (list)
-        _items = []
-        if self.selectors:
-            for _item in self.selectors:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['selectors'] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> IfFeatureChainExpression:
-        """Create an instance of IfFeatureChainExpression from a dict"""
+    def from_dict(cls, obj: dict) -> IfViaApiExpression:
+        """Create an instance of IfViaApiExpression from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return IfFeatureChainExpression.parse_obj(obj)
+            return IfViaApiExpression.parse_obj(obj)
 
-        _obj = IfFeatureChainExpression.parse_obj({
-            "selectors": [SelectorDefinition.from_dict(_item) for _item in obj.get("selectors")] if obj.get("selectors") is not None else None
+        _obj = IfViaApiExpression.parse_obj({
+            "api_feature_codes": obj.get("apiFeatureCodes")
         })
         return _obj
 
-IfFeatureChainExpression.update_forward_refs()
+IfViaApiExpression.update_forward_refs()

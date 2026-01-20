@@ -22,10 +22,10 @@ from typing import List, Dict, Optional, Any, Union, TYPE_CHECKING
 from typing_extensions import Annotated
 from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat, StrictBytes, Field, validator, ValidationError, conlist, constr
 from datetime import datetime
-from finbourne_access.models.if_feature_chain_expression import IfFeatureChainExpression
 from finbourne_access.models.if_identity_claim_expression import IfIdentityClaimExpression
 from finbourne_access.models.if_identity_scope_expression import IfIdentityScopeExpression
 from finbourne_access.models.if_request_header_expression import IfRequestHeaderExpression
+from finbourne_access.models.if_via_api_expression import IfViaApiExpression
 
 class IfExpression(BaseModel):
     """
@@ -34,8 +34,8 @@ class IfExpression(BaseModel):
     if_request_header_expression: Optional[IfRequestHeaderExpression] = Field(default=None, alias="ifRequestHeaderExpression")
     if_identity_claim_expression: Optional[IfIdentityClaimExpression] = Field(default=None, alias="ifIdentityClaimExpression")
     if_identity_scope_expression: Optional[IfIdentityScopeExpression] = Field(default=None, alias="ifIdentityScopeExpression")
-    if_feature_chain_expression: Optional[IfFeatureChainExpression] = Field(default=None, alias="ifFeatureChainExpression")
-    __properties = ["ifRequestHeaderExpression", "ifIdentityClaimExpression", "ifIdentityScopeExpression", "ifFeatureChainExpression"]
+    if_via_api_expression: Optional[IfViaApiExpression] = Field(default=None, alias="ifViaApiExpression")
+    __properties = ["ifRequestHeaderExpression", "ifIdentityClaimExpression", "ifIdentityScopeExpression", "ifViaApiExpression"]
 
     class Config:
         """Pydantic configuration"""
@@ -78,9 +78,9 @@ class IfExpression(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of if_identity_scope_expression
         if self.if_identity_scope_expression:
             _dict['ifIdentityScopeExpression'] = self.if_identity_scope_expression.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of if_feature_chain_expression
-        if self.if_feature_chain_expression:
-            _dict['ifFeatureChainExpression'] = self.if_feature_chain_expression.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of if_via_api_expression
+        if self.if_via_api_expression:
+            _dict['ifViaApiExpression'] = self.if_via_api_expression.to_dict()
         return _dict
 
     @classmethod
@@ -96,7 +96,7 @@ class IfExpression(BaseModel):
             "if_request_header_expression": IfRequestHeaderExpression.from_dict(obj.get("ifRequestHeaderExpression")) if obj.get("ifRequestHeaderExpression") is not None else None,
             "if_identity_claim_expression": IfIdentityClaimExpression.from_dict(obj.get("ifIdentityClaimExpression")) if obj.get("ifIdentityClaimExpression") is not None else None,
             "if_identity_scope_expression": IfIdentityScopeExpression.from_dict(obj.get("ifIdentityScopeExpression")) if obj.get("ifIdentityScopeExpression") is not None else None,
-            "if_feature_chain_expression": IfFeatureChainExpression.from_dict(obj.get("ifFeatureChainExpression")) if obj.get("ifFeatureChainExpression") is not None else None
+            "if_via_api_expression": IfViaApiExpression.from_dict(obj.get("ifViaApiExpression")) if obj.get("ifViaApiExpression") is not None else None
         })
         return _obj
 

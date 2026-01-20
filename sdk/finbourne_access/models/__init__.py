@@ -41,10 +41,10 @@ from finbourne_access.models.how_spec import HowSpec
 from finbourne_access.models.id_selector_definition import IdSelectorDefinition
 from finbourne_access.models.identifier_part_schema import IdentifierPartSchema
 from finbourne_access.models.if_expression import IfExpression
-from finbourne_access.models.if_feature_chain_expression import IfFeatureChainExpression
 from finbourne_access.models.if_identity_claim_expression import IfIdentityClaimExpression
 from finbourne_access.models.if_identity_scope_expression import IfIdentityScopeExpression
 from finbourne_access.models.if_request_header_expression import IfRequestHeaderExpression
+from finbourne_access.models.if_via_api_expression import IfViaApiExpression
 from finbourne_access.models.key_value_pair_of_string_to_string import KeyValuePairOfStringToString
 from finbourne_access.models.link import Link
 from finbourne_access.models.lusid_problem_details import LusidProblemDetails
@@ -123,10 +123,10 @@ __all__ = [
     "IdSelectorDefinition",
     "IdentifierPartSchema",
     "IfExpression",
-    "IfFeatureChainExpression",
     "IfIdentityClaimExpression",
     "IfIdentityScopeExpression",
     "IfRequestHeaderExpression",
+    "IfViaApiExpression",
     "KeyValuePairOfStringToString",
     "Link",
     "LusidProblemDetails",
