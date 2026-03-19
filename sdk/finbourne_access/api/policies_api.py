@@ -19,6 +19,7 @@ import warnings
 from pydantic.v1 import validate_arguments, ValidationError
 from typing import overload, Optional, Union, Awaitable
 
+from datetime import datetime
 from pydantic.v1 import Field, StrictInt, StrictStr
 from typing import Dict, List, Optional
 from typing_extensions import Annotated
@@ -1191,28 +1192,30 @@ class PoliciesApi:
 
 
     @overload
-    async def get_policy(self, code : Annotated[StrictStr, Field(..., description="The code of the Policy")], scope : Annotated[Optional[StrictStr], Field( description="Optional. Will use the default scope if not provided. The scope of the Policy")] = None, **kwargs) -> PolicyResponse:  # noqa: E501
+    async def get_policy(self, code : Annotated[StrictStr, Field(..., description="The code of the Policy")], scope : Annotated[Optional[StrictStr], Field( description="Optional. Will use the default scope if not provided. The scope of the Policy")] = None, as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date and time at which to retrieve the Policy. Defaults to returning the latest version")] = None, **kwargs) -> PolicyResponse:  # noqa: E501
         ...
 
     @overload
-    def get_policy(self, code : Annotated[StrictStr, Field(..., description="The code of the Policy")], scope : Annotated[Optional[StrictStr], Field( description="Optional. Will use the default scope if not provided. The scope of the Policy")] = None, async_req: Optional[bool]=True, **kwargs) -> PolicyResponse:  # noqa: E501
+    def get_policy(self, code : Annotated[StrictStr, Field(..., description="The code of the Policy")], scope : Annotated[Optional[StrictStr], Field( description="Optional. Will use the default scope if not provided. The scope of the Policy")] = None, as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date and time at which to retrieve the Policy. Defaults to returning the latest version")] = None, async_req: Optional[bool]=True, **kwargs) -> PolicyResponse:  # noqa: E501
         ...
 
     @validate_arguments
-    def get_policy(self, code : Annotated[StrictStr, Field(..., description="The code of the Policy")], scope : Annotated[Optional[StrictStr], Field( description="Optional. Will use the default scope if not provided. The scope of the Policy")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[PolicyResponse, Awaitable[PolicyResponse]]:  # noqa: E501
+    def get_policy(self, code : Annotated[StrictStr, Field(..., description="The code of the Policy")], scope : Annotated[Optional[StrictStr], Field( description="Optional. Will use the default scope if not provided. The scope of the Policy")] = None, as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date and time at which to retrieve the Policy. Defaults to returning the latest version")] = None, async_req: Optional[bool]=None, **kwargs) -> Union[PolicyResponse, Awaitable[PolicyResponse]]:  # noqa: E501
         """GetPolicy: Get Policy  # noqa: E501
 
         Gets an identified Policy  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_policy(code, scope, async_req=True)
+        >>> thread = api.get_policy(code, scope, as_at, async_req=True)
         >>> result = thread.get()
 
         :param code: The code of the Policy (required)
         :type code: str
         :param scope: Optional. Will use the default scope if not provided. The scope of the Policy
         :type scope: str
+        :param as_at: Optional. The AsAt date and time at which to retrieve the Policy. Defaults to returning the latest version
+        :type as_at: datetime
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: Timeout setting. Do not use - use the opts parameter instead
@@ -1229,23 +1232,25 @@ class PoliciesApi:
             raise ValueError(message)
         if async_req is not None:
             kwargs['async_req'] = async_req
-        return self.get_policy_with_http_info(code, scope, **kwargs)  # noqa: E501
+        return self.get_policy_with_http_info(code, scope, as_at, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_policy_with_http_info(self, code : Annotated[StrictStr, Field(..., description="The code of the Policy")], scope : Annotated[Optional[StrictStr], Field( description="Optional. Will use the default scope if not provided. The scope of the Policy")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_policy_with_http_info(self, code : Annotated[StrictStr, Field(..., description="The code of the Policy")], scope : Annotated[Optional[StrictStr], Field( description="Optional. Will use the default scope if not provided. The scope of the Policy")] = None, as_at : Annotated[Optional[datetime], Field(description="Optional. The AsAt date and time at which to retrieve the Policy. Defaults to returning the latest version")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """GetPolicy: Get Policy  # noqa: E501
 
         Gets an identified Policy  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_policy_with_http_info(code, scope, async_req=True)
+        >>> thread = api.get_policy_with_http_info(code, scope, as_at, async_req=True)
         >>> result = thread.get()
 
         :param code: The code of the Policy (required)
         :type code: str
         :param scope: Optional. Will use the default scope if not provided. The scope of the Policy
         :type scope: str
+        :param as_at: Optional. The AsAt date and time at which to retrieve the Policy. Defaults to returning the latest version
+        :type as_at: datetime
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -1274,7 +1279,8 @@ class PoliciesApi:
 
         _all_params = [
             'code',
-            'scope'
+            'scope',
+            'as_at'
         ]
         _all_params.extend(
             [
@@ -1311,6 +1317,12 @@ class PoliciesApi:
         _query_params = []
         if _params.get('scope') is not None:  # noqa: E501
             _query_params.append(('scope', _params['scope']))
+
+        if _params.get('as_at') is not None:  # noqa: E501
+            if isinstance(_params['as_at'], datetime):
+                _query_params.append(('asAt', _params['as_at'].strftime(self.api_client.configuration.datetime_format)))
+            else:
+                _query_params.append(('asAt', _params['as_at']))
 
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))

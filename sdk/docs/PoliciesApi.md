@@ -688,7 +688,7 @@ Name | Type | Description  | Notes
 [Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
 
 # **get_policy**
-> PolicyResponse get_policy(code, scope=scope)
+> PolicyResponse get_policy(code, scope=scope, as_at=as_at)
 
 GetPolicy: Get Policy
 
@@ -741,13 +741,14 @@ def main():
     api_instance = api_client_factory.build(PoliciesApi)
     code = 'code_example' # str | The code of the Policy
     scope = 'scope_example' # str | Optional. Will use the default scope if not provided. The scope of the Policy (optional)
+    as_at = '2013-10-20T19:20:30+01:00' # datetime | Optional. The AsAt date and time at which to retrieve the Policy. Defaults to returning the latest version (optional)
 
     try:
         # uncomment the below to set overrides at the request level
-        # api_response =  api_instance.get_policy(code, scope=scope, opts=opts)
+        # api_response =  api_instance.get_policy(code, scope=scope, as_at=as_at, opts=opts)
 
         # GetPolicy: Get Policy
-        api_response = api_instance.get_policy(code, scope=scope)
+        api_response = api_instance.get_policy(code, scope=scope, as_at=as_at)
         pprint(api_response)
 
     except ApiException as e:
@@ -762,6 +763,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **code** | **str**| The code of the Policy | 
  **scope** | **str**| Optional. Will use the default scope if not provided. The scope of the Policy | [optional] 
+ **as_at** | **datetime**| Optional. The AsAt date and time at which to retrieve the Policy. Defaults to returning the latest version | [optional] 
 
 ### Return type
 
