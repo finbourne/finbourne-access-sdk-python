@@ -28,7 +28,8 @@ class IfViaApiExpression(BaseModel):
     IfViaApiExpression
     """
     api_feature_codes: List[StrictStr] = Field(alias="apiFeatureCodes")
-    __properties = ["apiFeatureCodes"]
+    operator:  StrictStr = Field(...,alias="operator") 
+    __properties = ["apiFeatureCodes", "operator"]
 
     class Config:
         """Pydantic configuration"""
@@ -74,7 +75,8 @@ class IfViaApiExpression(BaseModel):
             return IfViaApiExpression.parse_obj(obj)
 
         _obj = IfViaApiExpression.parse_obj({
-            "api_feature_codes": obj.get("apiFeatureCodes")
+            "api_feature_codes": obj.get("apiFeatureCodes"),
+            "operator": obj.get("operator")
         })
         return _obj
 

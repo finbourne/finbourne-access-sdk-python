@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **api_feature_codes** | **List[str]** |  | 
+**operator** | **str** |  | 
 ## Example
 
 ```python
@@ -14,7 +15,8 @@ from pydantic.v1 import BaseModel, StrictStr, StrictInt, StrictBool, StrictFloat
 from datetime import datetime
 
 api_feature_codes: List[StrictStr] = # Replace with your value
-if_via_api_expression_instance = IfViaApiExpression(api_feature_codes=api_feature_codes)
+operator: StrictStr = "example_operator"
+if_via_api_expression_instance = IfViaApiExpression(api_feature_codes=api_feature_codes, operator=operator)
 
 ```
 
