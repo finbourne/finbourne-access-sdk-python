@@ -99,6 +99,8 @@ class ResourceDetails(BaseModel):
                 )
                 for _k, _v in obj.get("metadata").items()
             )
+            if obj.get("metadata") is not None
+            else None
         })
         return _obj
 

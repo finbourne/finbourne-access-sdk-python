@@ -131,7 +131,9 @@ class PolicyCollectionUpdateRequest(BaseModel):
                         else None
                 )
                 for _k, _v in obj.get("metadata").items()
-            ),
+            )
+            if obj.get("metadata") is not None
+            else None,
             "policy_collections": [PolicyCollectionId.from_dict(_item) for _item in obj.get("policyCollections")] if obj.get("policyCollections") is not None else None,
             "description": obj.get("description")
         })
