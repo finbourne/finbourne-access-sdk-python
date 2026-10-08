@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "finbourne-access-sdk"
-version = "2.4.5"
+version = "2.4.6"
 description = "FINBOURNE Access Management API"
 authors = ["FINBOURNE Technology <info@finbourne.com>"]
 license = "MIT"
@@ -15,7 +15,7 @@ include = ["finbourne_access/**/*"]
 [tool.poetry.dependencies]
 python = "^3.11"
 
-urllib3 = "^2.7.0"
+urllib3 = "^2.8.0"
 python-dateutil = "^2.8.2"
 requests = "^2"
 aiohttp = "^3.14.2"
