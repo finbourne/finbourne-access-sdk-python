@@ -20,6 +20,7 @@ from finbourne_access.models.action_id import ActionId
 from finbourne_access.models.add_policy_collection_to_role_request import AddPolicyCollectionToRoleRequest
 from finbourne_access.models.add_policy_to_role_request import AddPolicyToRoleRequest
 from finbourne_access.models.add_to_policy_collection_request import AddToPolicyCollectionRequest
+from finbourne_access.models.api_endpoint import ApiEndpoint
 from finbourne_access.models.as_at_predicate_contract import AsAtPredicateContract
 from finbourne_access.models.as_at_range_for_spec import AsAtRangeForSpec
 from finbourne_access.models.as_at_relative import AsAtRelative
@@ -86,6 +87,7 @@ from finbourne_access.models.role_resource_request import RoleResourceRequest
 from finbourne_access.models.role_response import RoleResponse
 from finbourne_access.models.role_update_request import RoleUpdateRequest
 from finbourne_access.models.selector_definition import SelectorDefinition
+from finbourne_access.models.service_api_endpoints import ServiceApiEndpoints
 from finbourne_access.models.template_metadata import TemplateMetadata
 from finbourne_access.models.template_selection import TemplateSelection
 from finbourne_access.models.text_operator import TextOperator
@@ -102,6 +104,7 @@ __all__ = [
     "AddPolicyCollectionToRoleRequest",
     "AddPolicyToRoleRequest",
     "AddToPolicyCollectionRequest",
+    "ApiEndpoint",
     "AsAtPredicateContract",
     "AsAtRangeForSpec",
     "AsAtRelative",
@@ -168,6 +171,7 @@ __all__ = [
     "RoleResponse",
     "RoleUpdateRequest",
     "SelectorDefinition",
+    "ServiceApiEndpoints",
     "TemplateMetadata",
     "TemplateSelection",
     "TextOperator",

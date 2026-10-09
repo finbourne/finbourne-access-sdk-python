@@ -6,6 +6,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/access*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *ApplicationMetadataApi* | [**list_access_controlled_resources**](docs/ApplicationMetadataApi.md#list_access_controlled_resources) | **GET** /api/metadata/access/resources | ListAccessControlledResources: Get resources available for access control
+*ApplicationMetadataApi* | [**list_api_endpoints**](docs/ApplicationMetadataApi.md#list_api_endpoints) | **GET** /api/metadata/endpoints | ListApiEndpoints: Get the API endpoints available
 *PoliciesApi* | [**add_to_policy_collection**](docs/PoliciesApi.md#add_to_policy_collection) | **POST** /api/policycollections/{code}/add | AddToPolicyCollection: Add To PolicyCollection
 *PoliciesApi* | [**create_policy**](docs/PoliciesApi.md#create_policy) | **POST** /api/policies | CreatePolicy: Create Policy
 *PoliciesApi* | [**create_policy_collection**](docs/PoliciesApi.md#create_policy_collection) | **POST** /api/policycollections | CreatePolicyCollection: Create PolicyCollection
@@ -55,6 +56,7 @@ Class | Method | HTTP request | Description
  - [AddPolicyCollectionToRoleRequest](docs/AddPolicyCollectionToRoleRequest.md)
  - [AddPolicyToRoleRequest](docs/AddPolicyToRoleRequest.md)
  - [AddToPolicyCollectionRequest](docs/AddToPolicyCollectionRequest.md)
+ - [ApiEndpoint](docs/ApiEndpoint.md)
  - [AsAtPredicateContract](docs/AsAtPredicateContract.md)
  - [AsAtRangeForSpec](docs/AsAtRangeForSpec.md)
  - [AsAtRelative](docs/AsAtRelative.md)
@@ -121,6 +123,7 @@ Class | Method | HTTP request | Description
  - [RoleResponse](docs/RoleResponse.md)
  - [RoleUpdateRequest](docs/RoleUpdateRequest.md)
  - [SelectorDefinition](docs/SelectorDefinition.md)
+ - [ServiceApiEndpoints](docs/ServiceApiEndpoints.md)
  - [TemplateMetadata](docs/TemplateMetadata.md)
  - [TemplateSelection](docs/TemplateSelection.md)
  - [TextOperator](docs/TextOperator.md)
